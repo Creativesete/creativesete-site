@@ -8,6 +8,9 @@
 //   MAILERLITE_TOKEN        (opcional) API key do MailerLite
 //   MAILERLITE_GROUP_GUIA   (opcional) id do grupo que dispara o envio do guia
 //   MAILERLITE_GROUP_NEWS   (opcional) id do grupo da newsletter semanal
+//   FORMSPREE_URL           (opcional) endpoint Formspree para o aviso de novo lead; ja tem valor por defeito
+//
+// 3) Envia um aviso por email a equipa (Formspree) para pedidos de orcamento/contacto.
 
 const CORS = {
   'Access-Control-Allow-Origin': '*',
@@ -104,6 +107,26 @@ export async function onRequestPost({ request, env }) {
           }),
         });
       } catch (_) { /* ignora falhas de email para nao bloquear o lead */ }
+    }
+
+    // ---- 3) Aviso por email a equipa (Formspree). So para orcamento/contacto (leads que pedem resposta). ----
+    if (pedido !== 'Guia gratuito') {
+      const FS = env.FORMSPREE_URL || 'https://formspree.io/f/xgaeobad';
+      try {
+        await fetch(FS, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            _subject: 'Novo lead do site · ' + pedido + ' · ' + nome,
+            Nome: nome,
+            Email: email,
+            Telefone: telefone,
+            Pedido: pedido,
+            Mensagem: mensagem || '(sem mensagem)',
+            _replyto: email,
+          }),
+        });
+      } catch (_) { /* best-effort: nunca bloqueia o lead */ }
     }
 
     return new Response(JSON.stringify({ ok: true }), { status: 200, headers: { ...CORS, 'Content-Type': 'application/json' } });

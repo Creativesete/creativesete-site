@@ -2,6 +2,62 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Creative Sete · Política de Privacidade</title>
 <meta name="description" content="Política de Privacidade da Creative Sete, produtora de vídeo em Lisboa. Como recolhemos, usamos e protegemos os seus dados.">
+<!-- Consent Mode v2 · estado por defeito, tem de correr antes de qualquer tag -->
+<script>
+(function(){
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ window.dataLayer.push(arguments); }
+  window.gtag = gtag;
+
+  /* Nada de medição antes da escolha do visitante. Só funcionamento e segurança. */
+  gtag('consent','default',{
+    ad_storage:'denied',
+    ad_user_data:'denied',
+    ad_personalization:'denied',
+    analytics_storage:'denied',
+    personalization_storage:'denied',
+    functionality_storage:'granted',
+    security_storage:'granted',
+    wait_for_update:500
+  });
+  gtag('set','ads_data_redaction',true);
+  gtag('set','url_passthrough',true);
+
+  /* Escolha guardada · válida durante 180 dias */
+  window.CS_CONSENT_KEY = 'cs_consent';
+  window.CS_CONSENT_MAXAGE = 180*864e5;
+  window.CS_CONSENT = null;
+  try{
+    var saved = JSON.parse(localStorage.getItem(window.CS_CONSENT_KEY) || 'null');
+    if(saved && saved.v === 1 && saved.t && (Date.now() - saved.t) < window.CS_CONSENT_MAXAGE){
+      window.CS_CONSENT = saved;
+    }
+  }catch(e){}
+
+  if(window.CS_CONSENT){
+    var a = !!window.CS_CONSENT.analytics, m = !!window.CS_CONSENT.marketing;
+    gtag('consent','update',{
+      ad_storage:            m ? 'granted' : 'denied',
+      ad_user_data:          m ? 'granted' : 'denied',
+      ad_personalization:    m ? 'granted' : 'denied',
+      analytics_storage:     a ? 'granted' : 'denied',
+      personalization_storage: m ? 'granted' : 'denied',
+      functionality_storage:'granted',
+      security_storage:'granted'
+    });
+    gtag('set','ads_data_redaction', !m);
+    window.dataLayer.push({event:'cs_consent_ready', cs_analytics:a, cs_marketing:m});
+  }
+})();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MG8XTV87');</script>
+<!-- End Google Tag Manager -->
+
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap');
   :root{
@@ -61,6 +117,11 @@
   footer a:hover{color:var(--ink)}
 </style>
 
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MG8XTV87"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
 <nav>
   <div class="nav-in">
     <div class="nav-glass">
@@ -76,7 +137,7 @@
   <div class="wrap">
     <p class="eyebrow">Creative Sete</p>
     <h1>Política de <span class="em">Privacidade</span></h1>
-    <p class="upd">Última atualização: agosto de 2026</p>
+    <p class="upd">Última atualização: setembro de 2026</p>
   </div>
 </header>
 
@@ -116,11 +177,19 @@
         <li><strong>Alojamento e segurança do site</strong> (infraestrutura que serve as páginas).</li>
         <li><strong>Processamento dos formulários</strong> (serviço que nos entrega, por email, as mensagens submetidas).</li>
         <li><strong>Gestão de contactos</strong> (ferramenta interna onde organizamos os pedidos recebidos).</li>
+        <li><strong>Medição e publicidade</strong>: Google (Google Analytics 4, Google Tag Manager e Google Ads) e Meta Platforms (Meta Pixel), apenas quando autoriza os cookies de análise ou de marketing.</li>
       </ul>
       <p>Alguns destes prestadores podem tratar dados fora do Espaço Económico Europeu, sempre com garantias adequadas nos termos do RGPD.</p>
 
       <h2>6. Cookies</h2>
-      <p>O site utiliza apenas os cookies e tecnologias essenciais ao seu funcionamento. Não usamos cookies de publicidade nem de rastreio para fins de marketing sem o seu consentimento. Pode configurar o seu navegador para bloquear ou eliminar cookies a qualquer momento.</p>
+      <p>Usamos três categorias de cookies e tecnologias equivalentes:</p>
+      <ul>
+        <li><strong>Essenciais</strong>: necessários para o site funcionar em segurança e para guardar a sua escolha sobre cookies. São sempre ativados e não dependem de consentimento.</li>
+        <li><strong>Análise</strong>: Google Analytics 4, através do Google Tag Manager, para percebermos quantas pessoas visitam o site e que páginas veem. Só são ativados se autorizar.</li>
+        <li><strong>Marketing</strong>: Meta Pixel e Google Ads, para medir os resultados das nossas campanhas e mostrar anúncios relevantes. Só são ativados se autorizar.</li>
+      </ul>
+      <p>Enquanto não escolher, nada além dos cookies essenciais é ativado: usamos o modo de consentimento da Google, que mantém a análise e o marketing bloqueados por defeito. A sua escolha fica guardada no seu navegador durante 180 dias, ao fim dos quais voltamos a perguntar.</p>
+      <p>Pode alterar ou retirar a sua escolha quando quiser em <a href="#" data-cc-open>definições de cookies</a>. Pode também configurar o navegador para bloquear ou eliminar cookies a qualquer momento.</p>
 
       <h2>7. Os seus direitos</h2>
       <p>Ao abrigo do RGPD, tem o direito de:</p>
@@ -154,6 +223,139 @@
 
 <footer>
   <div class="wrap">
-    <p>© Creative Sete 2026 · <a href="index.html">Voltar ao site</a></p>
+    <p>© Creative Sete 2026 · <a href="index.html">Voltar ao site</a> · <a href="#" data-cc-open>Definições de cookies</a></p>
   </div>
 </footer>
+
+<!-- Banner de consentimento de cookies · Conceito Vidro -->
+<style>
+  .cc{position:fixed;left:16px;right:16px;bottom:16px;z-index:130;display:none}
+  .cc.on{display:block}
+  .cc-box{max-width:1100px;margin:0 auto;background:var(--glass-2);border:1px solid var(--glass-brd);border-radius:26px;
+    backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);box-shadow:var(--shadow);
+    padding:22px 24px;display:flex;align-items:center;gap:22px;flex-wrap:wrap;
+    animation:ccup .45s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes ccup{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+  .cc-main{flex:1 1 420px;min-width:0}
+  .cc-t{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--ink)}
+  .cc-p{margin:0;font-size:13.5px;line-height:1.55;color:var(--muted);font-weight:400}
+  .cc-p a{color:var(--ink);text-decoration:underline}
+  .cc-opts{display:none;margin-top:16px;padding-top:16px;border-top:1px solid var(--line);gap:12px;flex-direction:column}
+  .cc.prefs .cc-opts{display:flex}
+  .cc.prefs .cc-box{flex-direction:column;align-items:stretch}
+  .cc.prefs .cc-main{flex:0 0 auto}
+  .cc.prefs .cc-cta{justify-content:flex-end}
+  .cc-opt{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;cursor:pointer}
+  .cc-opt b{display:block;font-size:13.5px;font-weight:600;color:var(--ink)}
+  .cc-opt i{display:block;font-style:normal;font-size:12.5px;color:var(--muted);margin-top:2px}
+  .cc-opt input{width:18px;height:18px;margin:2px 0 0;flex:none;accent-color:var(--ink);cursor:pointer}
+  .cc-opt input:disabled{cursor:default;opacity:.55}
+  .cc-cta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;flex:0 0 auto}
+  .cc-btn{font-family:inherit;font-weight:600;font-size:14.5px;padding:12px 22px;border-radius:999px;cursor:pointer;
+    border:1px solid transparent;white-space:nowrap;transition:transform .28s cubic-bezier(.2,.8,.2,1),box-shadow .28s ease,background .2s ease}
+  .cc-btn:hover{transform:translateY(-2px)}
+  .cc-btn:active{transform:none}
+  .cc-primary{background:var(--ink);color:#fff;box-shadow:0 8px 22px rgba(20,21,26,.22)}
+  .cc-primary:hover{box-shadow:0 16px 34px rgba(20,21,26,.34)}
+  .cc-glass{background:var(--glass-2);color:var(--ink);border-color:var(--glass-brd);
+    backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur)}
+  .cc-glass:hover{background:#fff}
+  .cc-ghost{background:none;border:none;font-family:inherit;font-weight:600;font-size:13.5px;color:var(--muted);
+    cursor:pointer;padding:12px 6px;text-decoration:underline;text-underline-offset:3px}
+  .cc-ghost:hover{color:var(--ink)}
+  .cc [hidden]{display:none!important}
+  body.cc-on .fab,body.cc-on .sticky{opacity:0;pointer-events:none}
+  @media(max-width:860px){
+    .cc{left:12px;right:12px;bottom:12px}
+    .cc-box{padding:20px;gap:16px}
+    .cc-cta{width:100%}
+    .cc-cta .cc-btn{flex:1 1 auto;justify-content:center;text-align:center}
+  }
+  @media (prefers-reduced-motion:reduce){.cc-box{animation:none}.cc-btn{transition:none}.cc-btn:hover{transform:none}}
+</style>
+
+<div class="cc" id="cc" role="dialog" aria-label="Definições de cookies">
+  <div class="cc-box">
+    <div class="cc-main">
+      <p class="cc-t">Cookies neste site</p>
+      <p class="cc-p">Usamos cookies essenciais para o site funcionar e, com a sua autorização, cookies de análise e de marketing para percebermos as visitas e medir as nossas campanhas. Pode mudar de ideias quando quiser. Detalhes na <a href="privacidade.html">Política de Privacidade</a>.</p>
+      <div class="cc-opts" id="cc-opts">
+        <label class="cc-opt"><span><b>Essenciais</b><i>Necessários para o site funcionar em segurança. Sempre ativos.</i></span><input type="checkbox" checked disabled aria-label="Cookies essenciais, sempre ativos"></label>
+        <label class="cc-opt"><span><b>Análise</b><i>Google Analytics 4, para percebermos como o site é usado.</i></span><input type="checkbox" id="cc-an"></label>
+        <label class="cc-opt"><span><b>Marketing</b><i>Meta Pixel e Google Ads, para medir e otimizar as campanhas.</i></span><input type="checkbox" id="cc-mk"></label>
+      </div>
+    </div>
+    <div class="cc-cta">
+      <button class="cc-btn cc-primary" id="cc-all" type="button">Aceitar tudo</button>
+      <button class="cc-btn cc-glass" id="cc-none" type="button">Rejeitar</button>
+      <button class="cc-ghost" id="cc-prefs" type="button">Definições</button>
+      <button class="cc-btn cc-glass" id="cc-save" type="button" hidden>Guardar escolhas</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var cc = document.getElementById('cc');
+  if(!cc) return;
+  var K = window.CS_CONSENT_KEY || 'cs_consent';
+  var an = document.getElementById('cc-an'), mk = document.getElementById('cc-mk');
+  var bAll = document.getElementById('cc-all'), bNone = document.getElementById('cc-none');
+  var bPrefs = document.getElementById('cc-prefs'), bSave = document.getElementById('cc-save');
+
+  function gtag(){ window.dataLayer = window.dataLayer || []; window.dataLayer.push(arguments); }
+
+  function show(prefs){
+    cc.classList.add('on');
+    document.body.classList.add('cc-on');
+    if(prefs) openPrefs();
+  }
+  function hide(){
+    cc.classList.remove('on','prefs');
+    document.body.classList.remove('cc-on');
+    bSave.hidden = true; bPrefs.hidden = false; bNone.hidden = false;
+  }
+  function openPrefs(){
+    cc.classList.add('prefs');
+    bPrefs.hidden = true; bNone.hidden = true; bSave.hidden = false;
+    bSave.focus();
+  }
+
+  function apply(a, m){
+    gtag('consent','update',{
+      ad_storage:            m ? 'granted' : 'denied',
+      ad_user_data:          m ? 'granted' : 'denied',
+      ad_personalization:    m ? 'granted' : 'denied',
+      analytics_storage:     a ? 'granted' : 'denied',
+      personalization_storage: m ? 'granted' : 'denied',
+      functionality_storage:'granted',
+      security_storage:'granted'
+    });
+    gtag('set','ads_data_redaction', !m);
+    try{ localStorage.setItem(K, JSON.stringify({v:1, t:Date.now(), analytics:a, marketing:m})); }catch(e){}
+    window.CS_CONSENT = {v:1, t:Date.now(), analytics:a, marketing:m};
+    window.dataLayer.push({event:'cs_consent_update', cs_analytics:a, cs_marketing:m});
+    hide();
+  }
+
+  bAll.addEventListener('click', function(){ apply(true, true); });
+  bNone.addEventListener('click', function(){ apply(false, false); });
+  bPrefs.addEventListener('click', openPrefs);
+  bSave.addEventListener('click', function(){ apply(!!an.checked, !!mk.checked); });
+
+  /* Reabrir a partir de qualquer link com data-cc-open */
+  document.querySelectorAll('[data-cc-open]').forEach(function(el){
+    el.addEventListener('click', function(e){
+      e.preventDefault();
+      var c = window.CS_CONSENT;
+      an.checked = !!(c && c.analytics);
+      mk.checked = !!(c && c.marketing);
+      show(true);
+    });
+  });
+
+  /* Primeira visita, ou consentimento com mais de 180 dias */
+  if(!window.CS_CONSENT) show(false);
+})();
+</script>
+

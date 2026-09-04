@@ -1,6 +1,54 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="facebook-domain-verification" content="kfu2sfeyb7bnyefo1pypv94gvzv7tb" />
+<!-- Consent Mode v2 · estado por defeito, tem de correr antes de qualquer tag -->
+<script>
+(function(){
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ window.dataLayer.push(arguments); }
+  window.gtag = gtag;
+
+  /* Nada de medição antes da escolha do visitante. Só funcionamento e segurança. */
+  gtag('consent','default',{
+    ad_storage:'denied',
+    ad_user_data:'denied',
+    ad_personalization:'denied',
+    analytics_storage:'denied',
+    personalization_storage:'denied',
+    functionality_storage:'granted',
+    security_storage:'granted',
+    wait_for_update:500
+  });
+  gtag('set','ads_data_redaction',true);
+  gtag('set','url_passthrough',true);
+
+  /* Escolha guardada · válida durante 180 dias */
+  window.CS_CONSENT_KEY = 'cs_consent';
+  window.CS_CONSENT_MAXAGE = 180*864e5;
+  window.CS_CONSENT = null;
+  try{
+    var saved = JSON.parse(localStorage.getItem(window.CS_CONSENT_KEY) || 'null');
+    if(saved && saved.v === 1 && saved.t && (Date.now() - saved.t) < window.CS_CONSENT_MAXAGE){
+      window.CS_CONSENT = saved;
+    }
+  }catch(e){}
+
+  if(window.CS_CONSENT){
+    var a = !!window.CS_CONSENT.analytics, m = !!window.CS_CONSENT.marketing;
+    gtag('consent','update',{
+      ad_storage:            m ? 'granted' : 'denied',
+      ad_user_data:          m ? 'granted' : 'denied',
+      ad_personalization:    m ? 'granted' : 'denied',
+      analytics_storage:     a ? 'granted' : 'denied',
+      personalization_storage: m ? 'granted' : 'denied',
+      functionality_storage:'granted',
+      security_storage:'granted'
+    });
+    gtag('set','ads_data_redaction', !m);
+    window.dataLayer.push({event:'cs_consent_ready', cs_analytics:a, cs_marketing:m});
+  }
+})();
+</script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -8,6 +56,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-MG8XTV87');</script>
 <!-- End Google Tag Manager -->
+
 <title>Creative Sete</title>
 <meta name="description" content="Produtora de vídeo em Lisboa. Cobertura de eventos, cursos e transmissões em direto.">
 <style>
@@ -113,6 +162,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .nav-cta{margin-left:auto;display:flex;gap:8px;align-items:center}
   .navtoggle{display:none;margin-left:auto;background:none;border:none;width:40px;height:40px;font-size:20px;cursor:pointer;color:var(--ink)}
   @media(max-width:900px){.nav-links,.nav-cta .btn-glass{display:none}.navtoggle{display:block}}
+  @media(max-width:560px){.nav-cta{display:none}.nav-glass{gap:10px;padding:0 6px 0 16px}}
   .mobmenu{display:none;margin:10px 14px 0;padding:12px;border-radius:22px;background:var(--glass-2);border:1px solid var(--glass-brd);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);box-shadow:var(--shadow)}
   .mobmenu.on{display:block}
   .mobmenu a{display:block;padding:12px 14px;color:var(--ink);font-weight:500;border-radius:12px}
@@ -358,7 +408,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .fab svg{width:29px;height:29px;fill:#fff}
   .sticky{position:fixed;left:20px;bottom:24px;z-index:65;opacity:0;transform:translateY(14px);transition:.3s ease;pointer-events:none}
   .sticky.on{opacity:1;transform:none;pointer-events:auto}
-  @media(max-width:520px){.sticky{display:none}}
+  @media(max-width:520px){.sticky{left:14px;bottom:18px}.sticky .btn{padding:12px 20px;font-size:14px}}
 
   .rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
   .rv.in{opacity:1;transform:none}
@@ -488,7 +538,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <span class="wplay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
           <div class="wpanel"><div class="txt"><div class="who">Digital Manager Guru</div><div class="ctx">Casa de Verão · Evento de marca</div></div><span class="arw"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
         </div>
-        <div class="wcard rv" data-video="" role="button" tabindex="0" aria-label="Ver vídeo · EY">
+        <div class="wcard rv" data-video="ERc2OkH3rlo" role="button" tabindex="0" aria-label="Ver vídeo · EY">
           <img src="assets/p_ey.jpg" alt="EY Winning Women">
           <span class="wplay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
           <div class="wpanel"><div class="txt"><div class="who">EY</div><div class="ctx">Winning Women · Evento corporativo</div></div><span class="arw"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
@@ -632,7 +682,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="contact-grid">
         <form class="glasspanel cform rv" id="cform">
           <div><label for="c-nome">Nome</label><input id="c-nome" type="text" placeholder="O seu nome" required></div>
-          <div><label for="c-tel">Telemóvel</label><input id="c-tel" type="tel" placeholder="+351 969 631 428" required></div>
+          <div><label for="c-tel">Telemóvel</label><input id="c-tel" type="tel" placeholder="+351 963 899 070" required></div>
           <div><label for="c-email">Email</label><input id="c-email" type="email" placeholder="email@seunome.pt" required></div>
           <div><label for="c-msg">Mensagem</label><textarea id="c-msg" placeholder="Conte-nos sobre o seu evento, curso ou projeto"></textarea></div>
           <label class="consent"><input type="checkbox" required> Autorizo o contacto da Creative Sete e li a <a href="privacidade.html" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Política de Privacidade</a>.</label>
@@ -690,7 +740,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p class="foot-addr">Produtora de vídeo em Lisboa<br>R. da Bela Vista 25, Agualva-Cacém</p>
       </div>
       <div><h4>Contacto</h4><a href="https://wa.link/qyvgv7" target="_blank" rel="noopener">WhatsApp</a><a href="mailto:contact@creativesete.com">contact@creativesete.com</a><a href="tel:+351963899070">+351 963 899 070</a></div>
-      <div><h4>Redes</h4><a href="https://www.instagram.com/creativesete/" target="_blank" rel="noopener">Instagram</a><a href="https://www.linkedin.com/company/creativesete/" target="_blank" rel="noopener">LinkedIn</a><a href="privacidade.html">Política de privacidade</a></div>
+      <div><h4>Redes</h4><a href="https://www.instagram.com/creativesete/" target="_blank" rel="noopener">Instagram</a><a href="https://www.linkedin.com/company/creativesete/" target="_blank" rel="noopener">LinkedIn</a><a href="privacidade.html">Política de privacidade</a><a href="#" data-cc-open>Definições de cookies</a></div>
     </div>
     <div class="foot-bot"><span>© Creative Sete 2026 · Vídeos de milhões</span><span>Made with love in Lisbon</span></div>
   </div>
@@ -775,9 +825,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   /* Video lightbox — plays the YouTube link set on each card's data-video */
   var vm=document.getElementById('vmodal'),vf=document.getElementById('vframe');
   function ytId(v){if(!v)return'';if(/^[\w-]{11}$/.test(v))return v;var m=v.match(/(?:youtu\.be\/|v=|embed\/|shorts\/)([\w-]{11})/);return m?m[1]:'';}
-  var DEMO_ID='ScMzIvxBSi4'; /* placeholder · trocar pelos links reais em cada card */
   var vlink=document.getElementById('vlink');
-  function openVideo(v){var id=ytId(v)||DEMO_ID;vf.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0" title="Vídeo" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';if(vlink)vlink.href='https://www.youtube.com/watch?v='+id;vm.classList.add('on');document.body.style.overflow='hidden';}
+  function openVideo(v){var id=ytId(v);if(!id)return;vf.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0" title="Vídeo" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';if(vlink)vlink.href='https://www.youtube.com/watch?v='+id;vm.classList.add('on');document.body.style.overflow='hidden';}
   function closeVideo(){vm.classList.remove('on');vf.innerHTML='';document.body.style.overflow='';}
   vm.querySelectorAll('[data-vclose]').forEach(function(b){b.addEventListener('click',closeVideo);});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')closeVideo();});
@@ -788,3 +837,136 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   });
 })();
 </script>
+
+<!-- Banner de consentimento de cookies · Conceito Vidro -->
+<style>
+  .cc{position:fixed;left:16px;right:16px;bottom:16px;z-index:130;display:none}
+  .cc.on{display:block}
+  .cc-box{max-width:1100px;margin:0 auto;background:var(--glass-2);border:1px solid var(--glass-brd);border-radius:26px;
+    backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);box-shadow:var(--shadow);
+    padding:22px 24px;display:flex;align-items:center;gap:22px;flex-wrap:wrap;
+    animation:ccup .45s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes ccup{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+  .cc-main{flex:1 1 420px;min-width:0}
+  .cc-t{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--ink)}
+  .cc-p{margin:0;font-size:13.5px;line-height:1.55;color:var(--muted);font-weight:400}
+  .cc-p a{color:var(--ink);text-decoration:underline}
+  .cc-opts{display:none;margin-top:16px;padding-top:16px;border-top:1px solid var(--line);gap:12px;flex-direction:column}
+  .cc.prefs .cc-opts{display:flex}
+  .cc.prefs .cc-box{flex-direction:column;align-items:stretch}
+  .cc.prefs .cc-main{flex:0 0 auto}
+  .cc.prefs .cc-cta{justify-content:flex-end}
+  .cc-opt{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;cursor:pointer}
+  .cc-opt b{display:block;font-size:13.5px;font-weight:600;color:var(--ink)}
+  .cc-opt i{display:block;font-style:normal;font-size:12.5px;color:var(--muted);margin-top:2px}
+  .cc-opt input{width:18px;height:18px;margin:2px 0 0;flex:none;accent-color:var(--ink);cursor:pointer}
+  .cc-opt input:disabled{cursor:default;opacity:.55}
+  .cc-cta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;flex:0 0 auto}
+  .cc-btn{font-family:inherit;font-weight:600;font-size:14.5px;padding:12px 22px;border-radius:999px;cursor:pointer;
+    border:1px solid transparent;white-space:nowrap;transition:transform .28s cubic-bezier(.2,.8,.2,1),box-shadow .28s ease,background .2s ease}
+  .cc-btn:hover{transform:translateY(-2px)}
+  .cc-btn:active{transform:none}
+  .cc-primary{background:var(--ink);color:#fff;box-shadow:0 8px 22px rgba(20,21,26,.22)}
+  .cc-primary:hover{box-shadow:0 16px 34px rgba(20,21,26,.34)}
+  .cc-glass{background:var(--glass-2);color:var(--ink);border-color:var(--glass-brd);
+    backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur)}
+  .cc-glass:hover{background:#fff}
+  .cc-ghost{background:none;border:none;font-family:inherit;font-weight:600;font-size:13.5px;color:var(--muted);
+    cursor:pointer;padding:12px 6px;text-decoration:underline;text-underline-offset:3px}
+  .cc-ghost:hover{color:var(--ink)}
+  .cc [hidden]{display:none!important}
+  body.cc-on .fab,body.cc-on .sticky{opacity:0;pointer-events:none}
+  @media(max-width:860px){
+    .cc{left:12px;right:12px;bottom:12px}
+    .cc-box{padding:20px;gap:16px}
+    .cc-cta{width:100%}
+    .cc-cta .cc-btn{flex:1 1 auto;justify-content:center;text-align:center}
+  }
+  @media (prefers-reduced-motion:reduce){.cc-box{animation:none}.cc-btn{transition:none}.cc-btn:hover{transform:none}}
+</style>
+
+<div class="cc" id="cc" role="dialog" aria-label="Definições de cookies">
+  <div class="cc-box">
+    <div class="cc-main">
+      <p class="cc-t">Cookies neste site</p>
+      <p class="cc-p">Usamos cookies essenciais para o site funcionar e, com a sua autorização, cookies de análise e de marketing para percebermos as visitas e medir as nossas campanhas. Pode mudar de ideias quando quiser. Detalhes na <a href="privacidade.html">Política de Privacidade</a>.</p>
+      <div class="cc-opts" id="cc-opts">
+        <label class="cc-opt"><span><b>Essenciais</b><i>Necessários para o site funcionar em segurança. Sempre ativos.</i></span><input type="checkbox" checked disabled aria-label="Cookies essenciais, sempre ativos"></label>
+        <label class="cc-opt"><span><b>Análise</b><i>Google Analytics 4, para percebermos como o site é usado.</i></span><input type="checkbox" id="cc-an"></label>
+        <label class="cc-opt"><span><b>Marketing</b><i>Meta Pixel e Google Ads, para medir e otimizar as campanhas.</i></span><input type="checkbox" id="cc-mk"></label>
+      </div>
+    </div>
+    <div class="cc-cta">
+      <button class="cc-btn cc-primary" id="cc-all" type="button">Aceitar tudo</button>
+      <button class="cc-btn cc-glass" id="cc-none" type="button">Rejeitar</button>
+      <button class="cc-ghost" id="cc-prefs" type="button">Definições</button>
+      <button class="cc-btn cc-glass" id="cc-save" type="button" hidden>Guardar escolhas</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var cc = document.getElementById('cc');
+  if(!cc) return;
+  var K = window.CS_CONSENT_KEY || 'cs_consent';
+  var an = document.getElementById('cc-an'), mk = document.getElementById('cc-mk');
+  var bAll = document.getElementById('cc-all'), bNone = document.getElementById('cc-none');
+  var bPrefs = document.getElementById('cc-prefs'), bSave = document.getElementById('cc-save');
+
+  function gtag(){ window.dataLayer = window.dataLayer || []; window.dataLayer.push(arguments); }
+
+  function show(prefs){
+    cc.classList.add('on');
+    document.body.classList.add('cc-on');
+    if(prefs) openPrefs();
+  }
+  function hide(){
+    cc.classList.remove('on','prefs');
+    document.body.classList.remove('cc-on');
+    bSave.hidden = true; bPrefs.hidden = false; bNone.hidden = false;
+  }
+  function openPrefs(){
+    cc.classList.add('prefs');
+    bPrefs.hidden = true; bNone.hidden = true; bSave.hidden = false;
+    bSave.focus();
+  }
+
+  function apply(a, m){
+    gtag('consent','update',{
+      ad_storage:            m ? 'granted' : 'denied',
+      ad_user_data:          m ? 'granted' : 'denied',
+      ad_personalization:    m ? 'granted' : 'denied',
+      analytics_storage:     a ? 'granted' : 'denied',
+      personalization_storage: m ? 'granted' : 'denied',
+      functionality_storage:'granted',
+      security_storage:'granted'
+    });
+    gtag('set','ads_data_redaction', !m);
+    try{ localStorage.setItem(K, JSON.stringify({v:1, t:Date.now(), analytics:a, marketing:m})); }catch(e){}
+    window.CS_CONSENT = {v:1, t:Date.now(), analytics:a, marketing:m};
+    window.dataLayer.push({event:'cs_consent_update', cs_analytics:a, cs_marketing:m});
+    hide();
+  }
+
+  bAll.addEventListener('click', function(){ apply(true, true); });
+  bNone.addEventListener('click', function(){ apply(false, false); });
+  bPrefs.addEventListener('click', openPrefs);
+  bSave.addEventListener('click', function(){ apply(!!an.checked, !!mk.checked); });
+
+  /* Reabrir a partir de qualquer link com data-cc-open */
+  document.querySelectorAll('[data-cc-open]').forEach(function(el){
+    el.addEventListener('click', function(e){
+      e.preventDefault();
+      var c = window.CS_CONSENT;
+      an.checked = !!(c && c.analytics);
+      mk.checked = !!(c && c.marketing);
+      show(true);
+    });
+  });
+
+  /* Primeira visita, ou consentimento com mais de 180 dias */
+  if(!window.CS_CONSENT) show(false);
+})();
+</script>
+

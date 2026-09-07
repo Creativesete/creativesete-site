@@ -44,13 +44,46 @@ export async function onRequestPost({ request, env }) {
     const telefone = s(d.telefone, 60);
     const mensagem = s(d.mensagem, 1800);
 
+    // Campos de qualificacao vindos do formulario do site.
+    const empresa = s(d.empresa, 200);
+    // 'pt' ou 'en', vem do atributo lang da pagina. Diz em que lingua responder.
+    const idioma = s(d.idioma, 5).toLowerCase() === 'en' ? 'en' : 'pt';
+    const tipo = s(d.tipo, 60);
+    const orcamento = s(d.orcamento, 40);
+    // A data chega do <input type="date"> como AAAA-MM-DD. So aceitamos esse formato.
+    const dataProjeto = /^\d{4}-\d{2}-\d{2}$/.test(s(d.data, 10)) ? s(d.data, 10) : '';
+
+    // ---- Triagem ------------------------------------------------------------
+    // A mesma regra que corre no site, repetida aqui porque o browser nao e de
+    // confianca. E este valor, e nao o do cliente, que vai para o CRM.
+    //   B · vale reuniao      A · so quer preco      C · ainda nao decidiu
+    const TIPOS_REUNIAO = ['Evento corporativo', 'Vídeo institucional',
+      'Transmissão em direto', 'Curso online ou formação', 'Podcast'];
+    const rota = (() => {
+      if (orcamento === '3.000€ a 6.000€' || orcamento === 'Mais de 6.000€') return 'B';
+      if (orcamento === 'Até 1.000€') return 'A';
+      if (TIPOS_REUNIAO.includes(tipo)) return 'B';
+      if (orcamento === 'Ainda não sei' && !empresa) return 'C';
+      return 'A';
+    })();
+    const ROTA_NOME = { A: 'A · Preço', B: 'B · Reunião', C: 'C · Nutrição' };
+    const rotaNome = ROTA_NOME[rota];
+
     // Pedido: "Orçamento" | "Guia gratuito" | "Contacto"
     let pedido = s(d.pedido, 40);
     if (!['Orçamento', 'Guia gratuito', 'Contacto'].includes(pedido)) pedido = 'Contacto';
     const isGuia = pedido === 'Guia gratuito';
 
     const assunto = s(d._subject, 200) || ('Pedido do site · ' + pedido);
-    const notas = assunto + (mensagem ? ' — ' + mensagem : '');
+    // As notas levam sempre tudo. Se o Notion ainda nao tiver as propriedades novas,
+    // a informacao de qualificacao fica na mesma guardada aqui.
+    const linhas = [assunto, 'Rota: ' + rotaNome, 'Idioma: ' + (idioma === 'en' ? 'Inglês' : 'Português')];
+    if (empresa) linhas.push('Empresa: ' + empresa);
+    if (tipo) linhas.push('Tipo de projeto: ' + tipo);
+    if (dataProjeto) linhas.push('Data prevista: ' + dataProjeto);
+    if (orcamento) linhas.push('Orcamento: ' + orcamento);
+    if (mensagem) linhas.push('Mensagem: ' + mensagem);
+    const notas = linhas.join(' · ').slice(0, 1900);
     const hoje = new Date().toISOString().slice(0, 10);
 
     if (!env.NOTION_TOKEN) {
@@ -69,18 +102,36 @@ export async function onRequestPost({ request, env }) {
     if (email) props['Email'] = { email };
     if (telefone) props['Telefone'] = { phone_number: telefone };
 
-    const r = await fetch('https://api.notion.com/v1/pages', {
+    // Propriedades de qualificacao. So existem no Notion depois de serem criadas la.
+    // Por isso tentamos primeiro com elas e, se o Notion recusar, repetimos sem elas.
+    // Assim o lead nunca se perde e, no dia em que as propriedades existirem,
+    // passam a ser preenchidas sem mexer neste ficheiro.
+    const extra = {};
+    if (empresa) extra['Empresa'] = { rich_text: [{ text: { content: empresa } }] };
+    if (tipo) extra['Tipo de Projeto'] = { select: { name: tipo } };
+    if (orcamento) extra['Orçamento'] = { select: { name: orcamento } };
+    if (dataProjeto) extra['Data do Projeto'] = { date: { start: dataProjeto } };
+    if (!isGuia) extra['Rota'] = { select: { name: rotaNome } };
+    extra['Idioma'] = { select: { name: idioma === 'en' ? 'Inglês' : 'Português' } };
+
+    const DB = env.NOTION_DB || 'bad23aa9-3823-4814-a6e3-72aa0e59e548';
+    const criarPagina = (properties) => fetch('https://api.notion.com/v1/pages', {
       method: 'POST',
       headers: {
         'Authorization': 'Bearer ' + env.NOTION_TOKEN,
         'Notion-Version': '2022-06-28',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        parent: { database_id: env.NOTION_DB || 'bad23aa9-3823-4814-a6e3-72aa0e59e548' },
-        properties: props,
-      }),
+      body: JSON.stringify({ parent: { database_id: DB }, properties }),
     });
+
+    let r = await criarPagina(Object.keys(extra).length ? { ...props, ...extra } : props);
+
+    if (!r.ok && Object.keys(extra).length) {
+      // Muito provavelmente uma propriedade que ainda nao existe na base.
+      // Repete so com o conjunto seguro; as notas ja levam a qualificacao toda.
+      r = await criarPagina(props);
+    }
 
     if (!r.ok) {
       const t = await r.text();
@@ -92,6 +143,9 @@ export async function onRequestPost({ request, env }) {
       const groups = [];
       if (isGuia && env.MAILERLITE_GROUP_GUIA) groups.push(env.MAILERLITE_GROUP_GUIA);
       if (env.MAILERLITE_GROUP_NEWS) groups.push(env.MAILERLITE_GROUP_NEWS);
+      // Sequencias por rota. Ficam inativas ate existirem os ids no ambiente.
+      if (!isGuia && rota === 'A' && env.MAILERLITE_GROUP_ROTA_A) groups.push(env.MAILERLITE_GROUP_ROTA_A);
+      if (!isGuia && rota === 'C' && env.MAILERLITE_GROUP_ROTA_C) groups.push(env.MAILERLITE_GROUP_ROTA_C);
       try {
         await fetch('https://connect.mailerlite.com/api/subscribers', {
           method: 'POST',
@@ -102,7 +156,7 @@ export async function onRequestPost({ request, env }) {
           },
           body: JSON.stringify({
             email,
-            fields: { name: nome, phone: telefone },
+            fields: { name: nome, phone: telefone, company: empresa, tipo_projeto: tipo, orcamento: orcamento, rota: isGuia ? '' : rota, idioma: idioma },
             groups,
           }),
         });
@@ -117,11 +171,17 @@ export async function onRequestPost({ request, env }) {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify({
-            _subject: 'Novo lead do site · ' + pedido + ' · ' + nome,
+            _subject: 'Lead ' + rota + (idioma === 'en' ? ' · EN' : '') + ' · ' + (tipo || 'sem tipo') + ' · ' + (orcamento || 'sem orcamento') + ' · ' + nome,
             Nome: nome,
+            Empresa: empresa || '(nao indicada)',
             Email: email,
             Telefone: telefone,
             Pedido: pedido,
+            Rota: rotaNome,
+            Idioma: idioma === 'en' ? 'Inglês · responder em inglês' : 'Português',
+            'Tipo de projeto': tipo || '(nao indicado)',
+            'Data prevista': dataProjeto || '(nao indicada)',
+            Orcamento: orcamento || '(nao indicado)',
             Mensagem: mensagem || '(sem mensagem)',
             _replyto: email,
           }),

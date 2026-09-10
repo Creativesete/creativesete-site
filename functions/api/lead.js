@@ -1,6 +1,7 @@
 // Cloudflare Pages Function: recebe os pedidos do site.
 // 1) Cria uma ficha no Notion (CRM — Clientes & Prospects).
-// 2) (Opcional) Adiciona o contacto ao MailerLite, para o envio automatico do guia e a newsletter semanal.
+// 2) (Opcional) So os pedidos do guia gratuito vao para o MailerLite, que envia
+//    o guia e a newsletter. Pedidos de orcamento nunca vao.
 //
 // Variaveis de ambiente:
 //   NOTION_TOKEN            (obrigatorio) secret da integracao Notion
@@ -139,13 +140,14 @@ export async function onRequestPost({ request, env }) {
     }
 
     // ---- 2) MailerLite (best-effort: nunca falha o pedido) ----
-    if (email && env.MAILERLITE_TOKEN) {
+    // SO para quem pede o guia. E o unico formulario do site que pede
+    // consentimento ("Sem spam. So o guia e, de vez em quando, uma dica util").
+    // Quem pede orcamento fica no CRM e no aviso por email, e nunca entra numa
+    // lista de marketing. Nao mexer nesta condicao sem mudar o texto do site.
+    if (isGuia && email && env.MAILERLITE_TOKEN) {
       const groups = [];
-      if (isGuia && env.MAILERLITE_GROUP_GUIA) groups.push(env.MAILERLITE_GROUP_GUIA);
+      if (env.MAILERLITE_GROUP_GUIA) groups.push(env.MAILERLITE_GROUP_GUIA);
       if (env.MAILERLITE_GROUP_NEWS) groups.push(env.MAILERLITE_GROUP_NEWS);
-      // Sequencias por rota. Ficam inativas ate existirem os ids no ambiente.
-      if (!isGuia && rota === 'A' && env.MAILERLITE_GROUP_ROTA_A) groups.push(env.MAILERLITE_GROUP_ROTA_A);
-      if (!isGuia && rota === 'C' && env.MAILERLITE_GROUP_ROTA_C) groups.push(env.MAILERLITE_GROUP_ROTA_C);
       try {
         await fetch('https://connect.mailerlite.com/api/subscribers', {
           method: 'POST',
@@ -156,7 +158,7 @@ export async function onRequestPost({ request, env }) {
           },
           body: JSON.stringify({
             email,
-            fields: { name: nome, phone: telefone, company: empresa, tipo_projeto: tipo, orcamento: orcamento, rota: isGuia ? '' : rota, idioma: idioma },
+            fields: { name: nome, idioma: idioma },
             groups,
           }),
         });

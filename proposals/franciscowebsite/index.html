@@ -1,0 +1,934 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="theme-color" content="#090909">
+<title>Francisco Lima Marques · Proposta CreativeSete</title>
+<meta name="description" content="Página premium para o consultor imobiliário Francisco Lima Marques. Proposta da CreativeSete.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Francisco Lima Marques">
+<meta property="og:description" content="Casas de exceção para viver Lisboa. Filme e página por CreativeSete.">
+<meta property="og:image" content="media/poster-filme.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..600&family=Inter:wght@300..800&display=swap">
+<style>
+  /* ============================================================
+     Francisco Lima Marques · página premium · v3
+     Página escura com painéis arredondados. Didone em maiúsculas
+     nos títulos, Inter no resto. Vídeo emoldurado no hero, letras
+     recortadas, método no modelo The Edge, mapa com pinos.
+     ============================================================ */
+  :root{
+    --bg:#090909; --panel:#0E0D0D; --panel2:#121111; --black:#0E0D0D; --white:#FFFFFF;
+    --grey:#F2F1F0; --lt:#6F6C69; --lt-w:#C9C6C3; --mute:#8A8785; --mute-d:#8F8C89; --mute2:#B3B0AD; --txt-d:#B9B6B2;
+    --line:#DEDCDA; --line-w:rgba(255,255,255,.11); --line-w2:rgba(255,255,255,.2);
+    --fd:'Bodoni Moda','Didot','Bodoni 72','Playfair Display',Georgia,'Times New Roman',serif;
+    --fb:'Inter',-apple-system,'Helvetica Neue',Arial,sans-serif;
+    --gutter:clamp(12px,1.6vw,22px); --gap:14px; --r:26px;
+    --h1:clamp(34px,5.2vw,82px);
+    --ease:cubic-bezier(.2,.7,.2,1); --ease2:cubic-bezier(.7,0,.2,1);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:#fff;font:400 15px/1.55 var(--fb);-webkit-font-smoothing:antialiased;padding:var(--gutter);overflow-x:hidden}
+  ::selection{background:#fff;color:#000}
+  a{color:inherit}
+  img,video{max-width:100%;display:block}
+  button{font:inherit;color:inherit}
+  :focus-visible{outline:2px solid currentColor;outline-offset:3px}
+  .wrap{max-width:1440px;margin-inline:auto}
+
+  /* Painéis */
+  .panel{border-radius:var(--r);overflow:hidden;position:relative;margin-top:var(--gap)}
+  .panel.dark{background:var(--panel);border:1px solid var(--line-w)}
+  .panel.light{background:#fff;color:var(--black)}
+  .pad{padding:clamp(28px,4vw,64px) clamp(20px,4vw,64px)}
+
+  /* Tipos */
+  .didone{font-family:var(--fd);font-weight:400;text-transform:uppercase;letter-spacing:.015em;margin:0;text-wrap:balance}
+  .label{font:500 10px/1.5 var(--fb);letter-spacing:.26em;text-transform:uppercase;color:var(--mute-d);margin:0}
+  .light .label{color:var(--mute)}
+  .label.b{color:currentColor;font-weight:600}
+  .slash{font:500 12px/1.4 var(--fb);letter-spacing:.02em;color:var(--mute-d);margin:0}
+  .slash::before{content:'/ '}
+  h2.didone{font-size:clamp(28px,3.6vw,54px);line-height:1.05;font-variation-settings:"opsz" 60}
+  .lt{color:var(--lt)}
+  .light .lt{color:var(--lt-w)}
+  .pill{display:inline-flex;align-items:center;gap:10px;padding:10px 18px;border-radius:999px;border:1px solid var(--line-w2);background:transparent;color:#fff;
+    font:500 11.5px/1 var(--fb);letter-spacing:.02em;text-decoration:none;cursor:pointer;white-space:nowrap;transition:background .3s,color .3s,border-color .3s,transform .3s}
+  .pill:hover{border-color:#fff}
+  .light .pill{border-color:var(--line);color:var(--black);background:#fff}
+  .light .pill:hover{border-color:var(--black)}
+  .pill.black{background:var(--black);color:#fff;border-color:var(--black);padding:13px 22px 13px 26px}
+  .pill.black:hover{background:#2a2828}
+  .pill.white{background:#fff;color:var(--black);border-color:#fff}
+  .pill.white:hover{background:#eee}
+  .pill i{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.14);transition:transform .4s var(--ease),background .3s}
+  .pill.black i{background:#fff;color:var(--black)}
+  .pill.white i{background:var(--black);color:#fff}
+  .pill:hover i{transform:rotate(45deg)}
+  .pill i svg{width:11px;height:11px}
+  .pill.dark{padding:18px 30px;font-size:12.5px;border-color:var(--line-w)}
+  .pill.dark:hover{border-color:#fff}
+  .dashed{border-top:1px dashed rgba(255,255,255,.2)}
+
+  /* Revelações */
+  .rv{opacity:0;transform:translateY(26px);transition:opacity 1.1s var(--ease),transform 1.1s var(--ease);transition-delay:var(--d,0s)}
+  .rv.in{opacity:1;transform:none}
+  .rv-img{position:relative;--curtain:#fff}
+  .dark .rv-img{--curtain:var(--panel)}
+  .rv-img::after{content:'';position:absolute;inset:-1px;z-index:6;background:var(--curtain);transform-origin:top;transition:transform 1.3s var(--ease2);transition-delay:var(--d,0s);pointer-events:none}
+  .rv-img.in::after{transform:scaleY(0)}
+  .rv-img > img,.rv-img > video{transform:scale(1.1);transition:transform 1.8s var(--ease);transition-delay:var(--d,0s)}
+  .rv-img.in > img,.rv-img.in > video{transform:none}
+  .ln{display:block;overflow:hidden;padding-bottom:.1em;margin-bottom:-.1em}
+  .ln > span{display:block;transform:translateY(112%);transition:transform 1.15s var(--ease);transition-delay:calc(var(--i,0) * .13s + var(--d,0s))}
+  .in .ln > span{transform:none}
+
+  /* ===== HERO (modelo The Edge) ===== */
+  .hero{margin-top:0;min-height:calc(100svh - 2 * var(--gutter));display:grid;grid-template-rows:auto 1fr auto;padding:clamp(18px,2.4vw,30px) clamp(18px,3vw,44px) clamp(18px,2.4vw,30px);isolation:isolate}
+  .hero .bgv{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0;transform:scale(1.06);transition:opacity 2.2s var(--ease),transform 3.2s var(--ease)}
+  .hero.in .bgv{opacity:.7;transform:none}
+  .hero .shade{position:absolute;inset:0;z-index:1;pointer-events:none;
+    background:linear-gradient(180deg,rgba(0,0,0,.62) 0%,rgba(0,0,0,.18) 34%,rgba(0,0,0,.18) 60%,rgba(0,0,0,.66) 100%),linear-gradient(90deg,rgba(0,0,0,.42) 0%,rgba(0,0,0,0) 55%)}
+  .hero > *{position:relative;z-index:2}
+  .hero .shade,.hero .bgv{z-index:auto}
+  .hero .bgv{z-index:0}.hero .shade{z-index:1}
+  .bar{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:20px}
+  .mono-gram{width:34px;height:34px;border:1px solid rgba(255,255,255,.55);border-radius:8px;display:grid;place-items:center;font:500 12px var(--fd);letter-spacing:.06em;color:#fff;text-decoration:none;transition:background .3s,border-color .3s}
+  .mono-gram:hover{background:#fff;color:var(--black);border-color:#fff}
+  .links{display:flex;gap:clamp(20px,3vw,44px);justify-content:center}
+  .links a{position:relative;font:600 10.5px/1 var(--fb);letter-spacing:.12em;text-transform:uppercase;color:#fff;text-decoration:none;padding:6px 0;transition:color .3s}
+  .links a::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1px;background:#fff;transform:scaleX(0);transform-origin:right;transition:transform .5s var(--ease)}
+  .links a:hover::after{transform:scaleX(1);transform-origin:left}
+  .bar .rt{display:flex;align-items:center;gap:10px}
+  .lang{background:none;border:0;padding:8px 6px;display:inline-flex;gap:6px;cursor:pointer;font:600 10.5px/1 var(--fb);letter-spacing:.14em}
+  .lang span{color:rgba(255,255,255,.4)}
+  .lang b{font-weight:600;color:rgba(255,255,255,.5);transition:color .3s}
+  .lang b.on{color:#fff}
+  .pillset{display:inline-flex;align-items:center;gap:6px}
+  .pill.tour{background:#fff;color:var(--black);border-color:#fff;padding:13px 20px;font:600 10.5px/1 var(--fb);letter-spacing:.12em;text-transform:uppercase}
+  .pill.tour:hover{background:#eee}
+  .orb{width:40px;height:40px;border-radius:50%;background:#fff;color:var(--black);display:grid;place-items:center;text-decoration:none;transition:transform .5s var(--ease),background .3s}
+  .orb svg{width:12px;height:12px}
+  .orb:hover{transform:rotate(45deg)}
+  .orb.dark{background:var(--black);color:#fff}
+  .hmid{display:grid;grid-template-columns:1fr auto;align-items:center;gap:24px;padding-block:clamp(20px,4vw,48px)}
+  h1.didone{font-size:clamp(52px,9vw,156px);line-height:.9;color:#fff;text-align:left;margin:0;font-variation-settings:"opsz" 96;letter-spacing:.005em}
+  .hleft{display:flex;flex-direction:column;align-items:flex-start;gap:clamp(18px,2.4vw,30px)}
+  .hleft .status{font:500 11.5px/1.5 var(--fb);color:#fff;max-width:20ch;margin:clamp(6px,1.4vw,18px) 0 0 clamp(0px,6vw,110px)}
+  .hleft .status b{display:block;font-weight:600;color:rgba(255,255,255,.7)}
+  .hside{font:500 11.5px/1.5 var(--fb);color:#fff;max-width:16ch;align-self:start;margin-top:clamp(20px,10vh,120px);margin-right:clamp(0px,4vw,60px)}
+  .hbot{display:grid;grid-template-columns:1fr auto 1fr;align-items:end;gap:20px}
+  .hbot .cap{margin:0;font:500 11.5px/1.5 var(--fb);color:#fff;max-width:20ch;padding:0}
+  .hbot .down{justify-self:center;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.5);display:grid;place-items:center;color:#fff;text-decoration:none;animation:bob 2.6s ease-in-out infinite;transition:background .3s,color .3s}
+  .hbot .down:hover{background:#fff;color:var(--black)}
+  .hbot .down svg{width:12px;height:12px}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+  .hcard{justify-self:end;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:end;background:#fff;color:var(--black);border-radius:18px;padding:18px 18px 18px 22px;width:min(300px,100%);text-decoration:none;transition:transform .5s var(--ease),box-shadow .5s}
+  .hcard:hover{transform:translateY(-3px);box-shadow:0 30px 60px rgba(0,0,0,.45)}
+  .hcard b{display:block;font:600 clamp(18px,1.6vw,22px)/1.15 var(--fb);letter-spacing:-.02em}
+  .hcard small{display:block;font:400 11px/1.45 var(--fb);color:var(--mute);margin-top:8px;max-width:24ch}
+  .hero-a{opacity:0;transform:translateY(16px);transition:opacity 1.2s var(--ease),transform 1.2s var(--ease);transition-delay:var(--d,0s)}
+  .hero.in .hero-a{opacity:1;transform:none}
+
+  /* Faixa de etiquetas */
+  .strap{display:flex;align-items:flex-start;gap:clamp(20px,4vw,60px);padding:28px clamp(8px,2vw,24px) 14px}
+  .strap .l{display:flex;gap:clamp(24px,4vw,64px)}
+  .strap .label{font-size:9px;line-height:1.35;width:max-content}
+  .strap .arrow{flex:1;height:1px;background:var(--line-w);position:relative;margin-top:7px;min-width:60px}
+  .strap .arrow::after{content:'';position:absolute;right:-1px;top:-3px;width:6px;height:6px;border-top:1px solid var(--mute-d);border-right:1px solid var(--mute-d);transform:rotate(45deg)}
+  .strap .r{display:flex;gap:clamp(24px,4vw,64px);text-align:right}
+
+  /* ===== SOBRE ===== */
+  .about{padding:26px clamp(20px,4vw,60px) 0}
+  .corner{display:grid;grid-template-columns:1fr auto 1fr;align-items:start;gap:20px;padding:14px 0 26px}
+  .corner .label{font-size:8.5px;color:#7a7876}
+  .corner .c{text-align:center}
+  .corner .c b{display:block;font:500 12.5px/1.4 var(--fb);color:#fff}
+  .corner .c .label{margin-top:6px;letter-spacing:.14em}
+  .corner .rt{text-align:right}
+  .pillrow{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:26px 0 0}
+  .statement{margin:64px auto 0;max-width:860px;text-align:center;font:400 clamp(20px,2.5vw,33px)/1.38 var(--fb);color:#7d7a77;letter-spacing:-.01em}
+  .statement b{color:#fff;font-weight:500}
+  .cutout{position:relative;height:clamp(52px,7.6vw,112px);margin-top:clamp(48px,6vw,88px);overflow:hidden}
+  .cutout .word{position:absolute;left:50%;top:0;translate:-50% 0;font:400 clamp(92px,14.4vw,212px)/.8 var(--fd);letter-spacing:.03em;color:#fff;white-space:nowrap;text-transform:uppercase;user-select:none;
+    transform:translateY(30%);transition:transform 1.6s var(--ease)}
+  .in .cutout .word{transform:none}
+  .cutout .notes{position:absolute;inset:0;display:grid;grid-template-columns:repeat(3,1fr);align-items:end;padding:0 10% 6px}
+  .cutout .notes span{font:400 clamp(8px,.85vw,11px)/1.45 var(--fb);color:#8d8a87;text-align:center;max-width:130px;margin:0 auto}
+  .beyond-line{text-align:center;letter-spacing:.4em;font-size:9.5px;padding:34px 0 8px;color:var(--mute-d)}
+
+  /* ===== FILME + IMÓVEIS (painel branco) ===== */
+  .head3{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px}
+  .head3 .label{font-size:8.5px;line-height:1.4;max-width:120px}
+  .head3 .rt{text-align:right;justify-self:end}
+  .head3 h2{text-align:center}
+  .player{position:relative;aspect-ratio:16/9;background:#000;margin-top:clamp(28px,4vw,48px);overflow:hidden;border-radius:16px}
+  .player video,.player img,.player iframe{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0}
+  .play{position:absolute;left:50%;top:50%;translate:-50% -50%;width:110px;aspect-ratio:1;border-radius:50%;background:#fff;border:0;color:var(--black);
+    display:grid;place-items:center;cursor:pointer;font:600 10px/1.3 var(--fb);letter-spacing:.14em;text-transform:uppercase;transition:transform .5s var(--ease);padding:0}
+  .play:hover{transform:translate(-50%,-50%) scale(1.07)}
+  .cap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px 30px;padding-top:12px}
+  .cap .label{font-size:8.5px}
+  .row2{display:grid;grid-template-columns:200px 1fr auto;gap:clamp(24px,4vw,56px);align-items:center;margin-top:clamp(36px,5vw,64px);padding-top:clamp(28px,3vw,40px);border-top:1px solid var(--line)}
+  .row2 .im{aspect-ratio:4/3;overflow:hidden;border-radius:10px}
+  .row2 .im img{width:100%;height:100%;object-fit:cover}
+  .row2 p{margin:0;font-size:13.5px;line-height:1.6;color:var(--mute);max-width:46ch}
+  .row2 p b{color:var(--black);font-weight:500}
+  .listhead{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:24px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px 0;margin-top:clamp(40px,6vw,80px)}
+  .listhead h2{font-size:clamp(22px,2.4vw,34px)}
+  .listhead p{margin:0;font-size:12.5px;color:var(--mute);max-width:36ch;justify-self:end}
+  .listing{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line)}
+  .prop{padding:24px 26px 22px 0;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:14px}
+  .prop:nth-child(odd){border-right:1px solid var(--line)}
+  .prop:nth-child(even){padding-left:26px;padding-right:0}
+  .prop:nth-last-child(-n+2){border-bottom:0}
+  .prop .media{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--grey);border-radius:12px}
+  .prop .media img,.prop .media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+  .prop:hover .media img,.prop:hover .media video{transform:scale(1.04)}
+  .prop .meta{display:flex;justify-content:space-between;align-items:center;gap:16px}
+  .prop .meta h3{font:400 13.5px/1.2 var(--fd);letter-spacing:.06em;text-transform:uppercase;margin:0;transition:letter-spacing .5s var(--ease)}
+  .prop:hover .meta h3{letter-spacing:.1em}
+  .prop .meta small{display:block;font:400 10.5px/1.4 var(--fb);color:var(--mute);margin-top:4px}
+  .prop .meta .pill{padding:8px 16px;font-size:10.5px;background:var(--black);color:#fff;border-color:var(--black)}
+  .prop:hover .meta .pill{background:#fff;color:var(--black)}
+
+  /* ===== PARA LÁ DOS M² ===== */
+  .beyondblk{padding:clamp(40px,6vw,80px) clamp(20px,5vw,72px)}
+  .beyondblk .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.22;filter:saturate(.6)}
+  .beyondblk .bgfade{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(14,13,13,.25),rgba(14,13,13,.85) 70%,#0E0D0D)}
+  .beyondblk > .in{position:relative;z-index:2}
+  .bh{display:grid;grid-template-columns:auto 1fr auto;gap:clamp(20px,4vw,60px);align-items:start}
+  .bh h2{font-size:clamp(26px,3.2vw,46px);line-height:1.02;color:#fff}
+  .bh .mid p{margin:0;font:400 10.5px/1.5 var(--fb);color:#b3b0ad;max-width:22ch}
+  .bh .mid p b{color:#fff;font-weight:500}
+  .bh .mid .label{margin-top:10px;font-size:8px;color:#6c6966}
+  .nums{margin-top:clamp(36px,5vw,70px);display:flex;flex-direction:column;gap:clamp(14px,2.6vw,30px)}
+  .num{display:grid;grid-template-columns:110px 1fr;gap:20px;align-items:center;padding:10px 0;cursor:default}
+  .num:nth-child(2){padding-left:clamp(0px,8vw,120px)}
+  .num:nth-child(3){padding-left:clamp(0px,16vw,240px)}
+  .num .n{font:400 clamp(40px,5vw,72px)/1 var(--fd);color:transparent;-webkit-text-stroke:1px #4d4a48;letter-spacing:.02em;transition:color .6s var(--ease),-webkit-text-stroke-color .6s,transform .6s var(--ease)}
+  .num h4{margin:0;font:600 10.5px/1.3 var(--fb);letter-spacing:.14em;text-transform:uppercase;transition:transform .6s var(--ease),letter-spacing .6s var(--ease)}
+  .num h4::before{content:'/ ';color:#8d8a87}
+  .num h4::after{content:' ◂';color:#6c6966;font-size:9px}
+  .num p{margin:5px 0 0;font:400 10.5px/1.5 var(--fb);color:#9c9996;max-width:36ch;transition:color .6s,transform .6s var(--ease)}
+  .num:hover .n{color:#fff;-webkit-text-stroke-color:#fff;transform:translateX(6px)}
+  .num:hover h4{transform:translateX(10px);letter-spacing:.2em}
+  .num:hover p{color:#fff;transform:translateX(10px)}
+  .bfoot{margin-top:clamp(40px,6vw,90px);text-align:center}
+  .bfoot h2{font-size:clamp(26px,3.4vw,48px);color:#fff}
+
+  /* ===== MÉTODO (The Edge) ===== */
+  .method{padding:clamp(34px,5vw,64px) clamp(20px,4vw,64px)}
+  .mhead{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;padding-bottom:clamp(24px,3vw,40px)}
+  .mhead h2{margin-top:14px}
+  .mhead .intro{margin:0;font:400 13px/1.6 var(--fb);color:var(--txt-d);max-width:34ch;text-align:right;justify-self:end}
+  .mhead .intro b{color:#fff;font-weight:500}
+  .mgrid{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(24px,4vw,64px);align-items:stretch}
+  .mimg{position:relative;border-radius:18px;overflow:hidden;background:#111;min-height:380px}
+  .mimg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s var(--ease),transform 1.6s var(--ease);transform:scale(1.06)!important}
+  .mimg img.on{opacity:1;transform:none!important}
+  .mimg .tagn{position:absolute;left:18px;bottom:16px;font:500 10px/1 var(--fb);letter-spacing:.2em;text-transform:uppercase;color:#fff;padding:9px 12px;border-radius:999px;background:rgba(14,13,13,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.12)}
+  .msteps{display:flex;flex-direction:column;justify-content:center}
+  .step{display:grid;grid-template-columns:1fr auto;gap:22px;align-items:center;padding:clamp(16px,2vw,24px) 0 clamp(16px,2vw,24px) 18px;border-top:1px solid var(--line-w);position:relative;cursor:default;transition:padding .5s var(--ease)}
+  .step:last-child{border-bottom:1px solid var(--line-w)}
+  .step::before{content:'';position:absolute;left:0;top:50%;height:0;width:1px;background:#fff;translate:0 -50%;transition:height .6s var(--ease)}
+  .step.on::before,.step:hover::before{height:60%}
+  .step h4{margin:0;font:500 clamp(17px,1.6vw,22px)/1.2 var(--fb);letter-spacing:-.01em;color:#fff;transition:transform .6s var(--ease)}
+  .step h4::before{content:'/ ';color:var(--mute-d)}
+  .step p{margin:6px 0 0;font:400 11.5px/1.55 var(--fb);color:var(--mute-d);max-width:40ch;transition:color .5s}
+  .step.on h4,.step:hover h4{transform:translateX(6px)}
+  .step.on p,.step:hover p{color:var(--txt-d)}
+  .step .pill{font-size:10.5px;padding:9px 14px}
+  .step.on .pill,.step:hover .pill{background:#fff;color:var(--black);border-color:#fff}
+
+  /* ===== MAPA ===== */
+  .mapsec{padding:clamp(30px,4vw,56px) clamp(20px,4vw,64px)}
+  .mapsec .bgp{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.16;filter:grayscale(1) contrast(1.1)}
+  .mapsec .bgfade{position:absolute;inset:0;background:linear-gradient(to right,rgba(14,13,13,.92),rgba(14,13,13,.55) 50%,rgba(14,13,13,.92))}
+  .mgrid2{position:relative;z-index:2;display:grid;grid-template-columns:1fr auto 1fr;gap:clamp(20px,4vw,64px);align-items:center}
+  .mgrid2 h2{font-size:clamp(28px,3.4vw,50px);line-height:1.02}
+  .ml .label{margin-top:22px}
+  .mr{display:flex;flex-direction:column;gap:clamp(22px,4vw,56px);text-align:right;align-items:flex-end}
+  .mr h3{margin:0;font:600 clamp(18px,1.7vw,24px)/1.2 var(--fb);letter-spacing:-.01em;color:#fff}
+  .mr p{margin:8px 0 0;font:400 11px/1.55 var(--fb);color:var(--txt-d);max-width:36ch}
+  .mr h2{font-size:clamp(22px,2.4vw,36px)}
+  .mmap{position:relative;width:clamp(180px,20vw,250px)}
+  .mmap svg{width:100%;height:auto;display:block;overflow:visible}
+  .mmap .land{fill:#F1EFEC;stroke:#B9B5B0;stroke-width:.5;stroke-linejoin:round;transition:fill .5s}
+  .mmap .land:hover{fill:#fff}
+  .mmap .shadow{fill:#2a2827;transform:translate(3px,7px)}
+  .mmap .land-g{filter:drop-shadow(0 24px 30px rgba(0,0,0,.7))}
+  .pin{cursor:pointer}
+  .pin .ring{fill:none;stroke:#D8CFC0;stroke-width:1;opacity:.9;transform-origin:center;transform-box:fill-box;animation:ring 2.6s ease-out infinite}
+  .pin .ring2{animation-delay:1.3s}
+  .pin .dot{fill:#E9DFCB;stroke:#0E0D0D;stroke-width:1.2;transition:transform .4s var(--ease);transform-origin:center;transform-box:fill-box}
+  .pin:hover .dot,.pin.on .dot{transform:scale(1.35)}
+  @keyframes ring{0%{transform:scale(.3);opacity:.9}100%{transform:scale(2.6);opacity:0}}
+  .pincard{position:absolute;width:150px;background:rgba(14,13,13,.9);border:1px solid var(--line-w2);border-radius:12px;padding:8px;color:#fff;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+    transform:translate(14px,-100%);opacity:0;transition:opacity .5s var(--ease),transform .5s var(--ease);pointer-events:none}
+  .pincard.on{opacity:1;transform:translate(14px,calc(-100% - 8px))}
+  .pincard img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:7px}
+  .pincard b{display:block;font:600 10.5px/1.3 var(--fb);margin-top:8px}
+  .pincard small{display:block;font:400 9px/1.4 var(--fb);color:var(--mute2);margin-top:2px}
+
+  /* ===== GALERIA ===== */
+  .ghead{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:clamp(20px,4vw,60px)}
+  .ghead h2{font-size:clamp(24px,2.8vw,40px)}
+  .ghead p{margin:0;font:400 10.5px/1.5 var(--fb);color:var(--mute);max-width:24ch}
+  .ghead p b{color:var(--black);font-weight:500}
+  .toggle{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:3px}
+  .toggle button{border:0;background:transparent;padding:9px 20px;border-radius:999px;font:600 10px/1 var(--fb);letter-spacing:.14em;text-transform:uppercase;cursor:pointer;color:var(--mute);transition:background .3s,color .3s}
+  .toggle button.on{background:var(--black);color:#fff}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:clamp(24px,3vw,36px)}
+  .tile{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--grey);cursor:pointer;border-radius:14px}
+  .tile img,.tile video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+  .tile:hover img,.tile:hover video{transform:scale(1.04)}
+  .tile.on video{transform:none}
+  .tile .snd{position:absolute;right:10px;bottom:10px;padding:7px 10px;border-radius:999px;background:rgba(14,13,13,.6);color:#fff;font:600 8.5px/1 var(--fb);letter-spacing:.14em;text-transform:uppercase;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+  .tile.on .snd{display:none}
+
+  /* ===== CONTACTO ===== */
+  .findhead{text-align:center}
+  .findhead h2{font-size:clamp(34px,5.2vw,74px);line-height:1;font-variation-settings:"opsz" 72}
+  .findhead p{margin:16px auto 0;font:400 11px/1.5 var(--fb);color:var(--mute);max-width:26ch}
+  .findhead p b{color:var(--black);font-weight:500}
+  .contact{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(24px,4vw,56px);background:var(--grey);padding:clamp(14px,2vw,24px);margin-top:clamp(32px,4vw,56px);align-items:stretch;border-radius:18px}
+  .contact .vis{position:relative;min-height:320px;overflow:hidden;background:#111;border-radius:12px}
+  .contact .vis video,.contact .vis img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .contact form{display:flex;flex-direction:column;gap:12px;justify-content:center;padding:clamp(8px,2vw,24px) clamp(4px,2vw,24px) clamp(8px,2vw,24px) 0;margin:0}
+  .contact .label{margin-bottom:6px;letter-spacing:.3em;font-size:8.5px}
+  .contact input{width:100%;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;font:400 12.5px/1.3 var(--fb);color:var(--black);outline:none;transition:border-color .3s,box-shadow .3s}
+  .contact input::placeholder{color:var(--mute2)}
+  .contact input:focus{border-color:var(--black);box-shadow:0 0 0 3px rgba(14,13,13,.06)}
+  .contact .cta{display:flex;align-items:center;gap:18px;margin-top:10px;flex-wrap:wrap}
+  .contact .cta small{font:400 9px/1.4 var(--fb);color:var(--mute);letter-spacing:.02em}
+  .contact .alt{font:500 10px/1 var(--fb);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:4px;color:var(--mute);transition:color .3s,border-color .3s}
+  .contact .alt:hover{color:var(--black);border-color:var(--black)}
+
+  /* ===== RODAPÉ ===== */
+  footer{margin-block:var(--gap) 8px;border:1px dashed rgba(255,255,255,.28);border-radius:var(--r);padding:clamp(28px,4vw,56px) clamp(20px,4vw,64px);display:grid;grid-template-columns:1.4fr repeat(4,1fr);gap:24px}
+  footer .brand{display:flex;flex-direction:column;gap:12px}
+  footer .brand .name{font:400 clamp(24px,2.6vw,38px)/1 var(--fd);letter-spacing:.06em;text-transform:uppercase}
+  footer .brand .sub{display:flex;align-items:center;gap:12px;font:500 8.5px/1 var(--fb);letter-spacing:.34em;text-transform:uppercase;color:var(--mute-d)}
+  footer .brand .sub::before,footer .brand .sub::after{content:'';flex:1;height:1px;background:#fff;max-width:60px}
+  footer .brand small{font-size:9.5px;color:var(--mute-d);margin-top:auto;padding-top:24px;line-height:1.6}
+  footer h5{margin:0 0 14px;font:500 15px/1 var(--fb);letter-spacing:.02em;text-transform:uppercase}
+  footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+  footer li,footer li a{font:400 12px/1.5 var(--fb);color:var(--mute-d);text-decoration:none;transition:color .3s}
+  footer li a:hover{color:#fff}
+
+  .toast{position:fixed;left:50%;bottom:28px;translate:-50% 0;background:#fff;color:var(--black);padding:14px 20px;border-radius:999px;font:500 12px/1.3 var(--fb);z-index:50;opacity:0;pointer-events:none;transition:opacity .3s}
+  .toast.on{opacity:1}
+
+  /* Responsivo */
+  @media (max-width:1100px){
+    .links{gap:20px}
+    .mmap{width:clamp(160px,22vw,220px)}
+  }
+  @media (max-width:900px){
+    .bar{grid-template-columns:auto 1fr}
+    .links{display:none}
+    .bar .rt{grid-column:2;justify-self:end}
+    .bar .pill.tour{display:none}
+    .strap .r{display:none}
+    .hmid{grid-template-columns:1fr}
+    .hside{margin-top:0;max-width:28ch}
+    .hbot{grid-template-columns:1fr auto;row-gap:18px}
+    .hbot .down{display:none}
+    .hcard{grid-column:1/-1;justify-self:stretch;width:100%}
+    .row2{grid-template-columns:1fr}
+    .row2 .im{max-width:280px}
+    .listing{grid-template-columns:1fr}
+    .prop,.prop:nth-child(even){padding-left:0;padding-right:0;border-right:0}
+    .prop:nth-last-child(-n+2){border-bottom:1px solid var(--line)}
+    .prop:last-child{border-bottom:0}
+    .bh{grid-template-columns:1fr}
+    .num:nth-child(2),.num:nth-child(3){padding-left:0}
+    .mhead{grid-template-columns:1fr}
+    .mhead .intro{text-align:left;justify-self:start}
+    .mgrid{grid-template-columns:1fr}
+    .mimg{min-height:260px}
+    .mgrid2{grid-template-columns:1fr 1fr}
+    .mmap{grid-column:1/-1;justify-self:center;width:min(60%,240px)}
+    .ghead{grid-template-columns:1fr;gap:16px}
+    .grid3{grid-template-columns:repeat(2,1fr)}
+    .contact{grid-template-columns:1fr}
+    .contact form{padding:12px 4px 4px}
+    footer{grid-template-columns:1fr 1fr}
+    footer .brand{grid-column:1/-1}
+    .head3{grid-template-columns:1fr}
+    .head3 .label{display:none}
+    .listhead{grid-template-columns:1fr}
+    .listhead p{justify-self:start}
+    .corner{grid-template-columns:1fr}
+    .corner > .label{display:none}
+  }
+  @media (max-width:560px){
+    :root{--r:18px}
+    .hero{padding:16px 16px 16px}
+    h1.didone{font-size:clamp(48px,15vw,72px)}
+    .hleft .status{margin-left:0}
+    .strap .l{flex-wrap:wrap;gap:14px 20px}
+    .grid3{grid-template-columns:1fr}
+    footer{grid-template-columns:1fr}
+    .cutout .notes{display:none}
+    .mgrid2{grid-template-columns:1fr}
+    .mr{text-align:left;align-items:flex-start}
+    .pincard{width:130px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation:none!important;transition:none!important}
+    .rv,.rv-img,.hero-a,.hero .bgv{opacity:1!important;transform:none!important}
+    .hero .bgv{opacity:.7!important}
+    .rv-img::after{display:none!important}
+    .ln > span{transform:none!important}
+    .cutout .word{transform:none!important}
+  }
+</style>
+</head>
+<body>
+<main class="wrap" id="topo">
+
+  <!-- ===== HERO ===== -->
+  <section class="hero panel dark" id="hero">
+    <video class="bgv" id="heroVideo" muted loop playsinline autoplay preload="auto" poster="media/poster-corte1.jpg" src="media/corte1.mp4"></video>
+    <div class="shade"></div>
+    <nav class="bar hero-a" style="--d:.2s" aria-label="Navegação">
+      <a class="mono-gram" href="#topo" aria-label="Francisco Marques">FM</a>
+      <div class="links">
+        <a href="#topo" data-t="nav.inicio">Início</a>
+        <a href="#sobre" data-t="nav.sobre">Sobre</a>
+        <a href="#imoveis" data-t="nav.imoveis">Imóveis</a>
+        <a href="#filme" data-t="nav.filme">Filme</a>
+        <a href="#contacto" data-t="nav.contacto">Contacto</a>
+      </div>
+      <div class="rt">
+        <button class="lang" type="button" id="langBtn" aria-label="Idioma"><b data-lang="pt" class="on">PT</b><span>|</span><b data-lang="en">EN</b></button>
+        <span class="pillset">
+          <a class="pill tour js-wa" href="#" target="_blank" rel="noopener" data-t="nav.tour">Marcar visita privada</a>
+          <a class="orb js-wa" href="#" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 10 10 2M4 2h6v6"/></svg></a>
+        </span>
+      </div>
+    </nav>
+    <div class="hmid">
+      <div class="hleft">
+        <h1 class="didone rv-lines" style="--d:.35s" data-th="hero.h1">Francisco<br>Marques</h1>
+        <span class="pillset hero-a" style="--d:.9s">
+          <a class="pill tour" href="#filme" data-t="hero.pill">Ver o filme</a>
+          <a class="orb" href="#filme" aria-label="Ver o filme"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 10 10 2M4 2h6v6"/></svg></a>
+        </span>
+        <p class="status hero-a" style="--d:1.1s" data-th="hero.status"><b>Moradia Benfica</b>disponível para visita privada</p>
+      </div>
+      <p class="hside hero-a" style="--d:1s" data-t="hero.side">Casas de exceção para viver Lisboa.</p>
+    </div>
+    <div class="hbot">
+      <p class="cap hero-a" style="--d:1.2s" data-t="hero.cap">Onde arquitetura, luz e localização estão em equilíbrio.</p>
+      <a class="down hero-a" style="--d:1.4s" href="#sobre" aria-label="Descer"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 1v10M2 7l4 4 4-4"/></svg></a>
+      <a class="hcard hero-a" style="--d:1.3s" href="#contacto">
+        <span><b data-t="hero.cardT">O seu imóvel, com filme.</b><small data-t="hero.cardP">Filme cinematográfico e fotografia antes de entrar no mercado. Fale comigo.</small></span>
+        <span class="orb dark"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 10 10 2M4 2h6v6"/></svg></span>
+      </a>
+    </div>
+  </section>
+
+  <div class="strap rv">
+    <div class="l">
+      <p class="label b" data-t="strap.1">Residências<br>privadas</p>
+      <p class="label" data-t="strap.2">Localizações<br>prime</p>
+      <p class="label" data-t="strap.3">Design<br>intemporal</p>
+      <p class="label" data-t="strap.4">Viver<br>melhor</p>
+    </div>
+    <div class="arrow"></div>
+    <div class="r">
+      <p class="label b" data-t="strap.5">Casas de exceção para viver Lisboa /<br>localizações prime</p>
+      <p class="label" data-t="strap.6">RE/MAX<br>Latina II</p>
+    </div>
+  </div>
+
+  <!-- ===== SOBRE ===== -->
+  <section class="panel dark about rv-group" id="sobre">
+    <div class="dashed"></div>
+    <div class="corner rv">
+      <p class="label" data-t="sobre.c1">Consultor imobiliário<br>RE/MAX Latina II</p>
+      <div class="c"><b>Francisco Lima Marques</b><p class="label">@fmarques.consultor &nbsp;×&nbsp; RE/MAX Latina II</p></div>
+      <p class="label rt" data-t="sobre.c2">Lisboa · Cascais<br>AMI 7001</p>
+    </div>
+    <div class="dashed"></div>
+    <div class="pillrow rv" style="--d:.15s">
+      <span class="pill dark" data-t="sobre.p1">Imobiliário / Premium</span>
+      <span class="pill dark" data-t="sobre.p2">Lisboa e linha de Cascais</span>
+    </div>
+    <p class="statement rv" style="--d:.3s" data-th="sobre.txt">Francisco Lima Marques acompanha proprietários e compradores de <b>casas de exceção em Lisboa</b>. Cada imóvel é preparado com <b>filme, fotografia e estratégia de preço</b>, para chegar ao comprador certo <b>sem ruído e sem meses em anúncios</b>.</p>
+    <div class="cutout rv-plain" aria-hidden="true">
+      <span class="word">Francisco</span>
+      <div class="notes">
+        <span data-t="note.1">Casas de exceção em Lisboa.</span>
+        <span data-t="note.2">Espaços pensados para viver.</span>
+        <span data-t="note.3">Confiança que gera resultados.</span>
+      </div>
+    </div>
+  </section>
+  <p class="label beyond-line rv" data-t="beyond">Acima do esperado · diferente por escolha</p>
+
+  <!-- ===== FILME + IMÓVEIS ===== -->
+  <section class="panel light pad" id="filme">
+    <div class="head3">
+      <p class="label rv" data-t="filme.l1">Filme · Moradia · Benfica, Lisboa</p>
+      <h2 class="didone rv-lines" data-t="filme.h2">Ver antes de visitar</h2>
+      <p class="label rt rv" data-t="filme.l2">Realização e produção · CreativeSete</p>
+    </div>
+    <div class="player rv-img" id="player">
+      <img src="media/poster-filme.jpg" alt="">
+      <button class="play" id="playBtn" type="button" data-t="filme.play">Ver o filme</button>
+    </div>
+    <div class="cap rv">
+      <p class="label" data-t="filme.cap1">Moradia · Benfica, Lisboa · 2026</p>
+      <p class="label" data-t="filme.cap2">Duração · 0:55 · com legendas</p>
+    </div>
+    <div class="row2">
+      <div class="im rv-img"><img src="media/foto-3.jpg" alt=""></div>
+      <p class="rv" style="--d:.15s" data-th="filme.txt">Um comprador decide em segundos se quer visitar. O filme mostra <b>a luz, a escala e o silêncio</b> de uma casa antes da primeira visita. Cada imóvel que represento ganha o seu filme, <b>antes de entrar no mercado</b>.</p>
+      <a class="pill black rv" style="--d:.3s" href="#contacto"><span data-t="filme.cta">Confiar o meu imóvel</span><i><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 10 10 2M4 2h6v6"/></svg></i></a>
+    </div>
+
+    <div id="imoveis" class="listhead">
+      <h2 class="didone rv-lines" data-th="imoveis.h2">Lugares para<br>chamar casa</h2>
+      <p class="rv" data-t="imoveis.txt">Uma seleção de residências em localizações de exceção.</p>
+    </div>
+    <div class="listing" id="listing"></div>
+  </section>
+
+  <!-- ===== PARA LÁ DOS M² ===== -->
+  <section class="panel dark beyondblk" id="valor">
+    <video class="bg" muted loop playsinline autoplay preload="metadata" src="media/corte2.mp4" poster="media/poster-corte2.jpg" aria-hidden="true"></video>
+    <div class="bgfade"></div>
+    <div class="in">
+      <div class="bh">
+        <h2 class="didone rv-lines" data-th="beyond.h2a">Para lá<br>dos metros</h2>
+        <div class="mid rv" style="--d:.2s">
+          <p data-th="beyond.txt">Onde <b>arquitetura, lugar e vida</b> existem em equilíbrio.</p>
+          <p class="label" data-t="beyond.l">Definido pelo detalhe, medido pela vida</p>
+        </div>
+        <h2 class="didone rv-lines" style="--d:.25s" data-t="beyond.h2b">quadrados</h2>
+      </div>
+      <div class="nums" id="nums"></div>
+      <div class="bfoot"><h2 class="didone rv-lines" data-th="beyond.foot">Detalhes que<br>definem qualidade</h2></div>
+    </div>
+  </section>
+
+  <!-- ===== MÉTODO ===== -->
+  <section class="panel dark method" id="metodo">
+    <div class="mhead">
+      <div>
+        <p class="slash rv" data-t="met.slash">O método</p>
+        <h2 class="didone rv-lines" data-th="met.h2">Da avaliação<br>à escritura</h2>
+      </div>
+      <p class="intro rv" style="--d:.2s" data-th="met.txt">Quatro etapas, <b>pela ordem certa</b>. O filme entra antes de a casa chegar ao mercado, e as visitas só começam com comprador a sério do outro lado.</p>
+    </div>
+    <div class="mgrid">
+      <div class="mimg rv-img"><img id="mImgA" src="media/foto-2.jpg" alt="" class="on"><img id="mImgB" src="" alt=""><span class="tagn" id="mTag">01 / Avaliação</span></div>
+      <div class="msteps" id="msteps"></div>
+    </div>
+  </section>
+
+  <!-- ===== MAPA ===== -->
+  <section class="panel dark mapsec" id="mapa">
+    <img class="bgp" src="media/foto-1.jpg" alt="">
+    <div class="bgfade"></div>
+    <div class="mgrid2">
+      <div class="ml">
+        <h2 class="didone rv-lines" data-th="map.h2">As casas<br>estão aqui</h2>
+        <p class="label rv" style="--d:.3s" data-t="map.l">Lisboa · Cascais · Comporta</p>
+      </div>
+      <div class="mmap rv" style="--d:.2s" id="mmap">
+        <svg viewBox="-8 -6 326 634" xmlns="http://www.w3.org/2000/svg" aria-label="Portugal continental"><g class="shadow-g"><path class="shadow" data-n="Aveiro" d="M69.7 198.2 72.9 184.9 71.6 183.7 80.1 154.5 82.3 139.7 86.0 138.6 87.1 139.9 90.4 139.8 93.0 136.8 95.5 140.5 98.6 138.0 96.3 136.9 96.9 135.4 99.5 136.6 100.3 135.3 102.0 139.0 105.7 141.4 104.8 135.4 109.5 136.8 114.6 132.1 119.5 134.7 120.1 138.4 119.2 138.6 119.8 140.2 122.5 140.4 121.7 142.3 129.0 144.1 132.8 140.5 133.0 143.1 129.1 147.7 131.4 158.7 129.0 159.4 125.9 157.4 123.8 159.8 120.1 157.6 117.9 158.6 119.6 162.2 116.3 170.3 110.9 172.3 111.4 175.7 114.1 177.8 114.3 184.7 118.8 186.9 113.0 189.2 115.2 196.0 118.4 199.3 111.1 201.4 112.2 207.5 108.8 211.4 108.6 218.5 107.0 219.3 104.2 218.1 103.8 221.4 100.2 222.2 99.8 226.7 93.3 225.1 92.9 222.4 97.0 222.4 97.3 214.1 95.2 212.4 95.2 209.8 89.0 212.4 88.8 204.7 88.0 203.1 85.1 202.3 83.3 209.3 80.8 209.0 69.7 198.2Z"/><path class="shadow" data-n="Beja" d="M66.5 543.0 69.5 529.3 67.2 525.8 68.9 516.9 70.5 518.6 74.2 517.5 78.9 524.7 80.9 522.9 84.9 525.2 85.9 523.9 87.7 524.3 88.0 519.3 89.6 517.0 91.1 517.3 90.9 513.6 92.2 512.9 101.0 512.1 101.6 510.8 111.0 513.7 110.6 511.4 113.9 507.5 113.0 506.0 114.4 496.4 112.1 492.5 108.0 493.0 103.8 487.0 105.7 482.0 108.0 483.3 108.7 479.3 110.8 477.3 114.6 479.2 115.2 473.6 119.3 474.4 121.0 471.7 129.3 469.2 129.3 464.2 126.4 457.0 129.0 458.7 136.1 456.9 140.2 460.3 142.8 458.1 157.7 466.7 160.3 465.5 171.2 472.0 174.4 470.9 180.6 473.3 187.4 473.2 187.0 471.3 189.9 470.0 192.8 464.8 194.9 464.1 196.0 461.4 195.2 460.4 199.8 460.3 201.5 457.7 206.0 456.5 210.0 464.6 214.9 466.5 214.0 469.2 218.3 477.4 218.3 475.1 220.4 475.3 221.1 473.6 222.8 473.5 224.5 475.6 226.2 473.6 226.8 474.6 229.6 474.1 231.2 471.5 234.0 470.7 234.7 471.7 238.0 469.6 238.2 471.8 235.0 476.0 236.5 477.6 233.3 483.6 232.0 493.0 227.9 493.9 223.2 490.4 220.5 492.1 221.2 495.1 216.4 496.4 213.8 495.2 208.3 498.0 209.6 501.0 209.0 504.7 206.5 507.7 206.4 511.1 202.7 517.3 193.8 524.0 191.4 531.3 191.8 535.2 190.8 537.3 189.6 537.0 187.7 542.3 186.3 542.2 186.0 547.8 184.6 548.0 185.4 551.6 179.9 551.2 175.7 555.8 171.9 553.9 167.3 554.4 163.5 557.0 162.5 556.1 162.7 557.1 157.7 560.1 157.2 559.1 156.4 560.7 154.6 560.6 154.2 562.0 151.0 562.3 151.3 564.6 150.1 564.3 149.5 565.9 148.0 564.8 146.5 566.0 142.6 565.6 140.5 569.0 142.0 570.8 138.6 571.8 135.1 576.0 123.6 573.1 118.5 568.2 116.0 567.9 117.0 565.5 115.8 563.4 112.2 561.8 111.2 563.7 108.6 562.5 103.1 564.1 102.6 567.5 99.7 569.5 96.1 568.1 94.2 568.9 88.9 565.0 84.6 566.3 82.9 569.3 80.7 566.3 74.3 567.0 72.9 562.6 68.3 561.2 69.6 550.4 66.5 543.0Z"/><path class="shadow" data-n="Braga" d="M67.2 69.4 72.2 69.1 77.7 66.0 80.7 65.8 81.9 67.1 82.6 64.4 86.1 66.8 88.6 65.7 89.9 68.0 91.9 67.1 91.3 63.3 93.6 61.4 93.9 55.9 95.9 54.2 96.9 55.8 99.1 55.2 107.0 50.7 113.2 51.8 114.3 49.5 116.4 50.6 123.3 45.7 132.6 46.3 136.3 44.8 137.0 46.7 135.3 48.8 135.5 51.8 133.1 57.5 130.3 60.3 137.7 58.9 142.1 60.8 141.4 70.4 151.9 72.2 154.7 69.0 158.4 73.9 155.8 76.3 156.0 78.3 153.5 79.7 153.8 81.2 150.8 81.0 150.0 83.9 146.8 85.2 146.5 90.8 142.9 95.0 144.1 95.6 142.2 100.6 138.6 103.9 135.2 101.1 133.3 102.7 130.2 101.1 127.8 99.1 128.4 97.0 126.7 96.6 126.0 94.4 121.7 93.0 120.9 95.2 118.7 95.1 115.8 98.0 115.0 101.4 112.3 100.2 111.4 97.1 105.2 98.9 106.1 96.7 104.8 96.3 101.8 98.8 99.6 97.3 95.5 98.1 93.9 100.8 86.7 100.7 86.1 101.7 84.4 96.4 87.3 95.1 86.0 92.9 81.9 92.1 80.1 89.1 77.3 89.4 73.2 86.3 70.4 85.9 67.2 69.4Z"/><path class="shadow" data-n="Castelo Branco" d="M114.4 282.3 116.4 280.9 116.2 278.1 122.0 277.2 124.2 273.6 125.8 274.3 127.5 273.1 130.4 265.9 133.6 265.8 133.3 263.7 135.1 265.0 136.0 263.2 138.1 264.3 138.2 261.4 140.7 262.9 139.9 260.9 141.4 262.2 143.2 260.9 144.5 262.3 145.4 259.3 150.1 259.3 148.8 255.7 153.7 252.7 158.6 255.4 159.7 250.5 157.8 250.5 160.5 249.4 161.7 252.1 164.5 248.7 163.7 247.8 165.6 247.1 165.1 244.9 158.5 238.2 160.9 232.5 165.4 231.6 167.6 228.8 172.5 227.3 175.8 224.2 176.8 221.4 179.3 222.9 183.3 222.1 185.3 216.1 187.8 213.0 190.1 212.2 191.5 214.0 196.3 214.7 199.4 213.3 200.8 214.5 202.8 210.8 204.1 212.0 205.5 210.5 207.6 211.4 207.1 219.6 201.9 224.9 205.1 227.6 210.3 229.1 212.8 225.8 217.5 227.9 219.8 226.2 220.2 223.0 222.0 221.3 224.6 226.7 229.4 226.8 230.9 225.4 236.6 229.2 235.5 231.5 231.0 233.0 229.5 237.6 230.7 238.8 230.2 242.6 232.8 246.3 237.6 246.3 239.7 251.8 242.0 252.5 244.6 258.2 242.5 262.0 242.7 266.6 240.7 268.6 241.0 274.9 236.9 280.0 233.3 282.0 234.3 286.5 230.8 298.5 218.4 300.5 209.3 298.9 201.8 302.0 183.6 298.9 179.2 300.0 173.9 304.1 170.9 301.0 167.1 303.7 166.3 307.7 163.4 308.2 162.1 311.0 157.1 314.2 158.4 310.2 155.0 304.1 148.9 298.7 145.0 299.5 145.4 293.0 144.0 289.6 142.0 291.6 140.7 289.9 137.7 289.4 136.1 290.8 135.9 298.0 134.0 300.1 136.3 304.9 128.9 305.5 119.5 301.9 120.3 288.6 119.0 285.7 117.1 286.9 115.4 285.8 114.4 282.3Z"/><path class="shadow" data-n="Coimbra" d="M58.4 237.6 64.6 219.2 69.7 198.2 80.8 209.0 83.3 209.3 85.1 202.3 88.0 203.1 88.8 204.7 89.0 212.4 95.2 209.8 95.2 212.4 97.3 214.1 97.0 222.4 92.9 222.4 93.3 224.9 98.5 225.5 99.3 226.7 100.3 222.1 103.8 221.4 104.2 218.1 107.0 219.3 108.5 218.6 109.1 215.9 111.2 217.7 113.8 217.3 118.3 221.5 122.0 219.3 130.5 219.6 135.0 215.5 147.4 209.0 151.7 203.8 156.8 200.8 156.9 202.7 159.6 205.6 158.4 207.8 154.9 209.0 155.2 210.7 159.6 211.8 158.9 218.4 163.1 220.5 162.5 222.3 158.9 223.3 157.0 228.2 160.9 232.4 158.5 238.2 165.1 244.9 165.6 247.1 163.7 247.8 164.5 248.7 161.7 252.1 160.5 249.4 157.8 250.5 159.7 250.5 158.6 255.4 153.5 252.7 148.8 255.7 150.1 259.3 145.4 259.3 144.5 262.3 143.2 260.9 141.4 262.2 139.9 260.9 140.7 262.8 139.6 263.0 138.3 261.4 138.1 264.2 136.0 263.2 135.1 265.0 133.3 263.7 133.3 266.2 130.7 265.7 129.9 267.5 129.1 266.7 131.3 264.1 126.9 257.0 128.0 251.0 124.8 249.0 122.0 253.5 119.1 251.7 116.0 254.2 114.0 258.5 116.5 260.9 115.7 264.4 112.6 260.9 111.4 263.9 106.0 268.6 103.9 267.6 106.5 264.9 102.3 256.5 101.4 257.7 102.2 259.9 99.5 257.5 96.5 261.2 93.6 261.4 92.1 265.6 89.9 256.3 87.3 256.3 85.1 260.5 82.6 260.7 82.8 258.3 79.6 256.0 71.7 254.7 69.7 255.3 68.2 258.1 64.7 256.2 62.0 256.8 59.6 254.1 62.6 243.1 61.1 242.7 61.4 240.7 58.4 237.6Z"/><path class="shadow" data-n="Guarda" d="M154.9 209.2 158.4 207.8 159.6 205.6 156.9 202.7 157.3 199.6 160.8 199.8 171.6 193.6 179.3 191.9 178.5 190.5 180.7 183.5 182.8 181.8 182.0 179.7 183.5 178.1 178.4 175.4 177.8 173.6 180.2 171.2 175.0 167.4 179.7 157.8 181.4 156.6 185.4 157.0 191.6 163.3 195.5 155.9 197.6 157.1 198.1 151.9 202.0 148.6 202.6 144.9 197.7 142.6 197.6 140.5 201.5 139.9 200.7 136.1 204.1 125.4 209.5 124.5 217.3 126.7 218.5 123.4 221.7 120.6 221.7 123.8 220.3 125.4 224.5 126.7 222.9 132.1 232.9 138.6 235.0 137.3 238.4 138.1 239.3 141.3 245.0 147.5 245.9 153.1 249.6 155.6 250.4 159.5 247.9 160.4 248.9 165.5 247.6 172.0 250.9 181.6 246.3 192.8 250.3 194.7 250.8 199.3 245.9 206.3 247.3 211.5 252.1 216.5 250.9 220.8 246.7 222.6 244.6 224.6 244.2 228.4 240.6 229.6 236.4 229.1 230.9 225.4 229.4 226.8 224.6 226.8 222.0 221.3 220.2 223.0 219.8 226.2 217.5 227.9 212.8 225.8 210.3 229.1 205.1 227.6 201.9 224.9 207.1 219.6 207.6 211.4 205.5 210.5 204.1 212.0 202.8 210.8 200.8 214.5 199.4 213.3 196.3 214.7 191.5 214.0 190.1 212.2 185.8 215.2 183.3 222.1 179.3 222.9 176.8 221.4 175.8 224.2 172.5 227.3 167.6 228.8 165.4 231.6 160.9 232.5 157.0 228.2 158.9 223.3 162.5 222.3 163.1 220.1 158.9 218.4 159.6 211.8 156.9 212.0 154.9 209.2ZM193.0 154.0 194.1 150.8 197.7 153.3 195.9 155.7 193.0 154.0Z"/><path class="shadow" data-n="Leiria" d="M12.8 335.2 15.6 333.2 17.9 335.0 19.0 332.9 20.8 333.3 25.5 329.9 34.5 318.5 37.1 317.2 43.0 308.0 43.5 308.8 42.2 305.1 45.4 292.9 59.6 254.2 62.0 256.8 64.7 256.2 68.2 258.1 71.3 254.8 79.6 256.0 82.8 258.3 82.6 260.7 85.1 260.5 87.3 256.3 90.0 256.3 92.1 265.6 93.6 261.4 96.5 261.2 99.5 257.5 102.2 259.9 101.4 257.7 102.3 256.5 106.5 264.9 103.9 267.6 107.1 268.6 112.6 260.9 115.7 264.4 116.5 260.9 114.0 258.5 116.6 253.6 119.1 251.7 122.0 253.5 124.8 249.0 128.0 251.0 126.9 257.0 131.3 264.1 129.1 266.7 130.3 267.6 128.4 272.0 125.9 274.3 124.2 273.6 122.0 277.2 116.2 278.1 116.4 280.9 114.5 282.2 115.2 283.7 110.6 282.8 111.2 287.7 109.7 286.2 106.5 288.9 104.3 287.9 99.9 291.4 97.6 278.6 95.0 281.4 93.4 279.9 91.5 283.4 87.9 285.6 83.3 284.4 79.6 286.3 79.1 289.3 80.7 292.0 79.3 294.0 83.6 295.5 82.0 299.6 77.2 302.1 80.0 311.3 76.1 316.1 74.3 314.3 73.2 315.2 74.7 321.0 68.1 320.6 58.9 322.6 55.0 331.5 52.9 331.1 50.8 333.3 49.9 335.8 51.3 340.1 49.9 343.1 44.0 341.0 39.0 345.6 37.0 350.6 33.9 352.6 31.7 348.4 33.0 345.9 31.8 341.9 27.7 341.6 26.8 340.1 23.0 344.2 19.1 343.2 16.0 336.3 16.8 335.7 15.9 336.6 12.8 335.2Z"/><path class="shadow" data-n="Lisboa" d="M4.5 403.5 12.2 384.2 11.7 368.8 18.6 353.5 19.1 343.1 23.0 344.2 26.8 340.1 27.7 341.6 31.8 341.9 33.0 345.9 31.7 348.4 33.9 352.6 38.6 348.7 40.9 343.4 46.1 340.9 47.7 343.0 52.3 343.7 51.8 348.2 53.5 347.5 58.1 349.9 61.3 347.9 62.6 350.4 65.3 351.3 65.9 355.7 63.3 356.5 60.6 355.6 58.0 357.5 62.1 362.4 67.6 365.3 69.9 370.7 66.6 374.1 62.8 374.2 64.5 375.6 61.2 380.9 63.7 382.3 60.0 384.2 58.1 390.8 50.4 402.0 47.8 394.1 42.1 401.6 41.6 407.1 38.7 411.8 30.4 414.0 24.5 413.2 20.6 416.2 14.4 412.8 11.5 414.3 6.6 412.8 5.8 411.8 7.1 407.1 4.5 403.5Z"/><path class="shadow" data-n="Portalegre" d="M109.8 365.3 113.9 358.4 119.8 356.2 124.4 351.8 128.9 343.7 134.0 344.8 138.7 337.3 138.3 334.7 144.0 332.5 146.6 329.2 141.5 324.7 140.3 321.8 145.2 310.9 154.7 317.4 157.3 313.9 162.1 311.0 163.4 308.2 166.4 307.6 168.1 302.5 171.0 301.0 174.1 304.1 179.2 300.0 182.9 299.3 186.7 308.0 190.2 310.0 193.0 314.5 196.6 315.1 197.4 319.6 199.2 320.8 200.5 320.0 205.4 323.7 202.8 332.6 204.2 337.9 211.1 344.8 209.6 347.7 210.2 353.0 213.3 355.5 219.9 357.4 219.1 364.8 222.6 365.9 228.7 363.6 232.5 365.9 236.6 374.8 227.4 388.6 229.2 391.9 228.6 393.6 225.9 394.8 223.4 399.3 219.4 400.5 213.6 406.9 211.0 403.2 213.3 397.5 211.6 397.8 209.9 395.6 206.7 397.9 204.5 396.8 202.5 398.2 202.3 400.7 199.9 401.5 198.7 399.9 196.5 401.0 195.3 396.8 193.5 395.5 195.3 395.5 193.2 392.1 193.7 389.0 189.7 386.3 190.9 381.8 187.7 380.5 188.0 379.0 185.5 379.3 183.6 376.6 181.8 378.6 182.8 381.4 180.8 383.2 177.2 383.1 174.1 388.0 170.0 385.9 168.6 387.9 165.5 384.8 162.3 389.2 154.6 389.3 152.4 388.4 152.3 386.3 150.7 385.7 148.0 380.6 142.4 384.2 139.1 384.6 139.9 379.8 134.7 375.8 131.7 381.2 130.2 377.1 132.2 376.1 131.7 374.9 129.2 374.9 129.0 376.2 127.3 374.4 126.2 375.8 125.2 375.2 121.2 380.2 120.5 377.1 118.9 377.7 117.4 376.1 116.8 371.4 114.7 370.7 114.6 368.1 109.8 365.3Z"/><path class="shadow" data-n="Porto" d="M69.4 92.7 70.4 85.9 73.2 86.3 77.3 89.4 80.3 89.1 81.9 92.1 87.4 94.4 84.4 96.4 86.1 101.7 86.7 100.7 93.9 100.8 95.5 98.1 99.6 97.3 101.8 98.8 104.8 96.3 106.1 96.7 105.2 98.9 111.4 97.1 112.3 100.2 115.0 101.4 115.8 98.0 118.7 95.1 120.9 95.2 121.7 93.0 126.0 94.4 126.7 96.6 128.4 97.0 127.8 99.1 130.2 101.1 133.3 102.7 135.2 101.1 138.3 104.0 142.2 100.6 143.5 97.3 143.6 99.1 145.9 100.0 144.4 102.7 149.5 105.9 148.3 107.3 148.8 109.4 152.5 113.0 150.8 116.9 151.2 122.4 149.2 127.5 145.5 127.1 136.3 131.0 132.4 129.7 128.8 131.7 122.5 130.5 116.7 134.0 114.4 132.1 109.3 136.9 104.8 135.4 105.7 141.4 102.0 139.0 100.3 135.3 99.5 136.6 96.9 135.4 96.3 136.9 98.6 138.0 95.5 140.5 93.0 136.8 90.4 139.8 87.1 139.9 86.0 138.6 82.4 139.7 80.3 124.9 77.8 120.6 76.6 121.2 73.8 102.3 69.4 92.7Z"/><path class="shadow" data-n="Viana do Castelo" d="M60.9 52.8 62.4 45.7 61.3 43.7 61.8 39.7 66.6 34.1 72.3 31.5 73.4 27.6 80.8 23.3 81.3 20.0 83.2 18.0 91.4 17.2 93.8 14.2 100.8 13.9 102.1 15.1 106.4 14.6 108.1 12.9 110.9 13.7 112.3 11.3 117.5 9.3 118.8 7.1 120.9 7.8 123.0 5.4 124.5 15.9 130.1 13.8 132.3 15.1 133.3 21.7 126.3 25.6 121.4 33.8 122.9 38.5 125.5 37.9 126.4 40.0 125.9 46.3 123.3 45.7 116.3 50.6 114.6 49.3 113.2 51.8 107.0 50.7 99.1 55.2 96.9 55.8 96.8 54.3 95.5 54.4 93.9 55.9 93.6 61.4 91.3 63.3 91.9 67.1 89.9 68.0 88.6 65.7 86.1 66.8 82.6 64.4 81.9 67.1 80.7 65.8 77.7 66.0 68.2 70.0 60.9 52.8Z"/><path class="shadow" data-n="Vila Real" d="M130.3 60.3 133.1 57.5 135.5 51.8 136.5 44.9 139.9 43.7 143.4 38.3 148.3 38.0 149.7 32.2 151.6 32.5 150.9 40.2 152.7 41.9 155.6 39.4 155.2 37.6 160.5 37.3 162.7 35.5 165.4 36.3 168.4 34.5 172.6 37.6 178.8 37.5 176.5 43.8 184.7 42.2 186.5 39.0 191.0 39.5 193.4 43.6 193.2 46.3 198.9 41.0 199.7 42.4 203.5 42.2 213.9 37.8 213.0 45.6 216.6 51.0 208.6 71.8 208.7 75.1 211.3 79.9 206.3 80.8 205.0 86.8 198.9 89.6 199.3 98.6 203.6 101.3 198.0 104.5 199.2 105.7 196.5 107.9 196.8 112.9 194.5 112.3 192.9 116.7 186.4 118.1 184.5 120.4 182.3 119.4 178.5 123.2 171.7 122.4 168.6 124.9 159.6 122.5 158.1 124.4 152.8 123.0 149.8 127.6 148.9 125.7 151.2 122.3 150.8 116.9 152.5 113.0 148.8 109.4 148.3 107.3 149.5 105.9 144.4 102.7 145.9 100.0 143.6 99.1 144.1 95.3 142.9 95.0 146.5 90.8 146.8 85.2 150.0 83.9 150.8 81.0 153.8 81.2 153.5 79.7 156.0 78.3 155.8 76.3 157.5 75.9 158.2 73.3 154.7 69.0 151.9 72.2 141.4 70.4 141.2 64.5 142.8 61.5 138.9 59.3 130.3 60.3Z"/><path class="shadow" data-n="Viseu" d="M108.4 215.7 108.8 211.4 112.2 207.5 111.1 201.4 118.4 199.3 115.2 196.0 113.0 189.2 118.8 186.9 114.3 184.7 114.1 177.8 111.4 175.7 110.9 172.3 116.3 170.3 119.6 162.2 117.9 158.6 120.1 157.6 123.8 159.8 125.9 157.4 129.4 159.4 131.7 157.3 129.5 153.6 129.1 147.7 133.0 143.1 132.8 140.5 129.0 144.1 121.7 142.3 122.5 140.4 119.8 140.2 120.1 136.2 117.3 133.4 122.5 130.5 128.8 131.7 132.4 129.7 136.3 131.0 145.5 127.1 150.1 127.5 152.7 123.1 158.1 124.4 159.6 122.5 168.6 124.9 171.7 122.4 178.5 123.2 182.3 119.4 184.5 120.4 185.9 118.3 189.5 118.1 191.1 116.3 196.6 118.5 199.7 124.2 204.2 124.4 200.7 136.1 201.5 139.9 197.7 140.0 197.7 142.6 202.6 144.9 201.6 149.4 198.1 151.9 197.6 157.1 195.5 155.9 190.9 163.7 185.4 157.0 181.1 156.7 175.0 167.4 180.2 171.2 177.8 173.6 178.4 175.4 183.5 178.1 182.0 179.7 182.8 181.8 180.7 183.5 178.5 190.5 179.3 192.0 171.6 193.6 160.8 199.8 157.3 199.6 147.4 209.0 140.8 213.4 137.3 214.1 128.9 220.3 125.6 218.9 124.3 220.2 123.6 219.1 118.3 221.5 113.8 217.3 111.2 217.7 108.4 215.7ZM193.0 154.0 195.9 155.7 197.7 153.3 194.1 150.8 193.0 154.0Z"/><path class="shadow" data-n="Bragança" d="M192.9 116.7 194.5 112.3 196.9 112.7 196.5 107.9 199.2 105.7 198.0 104.5 199.8 102.5 203.5 101.7 199.3 98.6 198.9 89.6 205.0 86.8 206.3 80.8 211.3 79.9 208.7 75.1 208.6 71.8 213.2 57.6 216.5 53.7 216.6 50.8 214.5 49.3 212.7 44.0 214.4 39.4 213.6 38.4 216.4 33.1 214.9 30.5 216.0 25.9 221.3 25.2 226.0 29.6 231.6 29.4 234.1 26.7 236.0 27.3 237.3 30.1 242.0 30.7 248.4 30.0 249.4 24.5 253.2 25.5 254.9 30.2 259.5 31.5 266.7 30.7 270.0 27.6 273.5 30.7 271.2 37.3 276.3 38.7 273.7 49.7 271.4 53.9 273.3 56.0 273.3 60.7 277.7 64.1 281.6 62.9 282.8 60.8 295.7 63.5 306.0 73.8 299.8 80.9 300.4 82.6 295.4 88.5 295.9 91.0 292.9 93.2 294.3 96.1 291.1 97.0 289.9 95.2 287.8 96.2 287.4 98.0 288.9 99.2 285.4 100.5 283.4 105.6 278.9 107.2 279.7 109.1 278.0 110.2 275.7 109.1 271.2 113.4 269.4 111.5 268.6 112.9 264.2 112.4 260.3 116.9 258.7 121.2 253.3 125.7 254.5 129.4 248.7 137.8 235.1 137.3 233.2 138.7 232.2 137.2 228.2 136.4 222.8 131.9 224.5 126.7 220.3 125.4 221.7 123.8 221.5 120.5 217.3 126.7 209.5 124.5 206.4 125.6 199.7 124.2 196.6 118.6 192.9 116.7Z"/><path class="shadow" data-n="Évora" d="M81.2 424.4 88.4 416.4 95.5 411.2 94.6 408.7 96.4 405.8 91.3 405.5 93.5 402.5 95.6 400.3 98.2 401.9 102.0 397.2 103.9 398.5 106.8 394.5 110.0 396.6 111.9 394.2 112.9 395.9 113.7 393.0 117.4 396.1 116.6 397.5 118.3 399.0 120.9 397.7 123.2 400.3 122.5 401.3 125.3 401.0 125.1 403.2 128.2 404.4 129.8 400.6 127.4 398.8 126.6 400.4 126.0 397.9 124.0 396.7 126.7 393.4 124.6 391.8 122.2 392.4 116.3 388.5 119.0 384.9 119.1 380.6 120.4 379.1 121.2 380.2 125.2 375.2 126.2 375.8 127.3 374.4 129.0 376.2 129.2 374.9 131.7 374.9 132.2 376.1 130.2 377.1 131.7 381.2 133.2 380.4 133.9 376.0 136.8 376.6 139.9 379.8 139.1 384.6 142.4 384.2 148.0 380.6 150.7 385.7 152.3 386.3 152.4 388.4 160.3 389.9 160.7 388.6 163.7 388.4 165.5 384.8 168.6 387.9 170.0 385.9 174.1 388.0 177.2 383.1 180.8 383.2 182.8 381.4 181.8 378.6 183.6 376.6 185.5 379.3 188.0 379.0 187.7 380.5 190.9 381.8 189.7 386.3 193.7 389.0 193.2 392.1 195.3 395.5 193.5 395.5 195.3 396.8 196.5 401.0 198.7 399.9 199.9 401.5 202.4 400.7 202.5 398.2 205.3 396.4 206.7 397.9 208.7 395.5 211.6 397.8 213.3 397.5 211.0 403.2 213.6 406.9 208.8 409.9 207.9 413.0 207.4 420.3 210.0 422.0 203.5 435.0 202.9 439.2 204.8 438.6 205.0 440.2 201.6 444.2 203.3 443.6 206.7 446.1 216.7 462.6 218.5 463.1 222.4 473.4 220.3 475.4 218.3 475.1 218.5 477.2 217.7 476.7 214.0 469.2 214.9 466.5 210.0 464.6 206.0 456.5 201.5 457.7 199.8 460.3 195.2 460.4 196.0 461.4 194.9 464.1 192.8 464.8 189.9 470.0 187.0 471.2 186.9 473.4 180.5 473.3 174.4 470.9 171.2 472.0 163.1 466.5 155.8 465.9 142.8 458.1 140.2 460.3 136.1 456.9 129.2 458.7 127.3 456.7 125.6 457.9 123.1 455.2 116.6 453.9 115.9 451.8 111.8 451.7 115.3 447.0 113.7 445.5 115.2 445.4 114.6 443.8 111.7 444.1 112.9 441.5 107.5 431.2 102.6 434.1 100.6 433.4 97.8 434.6 95.2 431.0 93.8 431.5 95.0 434.3 93.0 435.3 92.7 433.3 89.0 432.9 88.8 430.9 82.9 430.8 81.2 424.4Z"/><path class="shadow" data-n="Santarém" d="M49.9 335.8 52.7 331.2 55.0 331.5 58.9 322.6 68.1 320.6 74.7 321.0 73.2 315.2 74.3 314.3 76.1 316.1 80.0 311.1 77.2 302.1 82.0 299.6 83.6 295.5 79.3 294.0 80.7 292.0 79.2 286.8 83.3 284.4 87.9 285.6 91.5 283.4 93.4 279.9 95.0 281.4 97.6 278.6 99.9 291.4 104.3 287.9 106.5 288.9 109.7 286.2 111.2 287.7 110.6 282.8 115.1 283.6 117.0 286.9 119.0 285.7 120.4 289.7 119.5 294.3 120.6 294.4 119.5 301.9 128.9 305.5 136.3 304.9 134.0 300.1 135.9 298.0 136.1 290.8 137.7 289.4 140.7 289.9 142.0 291.6 144.4 289.7 145.0 299.6 148.9 298.7 150.4 299.8 150.9 301.7 155.0 304.1 158.4 310.2 154.7 317.4 148.7 312.5 144.8 311.3 140.3 321.8 141.5 324.7 146.6 329.2 144.0 332.5 138.3 334.7 138.7 337.3 134.0 344.8 128.9 343.7 124.4 351.8 119.8 356.2 113.9 358.4 109.9 364.6 110.7 366.4 114.6 368.1 114.7 370.7 116.8 371.4 117.4 376.1 121.0 378.1 119.0 380.7 119.0 384.9 116.3 388.5 122.2 392.4 124.6 391.8 126.7 393.4 124.0 396.7 126.0 397.9 126.6 400.4 127.4 398.8 129.8 400.6 127.9 404.5 125.1 403.2 125.3 401.0 122.5 401.3 123.2 400.3 120.9 397.7 118.3 399.0 116.6 397.5 117.4 396.1 113.7 393.0 112.9 395.9 111.9 394.2 110.0 396.6 106.8 394.5 103.9 398.5 102.0 397.2 98.2 401.9 95.6 400.3 91.2 405.6 85.3 403.3 86.9 396.3 83.8 397.6 82.1 400.1 76.7 395.8 72.5 407.9 69.1 409.0 64.7 405.7 59.9 408.1 58.8 407.5 59.3 409.2 58.3 409.2 53.1 397.4 58.1 390.8 60.0 384.2 63.7 382.3 61.2 380.9 64.5 375.6 62.8 374.2 66.6 374.1 69.9 370.5 67.6 365.3 62.1 362.4 58.0 357.5 60.6 355.6 63.3 356.5 65.9 355.7 65.3 351.3 62.6 350.4 61.3 347.9 58.1 349.9 53.5 347.5 51.8 348.2 52.3 343.7 50.6 342.6 51.3 340.0 49.9 335.8Z"/><path class="shadow" data-n="Setúbal" d="M26.0 417.4 36.8 414.4 36.7 417.0 41.0 419.1 46.0 414.9 46.0 411.1 49.3 408.0 47.3 408.2 48.4 406.4 54.3 405.9 50.9 406.5 51.3 405.6 49.1 405.3 51.1 402.9 51.9 403.8 50.4 404.6 54.3 403.0 52.4 402.7 53.4 401.3 51.2 402.2 53.1 398.1 58.8 409.3 58.8 407.5 59.9 408.1 64.7 405.7 69.1 409.0 72.5 407.9 76.7 395.8 82.1 400.1 83.8 397.6 86.9 396.3 85.8 403.9 96.4 405.8 94.6 408.7 95.5 411.2 81.6 423.4 82.9 430.8 88.8 430.9 89.0 432.9 92.7 433.3 93.0 435.3 95.0 434.3 93.8 431.5 95.2 431.0 97.8 434.6 100.6 433.4 102.6 434.1 107.5 431.2 112.9 441.5 111.7 444.1 114.6 443.8 115.2 445.4 113.7 445.5 115.3 447.0 111.8 451.7 115.9 451.8 116.6 453.9 123.1 455.2 128.1 460.4 129.3 464.2 129.3 469.2 121.0 471.7 119.3 474.4 115.2 473.6 114.6 479.2 110.8 477.3 108.7 479.3 108.0 483.3 105.9 481.9 105.2 483.0 104.1 488.0 108.0 493.0 112.1 492.5 114.4 496.4 113.0 506.0 113.9 507.5 110.6 511.4 111.0 513.7 101.6 510.8 101.0 512.1 92.2 512.9 90.9 513.6 91.1 517.3 89.6 517.0 88.0 519.3 87.7 524.3 85.9 523.9 84.9 525.2 80.9 522.9 78.7 524.6 74.2 517.5 69.9 518.4 67.4 503.9 63.7 502.9 64.2 504.8 62.3 501.1 60.3 501.3 60.2 502.6 60.1 501.6 64.7 493.2 69.0 479.4 70.5 468.6 69.8 457.8 66.0 446.3 58.1 437.7 60.1 437.7 60.7 439.9 60.4 438.1 66.0 443.1 68.9 450.5 69.5 446.7 67.6 445.0 68.1 443.5 71.2 447.6 74.7 446.0 80.9 447.7 77.5 443.4 75.3 443.4 74.9 435.0 76.8 434.6 73.9 434.0 74.3 428.5 70.9 432.6 67.3 430.9 69.3 431.7 67.7 432.9 69.8 434.6 66.0 435.5 72.4 436.7 70.9 436.4 70.3 439.0 69.6 437.8 70.4 439.9 68.2 439.9 68.8 438.2 67.5 438.0 67.5 439.5 67.5 438.0 63.8 435.6 59.3 434.2 56.7 435.7 56.1 438.0 51.8 439.1 47.5 443.0 44.2 444.3 40.3 443.4 34.7 444.9 32.2 447.3 30.1 446.9 33.0 439.4 33.4 433.1 30.3 423.2 26.0 417.4Z"/><path class="shadow" data-n="Faro" d="M50.3 610.9 58.3 595.4 57.5 590.4 59.6 589.2 62.8 581.9 61.2 575.8 64.1 572.5 68.3 561.2 72.9 562.6 74.3 567.0 80.7 566.3 82.9 569.3 84.6 566.3 88.9 565.0 94.2 568.9 96.1 568.1 99.7 569.5 102.6 567.5 103.1 564.1 108.6 562.5 111.2 563.7 112.2 561.8 115.8 563.4 117.0 565.5 116.0 567.9 118.5 568.2 123.6 573.1 135.1 576.0 138.6 571.8 142.0 570.7 140.5 569.1 141.1 566.6 148.0 564.8 149.5 565.9 150.1 564.3 151.3 564.6 151.0 562.3 154.2 562.0 154.5 560.6 156.4 560.7 157.2 559.1 158.2 559.8 162.5 556.1 163.5 557.0 165.5 555.0 170.7 553.9 175.7 555.8 179.9 551.2 187.2 551.9 189.9 556.0 191.6 564.1 190.1 565.3 192.1 567.5 191.9 576.9 193.8 581.3 192.7 584.1 196.4 594.0 190.1 592.8 179.9 597.0 153.1 618.0 147.4 617.1 133.2 606.5 124.5 602.9 114.0 605.1 108.4 601.7 101.4 603.5 87.0 599.2 81.1 600.6 80.3 604.3 74.9 603.4 69.2 606.2 64.1 606.7 62.5 608.6 59.7 608.6 54.9 614.3 53.3 610.6 50.3 610.9Z"/></g><g class="land-g"><path class="land" data-n="Aveiro" d="M69.7 198.2 72.9 184.9 71.6 183.7 80.1 154.5 82.3 139.7 86.0 138.6 87.1 139.9 90.4 139.8 93.0 136.8 95.5 140.5 98.6 138.0 96.3 136.9 96.9 135.4 99.5 136.6 100.3 135.3 102.0 139.0 105.7 141.4 104.8 135.4 109.5 136.8 114.6 132.1 119.5 134.7 120.1 138.4 119.2 138.6 119.8 140.2 122.5 140.4 121.7 142.3 129.0 144.1 132.8 140.5 133.0 143.1 129.1 147.7 131.4 158.7 129.0 159.4 125.9 157.4 123.8 159.8 120.1 157.6 117.9 158.6 119.6 162.2 116.3 170.3 110.9 172.3 111.4 175.7 114.1 177.8 114.3 184.7 118.8 186.9 113.0 189.2 115.2 196.0 118.4 199.3 111.1 201.4 112.2 207.5 108.8 211.4 108.6 218.5 107.0 219.3 104.2 218.1 103.8 221.4 100.2 222.2 99.8 226.7 93.3 225.1 92.9 222.4 97.0 222.4 97.3 214.1 95.2 212.4 95.2 209.8 89.0 212.4 88.8 204.7 88.0 203.1 85.1 202.3 83.3 209.3 80.8 209.0 69.7 198.2Z"/><path class="land" data-n="Beja" d="M66.5 543.0 69.5 529.3 67.2 525.8 68.9 516.9 70.5 518.6 74.2 517.5 78.9 524.7 80.9 522.9 84.9 525.2 85.9 523.9 87.7 524.3 88.0 519.3 89.6 517.0 91.1 517.3 90.9 513.6 92.2 512.9 101.0 512.1 101.6 510.8 111.0 513.7 110.6 511.4 113.9 507.5 113.0 506.0 114.4 496.4 112.1 492.5 108.0 493.0 103.8 487.0 105.7 482.0 108.0 483.3 108.7 479.3 110.8 477.3 114.6 479.2 115.2 473.6 119.3 474.4 121.0 471.7 129.3 469.2 129.3 464.2 126.4 457.0 129.0 458.7 136.1 456.9 140.2 460.3 142.8 458.1 157.7 466.7 160.3 465.5 171.2 472.0 174.4 470.9 180.6 473.3 187.4 473.2 187.0 471.3 189.9 470.0 192.8 464.8 194.9 464.1 196.0 461.4 195.2 460.4 199.8 460.3 201.5 457.7 206.0 456.5 210.0 464.6 214.9 466.5 214.0 469.2 218.3 477.4 218.3 475.1 220.4 475.3 221.1 473.6 222.8 473.5 224.5 475.6 226.2 473.6 226.8 474.6 229.6 474.1 231.2 471.5 234.0 470.7 234.7 471.7 238.0 469.6 238.2 471.8 235.0 476.0 236.5 477.6 233.3 483.6 232.0 493.0 227.9 493.9 223.2 490.4 220.5 492.1 221.2 495.1 216.4 496.4 213.8 495.2 208.3 498.0 209.6 501.0 209.0 504.7 206.5 507.7 206.4 511.1 202.7 517.3 193.8 524.0 191.4 531.3 191.8 535.2 190.8 537.3 189.6 537.0 187.7 542.3 186.3 542.2 186.0 547.8 184.6 548.0 185.4 551.6 179.9 551.2 175.7 555.8 171.9 553.9 167.3 554.4 163.5 557.0 162.5 556.1 162.7 557.1 157.7 560.1 157.2 559.1 156.4 560.7 154.6 560.6 154.2 562.0 151.0 562.3 151.3 564.6 150.1 564.3 149.5 565.9 148.0 564.8 146.5 566.0 142.6 565.6 140.5 569.0 142.0 570.8 138.6 571.8 135.1 576.0 123.6 573.1 118.5 568.2 116.0 567.9 117.0 565.5 115.8 563.4 112.2 561.8 111.2 563.7 108.6 562.5 103.1 564.1 102.6 567.5 99.7 569.5 96.1 568.1 94.2 568.9 88.9 565.0 84.6 566.3 82.9 569.3 80.7 566.3 74.3 567.0 72.9 562.6 68.3 561.2 69.6 550.4 66.5 543.0Z"/><path class="land" data-n="Braga" d="M67.2 69.4 72.2 69.1 77.7 66.0 80.7 65.8 81.9 67.1 82.6 64.4 86.1 66.8 88.6 65.7 89.9 68.0 91.9 67.1 91.3 63.3 93.6 61.4 93.9 55.9 95.9 54.2 96.9 55.8 99.1 55.2 107.0 50.7 113.2 51.8 114.3 49.5 116.4 50.6 123.3 45.7 132.6 46.3 136.3 44.8 137.0 46.7 135.3 48.8 135.5 51.8 133.1 57.5 130.3 60.3 137.7 58.9 142.1 60.8 141.4 70.4 151.9 72.2 154.7 69.0 158.4 73.9 155.8 76.3 156.0 78.3 153.5 79.7 153.8 81.2 150.8 81.0 150.0 83.9 146.8 85.2 146.5 90.8 142.9 95.0 144.1 95.6 142.2 100.6 138.6 103.9 135.2 101.1 133.3 102.7 130.2 101.1 127.8 99.1 128.4 97.0 126.7 96.6 126.0 94.4 121.7 93.0 120.9 95.2 118.7 95.1 115.8 98.0 115.0 101.4 112.3 100.2 111.4 97.1 105.2 98.9 106.1 96.7 104.8 96.3 101.8 98.8 99.6 97.3 95.5 98.1 93.9 100.8 86.7 100.7 86.1 101.7 84.4 96.4 87.3 95.1 86.0 92.9 81.9 92.1 80.1 89.1 77.3 89.4 73.2 86.3 70.4 85.9 67.2 69.4Z"/><path class="land" data-n="Castelo Branco" d="M114.4 282.3 116.4 280.9 116.2 278.1 122.0 277.2 124.2 273.6 125.8 274.3 127.5 273.1 130.4 265.9 133.6 265.8 133.3 263.7 135.1 265.0 136.0 263.2 138.1 264.3 138.2 261.4 140.7 262.9 139.9 260.9 141.4 262.2 143.2 260.9 144.5 262.3 145.4 259.3 150.1 259.3 148.8 255.7 153.7 252.7 158.6 255.4 159.7 250.5 157.8 250.5 160.5 249.4 161.7 252.1 164.5 248.7 163.7 247.8 165.6 247.1 165.1 244.9 158.5 238.2 160.9 232.5 165.4 231.6 167.6 228.8 172.5 227.3 175.8 224.2 176.8 221.4 179.3 222.9 183.3 222.1 185.3 216.1 187.8 213.0 190.1 212.2 191.5 214.0 196.3 214.7 199.4 213.3 200.8 214.5 202.8 210.8 204.1 212.0 205.5 210.5 207.6 211.4 207.1 219.6 201.9 224.9 205.1 227.6 210.3 229.1 212.8 225.8 217.5 227.9 219.8 226.2 220.2 223.0 222.0 221.3 224.6 226.7 229.4 226.8 230.9 225.4 236.6 229.2 235.5 231.5 231.0 233.0 229.5 237.6 230.7 238.8 230.2 242.6 232.8 246.3 237.6 246.3 239.7 251.8 242.0 252.5 244.6 258.2 242.5 262.0 242.7 266.6 240.7 268.6 241.0 274.9 236.9 280.0 233.3 282.0 234.3 286.5 230.8 298.5 218.4 300.5 209.3 298.9 201.8 302.0 183.6 298.9 179.2 300.0 173.9 304.1 170.9 301.0 167.1 303.7 166.3 307.7 163.4 308.2 162.1 311.0 157.1 314.2 158.4 310.2 155.0 304.1 148.9 298.7 145.0 299.5 145.4 293.0 144.0 289.6 142.0 291.6 140.7 289.9 137.7 289.4 136.1 290.8 135.9 298.0 134.0 300.1 136.3 304.9 128.9 305.5 119.5 301.9 120.3 288.6 119.0 285.7 117.1 286.9 115.4 285.8 114.4 282.3Z"/><path class="land" data-n="Coimbra" d="M58.4 237.6 64.6 219.2 69.7 198.2 80.8 209.0 83.3 209.3 85.1 202.3 88.0 203.1 88.8 204.7 89.0 212.4 95.2 209.8 95.2 212.4 97.3 214.1 97.0 222.4 92.9 222.4 93.3 224.9 98.5 225.5 99.3 226.7 100.3 222.1 103.8 221.4 104.2 218.1 107.0 219.3 108.5 218.6 109.1 215.9 111.2 217.7 113.8 217.3 118.3 221.5 122.0 219.3 130.5 219.6 135.0 215.5 147.4 209.0 151.7 203.8 156.8 200.8 156.9 202.7 159.6 205.6 158.4 207.8 154.9 209.0 155.2 210.7 159.6 211.8 158.9 218.4 163.1 220.5 162.5 222.3 158.9 223.3 157.0 228.2 160.9 232.4 158.5 238.2 165.1 244.9 165.6 247.1 163.7 247.8 164.5 248.7 161.7 252.1 160.5 249.4 157.8 250.5 159.7 250.5 158.6 255.4 153.5 252.7 148.8 255.7 150.1 259.3 145.4 259.3 144.5 262.3 143.2 260.9 141.4 262.2 139.9 260.9 140.7 262.8 139.6 263.0 138.3 261.4 138.1 264.2 136.0 263.2 135.1 265.0 133.3 263.7 133.3 266.2 130.7 265.7 129.9 267.5 129.1 266.7 131.3 264.1 126.9 257.0 128.0 251.0 124.8 249.0 122.0 253.5 119.1 251.7 116.0 254.2 114.0 258.5 116.5 260.9 115.7 264.4 112.6 260.9 111.4 263.9 106.0 268.6 103.9 267.6 106.5 264.9 102.3 256.5 101.4 257.7 102.2 259.9 99.5 257.5 96.5 261.2 93.6 261.4 92.1 265.6 89.9 256.3 87.3 256.3 85.1 260.5 82.6 260.7 82.8 258.3 79.6 256.0 71.7 254.7 69.7 255.3 68.2 258.1 64.7 256.2 62.0 256.8 59.6 254.1 62.6 243.1 61.1 242.7 61.4 240.7 58.4 237.6Z"/><path class="land" data-n="Guarda" d="M154.9 209.2 158.4 207.8 159.6 205.6 156.9 202.7 157.3 199.6 160.8 199.8 171.6 193.6 179.3 191.9 178.5 190.5 180.7 183.5 182.8 181.8 182.0 179.7 183.5 178.1 178.4 175.4 177.8 173.6 180.2 171.2 175.0 167.4 179.7 157.8 181.4 156.6 185.4 157.0 191.6 163.3 195.5 155.9 197.6 157.1 198.1 151.9 202.0 148.6 202.6 144.9 197.7 142.6 197.6 140.5 201.5 139.9 200.7 136.1 204.1 125.4 209.5 124.5 217.3 126.7 218.5 123.4 221.7 120.6 221.7 123.8 220.3 125.4 224.5 126.7 222.9 132.1 232.9 138.6 235.0 137.3 238.4 138.1 239.3 141.3 245.0 147.5 245.9 153.1 249.6 155.6 250.4 159.5 247.9 160.4 248.9 165.5 247.6 172.0 250.9 181.6 246.3 192.8 250.3 194.7 250.8 199.3 245.9 206.3 247.3 211.5 252.1 216.5 250.9 220.8 246.7 222.6 244.6 224.6 244.2 228.4 240.6 229.6 236.4 229.1 230.9 225.4 229.4 226.8 224.6 226.8 222.0 221.3 220.2 223.0 219.8 226.2 217.5 227.9 212.8 225.8 210.3 229.1 205.1 227.6 201.9 224.9 207.1 219.6 207.6 211.4 205.5 210.5 204.1 212.0 202.8 210.8 200.8 214.5 199.4 213.3 196.3 214.7 191.5 214.0 190.1 212.2 185.8 215.2 183.3 222.1 179.3 222.9 176.8 221.4 175.8 224.2 172.5 227.3 167.6 228.8 165.4 231.6 160.9 232.5 157.0 228.2 158.9 223.3 162.5 222.3 163.1 220.1 158.9 218.4 159.6 211.8 156.9 212.0 154.9 209.2ZM193.0 154.0 194.1 150.8 197.7 153.3 195.9 155.7 193.0 154.0Z"/><path class="land" data-n="Leiria" d="M12.8 335.2 15.6 333.2 17.9 335.0 19.0 332.9 20.8 333.3 25.5 329.9 34.5 318.5 37.1 317.2 43.0 308.0 43.5 308.8 42.2 305.1 45.4 292.9 59.6 254.2 62.0 256.8 64.7 256.2 68.2 258.1 71.3 254.8 79.6 256.0 82.8 258.3 82.6 260.7 85.1 260.5 87.3 256.3 90.0 256.3 92.1 265.6 93.6 261.4 96.5 261.2 99.5 257.5 102.2 259.9 101.4 257.7 102.3 256.5 106.5 264.9 103.9 267.6 107.1 268.6 112.6 260.9 115.7 264.4 116.5 260.9 114.0 258.5 116.6 253.6 119.1 251.7 122.0 253.5 124.8 249.0 128.0 251.0 126.9 257.0 131.3 264.1 129.1 266.7 130.3 267.6 128.4 272.0 125.9 274.3 124.2 273.6 122.0 277.2 116.2 278.1 116.4 280.9 114.5 282.2 115.2 283.7 110.6 282.8 111.2 287.7 109.7 286.2 106.5 288.9 104.3 287.9 99.9 291.4 97.6 278.6 95.0 281.4 93.4 279.9 91.5 283.4 87.9 285.6 83.3 284.4 79.6 286.3 79.1 289.3 80.7 292.0 79.3 294.0 83.6 295.5 82.0 299.6 77.2 302.1 80.0 311.3 76.1 316.1 74.3 314.3 73.2 315.2 74.7 321.0 68.1 320.6 58.9 322.6 55.0 331.5 52.9 331.1 50.8 333.3 49.9 335.8 51.3 340.1 49.9 343.1 44.0 341.0 39.0 345.6 37.0 350.6 33.9 352.6 31.7 348.4 33.0 345.9 31.8 341.9 27.7 341.6 26.8 340.1 23.0 344.2 19.1 343.2 16.0 336.3 16.8 335.7 15.9 336.6 12.8 335.2Z"/><path class="land" data-n="Lisboa" d="M4.5 403.5 12.2 384.2 11.7 368.8 18.6 353.5 19.1 343.1 23.0 344.2 26.8 340.1 27.7 341.6 31.8 341.9 33.0 345.9 31.7 348.4 33.9 352.6 38.6 348.7 40.9 343.4 46.1 340.9 47.7 343.0 52.3 343.7 51.8 348.2 53.5 347.5 58.1 349.9 61.3 347.9 62.6 350.4 65.3 351.3 65.9 355.7 63.3 356.5 60.6 355.6 58.0 357.5 62.1 362.4 67.6 365.3 69.9 370.7 66.6 374.1 62.8 374.2 64.5 375.6 61.2 380.9 63.7 382.3 60.0 384.2 58.1 390.8 50.4 402.0 47.8 394.1 42.1 401.6 41.6 407.1 38.7 411.8 30.4 414.0 24.5 413.2 20.6 416.2 14.4 412.8 11.5 414.3 6.6 412.8 5.8 411.8 7.1 407.1 4.5 403.5Z"/><path class="land" data-n="Portalegre" d="M109.8 365.3 113.9 358.4 119.8 356.2 124.4 351.8 128.9 343.7 134.0 344.8 138.7 337.3 138.3 334.7 144.0 332.5 146.6 329.2 141.5 324.7 140.3 321.8 145.2 310.9 154.7 317.4 157.3 313.9 162.1 311.0 163.4 308.2 166.4 307.6 168.1 302.5 171.0 301.0 174.1 304.1 179.2 300.0 182.9 299.3 186.7 308.0 190.2 310.0 193.0 314.5 196.6 315.1 197.4 319.6 199.2 320.8 200.5 320.0 205.4 323.7 202.8 332.6 204.2 337.9 211.1 344.8 209.6 347.7 210.2 353.0 213.3 355.5 219.9 357.4 219.1 364.8 222.6 365.9 228.7 363.6 232.5 365.9 236.6 374.8 227.4 388.6 229.2 391.9 228.6 393.6 225.9 394.8 223.4 399.3 219.4 400.5 213.6 406.9 211.0 403.2 213.3 397.5 211.6 397.8 209.9 395.6 206.7 397.9 204.5 396.8 202.5 398.2 202.3 400.7 199.9 401.5 198.7 399.9 196.5 401.0 195.3 396.8 193.5 395.5 195.3 395.5 193.2 392.1 193.7 389.0 189.7 386.3 190.9 381.8 187.7 380.5 188.0 379.0 185.5 379.3 183.6 376.6 181.8 378.6 182.8 381.4 180.8 383.2 177.2 383.1 174.1 388.0 170.0 385.9 168.6 387.9 165.5 384.8 162.3 389.2 154.6 389.3 152.4 388.4 152.3 386.3 150.7 385.7 148.0 380.6 142.4 384.2 139.1 384.6 139.9 379.8 134.7 375.8 131.7 381.2 130.2 377.1 132.2 376.1 131.7 374.9 129.2 374.9 129.0 376.2 127.3 374.4 126.2 375.8 125.2 375.2 121.2 380.2 120.5 377.1 118.9 377.7 117.4 376.1 116.8 371.4 114.7 370.7 114.6 368.1 109.8 365.3Z"/><path class="land" data-n="Porto" d="M69.4 92.7 70.4 85.9 73.2 86.3 77.3 89.4 80.3 89.1 81.9 92.1 87.4 94.4 84.4 96.4 86.1 101.7 86.7 100.7 93.9 100.8 95.5 98.1 99.6 97.3 101.8 98.8 104.8 96.3 106.1 96.7 105.2 98.9 111.4 97.1 112.3 100.2 115.0 101.4 115.8 98.0 118.7 95.1 120.9 95.2 121.7 93.0 126.0 94.4 126.7 96.6 128.4 97.0 127.8 99.1 130.2 101.1 133.3 102.7 135.2 101.1 138.3 104.0 142.2 100.6 143.5 97.3 143.6 99.1 145.9 100.0 144.4 102.7 149.5 105.9 148.3 107.3 148.8 109.4 152.5 113.0 150.8 116.9 151.2 122.4 149.2 127.5 145.5 127.1 136.3 131.0 132.4 129.7 128.8 131.7 122.5 130.5 116.7 134.0 114.4 132.1 109.3 136.9 104.8 135.4 105.7 141.4 102.0 139.0 100.3 135.3 99.5 136.6 96.9 135.4 96.3 136.9 98.6 138.0 95.5 140.5 93.0 136.8 90.4 139.8 87.1 139.9 86.0 138.6 82.4 139.7 80.3 124.9 77.8 120.6 76.6 121.2 73.8 102.3 69.4 92.7Z"/><path class="land" data-n="Viana do Castelo" d="M60.9 52.8 62.4 45.7 61.3 43.7 61.8 39.7 66.6 34.1 72.3 31.5 73.4 27.6 80.8 23.3 81.3 20.0 83.2 18.0 91.4 17.2 93.8 14.2 100.8 13.9 102.1 15.1 106.4 14.6 108.1 12.9 110.9 13.7 112.3 11.3 117.5 9.3 118.8 7.1 120.9 7.8 123.0 5.4 124.5 15.9 130.1 13.8 132.3 15.1 133.3 21.7 126.3 25.6 121.4 33.8 122.9 38.5 125.5 37.9 126.4 40.0 125.9 46.3 123.3 45.7 116.3 50.6 114.6 49.3 113.2 51.8 107.0 50.7 99.1 55.2 96.9 55.8 96.8 54.3 95.5 54.4 93.9 55.9 93.6 61.4 91.3 63.3 91.9 67.1 89.9 68.0 88.6 65.7 86.1 66.8 82.6 64.4 81.9 67.1 80.7 65.8 77.7 66.0 68.2 70.0 60.9 52.8Z"/><path class="land" data-n="Vila Real" d="M130.3 60.3 133.1 57.5 135.5 51.8 136.5 44.9 139.9 43.7 143.4 38.3 148.3 38.0 149.7 32.2 151.6 32.5 150.9 40.2 152.7 41.9 155.6 39.4 155.2 37.6 160.5 37.3 162.7 35.5 165.4 36.3 168.4 34.5 172.6 37.6 178.8 37.5 176.5 43.8 184.7 42.2 186.5 39.0 191.0 39.5 193.4 43.6 193.2 46.3 198.9 41.0 199.7 42.4 203.5 42.2 213.9 37.8 213.0 45.6 216.6 51.0 208.6 71.8 208.7 75.1 211.3 79.9 206.3 80.8 205.0 86.8 198.9 89.6 199.3 98.6 203.6 101.3 198.0 104.5 199.2 105.7 196.5 107.9 196.8 112.9 194.5 112.3 192.9 116.7 186.4 118.1 184.5 120.4 182.3 119.4 178.5 123.2 171.7 122.4 168.6 124.9 159.6 122.5 158.1 124.4 152.8 123.0 149.8 127.6 148.9 125.7 151.2 122.3 150.8 116.9 152.5 113.0 148.8 109.4 148.3 107.3 149.5 105.9 144.4 102.7 145.9 100.0 143.6 99.1 144.1 95.3 142.9 95.0 146.5 90.8 146.8 85.2 150.0 83.9 150.8 81.0 153.8 81.2 153.5 79.7 156.0 78.3 155.8 76.3 157.5 75.9 158.2 73.3 154.7 69.0 151.9 72.2 141.4 70.4 141.2 64.5 142.8 61.5 138.9 59.3 130.3 60.3Z"/><path class="land" data-n="Viseu" d="M108.4 215.7 108.8 211.4 112.2 207.5 111.1 201.4 118.4 199.3 115.2 196.0 113.0 189.2 118.8 186.9 114.3 184.7 114.1 177.8 111.4 175.7 110.9 172.3 116.3 170.3 119.6 162.2 117.9 158.6 120.1 157.6 123.8 159.8 125.9 157.4 129.4 159.4 131.7 157.3 129.5 153.6 129.1 147.7 133.0 143.1 132.8 140.5 129.0 144.1 121.7 142.3 122.5 140.4 119.8 140.2 120.1 136.2 117.3 133.4 122.5 130.5 128.8 131.7 132.4 129.7 136.3 131.0 145.5 127.1 150.1 127.5 152.7 123.1 158.1 124.4 159.6 122.5 168.6 124.9 171.7 122.4 178.5 123.2 182.3 119.4 184.5 120.4 185.9 118.3 189.5 118.1 191.1 116.3 196.6 118.5 199.7 124.2 204.2 124.4 200.7 136.1 201.5 139.9 197.7 140.0 197.7 142.6 202.6 144.9 201.6 149.4 198.1 151.9 197.6 157.1 195.5 155.9 190.9 163.7 185.4 157.0 181.1 156.7 175.0 167.4 180.2 171.2 177.8 173.6 178.4 175.4 183.5 178.1 182.0 179.7 182.8 181.8 180.7 183.5 178.5 190.5 179.3 192.0 171.6 193.6 160.8 199.8 157.3 199.6 147.4 209.0 140.8 213.4 137.3 214.1 128.9 220.3 125.6 218.9 124.3 220.2 123.6 219.1 118.3 221.5 113.8 217.3 111.2 217.7 108.4 215.7ZM193.0 154.0 195.9 155.7 197.7 153.3 194.1 150.8 193.0 154.0Z"/><path class="land" data-n="Bragança" d="M192.9 116.7 194.5 112.3 196.9 112.7 196.5 107.9 199.2 105.7 198.0 104.5 199.8 102.5 203.5 101.7 199.3 98.6 198.9 89.6 205.0 86.8 206.3 80.8 211.3 79.9 208.7 75.1 208.6 71.8 213.2 57.6 216.5 53.7 216.6 50.8 214.5 49.3 212.7 44.0 214.4 39.4 213.6 38.4 216.4 33.1 214.9 30.5 216.0 25.9 221.3 25.2 226.0 29.6 231.6 29.4 234.1 26.7 236.0 27.3 237.3 30.1 242.0 30.7 248.4 30.0 249.4 24.5 253.2 25.5 254.9 30.2 259.5 31.5 266.7 30.7 270.0 27.6 273.5 30.7 271.2 37.3 276.3 38.7 273.7 49.7 271.4 53.9 273.3 56.0 273.3 60.7 277.7 64.1 281.6 62.9 282.8 60.8 295.7 63.5 306.0 73.8 299.8 80.9 300.4 82.6 295.4 88.5 295.9 91.0 292.9 93.2 294.3 96.1 291.1 97.0 289.9 95.2 287.8 96.2 287.4 98.0 288.9 99.2 285.4 100.5 283.4 105.6 278.9 107.2 279.7 109.1 278.0 110.2 275.7 109.1 271.2 113.4 269.4 111.5 268.6 112.9 264.2 112.4 260.3 116.9 258.7 121.2 253.3 125.7 254.5 129.4 248.7 137.8 235.1 137.3 233.2 138.7 232.2 137.2 228.2 136.4 222.8 131.9 224.5 126.7 220.3 125.4 221.7 123.8 221.5 120.5 217.3 126.7 209.5 124.5 206.4 125.6 199.7 124.2 196.6 118.6 192.9 116.7Z"/><path class="land" data-n="Évora" d="M81.2 424.4 88.4 416.4 95.5 411.2 94.6 408.7 96.4 405.8 91.3 405.5 93.5 402.5 95.6 400.3 98.2 401.9 102.0 397.2 103.9 398.5 106.8 394.5 110.0 396.6 111.9 394.2 112.9 395.9 113.7 393.0 117.4 396.1 116.6 397.5 118.3 399.0 120.9 397.7 123.2 400.3 122.5 401.3 125.3 401.0 125.1 403.2 128.2 404.4 129.8 400.6 127.4 398.8 126.6 400.4 126.0 397.9 124.0 396.7 126.7 393.4 124.6 391.8 122.2 392.4 116.3 388.5 119.0 384.9 119.1 380.6 120.4 379.1 121.2 380.2 125.2 375.2 126.2 375.8 127.3 374.4 129.0 376.2 129.2 374.9 131.7 374.9 132.2 376.1 130.2 377.1 131.7 381.2 133.2 380.4 133.9 376.0 136.8 376.6 139.9 379.8 139.1 384.6 142.4 384.2 148.0 380.6 150.7 385.7 152.3 386.3 152.4 388.4 160.3 389.9 160.7 388.6 163.7 388.4 165.5 384.8 168.6 387.9 170.0 385.9 174.1 388.0 177.2 383.1 180.8 383.2 182.8 381.4 181.8 378.6 183.6 376.6 185.5 379.3 188.0 379.0 187.7 380.5 190.9 381.8 189.7 386.3 193.7 389.0 193.2 392.1 195.3 395.5 193.5 395.5 195.3 396.8 196.5 401.0 198.7 399.9 199.9 401.5 202.4 400.7 202.5 398.2 205.3 396.4 206.7 397.9 208.7 395.5 211.6 397.8 213.3 397.5 211.0 403.2 213.6 406.9 208.8 409.9 207.9 413.0 207.4 420.3 210.0 422.0 203.5 435.0 202.9 439.2 204.8 438.6 205.0 440.2 201.6 444.2 203.3 443.6 206.7 446.1 216.7 462.6 218.5 463.1 222.4 473.4 220.3 475.4 218.3 475.1 218.5 477.2 217.7 476.7 214.0 469.2 214.9 466.5 210.0 464.6 206.0 456.5 201.5 457.7 199.8 460.3 195.2 460.4 196.0 461.4 194.9 464.1 192.8 464.8 189.9 470.0 187.0 471.2 186.9 473.4 180.5 473.3 174.4 470.9 171.2 472.0 163.1 466.5 155.8 465.9 142.8 458.1 140.2 460.3 136.1 456.9 129.2 458.7 127.3 456.7 125.6 457.9 123.1 455.2 116.6 453.9 115.9 451.8 111.8 451.7 115.3 447.0 113.7 445.5 115.2 445.4 114.6 443.8 111.7 444.1 112.9 441.5 107.5 431.2 102.6 434.1 100.6 433.4 97.8 434.6 95.2 431.0 93.8 431.5 95.0 434.3 93.0 435.3 92.7 433.3 89.0 432.9 88.8 430.9 82.9 430.8 81.2 424.4Z"/><path class="land" data-n="Santarém" d="M49.9 335.8 52.7 331.2 55.0 331.5 58.9 322.6 68.1 320.6 74.7 321.0 73.2 315.2 74.3 314.3 76.1 316.1 80.0 311.1 77.2 302.1 82.0 299.6 83.6 295.5 79.3 294.0 80.7 292.0 79.2 286.8 83.3 284.4 87.9 285.6 91.5 283.4 93.4 279.9 95.0 281.4 97.6 278.6 99.9 291.4 104.3 287.9 106.5 288.9 109.7 286.2 111.2 287.7 110.6 282.8 115.1 283.6 117.0 286.9 119.0 285.7 120.4 289.7 119.5 294.3 120.6 294.4 119.5 301.9 128.9 305.5 136.3 304.9 134.0 300.1 135.9 298.0 136.1 290.8 137.7 289.4 140.7 289.9 142.0 291.6 144.4 289.7 145.0 299.6 148.9 298.7 150.4 299.8 150.9 301.7 155.0 304.1 158.4 310.2 154.7 317.4 148.7 312.5 144.8 311.3 140.3 321.8 141.5 324.7 146.6 329.2 144.0 332.5 138.3 334.7 138.7 337.3 134.0 344.8 128.9 343.7 124.4 351.8 119.8 356.2 113.9 358.4 109.9 364.6 110.7 366.4 114.6 368.1 114.7 370.7 116.8 371.4 117.4 376.1 121.0 378.1 119.0 380.7 119.0 384.9 116.3 388.5 122.2 392.4 124.6 391.8 126.7 393.4 124.0 396.7 126.0 397.9 126.6 400.4 127.4 398.8 129.8 400.6 127.9 404.5 125.1 403.2 125.3 401.0 122.5 401.3 123.2 400.3 120.9 397.7 118.3 399.0 116.6 397.5 117.4 396.1 113.7 393.0 112.9 395.9 111.9 394.2 110.0 396.6 106.8 394.5 103.9 398.5 102.0 397.2 98.2 401.9 95.6 400.3 91.2 405.6 85.3 403.3 86.9 396.3 83.8 397.6 82.1 400.1 76.7 395.8 72.5 407.9 69.1 409.0 64.7 405.7 59.9 408.1 58.8 407.5 59.3 409.2 58.3 409.2 53.1 397.4 58.1 390.8 60.0 384.2 63.7 382.3 61.2 380.9 64.5 375.6 62.8 374.2 66.6 374.1 69.9 370.5 67.6 365.3 62.1 362.4 58.0 357.5 60.6 355.6 63.3 356.5 65.9 355.7 65.3 351.3 62.6 350.4 61.3 347.9 58.1 349.9 53.5 347.5 51.8 348.2 52.3 343.7 50.6 342.6 51.3 340.0 49.9 335.8Z"/><path class="land" data-n="Setúbal" d="M26.0 417.4 36.8 414.4 36.7 417.0 41.0 419.1 46.0 414.9 46.0 411.1 49.3 408.0 47.3 408.2 48.4 406.4 54.3 405.9 50.9 406.5 51.3 405.6 49.1 405.3 51.1 402.9 51.9 403.8 50.4 404.6 54.3 403.0 52.4 402.7 53.4 401.3 51.2 402.2 53.1 398.1 58.8 409.3 58.8 407.5 59.9 408.1 64.7 405.7 69.1 409.0 72.5 407.9 76.7 395.8 82.1 400.1 83.8 397.6 86.9 396.3 85.8 403.9 96.4 405.8 94.6 408.7 95.5 411.2 81.6 423.4 82.9 430.8 88.8 430.9 89.0 432.9 92.7 433.3 93.0 435.3 95.0 434.3 93.8 431.5 95.2 431.0 97.8 434.6 100.6 433.4 102.6 434.1 107.5 431.2 112.9 441.5 111.7 444.1 114.6 443.8 115.2 445.4 113.7 445.5 115.3 447.0 111.8 451.7 115.9 451.8 116.6 453.9 123.1 455.2 128.1 460.4 129.3 464.2 129.3 469.2 121.0 471.7 119.3 474.4 115.2 473.6 114.6 479.2 110.8 477.3 108.7 479.3 108.0 483.3 105.9 481.9 105.2 483.0 104.1 488.0 108.0 493.0 112.1 492.5 114.4 496.4 113.0 506.0 113.9 507.5 110.6 511.4 111.0 513.7 101.6 510.8 101.0 512.1 92.2 512.9 90.9 513.6 91.1 517.3 89.6 517.0 88.0 519.3 87.7 524.3 85.9 523.9 84.9 525.2 80.9 522.9 78.7 524.6 74.2 517.5 69.9 518.4 67.4 503.9 63.7 502.9 64.2 504.8 62.3 501.1 60.3 501.3 60.2 502.6 60.1 501.6 64.7 493.2 69.0 479.4 70.5 468.6 69.8 457.8 66.0 446.3 58.1 437.7 60.1 437.7 60.7 439.9 60.4 438.1 66.0 443.1 68.9 450.5 69.5 446.7 67.6 445.0 68.1 443.5 71.2 447.6 74.7 446.0 80.9 447.7 77.5 443.4 75.3 443.4 74.9 435.0 76.8 434.6 73.9 434.0 74.3 428.5 70.9 432.6 67.3 430.9 69.3 431.7 67.7 432.9 69.8 434.6 66.0 435.5 72.4 436.7 70.9 436.4 70.3 439.0 69.6 437.8 70.4 439.9 68.2 439.9 68.8 438.2 67.5 438.0 67.5 439.5 67.5 438.0 63.8 435.6 59.3 434.2 56.7 435.7 56.1 438.0 51.8 439.1 47.5 443.0 44.2 444.3 40.3 443.4 34.7 444.9 32.2 447.3 30.1 446.9 33.0 439.4 33.4 433.1 30.3 423.2 26.0 417.4Z"/><path class="land" data-n="Faro" d="M50.3 610.9 58.3 595.4 57.5 590.4 59.6 589.2 62.8 581.9 61.2 575.8 64.1 572.5 68.3 561.2 72.9 562.6 74.3 567.0 80.7 566.3 82.9 569.3 84.6 566.3 88.9 565.0 94.2 568.9 96.1 568.1 99.7 569.5 102.6 567.5 103.1 564.1 108.6 562.5 111.2 563.7 112.2 561.8 115.8 563.4 117.0 565.5 116.0 567.9 118.5 568.2 123.6 573.1 135.1 576.0 138.6 571.8 142.0 570.7 140.5 569.1 141.1 566.6 148.0 564.8 149.5 565.9 150.1 564.3 151.3 564.6 151.0 562.3 154.2 562.0 154.5 560.6 156.4 560.7 157.2 559.1 158.2 559.8 162.5 556.1 163.5 557.0 165.5 555.0 170.7 553.9 175.7 555.8 179.9 551.2 187.2 551.9 189.9 556.0 191.6 564.1 190.1 565.3 192.1 567.5 191.9 576.9 193.8 581.3 192.7 584.1 196.4 594.0 190.1 592.8 179.9 597.0 153.1 618.0 147.4 617.1 133.2 606.5 124.5 602.9 114.0 605.1 108.4 601.7 101.4 603.5 87.0 599.2 81.1 600.6 80.3 604.3 74.9 603.4 69.2 606.2 64.1 606.7 62.5 608.6 59.7 608.6 54.9 614.3 53.3 610.6 50.3 610.9Z"/></g></svg>
+        <div class="pincard" id="pinCard"><img src="" alt=""><b></b><small></small></div>
+      </div>
+      <div class="mr">
+        <div class="rv" style="--d:.25s"><h3 data-t="map.h3">Estamos aqui…</h3><p data-t="map.txt">Imóveis em carteira em Lisboa, na linha de Cascais e na costa alentejana. Cada pino é uma casa que represento, com filme, fotografia e visita por marcação.</p></div>
+        <h2 class="didone rv-lines" style="--d:.35s" data-th="map.h2b">Visitas<br>privadas<br>por marcação</h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GALERIA ===== -->
+  <section class="panel light pad" id="galeria">
+    <div class="ghead">
+      <h2 class="didone rv-lines" data-t="gal.h2">Um olhar mais próximo</h2>
+      <p class="rv" data-th="gal.txt">Explore <b>arquitetura, interiores e detalhes</b> de todos os ângulos.</p>
+      <div class="toggle rv" role="tablist">
+        <button type="button" id="tabVid" class="on" data-t="gal.vid">Vídeos</button>
+        <button type="button" id="tabFot" data-t="gal.fot">Fotos</button>
+      </div>
+    </div>
+    <div class="grid3" id="gallery"></div>
+  </section>
+
+  <!-- ===== CONTACTO ===== -->
+  <section class="panel light pad" id="contacto">
+    <div class="findhead">
+      <h2 class="didone rv-lines" data-th="find.h2">Vamos falar<br>da sua casa</h2>
+      <p class="rv" style="--d:.3s" data-th="find.txt">Diga-me <b>o que tem</b>, ou o que procura.</p>
+    </div>
+    <div class="contact rv" style="--d:.2s">
+      <div class="vis"><video muted loop playsinline autoplay preload="metadata" src="media/corte3.mp4" poster="media/poster-corte3.jpg" aria-hidden="true"></video></div>
+      <form id="leadForm" novalidate>
+        <p class="label" data-t="form.l">Pedido de contacto</p>
+        <input id="nome" name="nome" autocomplete="name" data-ph="form.nome" placeholder="O seu nome" required>
+        <input id="email" name="email" type="email" autocomplete="email" data-ph="form.email" placeholder="Email">
+        <input id="tel" name="tel" type="tel" inputmode="tel" autocomplete="tel" data-ph="form.tel" placeholder="Telemóvel" required>
+        <input id="zona" name="zona" data-ph="form.zona" placeholder="Zona do imóvel (opcional)">
+        <div class="cta">
+          <button class="pill black" type="submit"><span data-t="form.enviar">Pedir contacto</span><i><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 10 10 2M4 2h6v6"/></svg></i></button>
+          <a class="alt js-wa" href="#" target="_blank" rel="noopener" data-t="form.wa">Falar no WhatsApp</a>
+        </div>
+        <small class="cta" style="margin-top:2px"><span data-t="form.nota">Ao enviar, abre o WhatsApp com a mensagem já escrita. Resposta pessoal do Francisco.</span></small>
+      </form>
+    </div>
+  </section>
+
+  <footer class="rv">
+    <div class="brand">
+      <span class="name">Francisco<br>Marques</span>
+      <span class="sub" data-t="foot.sub">Consultor imobiliário</span>
+      <small><span data-t="foot.copy">© 2026 Francisco Lima Marques. Todos os direitos reservados.</span><br>RE/MAX Latina II · Sold Fast, Mediação Imobiliária, Lda · AMI 7001<br><span data-t="foot.credit">Filme e página por</span> <a href="https://creativesete.com" target="_blank" rel="noopener">CreativeSete</a></small>
+    </div>
+    <div><h5 data-t="foot.menu">Menu</h5><ul>
+      <li><a href="#imoveis" data-t="nav.imoveis">Imóveis</a></li><li><a href="#filme" data-t="nav.filme">Filme</a></li><li><a href="#sobre" data-t="nav.sobre">Sobre</a></li><li><a href="#metodo" data-t="nav.metodo">Método</a></li><li><a href="#contacto" data-t="nav.contacto">Contacto</a></li></ul></div>
+    <div><h5 data-t="foot.contacto">Contacto</h5><ul>
+      <li><a href="tel:+351935965463">+351 935 965 463</a></li><li><a href="#" class="js-wa" target="_blank" rel="noopener">WhatsApp</a></li></ul></div>
+    <div><h5 data-t="foot.social">Social</h5><ul>
+      <li><a href="https://www.instagram.com/fmarques.consultor/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://remax.pt/pt/agente/francisco-lima-marques/120992864" target="_blank" rel="noopener">RE/MAX</a></li></ul></div>
+    <div><h5 data-t="foot.visit">Visite</h5><ul>
+      <li data-t="foot.v1">Visitas privadas</li><li data-t="foot.v2">Por marcação</li><li>Av. Casal Ribeiro 12 B, Lisboa</li></ul></div>
+  </footer>
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ============================================================
+   CONFIGURAÇÃO · a única parte a editar por cliente
+   ============================================================ */
+const PAGINA = {
+  whatsapp: '351935965463',
+  video: { hero: 'media/corte1.mp4', posterHero: 'media/poster-corte1.jpg', completo: 'media/filme.mp4', embed: '', poster: 'media/poster-filme.jpg' }, // filme.mp4 é a versão com legenda, 0:55
+  cortes: [
+    { src: 'media/corte1.mp4', poster: 'media/poster-corte1.jpg', pt: 'A casa e o terraço', en: 'The house and the terrace' },
+    { src: 'media/corte2.mp4', poster: 'media/poster-corte2.jpg', pt: 'Luz e vista',        en: 'Light and view' },
+    { src: 'media/corte3.mp4', poster: 'media/poster-corte3.jpg', pt: 'Suite e varanda',    en: 'Suite and balcony' }
+  ],
+  fotos: ['media/foto-1.jpg','media/poster-hero.jpg','media/foto-3.jpg','media/poster-filme.jpg','media/foto-4.jpg','media/foto-5.jpg'],
+  imoveis: [
+    { pt: 'Moradia Benfica',           en: 'Benfica villa',             subPt: 'Moradia contemporânea · Lisboa',      subEn: 'Contemporary villa · Lisbon',       video: 'media/corte1.mp4', img: 'media/poster-corte1.jpg', link: '' },
+    { pt: 'Moradia Restelo',           en: 'Restelo villa',             subPt: 'T4 · 320 m² · exemplo a substituir',  subEn: 'T4 · 320 m² · example to replace',  img: 'media/foto-1.jpg', link: '', exemplo: true },
+    { pt: 'Apartamento Avenidas Novas',en: 'Avenidas Novas apartment',  subPt: 'T3 · 165 m² · exemplo a substituir',  subEn: 'T3 · 165 m² · example to replace',  img: 'media/foto-5.jpg', link: '', exemplo: true },
+    { pt: 'Moradia Cascais',           en: 'Cascais villa',             subPt: 'T5 · 410 m² · exemplo a substituir',  subEn: 'T5 · 410 m² · example to replace',  img: 'media/foto-4.jpg', link: '', exemplo: true }
+  ],
+  nums: [
+    { pt: ['Localização', 'Zonas escolhidas pelo valor a longo prazo e pela vida que oferecem.'], en: ['Location', 'Areas chosen for long-term value and for the life they offer.'] },
+    { pt: ['Arquitetura', 'Casas com desenho, luz e detalhe que se distinguem.'],                en: ['Architecture', 'Homes with design, light and detail that stand apart.'] },
+    { pt: ['Acompanhamento', 'Orientação pessoal da primeira visita à escritura.'],              en: ['Service', 'Personal guidance from the first viewing to the deed.'] }
+  ],
+  metodo: [
+    { img: 'media/foto-2.jpg',         pt: ['Avaliação', 'Estudo comparativo da zona e um preço que defende o valor da casa, sem a deixar parada no mercado.', 'Dia 1'],          en: ['Valuation', 'A comparative study of the area and a price that protects the value of the home without leaving it sitting on the market.', 'Day 1'] },
+    { img: 'media/poster-corte1.jpg',  pt: ['Filme e fotografia', 'Filme cinematográfico, fotografia e cortes para redes, produzidos com a CreativeSete antes de a casa entrar no mercado.', 'Semana 1'], en: ['Film and photography', 'A cinematic film, photography and social cuts, produced with CreativeSete before the home goes to market.', 'Week 1'] },
+    { img: 'media/foto-3.jpg',         pt: ['Visitas qualificadas', 'Divulgação na rede RE/MAX e visitas apenas com compradores que já viram a casa e têm capacidade real de compra.', 'Semanas 2 a 6'], en: ['Qualified viewings', 'Exposure across the RE/MAX network and viewings only with buyers who have seen the home and can actually buy.', 'Weeks 2 to 6'] },
+    { img: 'media/foto-6.jpg',         pt: ['CPCV e escritura', 'Negociação, contrato promessa e escritura acompanhados de perto, até à entrega das chaves.', 'Fecho'],            en: ['Promissory contract and deed', 'Negotiation, promissory contract and deed followed closely, right up to the handover of the keys.', 'Closing'] }
+  ],
+  pins: [
+    { x: 31.9, y: 407.1, pt: 'Moradia Benfica',  en: 'Benfica villa',  subPt: 'Lisboa · disponível',          subEn: 'Lisbon · available',           img: 'media/poster-corte1.jpg' },
+    { x: 11.8, y: 413.0, pt: 'Moradia Cascais',  en: 'Cascais villa',  subPt: 'Cascais · exemplo a substituir', subEn: 'Cascais · example to replace', img: 'media/foto-4.jpg' },
+    { x: 70.1, y: 450.8, pt: 'Casa Comporta',    en: 'Comporta house', subPt: 'Comporta · exemplo a substituir', subEn: 'Comporta · example to replace', img: 'media/foto-5.jpg' }
+  ]
+};
+
+const T = {
+  pt: {
+    'nav.inicio': 'Início', 'nav.imoveis': 'Imóveis', 'nav.filme': 'Filme', 'nav.sobre': 'Sobre', 'nav.metodo': 'Método', 'nav.mapa': 'Mapa', 'nav.contacto': 'Contacto',
+    'nav.tour': 'Marcar visita privada',
+    'hero.h1': 'Francisco<br>Marques',
+    'hero.pill': 'Ver o filme',
+    'hero.status': '<b>Moradia Benfica</b>disponível para visita privada',
+    'hero.side': 'Casas de exceção para viver Lisboa.',
+    'hero.cap': 'Onde arquitetura, luz e localização estão em equilíbrio.',
+    'hero.cardT': 'O seu imóvel, com filme.', 'hero.cardP': 'Filme cinematográfico e fotografia antes de entrar no mercado. Fale comigo.',
+    'strap.1': 'Residências<br>privadas', 'strap.2': 'Localizações<br>prime', 'strap.3': 'Design<br>intemporal', 'strap.4': 'Viver<br>melhor',
+    'strap.5': 'Casas de exceção para viver Lisboa /<br>localizações prime', 'strap.6': 'RE/MAX<br>Latina II',
+    'sobre.c1': 'Consultor imobiliário<br>RE/MAX Latina II', 'sobre.c2': 'Lisboa · Cascais<br>AMI 7001',
+    'sobre.p1': 'Imobiliário / Premium', 'sobre.p2': 'Lisboa e linha de Cascais',
+    'sobre.txt': 'Francisco Lima Marques acompanha proprietários e compradores de <b>casas de exceção em Lisboa</b>. Cada imóvel é preparado com <b>filme, fotografia e estratégia de preço</b>, para chegar ao comprador certo <b>sem ruído e sem meses em anúncios</b>.',
+    'note.1': 'Casas de exceção em Lisboa.', 'note.2': 'Espaços pensados para viver.', 'note.3': 'Confiança que gera resultados.',
+    'beyond': 'Acima do esperado · diferente por escolha',
+    'filme.l1': 'Filme · Moradia · Benfica, Lisboa', 'filme.h2': 'Ver antes de visitar', 'filme.l2': 'Realização e produção · CreativeSete',
+    'filme.play': 'Ver o filme', 'filme.cap1': 'Moradia · Benfica, Lisboa · 2026', 'filme.cap2': 'Duração · 0:55 · com legendas',
+    'filme.txt': 'Um comprador decide em segundos se quer visitar. O filme mostra <b>a luz, a escala e o silêncio</b> de uma casa antes da primeira visita. Cada imóvel que represento ganha o seu filme, <b>antes de entrar no mercado</b>.',
+    'filme.cta': 'Confiar o meu imóvel',
+    'imoveis.h2': 'Lugares para<br>chamar casa', 'imoveis.txt': 'Uma seleção de residências em localizações de exceção.',
+    'prop.ver': 'ver', 'prop.pedir': 'pedir',
+    'beyond.h2a': 'Para lá<br>dos metros', 'beyond.h2b': 'quadrados', 'beyond.txt': 'Onde <b>arquitetura, lugar e vida</b> existem em equilíbrio.', 'beyond.l': 'Definido pelo detalhe, medido pela vida',
+    'beyond.foot': 'Detalhes que<br>definem qualidade',
+    'met.slash': 'O método', 'met.h2': 'Da avaliação<br>à escritura', 'met.txt': 'Quatro etapas, <b>pela ordem certa</b>. O filme entra antes de a casa chegar ao mercado, e as visitas só começam com comprador a sério do outro lado.',
+    'map.h2': 'As casas<br>estão aqui', 'map.l': 'Lisboa · Cascais · Comporta', 'map.h3': 'Estamos aqui…',
+    'map.txt': 'Imóveis em carteira em Lisboa, na linha de Cascais e na costa alentejana. Cada pino é uma casa que represento, com filme, fotografia e visita por marcação.',
+    'map.h2b': 'Visitas<br>privadas<br>por marcação',
+    'gal.h2': 'Um olhar mais próximo', 'gal.txt': 'Explore <b>arquitetura, interiores e detalhes</b> de todos os ângulos.', 'gal.vid': 'Vídeos', 'gal.fot': 'Fotos', 'gal.som': 'som',
+    'find.h2': 'Vamos falar<br>da sua casa', 'find.txt': 'Diga-me <b>o que tem</b>, ou o que procura.',
+    'form.l': 'Pedido de contacto', 'form.nome': 'O seu nome', 'form.email': 'Email', 'form.tel': 'Telemóvel', 'form.zona': 'Zona do imóvel (opcional)',
+    'form.enviar': 'Pedir contacto', 'form.wa': 'Falar no WhatsApp', 'form.nota': 'Ao enviar, abre o WhatsApp com a mensagem já escrita. Resposta pessoal do Francisco.',
+    'form.erro': 'Falta o nome ou o telemóvel.',
+    'foot.sub': 'Consultor imobiliário', 'foot.copy': '© 2026 Francisco Lima Marques. Todos os direitos reservados.', 'foot.credit': 'Filme e página por',
+    'foot.menu': 'Menu', 'foot.contacto': 'Contacto', 'foot.social': 'Social', 'foot.visit': 'Visite', 'foot.v1': 'Visitas privadas', 'foot.v2': 'Por marcação',
+    'wa.msg': 'Olá Francisco, vi a sua página e gostava de falar sobre o meu imóvel.',
+    'wa.form': 'Olá Francisco, vi a sua página.\nNome: {nome}\nEmail: {email}\nTelemóvel: {tel}\nZona do imóvel: {zona}',
+    'play.soon': 'O filme fica disponível em breve.'
+  },
+  en: {
+    'nav.inicio': 'Home', 'nav.imoveis': 'Homes', 'nav.filme': 'Film', 'nav.sobre': 'About', 'nav.metodo': 'Method', 'nav.mapa': 'Map', 'nav.contacto': 'Contact',
+    'nav.tour': 'Book a private viewing',
+    'hero.h1': 'Francisco<br>Marques',
+    'hero.pill': 'Watch the film',
+    'hero.status': '<b>Benfica villa</b>available for private viewing',
+    'hero.side': 'Exceptional homes for life in Lisbon.',
+    'hero.cap': 'Where architecture, light and location are in balance.',
+    'hero.cardT': 'Your home, with a film.', 'hero.cardP': 'A cinematic film and photography before it goes to market. Talk to me.',
+    'strap.1': 'Private<br>residences', 'strap.2': 'Prime<br>locations', 'strap.3': 'Timeless<br>design', 'strap.4': 'Elevated<br>living',
+    'strap.5': 'Exceptional homes for life in Lisbon /<br>prime locations', 'strap.6': 'RE/MAX<br>Latina II',
+    'sobre.c1': 'Real estate consultant<br>RE/MAX Latina II', 'sobre.c2': 'Lisbon · Cascais<br>AMI 7001',
+    'sobre.p1': 'Real estate / Premium', 'sobre.p2': 'Lisbon and the Cascais coast',
+    'sobre.txt': 'Francisco Lima Marques works with owners and buyers of <b>exceptional homes in Lisbon</b>. Every property is prepared with <b>film, photography and a pricing strategy</b>, to reach the right buyer <b>without noise and without months in listings</b>.',
+    'note.1': 'Exceptional homes in Lisbon.', 'note.2': 'Spaces designed for living.', 'note.3': 'Confidence that delivers results.',
+    'beyond': 'Beyond the expected · different by choice',
+    'filme.l1': 'Film · Villa · Benfica, Lisbon', 'filme.h2': 'See it before you visit', 'filme.l2': 'Directed and produced by CreativeSete',
+    'filme.play': 'Watch the film', 'filme.cap1': 'Villa · Benfica, Lisbon · 2026', 'filme.cap2': 'Running time · 0:55 · with subtitles',
+    'filme.txt': 'A buyer decides in seconds whether to book a viewing. The film shows <b>the light, the scale and the quiet</b> of a home before the first visit. Every home I represent gets its own film, <b>before it goes to market</b>.',
+    'filme.cta': 'Entrust my home',
+    'imoveis.h2': 'Places worth<br>calling home', 'imoveis.txt': 'A curated selection of residences in exceptional locations.',
+    'prop.ver': 'view', 'prop.pedir': 'ask',
+    'beyond.h2a': 'Beyond<br>square', 'beyond.h2b': 'meters', 'beyond.txt': 'Where <b>architecture, place and life</b> exist in balance.', 'beyond.l': 'Defined by detail, measured by life',
+    'beyond.foot': 'Details that<br>define quality',
+    'met.slash': 'The method', 'met.h2': 'From valuation<br>to deed', 'met.txt': 'Four steps, <b>in the right order</b>. The film comes before the home reaches the market, and viewings only start with a serious buyer on the other side.',
+    'map.h2': 'The homes<br>are here', 'map.l': 'Lisbon · Cascais · Comporta', 'map.h3': 'We are here…',
+    'map.txt': 'Homes in portfolio in Lisbon, along the Cascais coast and on the Alentejo coast. Each pin is a home I represent, with film, photography and viewings by appointment.',
+    'map.h2b': 'Private<br>viewings<br>by appointment',
+    'gal.h2': 'A closer look', 'gal.txt': 'Explore <b>architecture, interiors and details</b> from every perspective.', 'gal.vid': 'Videos', 'gal.fot': 'Photos', 'gal.som': 'sound',
+    'find.h2': 'Let\'s talk<br>about your home', 'find.txt': 'Tell me <b>what you have</b>, or what you are looking for.',
+    'form.l': 'Request a call', 'form.nome': 'Your name', 'form.email': 'Email', 'form.tel': 'Phone', 'form.zona': 'Property area (optional)',
+    'form.enviar': 'Request a call', 'form.wa': 'Chat on WhatsApp', 'form.nota': 'Sending opens WhatsApp with the message already written. Francisco answers personally.',
+    'form.erro': 'Name or phone is missing.',
+    'foot.sub': 'Real estate consultant', 'foot.copy': '© 2026 Francisco Lima Marques. All rights reserved.', 'foot.credit': 'Film and page by',
+    'foot.menu': 'Menu', 'foot.contacto': 'Contact', 'foot.social': 'Social', 'foot.visit': 'Visit', 'foot.v1': 'Private viewings', 'foot.v2': 'By appointment',
+    'wa.msg': 'Hello Francisco, I saw your page and would like to talk about my property.',
+    'wa.form': 'Hello Francisco, I saw your page.\nName: {nome}\nEmail: {email}\nPhone: {tel}\nProperty area: {zona}',
+    'play.soon': 'The film will be available soon.'
+  }
+};
+
+let LANG = 'pt', FIRST = true;
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+const t = k => (T[LANG] && T[LANG][k]) ?? T.pt[k] ?? '';
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const stopAll = () => $$('.tile.on').forEach(o => { o.classList.remove('on'); const v = o.querySelector('video'); if (v){ v.muted = true; v.controls = false; v.loop = true; v.pause(); v.currentTime = 0; } });
+
+/* ---------- Revelações ---------- */
+const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+function splitLines(el){
+  if (el.dataset.split === el.innerHTML) return;
+  const parts = el.innerHTML.split(/<br\s*\/?>/i);
+  el.innerHTML = parts.map((p, i) => `<span class="ln"><span style="--i:${i}">${p}</span></span>`).join('');
+  el.dataset.split = el.innerHTML;
+}
+let io;
+function observe(){
+  $$('.rv-lines').forEach(splitLines);
+  const els = $$('.rv, .rv-img, .rv-lines, .rv-plain').filter(e => !e.classList.contains('in'));
+  if (REDUCED || !('IntersectionObserver' in window) || !FIRST){ els.forEach(e => e.classList.add('in')); return; }
+  io = io || new IntersectionObserver(entries => {
+    entries.forEach(en => { if (en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, { threshold: .12, rootMargin: '0px 0px -6% 0px' });
+  els.forEach(e => io.observe(e));
+}
+
+/* ---------- Hero ---------- */
+function renderHero(){
+  const v = $('#heroVideo');
+  if (v && v.getAttribute('src') !== PAGINA.video.hero){ v.src = PAGINA.video.hero; if (PAGINA.video.posterHero) v.poster = PAGINA.video.posterHero; v.play().catch(()=>{}); }
+}
+
+/* ---------- Filme principal ---------- */
+function setupPlayer(){
+  $('#playBtn').addEventListener('click', () => {
+    const p = $('#player');
+    if (PAGINA.video.completo){
+      const v = document.createElement('video');
+      Object.assign(v, { src: PAGINA.video.completo, controls: true, autoplay: true, playsInline: true, poster: PAGINA.video.poster });
+      p.innerHTML = ''; p.appendChild(v);
+    } else if (PAGINA.video.embed){
+      const f = document.createElement('iframe');
+      f.src = PAGINA.video.embed + (PAGINA.video.embed.includes('?') ? '&' : '?') + 'autoplay=1';
+      f.allow = 'autoplay; fullscreen; picture-in-picture'; f.allowFullscreen = true;
+      p.innerHTML = ''; p.appendChild(f);
+    } else toast(t('play.soon'));
+  });
+}
+
+/* ---------- Imóveis ---------- */
+function renderImoveis(){
+  const s = $('#listing'); s.innerHTML = '';
+  PAGINA.imoveis.forEach((m, i) => {
+    const el = document.createElement('article'); el.className = 'prop';
+    const media = m.video ? `<video src="${esc(m.video)}" poster="${esc(m.img)}" muted loop playsinline preload="metadata"></video>` : `<img src="${esc(m.img)}" alt="">`;
+    const href = m.link || waLink(t('wa.msg') + ' ' + (LANG === 'en' ? m.en : m.pt) + '.');
+    el.innerHTML = `<div class="media rv-img" style="--d:${(i % 2) * .15}s">${media}</div>
+      <div class="meta rv" style="--d:${(i % 2) * .15 + .2}s"><div><h3>${esc(LANG === 'en' ? m.en : m.pt)}</h3><small>${esc(LANG === 'en' ? m.subEn : m.subPt)}</small></div>
+      <a class="pill" href="${href}" target="_blank" rel="noopener">${esc(m.link ? t('prop.ver') : t('prop.pedir'))}</a></div>`;
+    const v = el.querySelector('video');
+    if (v){ el.addEventListener('mouseenter', () => v.play().catch(()=>{})); el.addEventListener('mouseleave', () => { v.pause(); v.currentTime = 0; }); }
+    s.appendChild(el);
+  });
+}
+
+/* ---------- Numerados ---------- */
+function renderNums(){
+  $('#nums').innerHTML = PAGINA.nums.map((n, i) => { const [h, p] = n[LANG] || n.pt;
+    return `<div class="num rv" style="--d:${i * .15}s"><span class="n">0${i+1}</span><div><h4>${esc(h)}</h4><p>${esc(p)}</p></div></div>`; }).join('');
+}
+
+/* ---------- Método (The Edge) ---------- */
+let MET = 0, mFlip = false;
+function renderMetodo(){
+  const s = $('#msteps'); s.innerHTML = '';
+  PAGINA.metodo.forEach((m, i) => {
+    const [h, p, pill] = m[LANG] || m.pt;
+    const el = document.createElement('div'); el.className = 'step rv' + (i === MET ? ' on' : ''); el.style.setProperty('--d', (i * .12) + 's'); el.tabIndex = 0;
+    el.innerHTML = `<div><h4>${esc(h)}</h4><p>${esc(p)}</p></div><span class="pill">${esc(pill)}</span>`;
+    const act = () => setMet(i);
+    el.addEventListener('mouseenter', act); el.addEventListener('focus', act); el.addEventListener('click', act);
+    s.appendChild(el);
+  });
+  setMet(MET, true);
+}
+function setMet(i, force){
+  if (i === MET && !force) return;
+  MET = i;
+  $$('.step').forEach((e, k) => e.classList.toggle('on', k === i));
+  const m = PAGINA.metodo[i], [h] = m[LANG] || m.pt;
+  $('#mTag').textContent = `0${i+1} / ${h}`;
+  const a = $('#mImgA'), b = $('#mImgB');
+  const show = mFlip ? a : b, hide = mFlip ? b : a;
+  if (show.getAttribute('src') !== m.img) show.src = m.img;
+  show.classList.add('on'); hide.classList.remove('on'); mFlip = !mFlip;
+}
+
+/* ---------- Mapa ---------- */
+let PIN = 0;
+function renderPins(){
+  const svg = $('#mmap svg'); if (!svg) return;
+  let g = svg.querySelector('.pins'); if (g) g.remove();
+  g = document.createElementNS('http://www.w3.org/2000/svg', 'g'); g.setAttribute('class', 'pins');
+  PAGINA.pins.forEach((p, i) => {
+    const pin = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    pin.setAttribute('class', 'pin' + (i === PIN ? ' on' : '')); pin.setAttribute('transform', `translate(${p.x},${p.y})`); pin.setAttribute('tabindex', '0');
+    pin.innerHTML = `<circle class="ring" r="7"/><circle class="ring ring2" r="7"/><circle class="dot" r="3.4"/>`;
+    const act = () => setPin(i);
+    pin.addEventListener('mouseenter', act); pin.addEventListener('focus', act); pin.addEventListener('click', act);
+    g.appendChild(pin);
+  });
+  svg.appendChild(g);
+  setPin(PIN, true);
+}
+function setPin(i, force){
+  PIN = i;
+  $$('.pin').forEach((e, k) => e.classList.toggle('on', k === i));
+  const p = PAGINA.pins[i], card = $('#pinCard'), svg = $('#mmap svg');
+  const vb = svg.viewBox.baseVal;
+  card.querySelector('img').src = p.img;
+  card.querySelector('b').textContent = LANG === 'en' ? p.en : p.pt;
+  card.querySelector('small').textContent = LANG === 'en' ? p.subEn : p.subPt;
+  card.style.left = ((p.x - vb.x) / vb.width * 100) + '%';
+  card.style.top = ((p.y - vb.y) / vb.height * 100) + '%';
+  card.classList.remove('on'); requestAnimationFrame(() => requestAnimationFrame(() => card.classList.add('on')));
+}
+
+/* ---------- Galeria ---------- */
+let GAL = 'vid';
+function renderGallery(){
+  const g = $('#gallery'); g.innerHTML = ''; stopAll();
+  $('#tabVid').classList.toggle('on', GAL === 'vid'); $('#tabFot').classList.toggle('on', GAL === 'fot');
+  if (GAL === 'vid'){
+    PAGINA.cortes.forEach((c, i) => {
+      const el = document.createElement('div'); el.className = 'tile rv-img'; el.style.setProperty('--d', (i * .12) + 's'); el.tabIndex = 0; el.setAttribute('role', 'button'); el.setAttribute('aria-label', c[LANG] || c.pt);
+      el.innerHTML = `<video src="${esc(c.src)}" poster="${esc(c.poster)}" muted loop playsinline preload="metadata"></video><span class="snd">${esc(t('gal.som'))}</span>`;
+      const v = el.querySelector('video');
+      el.addEventListener('mouseenter', () => { if (!el.classList.contains('on')) v.play().catch(()=>{}); });
+      el.addEventListener('mouseleave', () => { if (!el.classList.contains('on')){ v.pause(); v.currentTime = 0; } });
+      const toggle = () => {
+        if (el.classList.contains('on')){ stopAll(); return; }
+        stopAll(); el.classList.add('on'); v.muted = false; v.controls = true; v.loop = false; v.currentTime = 0; v.play().catch(()=>{});
+      };
+      el.addEventListener('click', e => { if (el.classList.contains('on') && e.target === v) return; toggle(); });
+      el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(); } });
+      v.addEventListener('ended', stopAll);
+      g.appendChild(el);
+    });
+  } else {
+    PAGINA.fotos.forEach((f, i) => { const el = document.createElement('div'); el.className = 'tile rv-img'; el.style.setProperty('--d', (i % 3 * .12) + 's'); el.innerHTML = `<img src="${esc(f)}" alt="">`; g.appendChild(el); });
+  }
+  observe();
+}
+$('#tabVid').addEventListener('click', () => { GAL = 'vid'; renderGallery(); });
+$('#tabFot').addEventListener('click', () => { GAL = 'fot'; renderGallery(); });
+
+/* ---------- WhatsApp e formulário ---------- */
+function waLink(msg){ return `https://wa.me/${PAGINA.whatsapp}?text=${encodeURIComponent(msg)}`; }
+function updateWa(){ $$('.js-wa').forEach(a => a.href = waLink(t('wa.msg'))); }
+$('#leadForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const v = id => $('#' + id).value.trim();
+  if (!v('nome') || !v('tel')){ toast(t('form.erro')); return; }
+  const msg = t('wa.form').replace('{nome}', v('nome')).replace('{email}', v('email') || '·').replace('{tel}', v('tel')).replace('{zona}', v('zona') || '·');
+  window.open(waLink(msg), '_blank', 'noopener');
+});
+
+/* ---------- Idioma ---------- */
+function setLang(l){
+  LANG = T[l] ? l : 'pt';
+  document.documentElement.lang = LANG === 'pt' ? 'pt-PT' : 'en';
+  $$('[data-t]').forEach(el => { const s = T[LANG][el.dataset.t]; if (s != null){ el.innerHTML = s.includes('<br>') ? s : esc(s); delete el.dataset.split; } });
+  $$('[data-th]').forEach(el => { const s = T[LANG][el.dataset.th]; if (s != null){ el.innerHTML = s; delete el.dataset.split; } });
+  $$('[data-ph]').forEach(el => { const s = T[LANG][el.dataset.ph]; if (s != null) el.placeholder = s; });
+  $$('#langBtn b').forEach(b => b.classList.toggle('on', b.dataset.lang === LANG));
+  renderHero(); renderImoveis(); renderNums(); renderMetodo(); renderPins(); renderGallery(); updateWa();
+  observe();
+  try { localStorage.setItem('fm.lang', LANG); } catch (e) {}
+  const u = new URL(location.href); u.searchParams.set('lang', LANG); history.replaceState(null, '', u);
+}
+$('#langBtn').addEventListener('click', () => { FIRST = false; setLang(LANG === 'pt' ? 'en' : 'pt'); });
+
+let tt;
+function toast(m){ const el = $('#toast'); el.textContent = m; el.classList.add('on'); clearTimeout(tt); tt = setTimeout(() => el.classList.remove('on'), 3200); }
+
+/* ---------- Arranque ---------- */
+(function start(){
+  let l = new URLSearchParams(location.search).get('lang');
+  if (!l){ try { l = localStorage.getItem('fm.lang'); } catch (e) {} }
+  if (!l){ l = (navigator.language || 'pt').toLowerCase().startsWith('pt') ? 'pt' : 'en'; }
+  setupPlayer();
+  setLang(l);
+  const hero = $('.hero');
+  const go = () => { hero.classList.add('in'); hero.querySelector('h1').classList.add('in'); };
+  if (REDUCED) go(); else { (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(() => setTimeout(go, 120)); setTimeout(go, 1800); }
+  const kick = () => $$('video[autoplay]').forEach(v => { if (v.paused) v.play().catch(()=>{}); });
+  kick(); document.addEventListener('visibilitychange', kick);
+  ['pointerdown','scroll','keydown'].forEach(ev => window.addEventListener(ev, kick, { once: true, passive: true }));
+})();
+</script>
+</body>
+</html>

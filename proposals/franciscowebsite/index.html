@@ -381,6 +381,13 @@
     .mr{text-align:left;align-items:flex-start}
     .pincard{width:130px}
   }
+  .nomotion *,.nomotion *::before,.nomotion *::after{animation:none!important;transition:none!important}
+  .nomotion .rv,.nomotion .rv-img,.nomotion .hero-a{opacity:1!important;transform:none!important}
+  .nomotion .hero .bgv{opacity:.7!important;transform:none!important}
+  .nomotion .rv-img::after{display:none!important}
+  .nomotion .ln > span{transform:none!important}
+  .nomotion .cutout .word{transform:none!important}
+  .nomotion .hero{min-height:1036px;height:1036px}
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
     *,*::before,*::after{animation:none!important;transition:none!important}
@@ -738,7 +745,8 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':
 const stopAll = () => $$('.tile.on').forEach(o => { o.classList.remove('on'); const v = o.querySelector('video'); if (v){ v.muted = true; v.controls = false; v.loop = true; v.pause(); v.currentTime = 0; } });
 
 /* ---------- Revelações ---------- */
-const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const QS = new URLSearchParams(location.search);
+const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches || QS.get('motion') === 'off';
 function splitLines(el){
   if (el.dataset.split === el.innerHTML) return;
   const parts = el.innerHTML.split(/<br\s*\/?>/i);
@@ -925,9 +933,17 @@ function toast(m){ const el = $('#toast'); el.textContent = m; el.classList.add(
   const hero = $('.hero');
   const go = () => { hero.classList.add('in'); hero.querySelector('h1').classList.add('in'); };
   if (REDUCED) go(); else { (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(() => setTimeout(go, 120)); setTimeout(go, 1800); }
-  const kick = () => $$('video[autoplay]').forEach(v => { if (v.paused) v.play().catch(()=>{}); });
-  kick(); document.addEventListener('visibilitychange', kick);
-  ['pointerdown','scroll','keydown'].forEach(ev => window.addEventListener(ev, kick, { once: true, passive: true }));
+  if (QS.get('motion') === 'off'){
+    document.documentElement.classList.add('nomotion');
+    $$('video[autoplay]').forEach(v => { v.pause(); v.removeAttribute('src'); v.load(); });
+  } else {
+    const kick = () => $$('video[autoplay]').forEach(v => { if (v.paused) v.play().catch(()=>{}); });
+    kick(); document.addEventListener('visibilitychange', kick);
+    ['pointerdown','scroll','keydown'].forEach(ev => window.addEventListener(ev, kick, { once: true, passive: true }));
+  }
+  if (QS.get('demo') === '1'){
+    $('#nome').value = 'Ana Ribeiro'; $('#email').value = 'ana.ribeiro@gmail.com'; $('#tel').value = '+351 91 234 56 78'; $('#zona').value = 'Restelo, Lisboa';
+  }
 })();
 </script>
 </body>

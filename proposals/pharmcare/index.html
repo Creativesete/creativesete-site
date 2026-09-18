@@ -1,0 +1,839 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="theme-color" content="#471549">
+<title>Instituto Pharmcare · Proposta CreativeSete</title>
+<meta name="description" content="Proposta de produção e edição de conteúdos vídeo para o Instituto Pharmcare.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Instituto Pharmcare · Vídeo 2026">
+<meta property="og:description" content="Do webinar de 60 minutos aos 60 segundos que chegam ao balcão. Proposta da CreativeSete.">
+<link rel="icon" href="/assets/mark7_dark.png">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+/* Identidade do Instituto Pharmcare: roxo #6E2370 verificado no logotipo e no CSS
+   do site deles, Poppins, botoes pilula, cantos redondos, acento verde discreto. */
+:root{
+  --roxo:#6E2370;--roxo-vivo:#9B3AA0;--roxo-escuro:#471549;--roxo-noite:#2E0B30;
+  --verde:#75C32C;
+  --ink:#2B2F38;--muted:#5D6167;--faint:#9A9EA8;
+  --bg:#FFFFFF;--bg2:#F7F7F8;
+  --linha:rgba(43,47,56,.10);
+  --card:#FFFFFF;--card-brd:rgba(43,47,56,.08);
+  --shadow:0 18px 44px rgba(46,11,48,.12);--shadow-sm:0 8px 22px rgba(46,11,48,.08);
+  --grad:linear-gradient(115deg,#6E2370,#9B3AA0 62%,#C45EC9);
+  --maxw:1180px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--ink);font-family:'Poppins',system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;background:var(--bg)}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4,p{margin:0}
+h1,h2,h3{letter-spacing:-.02em;line-height:1.12}
+h2{font-size:clamp(28px,4.2vw,42px);font-weight:700}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.gt{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.eyebrow{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--roxo);margin:0 0 16px}
+.sec-head{max-width:700px;margin:0 auto 50px;text-align:center}
+.sec-head p{color:var(--muted);margin-top:14px;font-size:17px}
+.num{display:inline-flex;align-items:center;gap:10px}
+.num b{font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* Botoes: pilula como no site deles (maiusculas, letter-spacing 2px, radius 30px) */
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:inherit;font-weight:600;font-size:12px;letter-spacing:.16em;text-transform:uppercase;padding:15px 28px;border-radius:999px;cursor:pointer;border:1px solid transparent;transition:transform .25s ease,box-shadow .25s ease,background .25s ease;white-space:nowrap}
+.btn:hover{transform:translateY(-2px)}
+.btn-roxo{background:var(--roxo);color:#fff;box-shadow:0 8px 22px rgba(110,35,112,.32)}
+.btn-roxo:hover{background:var(--roxo-vivo)}
+.btn-luz{background:#fff;color:var(--roxo);box-shadow:0 8px 22px rgba(0,0,0,.22)}
+.btn-borda{background:transparent;color:var(--ink);border-color:var(--linha)}
+.hero .btn-borda,.fecho .btn-borda{color:#fff;border-color:rgba(255,255,255,.45)}
+.hero .btn-borda:hover,.fecho .btn-borda:hover{background:rgba(255,255,255,.12)}
+
+/* Navegacao */
+nav{position:fixed;top:14px;left:0;right:0;z-index:80}
+.nav-in{max-width:var(--maxw);margin:0 auto;padding:0 14px}
+.nav-bar{display:flex;align-items:center;gap:16px;height:58px;padding:0 10px 0 20px;border-radius:999px;background:rgba(255,255,255,.92);border:1px solid rgba(255,255,255,.6);backdrop-filter:saturate(160%) blur(16px);-webkit-backdrop-filter:saturate(160%) blur(16px);box-shadow:var(--shadow-sm)}
+.brand{display:inline-flex;align-items:center;gap:12px;flex:0 0 auto}
+.brand img{height:17px;width:auto;opacity:.92}
+.brand .para{font-size:12px;font-weight:600;color:var(--muted);padding-left:12px;border-left:1px solid var(--linha);white-space:nowrap}
+.nav-links{display:flex;gap:22px;margin-left:8px;font-size:13.5px;color:var(--muted);font-weight:500}
+.nav-links a:hover{color:var(--roxo)}
+.nav-cta{margin-left:auto}
+.nav-cta .btn{padding:11px 20px;font-size:11px}
+
+/* Heroi roxo com a demonstracao */
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;gap:44px;overflow:hidden;color:#fff;padding:120px 0 60px;
+  background:
+    radial-gradient(52vw 40vw at 85% 0%,rgba(196,94,201,.28),transparent 60%),
+    radial-gradient(46vw 40vw at 0% 100%,rgba(117,195,44,.12),transparent 55%),
+    linear-gradient(160deg,var(--roxo-escuro),var(--roxo) 55%,#5A1C5C);}
+.hero::before{content:"";position:absolute;inset:0;background:url(/proposals/pharmcare/img/bts_estudio.jpg) center 30%/cover no-repeat;mix-blend-mode:luminosity;opacity:.2}
+.hero::after{content:"";position:absolute;inset:auto 0 0;height:120px;background:linear-gradient(180deg,transparent,rgba(46,11,48,.35))}
+.hero .wrap{position:relative;z-index:2;width:100%}
+.hero .eyebrow{color:rgba(255,255,255,.85)}
+.hero h1{font-size:clamp(34px,5.2vw,64px);font-weight:800;letter-spacing:-.03em;line-height:1.05}
+.hero .sub{color:rgba(255,255,255,.9);font-size:clamp(15.5px,1.7vw,18px);margin-top:20px;max-width:52ch;font-weight:400}
+.hero .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.hero .para-quem{margin-top:20px;font-size:12.5px;color:rgba(255,255,255,.66)}
+.hero .gt{background:linear-gradient(100deg,#F2C6F4,#C45EC9 45%,#75C32C 140%);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* Demonstracao: o webinar longo vira highlights verticais */
+.demo{position:relative;z-index:2;padding:26px 26px 22px;border-radius:26px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.demo .lbl{display:flex;justify-content:space-between;gap:10px;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.75)}
+.faixa{position:relative;margin-top:12px;height:52px;border-radius:14px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);overflow:hidden}
+.faixa .onda{position:absolute;inset:8px 10px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.34) 0 2px,transparent 2px 7px);-webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 28%,#000 72%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0%,#000 28%,#000 72%,transparent 100%);opacity:.5}
+.faixa .seg{position:absolute;top:6px;bottom:6px;width:7.5%;border-radius:9px;background:linear-gradient(180deg,#C45EC9,#9B3AA0);opacity:.28;transition:opacity .5s ease,box-shadow .5s ease}
+.faixa .seg.on{opacity:1;box-shadow:0 0 18px rgba(196,94,201,.8)}
+.demo .seta{display:flex;justify-content:center;margin:10px 0 6px;color:rgba(255,255,255,.55)}
+.demo .seta svg{width:18px;height:18px}
+.cartas{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.carta{position:relative;aspect-ratio:9/16;border-radius:14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);overflow:hidden;transition:transform .5s cubic-bezier(.2,.8,.2,1),background .5s,border-color .5s;transform:translateY(6px)}
+.carta.on{background:linear-gradient(165deg,rgba(196,94,201,.4),rgba(110,35,112,.55));border-color:rgba(255,255,255,.5);transform:none}
+.carta .tag{position:absolute;top:8px;left:8px;font-size:9px;font-weight:700;letter-spacing:.08em;color:#fff;background:rgba(0,0,0,.32);padding:3px 7px;border-radius:999px;opacity:0;transition:opacity .5s .15s}
+.carta .leg{position:absolute;left:10%;right:10%;bottom:12%;display:grid;gap:5px;opacity:0;transform:translateY(6px);transition:opacity .5s .25s,transform .5s .25s}
+.carta .leg i{display:block;height:5px;border-radius:3px;background:rgba(255,255,255,.92)}
+.carta .leg i:nth-child(2){width:72%;background:rgba(255,255,255,.65)}
+.carta .play{position:absolute;top:50%;left:50%;transform:translate(-50%,-58%);width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.5);display:grid;place-items:center;opacity:0;transition:opacity .5s .1s}
+.carta .play svg{width:10px;height:10px;fill:#fff;margin-left:1px}
+.carta.on .tag,.carta.on .leg,.carta.on .play{opacity:1;transform:none}
+.demo .nota{margin-top:14px;text-align:center;font-size:12.5px;color:rgba(255,255,255,.72)}
+
+/* Paineis */
+.pane{position:relative;border-radius:40px 40px 0 0;margin-top:-28px;padding:96px 0 90px}
+.pane.branco{background:var(--bg)}
+.pane.cinza{background:var(--bg2)}
+.pane.roxinho{background:linear-gradient(180deg,#FBF5FB,#F6EBF7)}
+.pane.banda{padding:44px 0 64px}
+
+/* Banda: o trabalho de casa */
+.factos{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.factos div{padding:20px 22px;border-radius:20px;background:var(--card);border:1px solid var(--card-brd);box-shadow:var(--shadow-sm)}
+.factos b{display:block;font-size:clamp(22px,2.6vw,30px);font-weight:800;letter-spacing:-.02em;color:var(--roxo)}
+.factos span{font-size:13px;color:var(--muted)}
+.marquee{margin-top:30px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marquee .lbl{text-align:center;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);margin-bottom:12px}
+.marquee .track{display:flex;align-items:center;gap:34px;width:max-content;animation:scroll 55s linear infinite}
+.marquee:hover .track{animation-play-state:paused}
+.marquee .track span{font-size:clamp(18px,2.2vw,24px);font-weight:600;letter-spacing:-.01em;color:rgba(110,35,112,.35);white-space:nowrap}
+.marquee .track span::after{content:"·";margin-left:34px;color:rgba(110,35,112,.2)}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* 01 O pedido */
+.pedidos{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.pedido{padding:32px 30px;border-radius:26px;background:var(--card);border:1px solid var(--card-brd);box-shadow:var(--shadow-sm)}
+.pedido .k{display:inline-block;font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--roxo);background:rgba(110,35,112,.08);border:1px solid rgba(110,35,112,.18);padding:6px 13px;border-radius:999px}
+.pedido h3{margin-top:16px;font-size:22px;font-weight:700}
+.pedido p{margin-top:10px;color:var(--muted);font-size:15px}
+.pedido ul{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:9px}
+.pedido li{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;color:var(--ink)}
+.pedido li::before{content:"";flex:none;width:16px;height:16px;margin-top:4px;border-radius:50%;background:var(--verde);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%23000' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round' d='M4 12.5 9.5 18 20 6.5'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%23000' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round' d='M4 12.5 9.5 18 20 6.5'/%3E%3C/svg%3E") center/contain no-repeat}
+.eco{max-width:760px;margin:26px auto 0;text-align:center;color:var(--muted);font-size:14.5px}
+
+/* 02 Highlights: incluidos + formatos */
+.inclui{display:grid;grid-template-columns:repeat(5,1fr);gap:13px;margin-bottom:44px}
+.inc{padding:22px 20px;border-radius:20px;background:var(--card);border:1px solid var(--card-brd);box-shadow:var(--shadow-sm)}
+.inc .i{font-size:11px;font-weight:800;letter-spacing:.08em;color:var(--roxo)}
+.inc h3{margin-top:10px;font-size:15.5px;font-weight:700;letter-spacing:-.01em}
+.inc p{margin-top:6px;font-size:13px;color:var(--muted);line-height:1.5}
+.formatos{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;padding:34px;border-radius:28px;background:linear-gradient(165deg,var(--roxo-escuro),var(--roxo));color:#fff;box-shadow:var(--shadow)}
+.formatos .txt h3{font-size:clamp(21px,2.4vw,27px);font-weight:700;letter-spacing:-.02em}
+.formatos .txt p{margin-top:12px;font-size:15px;color:rgba(255,255,255,.85)}
+.formatos .escolha{display:inline-flex;gap:6px;margin-top:20px;padding:5px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.24)}
+.formatos .escolha button{font-family:inherit;border:0;cursor:pointer;background:transparent;color:rgba(255,255,255,.75);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;border-radius:999px;transition:background .3s,color .3s}
+.formatos .escolha button.on{background:#fff;color:var(--roxo)}
+.palco{display:grid;place-items:center;min-height:340px}
+.ecra{position:relative;border-radius:18px;background:linear-gradient(165deg,#8A2E8F,#4A1150);border:1px solid rgba(255,255,255,.35);box-shadow:0 24px 50px rgba(0,0,0,.35);overflow:hidden;transition:width .6s cubic-bezier(.2,.8,.2,1),height .6s cubic-bezier(.2,.8,.2,1)}
+.ecra.v{width:170px;height:302px}
+.ecra.h{width:340px;height:191px}
+.ecra .topo{position:absolute;top:10px;left:10px;right:10px;display:flex;justify-content:space-between;align-items:center}
+.ecra .selo{width:22px;height:22px;border-radius:50%;background:#fff;color:var(--roxo);display:grid;place-items:center;font-size:9px;font-weight:800}
+.ecra .dur{font-size:9px;font-weight:700;letter-spacing:.08em;color:#fff;background:rgba(0,0,0,.35);padding:3px 7px;border-radius:999px}
+.ecra .pessoa{position:absolute;left:50%;bottom:26%;transform:translateX(-50%);width:38%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 38% 32%,rgba(255,255,255,.5),rgba(255,255,255,.14) 60%);border:1px solid rgba(255,255,255,.4)}
+.ecra.h .pessoa{left:26%;bottom:18%;width:24%}
+.ecra .legdemo{position:absolute;left:9%;right:9%;bottom:8%;display:grid;gap:5px;justify-items:center}
+.ecra.h .legdemo{left:44%;right:6%;bottom:auto;top:34%;justify-items:start}
+.ecra .legdemo i{display:block;height:6px;border-radius:3px;background:#fff;width:86%}
+.ecra .legdemo i:nth-child(2){width:60%;background:rgba(255,255,255,.65)}
+.palco .rot{margin-top:14px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.7);text-align:center}
+
+/* 03 Farmacia: plano do dia */
+.dia{border-radius:26px;background:var(--card);border:1px solid var(--card-brd);box-shadow:var(--shadow-sm);padding:30px;margin-bottom:22px}
+.dia .cab{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+.dia h3{font-size:20px;font-weight:700}
+.dia .cab span{font-size:13px;color:var(--muted)}
+.slots{display:grid;grid-template-columns:repeat(8,1fr);gap:8px}
+.slot{position:relative;padding:14px 10px 12px;border-radius:14px;background:var(--bg2);border:1px solid var(--linha);text-align:center}
+.slot.grava{background:rgba(110,35,112,.07);border-color:rgba(110,35,112,.22)}
+.slot .h{font-size:10.5px;font-weight:700;letter-spacing:.06em;color:var(--faint)}
+.slot.grava .h{color:var(--roxo)}
+.slot .t{margin-top:6px;font-size:12px;font-weight:600;line-height:1.3;color:var(--ink)}
+.slot .n{position:absolute;top:-8px;right:-4px;width:20px;height:20px;border-radius:50%;background:var(--roxo);color:#fff;font-size:10.5px;font-weight:700;display:grid;place-items:center;box-shadow:0 3px 8px rgba(110,35,112,.4)}
+.tele{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.tcard{padding:28px;border-radius:24px;background:var(--card);border:1px solid var(--card-brd);box-shadow:var(--shadow-sm)}
+.tcard h3{font-size:18px;font-weight:700;display:flex;align-items:center;gap:10px}
+.tcard h3 .ic{width:38px;height:38px;border-radius:12px;background:var(--roxo);color:#fff;display:grid;place-items:center;flex:none}
+.tcard h3 .ic svg{width:18px;height:18px}
+.tcard p{margin-top:12px;font-size:14.5px;color:var(--muted)}
+.tcard ul{margin:12px 0 0;padding:0;list-style:none;display:grid;gap:8px}
+.tcard li{display:flex;gap:9px;font-size:14px;color:var(--ink)}
+.tcard li::before{content:"";flex:none;width:6px;height:6px;margin-top:8px;border-radius:50%;background:var(--roxo)}
+
+/* Bastidores reais */
+.bts{display:grid;grid-template-columns:.8fr 1.6fr .8fr;gap:14px;margin-top:22px}
+.bts img{width:100%;height:clamp(240px,30vw,420px);object-fit:cover;border-radius:20px;border:1px solid var(--card-brd);box-shadow:var(--shadow-sm)}
+.bts figcaption{grid-column:1/-1;text-align:center;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-top:4px}
+
+/* 04 Porque agora */
+.porque{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.pq{padding:28px 26px;border-radius:24px;background:var(--card);border:1px solid var(--card-brd);box-shadow:var(--shadow-sm)}
+.pq .n{font-size:36px;font-weight:800;letter-spacing:-.04em;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1}
+.pq h3{margin-top:14px;font-size:17.5px;font-weight:700;letter-spacing:-.01em}
+.pq p{margin-top:8px;font-size:14px;color:var(--muted)}
+.pq-nota{max-width:780px;margin:24px auto 0;text-align:center;color:var(--muted);font-size:14.5px}
+
+/* 05 Investimento */
+.planos{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:960px;margin:0 auto}
+.plano{padding:32px 30px;border-radius:26px;background:var(--card);border:1px solid var(--card-brd);box-shadow:var(--shadow)}
+.plano .pill{display:inline-block;font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--roxo);padding:6px 13px;border-radius:999px;background:rgba(110,35,112,.08);border:1px solid rgba(110,35,112,.18)}
+.plano .grande{margin-top:20px;font-size:clamp(34px,4vw,44px);font-weight:800;letter-spacing:-.03em;color:var(--ink)}
+.plano .iva{margin-top:4px;font-size:13px;color:var(--muted)}
+.plano .unit{margin-top:12px;font-size:14px;color:var(--roxo);font-weight:600}
+.plano .inc{margin-top:12px;font-size:14.5px;color:var(--muted)}
+.linhas{margin-top:20px;border-radius:16px;overflow:hidden;border:1px solid var(--linha)}
+.linhas div{display:flex;justify-content:space-between;gap:10px;padding:12px 16px;font-size:14.5px}
+.linhas div:nth-child(odd){background:var(--bg2)}
+.linhas div:nth-child(even){background:#fff}
+.linhas div.total{background:var(--roxo);color:#fff;font-weight:700;font-size:15.5px}
+.linhas b{font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.detq{margin:14px 0 0;padding:0;list-style:none;display:grid;gap:8px}
+.detq li{display:flex;gap:9px;font-size:13.5px;color:var(--muted)}
+.detq li b{color:var(--ink);font-weight:600}
+.detq li::before{content:"";flex:none;width:6px;height:6px;margin-top:8px;border-radius:50%;background:var(--verde)}
+.notas{max-width:960px;margin:20px auto 0;display:grid;gap:9px}
+.notas p{display:flex;gap:12px;align-items:flex-start;font-size:13.5px;color:var(--muted)}
+.notas p::before{content:"";flex:none;width:6px;height:6px;margin-top:8px;border-radius:50%;background:var(--roxo)}
+.condicoes{max-width:960px;margin:40px auto 0;padding:26px 30px;border-radius:24px;background:var(--card);border:1px solid var(--card-brd);box-shadow:var(--shadow-sm)}
+.condicoes h3{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.condicoes dl{margin:14px 0 0;display:grid;grid-template-columns:170px 1fr;gap:0}
+.condicoes dt,.condicoes dd{margin:0;padding:10px 0;border-top:1px solid var(--linha);font-size:14.5px}
+.condicoes dt{font-weight:600}
+.condicoes dd{color:var(--muted)}
+
+/* 06 Trabalho */
+.destaque{position:relative;border-radius:28px;overflow:hidden;aspect-ratio:21/9;box-shadow:var(--shadow);cursor:pointer;isolation:isolate;margin-bottom:16px}
+.wgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.wcard{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:16/11;box-shadow:var(--shadow-sm);cursor:pointer;isolation:isolate}
+.wcard img,.destaque img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s ease;z-index:0}
+.wcard::after,.destaque::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(46,11,48,.06) 40%,rgba(46,11,48,.5))}
+.wcard:hover img,.destaque:hover img{transform:scale(1.05)}
+.wplay{position:absolute;z-index:3;top:50%;left:50%;transform:translate(-50%,-50%) scale(.94);width:68px;height:68px;border-radius:50%;background:rgba(255,255,255,.24);border:1px solid rgba(255,255,255,.6);display:grid;place-items:center;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:transform .3s,background .3s}
+.wplay svg{width:23px;height:23px;fill:#fff;margin-left:3px}
+.wcard:hover .wplay,.destaque:hover .wplay{transform:translate(-50%,-50%) scale(1);background:rgba(110,35,112,.55)}
+.wpanel{position:absolute;z-index:3;left:14px;right:14px;bottom:14px;padding:12px 16px;border-radius:16px;background:rgba(46,11,48,.55);border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.wpanel .who{font-weight:600;font-size:15.5px;color:#fff}
+.wpanel .ctx{font-size:12.5px;color:rgba(255,255,255,.8);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.destaque .wpanel{left:22px;right:auto;bottom:22px;max-width:440px}
+.destaque .who{font-size:19px}
+.prova{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+.depo{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:16/9;box-shadow:var(--shadow-sm);cursor:pointer;isolation:isolate}
+.depo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
+.depo::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(46,11,48,.08) 40%,rgba(46,11,48,.55))}
+.depo:hover img{transform:scale(1.05)}
+.rev{padding:24px 26px;border-radius:22px;background:var(--card);border:1px solid var(--card-brd);box-shadow:var(--shadow-sm)}
+.rev .stars{color:#E8A33D;letter-spacing:2px;font-size:13px}
+.rev q{display:block;margin-top:10px;font-size:14.5px;line-height:1.55;quotes:"\201C" "\201D"}
+.rev .quem{margin-top:12px;font-size:13px;color:var(--muted)}
+.rev .quem b{color:var(--ink)}
+
+/* Fecho */
+.fecho{position:relative;border-radius:32px;overflow:hidden;box-shadow:var(--shadow);color:#fff;isolation:isolate;background:linear-gradient(150deg,var(--roxo-escuro),var(--roxo) 60%,#8A2E8F)}
+.fecho::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 90% at 88% 10%,rgba(196,94,201,.4),transparent 65%);z-index:-1}
+.fecho::after{content:"";position:absolute;inset:0;background:url(/proposals/pharmcare/img/bts_cameras.jpg) center/cover no-repeat;mix-blend-mode:luminosity;opacity:.14;z-index:-1}
+.fecho-in{display:grid;grid-template-columns:1.15fr .85fr;gap:36px;align-items:center;padding:52px}
+.fecho h2{color:#fff}
+.fecho .txt>p{margin-top:14px;color:rgba(255,255,255,.9);font-size:16px;max-width:46ch}
+.agenda{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:8px;counter-reset:ag}
+.agenda li{counter-increment:ag;display:flex;gap:12px;align-items:baseline;font-size:14.5px;color:rgba(255,255,255,.92)}
+.agenda li::before{content:counter(ag,decimal-leading-zero);flex:none;font-size:11px;font-weight:800;letter-spacing:.06em;color:#fff;padding:3px 8px;border-radius:999px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28)}
+.fecho .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.cartao{padding:26px;border-radius:22px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.26);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.cartao .nm{font-size:20px;font-weight:700}
+.cartao .fn{font-size:13px;color:rgba(255,255,255,.75)}
+.cartao a{display:flex;align-items:center;gap:10px;margin-top:11px;font-size:14px;color:#fff}
+.cartao a svg{width:16px;height:16px;flex:none;opacity:.8}
+.cartao a:first-of-type{margin-top:18px}
+footer{padding:40px 0 34px;color:var(--muted);font-size:12.5px}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;align-items:center}
+.foot img{height:20px;width:auto;opacity:.8}
+
+/* Video modal */
+.vmodal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center}
+.vmodal.on{display:flex}
+.vmodal .vscrim{position:absolute;inset:0;background:rgba(30,8,32,.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.vmodal .vbox{position:relative;width:min(940px,94vw);aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:#000;border:1px solid rgba(255,255,255,.18);box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.vmodal .vbox.vert{width:min(400px,88vw);max-height:88svh;aspect-ratio:9/16}
+.vmodal iframe{width:100%;height:100%;border:0;display:block}
+.vmodal .vclose{position:absolute;top:12px;right:12px;z-index:4;width:40px;height:40px;border-radius:50%;background:rgba(20,5,22,.6);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:20px;cursor:pointer;display:grid;place-items:center;line-height:1}
+
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+
+@media (max-width:980px){
+  .nav-links{display:none}
+  .inclui{grid-template-columns:repeat(2,1fr) repeat(2,1fr)}
+  .inclui{grid-template-columns:repeat(2,1fr)}
+  .fecho-in{grid-template-columns:1fr;padding:38px 28px}
+  .slots{grid-template-columns:repeat(4,1fr)}
+}
+@media (max-width:820px){
+  .pedidos,.formatos,.tele,.porque,.planos,.prova,.wgrid{grid-template-columns:1fr}
+  .factos{grid-template-columns:1fr 1fr}
+  .cartas{grid-template-columns:repeat(6,1fr);gap:7px}
+  .carta .leg i{height:3px}
+  .destaque{aspect-ratio:16/10}
+  .condicoes dl{grid-template-columns:1fr}
+  .condicoes dt{padding-bottom:0}
+  .condicoes dd{border-top:0;padding-top:2px}
+  .palco{min-height:300px}
+  .bts{grid-template-columns:1fr 1fr}
+  .bts img:nth-of-type(2){grid-column:1/-1;order:-1;height:52vw}
+  .bts img:nth-of-type(1),.bts img:nth-of-type(3){height:60vw}
+}
+@media (max-width:560px){
+  .brand .para{display:none}
+  .pane{padding:76px 0 68px;border-radius:30px 30px 0 0}
+  .factos{grid-template-columns:1fr 1fr}
+  .slots{grid-template-columns:repeat(2,1fr)}
+  .demo{padding:18px 16px 16px}
+  .hero{padding:104px 0 40px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .marquee .track{animation:none;flex-wrap:wrap;justify-content:center;width:auto}
+  .rv{opacity:1;transform:none;transition:none}
+  .carta,.carta .tag,.carta .leg,.carta .play{transition:none}
+}
+</style>
+</head>
+<body>
+
+<nav aria-label="Proposta">
+  <div class="nav-in"><div class="nav-bar">
+    <a class="brand" href="#topo" aria-label="CreativeSete">
+      <img src="/assets/logo_dark.png" alt="CreativeSete">
+      <span class="para">para o Instituto Pharmcare</span>
+    </a>
+    <div class="nav-links">
+      <a href="#pedido">O pedido</a>
+      <a href="#highlights">Highlights</a>
+      <a href="#farmacia">Na farmácia</a>
+      <a href="#porque">Porquê agora</a>
+      <a href="#investimento">Investimento</a>
+      <a href="#trabalho">Trabalho</a>
+    </div>
+    <div class="nav-cta"><a class="btn btn-roxo" data-agenda target="_blank" rel="noopener">Marcar conversa</a></div>
+  </div></div>
+</nav>
+
+<header class="hero" id="topo">
+  <div class="wrap">
+    <p class="eyebrow" data-t="hero.eyebrow"></p>
+    <h1 data-h="hero.titulo"></h1>
+    <p class="sub" data-t="hero.sub"></p>
+    <div class="cta">
+      <a class="btn btn-luz" data-agenda target="_blank" rel="noopener">Marcar uma conversa</a>
+      <a class="btn btn-borda" href="#pedido">Ver a proposta</a>
+    </div>
+    <p class="para-quem" id="para-quem"></p>
+  </div>
+  <div class="wrap">
+    <div class="demo" aria-hidden="true">
+      <div class="lbl"><span data-t="hero.demoEsq"></span><span data-t="hero.demoDir"></span></div>
+      <div class="faixa" id="faixa"><div class="onda"></div></div>
+      <div class="seta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v14m0 0 6-6m-6 6-6-6"/></svg></div>
+      <div class="cartas" id="cartas"></div>
+      <p class="nota" data-t="hero.demoNota"></p>
+    </div>
+  </div>
+</header>
+
+<section class="pane branco banda" aria-label="O que sabemos">
+  <div class="wrap">
+    <div class="factos rv" id="factos"></div>
+    <div class="marquee rv">
+      <p class="lbl" data-t="catalogoLbl"></p>
+      <div class="track" id="catalogo"></div>
+    </div>
+  </div>
+</section>
+
+<section class="pane cinza" id="pedido">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow num"><b>01</b> O pedido, ponto por ponto</p>
+      <h2 data-t="pedido.titulo"></h2>
+      <p data-t="pedido.texto"></p>
+    </div>
+    <div class="pedidos" id="pedidos"></div>
+    <p class="eco rv" data-t="pedido.eco"></p>
+  </div>
+</section>
+
+<section class="pane branco" id="highlights">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow num"><b>02</b> Trabalho 1 · Highlights do webinar</p>
+      <h2 data-t="hl.titulo"></h2>
+      <p data-t="hl.texto"></p>
+    </div>
+    <div class="inclui" id="inclui"></div>
+    <div class="formatos rv">
+      <div class="txt">
+        <h3 data-t="hl.formatosTitulo"></h3>
+        <p data-t="hl.formatosTexto"></p>
+        <div class="escolha" role="tablist" aria-label="Formato">
+          <button type="button" class="on" data-fmt="v">Vertical 9:16</button>
+          <button type="button" data-fmt="h">Horizontal 16:9</button>
+        </div>
+        <div style="margin-top:22px">
+          <a class="btn btn-luz" data-video="r65IenphFY8" data-vert="1" role="button" tabindex="0" style="cursor:pointer">Ver um exemplo real em vertical</a>
+        </div>
+        <p style="margin-top:12px;font-size:12.5px;color:rgba(255,255,255,.66)" data-t="hl.exemploNota"></p>
+      </div>
+      <div class="palco">
+        <div>
+          <div class="ecra v" id="ecra" aria-hidden="true">
+            <div class="topo"><span class="selo">IP</span><span class="dur">0:52</span></div>
+            <div class="pessoa"></div>
+            <div class="legdemo"><i></i><i></i></div>
+          </div>
+          <p class="rot" id="rot">Redes sociais · Reels e Shorts</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pane cinza" id="farmacia">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow num"><b>03</b> Trabalho 2 · Seis vídeos na farmácia</p>
+      <h2 data-t="fm.titulo"></h2>
+      <p data-t="fm.texto"></p>
+    </div>
+    <div class="dia rv">
+      <div class="cab"><h3 data-t="fm.diaTitulo"></h3><span data-t="fm.diaNota"></span></div>
+      <div class="slots" id="slots"></div>
+    </div>
+    <div class="tele" id="tele"></div>
+    <figure class="bts rv">
+      <img src="/proposals/pharmcare/img/bts_teleponto_v.jpg" alt="Gravação com teleponto: o texto corre no ecrã enquanto a apresentadora fala para a câmara" loading="lazy">
+      <img src="/proposals/pharmcare/img/bts_teleponto.jpg" alt="Sessão de gravação com teleponto, softbox e direção da CreativeSete" loading="lazy">
+      <img src="/proposals/pharmcare/img/bts_sessao.jpg" alt="Cenário de entrevista preparado com luz e direção de arte" loading="lazy">
+      <figcaption>Bastidores CreativeSete · gravações reais com teleponto, luz e direção</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="pane roxinho" id="porque">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow num"><b>04</b> Porquê agora</p>
+      <h2 data-t="pq.titulo"></h2>
+      <p data-t="pq.texto"></p>
+    </div>
+    <div class="porque" id="porque-g"></div>
+    <p class="pq-nota rv" data-t="pq.nota"></p>
+  </div>
+</section>
+
+<section class="pane branco" id="investimento">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow num"><b>05</b> Investimento</p>
+      <h2 data-t="inv.titulo"></h2>
+      <p data-t="inv.texto"></p>
+    </div>
+    <div class="planos" id="planos"></div>
+    <div class="notas rv" id="notas"></div>
+    <div class="condicoes rv">
+      <h3>Condições gerais</h3>
+      <dl id="condicoes"></dl>
+    </div>
+  </div>
+</section>
+
+<section class="pane cinza" id="trabalho">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow num"><b>06</b> Trabalho</p>
+      <h2 data-t="tr.titulo"></h2>
+      <p data-t="tr.texto"></p>
+    </div>
+    <div id="destaque"></div>
+    <div class="wgrid" id="wgrid"></div>
+    <div class="prova" id="prova"></div>
+  </div>
+</section>
+
+<section class="pane branco" id="contacto">
+  <div class="wrap">
+    <div class="fecho rv">
+      <div class="fecho-in">
+        <div class="txt">
+          <h2 data-t="fecho.titulo"></h2>
+          <p data-t="fecho.texto"></p>
+          <ol class="agenda" id="agenda"></ol>
+          <div class="cta">
+            <a class="btn btn-luz" data-agenda target="_blank" rel="noopener">Marcar uma conversa</a>
+            <a class="btn btn-borda" data-mail>Responder por email</a>
+          </div>
+        </div>
+        <div class="cartao" id="cartao"></div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="wrap foot">
+      <img src="/assets/logo_dark.png" alt="CreativeSete">
+      <span id="rodape"></span>
+    </div>
+  </footer>
+</section>
+
+<div class="vmodal" id="vmodal" role="dialog" aria-modal="true" aria-label="Vídeo">
+  <div class="vscrim" data-fechar></div>
+  <div class="vbox"><button class="vclose" data-fechar aria-label="Fechar">×</button><div id="vframe" style="width:100%;height:100%"></div></div>
+</div>
+
+<script>
+/* =====================================================================
+   CONTEUDO DA PROPOSTA · Instituto Pharmcare
+   Tudo o que muda na negociacao vive aqui. Valores SEM IVA; o IVA e os
+   totais calculam-se sozinhos.
+   ===================================================================== */
+const PROPOSTA = {
+  cliente: 'Instituto Pharmcare',
+  para: 'Tânia Almeida',
+  cargo: 'Gestora Pedagógica',
+  data: '2026-09-18',
+  validadeDias: 15,
+  iva: 0.23,
+
+  contacto: {
+    nome: 'Lucas Müller',
+    funcao: 'Fundador, CreativeSete',
+    email: 'contact@creativesete.com',
+    whatsapp: 'https://wa.link/qyvgv7',
+    agenda: 'https://calendar.app.google/RyHAeyxCCH1gbWkH8',
+    site: 'https://creativesete.com',
+    instagram: 'https://www.instagram.com/creativesete/',
+    assuntoEmail: 'Proposta CreativeSete · Instituto Pharmcare'
+  },
+
+  hero: {
+    eyebrow: 'Proposta para o Instituto Pharmcare · Conteúdos vídeo',
+    titulo: '60 minutos de ciência.<br><span class="gt">60 segundos</span> de cada vez.',
+    sub: 'Os vossos webinars já formam milhares de profissionais. Esta proposta transforma cada um deles em conteúdo que continua a chegar às equipas de farmácia muito depois do direto acabar.',
+    demoEsq: 'Gravação integral do webinar · 60:00',
+    demoDir: 'Momentos selecionados',
+    demoNota: '5 a 6 highlights por webinar · vertical para as redes · horizontal para a newsletter',
+    nHighlights: 6
+  },
+
+  // Numeros publicos do proprio Instituto (site, plataforma e paginas do ecossistema)
+  factos: [
+    { n: '2010', t: 'o Instituto forma equipas de farmácia desde então' },
+    { n: '+7.000', t: 'formandos declarados pelo Instituto' },
+    { n: '60 min', t: 'de evidência científica em cada webinar' },
+    { n: '6', t: 'vídeos gravados num só dia na farmácia' }
+  ],
+  catalogoLbl: 'Temas que já formam equipas no vosso catálogo',
+  catalogo: ['Intervenção Farmacêutica na Tosse','Dor aguda','Olho seco','Acne','Xerose cutânea','Higiene íntima','Conjuntivite alérgica','Doenças respiratórias crónicas','Preparação Individualizada da Medicação'],
+
+  pedido: {
+    titulo: 'Dois trabalhos, tal como nos escreveu.',
+    texto: 'Antes dos valores, a confirmação de que percebemos exatamente o que procura.',
+    eco: 'Em ambos os trabalhos: valores discriminados, prazos de entrega definidos e duas rondas de revisão incluídas por vídeo. Era o que pedia no email, e está tudo nas secções seguintes.',
+    blocos: [
+      { k: 'Trabalho 1 · novembro de 2026', t: 'Highlights do webinar', p: 'A partir da gravação integral do webinar, selecionamos os momentos e as mensagens de maior interesse e transformamo-los em vídeos curtos prontos a publicar.', itens: [
+        '5 a 6 vídeos de highlights por webinar',
+        'Formato vertical, para redes sociais',
+        'Formato horizontal, para newsletter e outros suportes digitais',
+        'Seleção, edição, grafismos e legendagem incluídos'
+      ]},
+      { k: 'Trabalho 2 · um dia de gravação', t: 'Seis vídeos na farmácia', p: 'Seis vídeos de cerca de um minuto, gravados todos no mesmo dia, em farmácia, com teleponto. A formadora fala diretamente para a câmara, com o rigor de sempre e sem decorar guiões.', itens: [
+        '6 vídeos de aproximadamente 1 minuto',
+        'Gravação num único dia, planeada ao bloco',
+        'Teleponto profissional incluído',
+        'Edição, grafismos e legendagem incluídos'
+      ]}
+    ]
+  },
+
+  hl: {
+    titulo: 'O que está incluído, passo a passo.',
+    texto: 'Pediu que a proposta indicasse o que contempla a seleção, a edição, os grafismos, a legendagem e a adaptação aos formatos. Aqui está, na mesma ordem.',
+    inclui: [
+      { t: 'Seleção dos highlights', p: 'Vemos a gravação integral e escolhemos os momentos com mais valor para quem está ao balcão. Enviamos a lista de momentos antes de editar, para validarem a seleção.' },
+      { t: 'Edição', p: 'Corte dinâmico de cada momento, com ritmo pensado para redes sociais e abertura que prende nos primeiros três segundos.' },
+      { t: 'Grafismos', p: 'Oráculos com o nome e o título de quem fala, cartelas de abertura e fecho com a identidade do Instituto, no roxo da marca.' },
+      { t: 'Legendagem', p: 'Legendas completas e legíveis em todos os vídeos. A maioria vê sem som, e a terminologia clínica fica escrita corretamente.' },
+      { t: 'Dois formatos', p: 'Cada highlight entregue em vertical 9:16 e o conteúdo adaptado a horizontal 16:9, com enquadramento recomposto, não apenas cortado.' }
+    ],
+    formatosTitulo: 'Um momento, dois destinos.',
+    formatosTexto: 'O mesmo highlight enquadrado de raiz para cada canal: vertical para Instagram, TikTok e Shorts, horizontal para a newsletter, o site e o YouTube.',
+    exemploNota: 'Conteúdo de formação que produzimos para o Estudo da Mulher, de Barbara Lia: o mesmo género de vídeo vertical, com grafismos e legendas.'
+  },
+
+  fm: {
+    titulo: 'Um dia de gravação, seis vídeos prontos.',
+    texto: 'Planeamos o dia ao bloco para que a equipa do Instituto perca o mínimo de tempo possível e a farmácia continue a funcionar.',
+    diaTitulo: 'O plano do dia',
+    diaNota: 'Exemplo com 6 blocos de gravação · afinamos os horários convosco',
+    slots: [
+      { h: '09h00', t: 'Montagem de luz, som e teleponto', g: false },
+      { h: '10h00', t: 'Vídeo 1', g: true, n: 1 },
+      { h: '10h45', t: 'Vídeo 2', g: true, n: 2 },
+      { h: '11h30', t: 'Vídeo 3', g: true, n: 3 },
+      { h: '13h30', t: 'Vídeo 4', g: true, n: 4 },
+      { h: '14h15', t: 'Vídeo 5', g: true, n: 5 },
+      { h: '15h00', t: 'Vídeo 6', g: true, n: 6 },
+      { h: '16h00', t: 'Planos de recurso e desmontagem', g: false }
+    ],
+    cards: [
+      { ic: 'tele', t: 'Porquê o teleponto', p: 'O texto corre ao ritmo de quem fala, com o olhar sempre na câmara. Ninguém decora guiões e cada vídeo sai à primeira ou à segunda tentativa, o que é o que permite gravar seis num só dia.', itens: [] },
+      { ic: 'lista', t: 'O que precisamos do Instituto', p: 'Três coisas, e tratamos do resto.', itens: [
+        'Os seis guiões finais, 48 horas antes, para os carregarmos no teleponto',
+        'Uma zona da farmácia disponível por blocos, sem fechar o atendimento',
+        'Quem vai falar à câmara, com o fardamento ou bata que quiserem usar'
+      ]}
+    ]
+  },
+
+  pq: {
+    titulo: 'O conhecimento já existe. Falta chegar ao balcão.',
+    texto: 'Três razões para este ser o momento certo, olhando para o vosso setor.',
+    blocos: [
+      { n: '01', t: 'Cada webinar passa a render semanas', p: 'Hoje o webinar acontece, é visto por quem se inscreveu e fica guardado na plataforma. Os highlights fazem o mesmo conteúdo trabalhar nas redes e na newsletter durante semanas, e continuam a trazer inscrições para o webinar seguinte.' },
+      { n: '02', t: 'Ninguém no setor o está a fazer', p: 'Percorremos os canais da formação farmacêutica em Portugal: não encontrámos highlights verticais legendados de webinars em nenhum deles. O Instituto seria o primeiro do nicho a fazê-lo com produção profissional.' },
+      { n: '03', t: 'Os parceiros também ganham', p: 'As formações contam com o apoio de laboratórios. Vídeos curtos com alcance dão a esses parceiros uma visibilidade que um webinar fechado não dá, e reforçam o valor das próximas parcerias.' }
+    ],
+    nota: 'E não é um formato estranho para vós: o Instituto já publica vídeos curtos com a formadora à câmara. A diferença desta proposta está na produção, no grafismo e na consistência, não na ideia.'
+  },
+
+  inv: {
+    titulo: 'Valores discriminados, como pediu.',
+    texto: 'Cada trabalho com o seu valor, o seu prazo e as revisões incluídas. Sem custos escondidos: a deslocação na Grande Lisboa está incluída.',
+    planos: [
+      {
+        nome: 'Trabalho 1 · Highlights do webinar',
+        subtotal: 1350,
+        unidade: '€ 225 + IVA por highlight · pack de 6',
+        inclui: 'Seleção dos momentos a partir da gravação integral, edição, grafismos com a identidade do Instituto, legendagem e entrega em vertical e horizontal.',
+        detalhes: [
+          ['Prazo', 'até 5 dias úteis depois de recebermos a gravação integral'],
+          ['Revisões', 'duas rondas por vídeo, incluídas'],
+          ['Se forem 5 highlights', '€ 1.125 + IVA (€ 225 por vídeo)']
+        ]
+      },
+      {
+        nome: 'Trabalho 2 · Seis vídeos na farmácia',
+        subtotal: 1800,
+        unidade: '€ 300 + IVA por vídeo · dia de gravação incluído',
+        inclui: 'Um dia de gravação na farmácia com equipa e teleponto profissional, edição dos seis vídeos, grafismos, legendagem e entrega pronta a publicar.',
+        detalhes: [
+          ['Prazo', 'primeiros cortes em 5 dias úteis, os seis finalizados até 10 dias úteis'],
+          ['Revisões', 'duas rondas por vídeo, incluídas'],
+          ['Deslocação', 'incluída na Grande Lisboa']
+        ]
+      }
+    ],
+    notas: [
+      'Valores sem IVA à taxa legal de 23%, apresentada em cada quadro.',
+      'Adjudicando os dois trabalhos, os grafismos e o modelo de legendagem criados para um servem o outro, e a identidade visual dos vossos vídeos fica coerente em todos os canais.',
+      'Se o webinar de novembro tiver data marcada, garantimos a entrega dos highlights na mesma semana em que recebermos a gravação.'
+    ]
+  },
+
+  condicoes: [
+    { t: 'Adjudicação', p: 'Por email, sujeita a confirmação de agenda.' },
+    { t: 'Reagendamento', p: 'A gravação na farmácia pode ser reagendada sem custo com mais de 48 horas de antecedência.' },
+    { t: 'Materiais', p: 'Entrega em ficheiros prontos a publicar, organizados por canal, via link de descarga.' },
+    { t: 'Validade', p: '{validade}' },
+    { t: 'Portefólio', p: 'Em @creativesete e em creativesete.com, com mais exemplos mediante pedido.' }
+  ],
+
+  tr: {
+    titulo: 'Já filmámos formação, cursos e eventos.',
+    texto: 'Uma amostra do trabalho da CreativeSete para marcas que comunicam com intenção.',
+    destaque: { video: 'K_N4hydChbo', img: '/assets/svc_cursos.jpg', quem: 'Cursos e institucionais', ctx: 'Showreel CreativeSete · gravação com teleponto incluída' },
+    projetos: [
+      { video: 'r65IenphFY8', img: 'https://i.ytimg.com/vi/r65IenphFY8/hqdefault.jpg', quem: 'Estudo da Mulher · Barbara Lia', ctx: 'Conteúdo de formação em vertical, com grafismos e legendas', vert: true },
+      { video: 'Ng3reWaOZug', img: '/assets/svc_cobertura.jpg', quem: 'Cobertura de eventos', ctx: 'Showreel CreativeSete' },
+      { video: 'ERc2OkH3rlo', img: '/assets/p_ey.jpg', quem: 'EY', ctx: 'Winning Women · Evento corporativo' }
+    ],
+    depoimentos: [
+      { video: 'IUaF55ES9co', img: 'https://i.ytimg.com/vi/IUaF55ES9co/hqdefault.jpg', quem: 'Bárbara Lia', ctx: 'O que diz de trabalhar connosco' },
+      { video: 'Bk8nNKh8TPw', img: 'https://i.ytimg.com/vi/Bk8nNKh8TPw/hqdefault.jpg', quem: 'Maria Maia', ctx: 'O que diz de trabalhar connosco' }
+    ],
+    avaliacoes: [
+      { nome: 'Nadia Lopes', txt: 'Já vão 3 anos e não trabalho com mais nenhuma empresa de captação de vídeos. São incríveis em tudo, entrega rápida com máxima qualidade. Recomendo de olhos fechados!' },
+      { nome: 'Cátia Rodrigues', txt: 'O trabalho da CreativeSete é simplesmente extraordinário. Destacam-se pela inovação e pelo perfeccionismo em cada captação.' }
+    ]
+  },
+
+  fecho: {
+    titulo: 'Vamos pôr a ciência a circular?',
+    texto: 'Quinze minutos chegam para alinhar o que falta e garantir os highlights na semana do webinar.',
+    agenda: [
+      'A data do webinar de novembro e a entrega da gravação',
+      'O dia de gravação na farmácia e os seis guiões',
+      'Exemplos de grafismos e legendagem no roxo do Instituto'
+    ]
+  }
+};
+
+/* =====================================================================
+   A partir daqui monta-se a pagina. Nao e preciso mexer.
+   ===================================================================== */
+(function(){
+  const P = PROPOSTA;
+  const $ = (s, r = document) => r.querySelector(s);
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const get = path => path.split('.').reduce((o, k) => o && o[k], P);
+  const eur = v => { const x = (Math.round(v * 100) / 100).toFixed(2).split('.'); return '€ ' + x[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ',' + x[1]; };
+  const reduz = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const ICON = {
+    play: '<svg viewBox="0 0 24 24"><path d="M8 5.3v13.4c0 .8.9 1.3 1.6.9l10.4-6.7c.6-.4.6-1.3 0-1.7L9.6 4.4C8.9 4 8 4.5 8 5.3z"/></svg>',
+    tele: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2.5"/><path d="M7 8.2h10M7 11.8h6M12 16v3.5M8.5 20.5h7"/></svg>',
+    lista: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13"/><circle cx="3.6" cy="6" r="1.1" fill="currentColor" stroke="none"/><circle cx="3.6" cy="12" r="1.1" fill="currentColor" stroke="none"/><circle cx="3.6" cy="18" r="1.1" fill="currentColor" stroke="none"/></svg>',
+    mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="3"/><path d="m3 6 9 7 9-7"/></svg>',
+    web: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19M12 2.5c2.6 2.6 4 6 4 9.5s-1.4 6.9-4 9.5c-2.6-2.6-4-6-4-9.5s1.4-6.9 4-9.5z"/></svg>',
+    insta: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg>',
+    zap: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9.1 8.4 8.6 8.6 0 0 1-3.7-1L3 20l1.2-4.9a8.4 8.4 0 1 1 16.8-3.6z"/></svg>'
+  };
+
+  // Datas
+  const d0 = new Date(P.data + 'T12:00:00');
+  const dVal = new Date(d0); dVal.setDate(dVal.getDate() + P.validadeDias);
+  const fmt = d => d.toLocaleDateString('pt-PT', { day: 'numeric', month: 'long', year: 'numeric' });
+  const validade = 'Proposta válida por ' + P.validadeDias + ' dias, até ' + fmt(dVal) + '.';
+
+  // Textos
+  document.querySelectorAll('[data-t]').forEach(el => { const v = get(el.dataset.t); if (v != null) el.textContent = v; });
+  document.querySelectorAll('[data-h]').forEach(el => { const v = get(el.dataset.h); if (v != null) el.innerHTML = v; });
+  document.querySelectorAll('[data-agenda]').forEach(a => a.href = P.contacto.agenda);
+  document.querySelectorAll('[data-mail]').forEach(a => a.href = 'mailto:' + P.contacto.email + '?subject=' + encodeURIComponent(P.contacto.assuntoEmail));
+  $('#para-quem').textContent = 'Preparada para ' + P.para + ', ' + P.cargo + ' do ' + P.cliente + ' · ' + fmt(d0);
+  $('#rodape').textContent = 'Proposta preparada para o ' + P.cliente + ' · ' + fmt(d0) + ' · válida até ' + fmt(dVal);
+
+  // Heroi: demonstracao
+  const NC = P.hero.nHighlights;
+  $('#cartas').innerHTML = Array.from({ length: NC }, (_, i) =>
+    `<div class="carta" data-i="${i}"><span class="tag">Highlight 0${i + 1}</span><span class="play">${ICON.play}</span><span class="leg"><i></i><i></i></span></div>`).join('');
+  const posSeg = [7, 21, 38, 55, 71, 86];
+  $('#faixa').insertAdjacentHTML('beforeend', posSeg.slice(0, NC).map((p, i) => `<i class="seg" data-i="${i}" style="left:${p}%"></i>`).join(''));
+  const cartas = [...document.querySelectorAll('.carta')], segs = [...document.querySelectorAll('.seg')];
+  if (reduz) { cartas.forEach(c => c.classList.add('on')); segs.forEach(s => s.classList.add('on')); }
+  else {
+    let passo = -1;
+    setInterval(() => {
+      passo++;
+      const ciclo = NC + 2;                       // pausa de 2 tempos no fim
+      const k = passo % ciclo;
+      if (k === 0) { cartas.forEach(c => c.classList.remove('on')); segs.forEach(s => s.classList.remove('on')); }
+      if (k < NC) { segs[k].classList.add('on'); cartas[k].classList.add('on'); }
+    }, 1050);
+  }
+
+  // Factos e catalogo
+  $('#factos').innerHTML = P.factos.map(f => `<div><b>${esc(f.n)}</b><span>${esc(f.t)}</span></div>`).join('');
+  const nomes = P.catalogo.map(c => `<span>${esc(c)}</span>`).join('');
+  $('#catalogo').innerHTML = nomes + nomes.replace(/<span>/g, '<span aria-hidden="true">');
+
+  // 01 O pedido
+  $('#pedidos').innerHTML = P.pedido.blocos.map(b => `
+    <article class="pedido rv">
+      <span class="k">${esc(b.k)}</span>
+      <h3>${esc(b.t)}</h3>
+      <p>${esc(b.p)}</p>
+      <ul>${b.itens.map(i => `<li>${esc(i)}</li>`).join('')}</ul>
+    </article>`).join('');
+
+  // 02 Highlights
+  $('#inclui').innerHTML = P.hl.inclui.map((a, i) => `<div class="inc rv"><span class="i">0${i + 1}</span><h3>${esc(a.t)}</h3><p>${esc(a.p)}</p></div>`).join('');
+  const ecra = $('#ecra'), rot = $('#rot');
+  document.querySelectorAll('[data-fmt]').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('[data-fmt]').forEach(x => x.classList.toggle('on', x === b));
+    ecra.classList.toggle('v', b.dataset.fmt === 'v');
+    ecra.classList.toggle('h', b.dataset.fmt === 'h');
+    rot.textContent = b.dataset.fmt === 'v' ? 'Redes sociais · Reels e Shorts' : 'Newsletter · site · YouTube';
+  }));
+
+  // 03 Farmacia
+  $('#slots').innerHTML = P.fm.slots.map(s => `
+    <div class="slot${s.g ? ' grava' : ''}">${s.n ? `<span class="n">${s.n}</span>` : ''}<div class="h">${esc(s.h)}</div><div class="t">${esc(s.t)}</div></div>`).join('');
+  $('#tele').innerHTML = P.fm.cards.map(c => `
+    <div class="tcard rv"><h3><span class="ic">${ICON[c.ic]}</span>${esc(c.t)}</h3><p>${esc(c.p)}</p>
+    ${c.itens.length ? `<ul>${c.itens.map(i => `<li>${esc(i)}</li>`).join('')}</ul>` : ''}</div>`).join('');
+
+  // 04 Porque agora
+  $('#porque-g').innerHTML = P.pq.blocos.map(b => `<div class="pq rv"><div class="n">${esc(b.n)}</div><h3>${esc(b.t)}</h3><p>${esc(b.p)}</p></div>`).join('');
+
+  // 05 Investimento
+  $('#planos').innerHTML = P.inv.planos.map(p => {
+    const iva = Math.round(p.subtotal * P.iva * 100) / 100, total = Math.round((p.subtotal + iva) * 100) / 100;
+    return `<div class="plano rv"><span class="pill">${esc(p.nome)}</span>
+      <div class="grande">${eur(total)}</div><div class="iva">IVA incluído</div>
+      <div class="unit">${esc(p.unidade)}</div>
+      <p class="inc">${esc(p.inclui)}</p>
+      <div class="linhas"><div><span>Valor do trabalho</span><b>${eur(p.subtotal)}</b></div><div><span>IVA (${Math.round(P.iva * 100)}%)</span><b>${eur(iva)}</b></div><div class="total"><span>Total</span><b>${eur(total)}</b></div></div>
+      <ul class="detq">${p.detalhes.map(([a, b]) => `<li><span><b>${esc(a)}:</b> ${esc(b)}</span></li>`).join('')}</ul></div>`;
+  }).join('');
+  $('#notas').innerHTML = P.inv.notas.map(n => `<p>${esc(n)}</p>`).join('');
+  $('#condicoes').innerHTML = P.condicoes.map(c => `<dt>${esc(c.t)}</dt><dd>${esc(c.p === '{validade}' ? validade : c.p)}</dd>`).join('');
+
+  // 06 Trabalho
+  const T = P.tr;
+  const card = (w, cls) => `<div class="${cls} rv" data-video="${esc(w.video)}"${w.vert ? ' data-vert="1"' : ''} role="button" tabindex="0" aria-label="Ver vídeo · ${esc(w.quem)}">
+      <img src="${esc(w.img)}" alt="" loading="lazy"><span class="wplay">${ICON.play}</span>
+      <div class="wpanel"><div class="who">${esc(w.quem)}</div><div class="ctx">${esc(w.ctx)}</div></div></div>`;
+  $('#destaque').innerHTML = card(T.destaque, 'destaque');
+  $('#wgrid').innerHTML = T.projetos.map(w => card(w, 'wcard')).join('');
+  $('#prova').innerHTML =
+    T.depoimentos.map(w => card(w, 'depo')).join('') +
+    T.avaliacoes.map(r => `<div class="rev rv"><div class="stars" aria-label="5 estrelas">★★★★★</div><q>${esc(r.txt)}</q><p class="quem"><b>${esc(r.nome)}</b> · Avaliação no Google</p></div>`).join('');
+
+  // Fecho
+  $('#agenda').innerHTML = P.fecho.agenda.map(a => `<li>${esc(a)}</li>`).join('');
+  const C = P.contacto;
+  $('#cartao').innerHTML = `<div class="nm">${esc(C.nome)}</div><div class="fn">${esc(C.funcao)}</div>
+    <a href="mailto:${esc(C.email)}?subject=${encodeURIComponent(C.assuntoEmail)}">${ICON.mail}${esc(C.email)}</a>
+    <a href="${esc(C.whatsapp)}" target="_blank" rel="noopener">${ICON.zap}WhatsApp</a>
+    <a href="${esc(C.site)}" target="_blank" rel="noopener">${ICON.web}creativesete.com</a>
+    <a href="${esc(C.instagram)}" target="_blank" rel="noopener">${ICON.insta}@creativesete</a>`;
+
+  // Video modal
+  const vm = $('#vmodal'), vf = $('#vframe'), vbox = vm.querySelector('.vbox');
+  function abrir(id, vert){ if (!/^[\w-]{11}$/.test(id)) return; vbox.classList.toggle('vert', !!vert); vf.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0" title="Vídeo" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`; vm.classList.add('on'); document.body.style.overflow = 'hidden'; }
+  function fechar(){ vm.classList.remove('on'); vf.innerHTML = ''; document.body.style.overflow = ''; }
+  document.addEventListener('click', e => { const c = e.target.closest('[data-video]'); if (c) abrir(c.dataset.video, c.dataset.vert); if (e.target.closest('[data-fechar]')) fechar(); });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') fechar();
+    const c = e.target.closest && e.target.closest('[data-video]');
+    if (c && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); abrir(c.dataset.video, c.dataset.vert); }
+  });
+
+  // Revelar ao descer
+  const io = new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); } }), { threshold: .12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.rv').forEach(x => io.observe(x));
+})();
+</script>
+</body>
+</html>

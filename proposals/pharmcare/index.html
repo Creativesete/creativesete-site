@@ -213,6 +213,16 @@ nav{position:fixed;top:14px;left:0;right:0;z-index:80}
 .detq li{display:flex;gap:9px;font-size:13.5px;color:var(--muted)}
 .detq li b{color:var(--ink);font-weight:600}
 .detq li::before{content:"";flex:none;width:6px;height:6px;margin-top:8px;border-radius:50%;background:var(--verde)}
+.stepper{margin-top:20px;display:flex;align-items:center;gap:14px}
+.stepper button{width:40px;height:40px;border-radius:50%;border:1px solid rgba(110,35,112,.32);background:#fff;color:var(--roxo);font-size:19px;font-weight:700;cursor:pointer;display:grid;place-items:center;line-height:1;transition:background .2s,opacity .2s}
+.stepper button:hover:not(:disabled){background:rgba(110,35,112,.08)}
+.stepper button:disabled{opacity:.32;cursor:default}
+.stepper .nv{font-size:16px;min-width:96px;text-align:center;color:var(--ink)}
+.stepper .nv b{font-size:20px;font-weight:800}
+.plano .stepper+.grande{margin-top:14px}
+.pdesc{margin-left:auto;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#3E7C0F;background:rgba(117,195,44,.14);border:1px solid rgba(117,195,44,.35);padding:6px 12px;border-radius:999px;white-space:nowrap}
+.linhas b.verde{color:#3E7C0F}
+.linhas [hidden]{display:none}
 .notas{max-width:960px;margin:20px auto 0;display:grid;gap:9px}
 .notas p{display:flex;gap:12px;align-items:flex-start;font-size:13.5px;color:var(--muted)}
 .notas p::before{content:"";flex:none;width:6px;height:6px;margin-top:8px;border-radius:50%;background:var(--roxo)}
@@ -225,7 +235,7 @@ nav{position:fixed;top:14px;left:0;right:0;z-index:80}
 
 /* 06 Trabalho */
 .destaque{position:relative;border-radius:28px;overflow:hidden;aspect-ratio:21/9;box-shadow:var(--shadow);cursor:pointer;isolation:isolate;margin-bottom:16px}
-.wgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.wgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;max-width:860px;margin:16px auto 0}
 .wcard{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:16/11;box-shadow:var(--shadow-sm);cursor:pointer;isolation:isolate}
 .wcard img,.destaque img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s ease;z-index:0}
 .wcard::after,.destaque::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(46,11,48,.06) 40%,rgba(46,11,48,.5))}
@@ -284,7 +294,6 @@ footer{padding:40px 0 34px;color:var(--muted);font-size:12.5px}
 
 @media (max-width:980px){
   .nav-links{display:none}
-  .inclui{grid-template-columns:repeat(2,1fr) repeat(2,1fr)}
   .inclui{grid-template-columns:repeat(2,1fr)}
   .fecho-in{grid-template-columns:1fr;padding:38px 28px}
   .slots{grid-template-columns:repeat(4,1fr)}
@@ -310,6 +319,9 @@ footer{padding:40px 0 34px;color:var(--muted);font-size:12.5px}
   .slots{grid-template-columns:repeat(2,1fr)}
   .demo{padding:18px 16px 16px}
   .hero{padding:104px 0 40px}
+  .inclui{grid-template-columns:1fr}
+  .carta .tag .tw{display:none}
+  .carta .tag{font-size:8.5px;padding:3px 6px}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -386,7 +398,7 @@ footer{padding:40px 0 34px;color:var(--muted);font-size:12.5px}
 <section class="pane branco" id="highlights">
   <div class="wrap">
     <div class="sec-head rv">
-      <p class="eyebrow num"><b>02</b> Trabalho 1 · Highlights do webinar</p>
+      <p class="eyebrow num"><b>02</b> Highlights do webinar</p>
       <h2 data-t="hl.titulo"></h2>
       <p data-t="hl.texto"></p>
     </div>
@@ -421,7 +433,7 @@ footer{padding:40px 0 34px;color:var(--muted);font-size:12.5px}
 <section class="pane cinza" id="farmacia">
   <div class="wrap">
     <div class="sec-head rv">
-      <p class="eyebrow num"><b>03</b> Trabalho 2 · Seis vídeos na farmácia</p>
+      <p class="eyebrow num"><b>03</b> Seis vídeos na farmácia</p>
       <h2 data-t="fm.titulo"></h2>
       <p data-t="fm.texto"></p>
     </div>
@@ -431,7 +443,7 @@ footer{padding:40px 0 34px;color:var(--muted);font-size:12.5px}
     </div>
     <div class="tele" id="tele"></div>
     <figure class="bts rv">
-      <img src="/proposals/pharmcare/img/bts_teleponto_v.jpg" alt="Gravação com teleponto: o texto corre no ecrã enquanto a apresentadora fala para a câmara" loading="lazy">
+      <img src="/proposals/pharmcare/img/bts_teleponto_v.jpg" alt="Equipa da CreativeSete e cliente reveem o texto no ecrã do teleponto antes da gravação" loading="lazy">
       <img src="/proposals/pharmcare/img/bts_teleponto.jpg" alt="Sessão de gravação com teleponto, softbox e direção da CreativeSete" loading="lazy">
       <img src="/proposals/pharmcare/img/bts_sessao.jpg" alt="Cenário de entrevista preparado com luz e direção de arte" loading="lazy">
       <figcaption>Bastidores CreativeSete · gravações reais com teleponto, luz e direção</figcaption>
@@ -538,7 +550,7 @@ const PROPOSTA = {
   hero: {
     eyebrow: 'Proposta para o Instituto Pharmcare · Conteúdos vídeo',
     titulo: '60 minutos de ciência.<br><span class="gt">60 segundos</span> de cada vez.',
-    sub: 'Os vossos webinars já formam milhares de profissionais. Esta proposta transforma cada um deles em conteúdo que continua a chegar às equipas de farmácia muito depois do direto acabar.',
+    sub: 'O Instituto já formou milhares de profissionais. Esta proposta transforma cada webinar em conteúdo que continua a chegar às equipas de farmácia muito depois do direto acabar.',
     demoEsq: 'Gravação integral do webinar · 60:00',
     demoDir: 'Momentos selecionados',
     demoNota: '5 a 6 highlights por webinar · vertical para as redes · horizontal para a newsletter',
@@ -558,7 +570,7 @@ const PROPOSTA = {
   pedido: {
     titulo: 'Dois trabalhos, tal como nos escreveu.',
     texto: 'Antes dos valores, a confirmação de que percebemos exatamente o que procura.',
-    eco: 'Em ambos os trabalhos: valores discriminados, prazos de entrega definidos e duas rondas de revisão incluídas por vídeo. Era o que pedia no email, e está tudo nas secções seguintes.',
+    eco: 'Em ambos os trabalhos: valores discriminados, prazos de entrega definidos e duas rondas de revisão incluídas. Era o que pedia no email, e está tudo nas secções seguintes.',
     blocos: [
       { k: 'Trabalho 1 · novembro de 2026', t: 'Highlights do webinar', p: 'A partir da gravação integral do webinar, selecionamos os momentos e as mensagens de maior interesse e transformamo-los em vídeos curtos prontos a publicar.', itens: [
         '5 a 6 vídeos de highlights por webinar',
@@ -579,7 +591,7 @@ const PROPOSTA = {
     titulo: 'O que está incluído, passo a passo.',
     texto: 'Pediu que a proposta indicasse o que contempla a seleção, a edição, os grafismos, a legendagem e a adaptação aos formatos. Aqui está, na mesma ordem.',
     inclui: [
-      { t: 'Seleção dos highlights', p: 'Vemos a gravação integral e escolhemos os momentos com mais valor para quem está ao balcão. Enviamos a lista de momentos antes de editar, para validarem a seleção.' },
+      { t: 'Seleção dos highlights', p: 'Vemos a gravação integral e escolhemos os momentos com mais valor para quem está ao balcão. Os cortes selecionados vão para vossa aprovação antes da edição final.' },
       { t: 'Edição', p: 'Corte dinâmico de cada momento, com ritmo pensado para redes sociais e abertura que prende nos primeiros três segundos.' },
       { t: 'Grafismos', p: 'Oráculos com o nome e o título de quem fala, cartelas de abertura e fecho com a identidade do Instituto, no roxo da marca.' },
       { t: 'Legendagem', p: 'Legendas completas e legíveis em todos os vídeos. A maioria vê sem som, e a terminologia clínica fica escrita corretamente.' },
@@ -606,7 +618,7 @@ const PROPOSTA = {
       { h: '16h00', t: 'Planos de recurso e desmontagem', g: false }
     ],
     cards: [
-      { ic: 'tele', t: 'Porquê o teleponto', p: 'O texto corre ao ritmo de quem fala, com o olhar sempre na câmara. Ninguém decora guiões e cada vídeo sai à primeira ou à segunda tentativa, o que é o que permite gravar seis num só dia.', itens: [] },
+      { ic: 'tele', t: 'Porquê o teleponto', p: 'O texto corre ao ritmo de quem fala, com o olhar sempre na câmara. Ninguém decora guiões e cada vídeo fecha em poucas tentativas, e é isso que permite gravar seis num só dia.', itens: [] },
       { ic: 'lista', t: 'O que precisamos do Instituto', p: 'Três coisas, e tratamos do resto.', itens: [
         'Os seis guiões finais, 48 horas antes, para os carregarmos no teleponto',
         'Uma zona da farmácia disponível por blocos, sem fechar o atendimento',
@@ -620,8 +632,8 @@ const PROPOSTA = {
     texto: 'Três razões para este ser o momento certo, olhando para o vosso setor.',
     blocos: [
       { n: '01', t: 'Cada webinar passa a render semanas', p: 'Hoje o webinar acontece, é visto por quem se inscreveu e fica guardado na plataforma. Os highlights fazem o mesmo conteúdo trabalhar nas redes e na newsletter durante semanas, e continuam a trazer inscrições para o webinar seguinte.' },
-      { n: '02', t: 'Ninguém no setor o está a fazer', p: 'Percorremos os canais da formação farmacêutica em Portugal: não encontrámos highlights verticais legendados de webinars em nenhum deles. O Instituto seria o primeiro do nicho a fazê-lo com produção profissional.' },
-      { n: '03', t: 'Os parceiros também ganham', p: 'As formações contam com o apoio de laboratórios. Vídeos curtos com alcance dão a esses parceiros uma visibilidade que um webinar fechado não dá, e reforçam o valor das próximas parcerias.' }
+      { n: '02', t: 'Não vimos ninguém no setor a fazê-lo', p: 'Percorremos os canais da formação farmacêutica em Portugal: não encontrámos highlights verticais legendados de webinars em nenhum deles. O Instituto seria o primeiro do nicho a fazê-lo com produção profissional.' },
+      { n: '03', t: 'Os parceiros também ganham', p: 'Quando uma formação conta com o apoio de um laboratório, vídeos curtos com alcance dão a esse parceiro uma visibilidade que um webinar fechado não dá, e reforçam o valor das próximas parcerias.' }
     ],
     nota: 'E não é um formato estranho para vós: o Instituto já publica vídeos curtos com a formadora à câmara. A diferença desta proposta está na produção, no grafismo e na consistência, não na ideia.'
   },
@@ -632,31 +644,33 @@ const PROPOSTA = {
     planos: [
       {
         nome: 'Trabalho 1 · Highlights do webinar',
-        subtotal: 1350,
-        unidade: '€ 225 + IVA por highlight · pack de 6',
+        subtotal: 960,
+        unidade: '€ 160 + IVA por highlight · pack de 6',
         inclui: 'Seleção dos momentos a partir da gravação integral, edição, grafismos com a identidade do Instituto, legendagem e entrega em vertical e horizontal.',
         detalhes: [
-          ['Prazo', 'até 5 dias úteis depois de recebermos a gravação integral'],
-          ['Revisões', 'duas rondas por vídeo, incluídas'],
-          ['Se forem 5 highlights', '€ 1.125 + IVA (€ 225 por vídeo)']
+          ['Aprovação', 'até 4 dias depois de recebermos a gravação, enviamos os seis cortes selecionados para validarem'],
+          ['Entrega final', 'entre 5 e 10 dias depois da aprovação, com todos os ficheiros prontos a publicar'],
+          ['Revisões', 'duas rondas globais incluídas: a primeira reúne todos os pedidos de uma vez, a segunda fecha acertos pontuais'],
+          ['Se forem 5 highlights', '€ 800 + IVA (€ 160 por vídeo)'],
+          ['Observação', 'valores assumem um webinar com cerca de 1 hora de gravação']
         ]
       },
       {
-        nome: 'Trabalho 2 · Seis vídeos na farmácia',
-        subtotal: 1800,
-        unidade: '€ 300 + IVA por vídeo · dia de gravação incluído',
-        inclui: 'Um dia de gravação na farmácia com equipa e teleponto profissional, edição dos seis vídeos, grafismos, legendagem e entrega pronta a publicar.',
+        nome: 'Trabalho 2 · Vídeos na farmácia',
+        calc: { inicial: 6, min: 1, max: 15, porDia: 6, seloDesde: 6, escaloes: [[1, 340], [2, 300], [5, 260], [8, 240], [11, 220]] },
+        inclui: 'Gravação na farmácia com equipa e teleponto profissional, edição, grafismos, legendagem e entrega pronta a publicar.',
         detalhes: [
-          ['Prazo', 'primeiros cortes em 5 dias úteis, os seis finalizados até 10 dias úteis'],
+          ['Prazo', 'primeiros cortes em 5 dias úteis, todos finalizados até 10 dias úteis'],
           ['Revisões', 'duas rondas por vídeo, incluídas'],
-          ['Deslocação', 'incluída na Grande Lisboa']
+          ['Deslocação', 'incluída na Grande Lisboa'],
+          ['Ritmo', 'até 6 vídeos por dia de gravação, com os dias necessários já incluídos no valor']
         ]
       }
     ],
     notas: [
       'Valores sem IVA à taxa legal de 23%, apresentada em cada quadro.',
       'Adjudicando os dois trabalhos, os grafismos e o modelo de legendagem criados para um servem o outro, e a identidade visual dos vossos vídeos fica coerente em todos os canais.',
-      'Se o webinar de novembro tiver data marcada, garantimos a entrega dos highlights na mesma semana em que recebermos a gravação.'
+      'Com a data do webinar de novembro marcada, reservamos a semana seguinte na nossa agenda e os highlights saem sem fila de espera.'
     ]
   },
 
@@ -674,11 +688,10 @@ const PROPOSTA = {
     destaque: { video: 'K_N4hydChbo', img: '/assets/svc_cursos.jpg', quem: 'Cursos e institucionais', ctx: 'Showreel CreativeSete · gravação com teleponto incluída' },
     projetos: [
       { video: 'r65IenphFY8', img: 'https://i.ytimg.com/vi/r65IenphFY8/hqdefault.jpg', quem: 'Estudo da Mulher · Barbara Lia', ctx: 'Conteúdo de formação em vertical, com grafismos e legendas', vert: true },
-      { video: 'Ng3reWaOZug', img: '/assets/svc_cobertura.jpg', quem: 'Cobertura de eventos', ctx: 'Showreel CreativeSete' },
-      { video: 'ERc2OkH3rlo', img: '/assets/p_ey.jpg', quem: 'EY', ctx: 'Winning Women · Evento corporativo' }
+      { video: 'Ng3reWaOZug', img: '/assets/svc_cobertura.jpg', quem: 'Cobertura de eventos', ctx: 'Showreel CreativeSete' }
     ],
     depoimentos: [
-      { video: 'IUaF55ES9co', img: 'https://i.ytimg.com/vi/IUaF55ES9co/hqdefault.jpg', quem: 'Bárbara Lia', ctx: 'O que diz de trabalhar connosco' },
+      { video: 'IUaF55ES9co', img: 'https://i.ytimg.com/vi/IUaF55ES9co/hqdefault.jpg', quem: 'Barbara Lia', ctx: 'O que diz de trabalhar connosco' },
       { video: 'Bk8nNKh8TPw', img: 'https://i.ytimg.com/vi/Bk8nNKh8TPw/hqdefault.jpg', quem: 'Maria Maia', ctx: 'O que diz de trabalhar connosco' }
     ],
     avaliacoes: [
@@ -689,7 +702,7 @@ const PROPOSTA = {
 
   fecho: {
     titulo: 'Vamos pôr a ciência a circular?',
-    texto: 'Quinze minutos chegam para alinhar o que falta e garantir os highlights na semana do webinar.',
+    texto: 'Quinze minutos chegam para alinhar o que falta e reservar a semana do webinar na nossa agenda.',
     agenda: [
       'A data do webinar de novembro e a entrega da gravação',
       'O dia de gravação na farmácia e os seis guiões',
@@ -736,7 +749,7 @@ const PROPOSTA = {
   // Heroi: demonstracao
   const NC = P.hero.nHighlights;
   $('#cartas').innerHTML = Array.from({ length: NC }, (_, i) =>
-    `<div class="carta" data-i="${i}"><span class="tag">Highlight 0${i + 1}</span><span class="play">${ICON.play}</span><span class="leg"><i></i><i></i></span></div>`).join('');
+    `<div class="carta" data-i="${i}"><span class="tag"><span class="tw">Highlight </span>0${i + 1}</span><span class="play">${ICON.play}</span><span class="leg"><i></i><i></i></span></div>`).join('');
   const posSeg = [7, 21, 38, 55, 71, 86];
   $('#faixa').insertAdjacentHTML('beforeend', posSeg.slice(0, NC).map((p, i) => `<i class="seg" data-i="${i}" style="left:${p}%"></i>`).join(''));
   const cartas = [...document.querySelectorAll('.carta')], segs = [...document.querySelectorAll('.seg')];
@@ -787,16 +800,59 @@ const PROPOSTA = {
   $('#porque-g').innerHTML = P.pq.blocos.map(b => `<div class="pq rv"><div class="n">${esc(b.n)}</div><h3>${esc(b.t)}</h3><p>${esc(b.p)}</p></div>`).join('');
 
   // 05 Investimento
-  $('#planos').innerHTML = P.inv.planos.map(p => {
+  $('#planos').innerHTML = P.inv.planos.map((p, pi) => {
+    const detq = `<ul class="detq">${p.detalhes.map(([a, b]) => `<li><span><b>${esc(a)}:</b> ${esc(b)}</span></li>`).join('')}</ul>`;
+    if (p.calc) return `<div class="plano rv" data-calc="${pi}"><span class="pill">${esc(p.nome)}</span>
+      <div class="stepper" role="group" aria-label="Número de vídeos"><button type="button" data-st="-1" aria-label="Menos um vídeo">−</button><span class="nv"><b data-cv>6</b> vídeos</span><button type="button" data-st="1" aria-label="Mais um vídeo">+</button><span class="pdesc" data-cpd hidden></span></div>
+      <div class="grande" data-ct></div><div class="iva">IVA incluído</div>
+      <div class="unit" data-cu></div>
+      <p class="inc">${esc(p.inclui)}</p>
+      <div class="linhas"><div data-cbrow hidden><span>Valor base · <span data-cbn></span> × <span data-cbu></span></span><b data-cb></b></div><div data-cdrow hidden><span>Desconto por volume · <span data-cdu></span> por vídeo</span><b class="verde" data-cd></b></div><div><span>Valor do trabalho</span><b data-cs></b></div><div><span>IVA (${Math.round(P.iva * 100)}%)</span><b data-ci></b></div><div class="total"><span>Total</span><b data-cx></b></div></div>
+      ${detq}</div>`;
     const iva = Math.round(p.subtotal * P.iva * 100) / 100, total = Math.round((p.subtotal + iva) * 100) / 100;
     return `<div class="plano rv"><span class="pill">${esc(p.nome)}</span>
       <div class="grande">${eur(total)}</div><div class="iva">IVA incluído</div>
       <div class="unit">${esc(p.unidade)}</div>
       <p class="inc">${esc(p.inclui)}</p>
       <div class="linhas"><div><span>Valor do trabalho</span><b>${eur(p.subtotal)}</b></div><div><span>IVA (${Math.round(P.iva * 100)}%)</span><b>${eur(iva)}</b></div><div class="total"><span>Total</span><b>${eur(total)}</b></div></div>
-      <ul class="detq">${p.detalhes.map(([a, b]) => `<li><span><b>${esc(a)}:</b> ${esc(b)}</span></li>`).join('')}</ul></div>`;
+      ${detq}</div>`;
   }).join('');
   $('#notas').innerHTML = P.inv.notas.map(n => `<p>${esc(n)}</p>`).join('');
+
+  // Calculadora do Trabalho 2
+  document.querySelectorAll('[data-calc]').forEach(el => {
+    const cfg = P.inv.planos[+el.dataset.calc].calc;
+    let n = cfg.inicial;
+    const unit = q => { let v = cfg.escaloes[0][1]; for (const [de, pr] of cfg.escaloes) if (q >= de) v = pr; return v; };
+    const pinta = () => {
+      const pv = unit(n), sub = pv * n;
+      const base = cfg.escaloes[0][1], vbase = base * n, desc = vbase - sub;
+      const pct = Math.round((1 - pv / base) * 100);
+      const iva = Math.round(sub * P.iva * 100) / 100, tot = Math.round((sub + iva) * 100) / 100;
+      const dias = Math.ceil(n / cfg.porDia);
+      el.querySelector('[data-cv]').textContent = n;
+      el.querySelector('.nv').lastChild.textContent = n === 1 ? ' vídeo' : ' vídeos';
+      el.querySelector('[data-ct]').textContent = eur(tot);
+      el.querySelector('[data-cu]').textContent = `€ ${pv} + IVA por vídeo · ${dias} ${dias === 1 ? 'dia' : 'dias'} de gravação incluído${dias === 1 ? '' : 's'}`;
+      el.querySelector('[data-cs]').textContent = eur(sub);
+      el.querySelector('[data-ci]').textContent = eur(iva);
+      el.querySelector('[data-cx]').textContent = eur(tot);
+      const selo = el.querySelector('[data-cpd]'), lb = el.querySelector('[data-cbrow]'), ld = el.querySelector('[data-cdrow]');
+      lb.hidden = ld.hidden = desc <= 0;
+      selo.hidden = desc <= 0 || n < (cfg.seloDesde || 0);
+      if (desc > 0) {
+        if (!selo.hidden) selo.textContent = `poupa ${pct}%`;
+        el.querySelector('[data-cbn]').textContent = n;
+        el.querySelector('[data-cbu]').textContent = `€ ${base}`;
+        el.querySelector('[data-cb]').textContent = eur(vbase);
+        el.querySelector('[data-cdu]').textContent = `€ ${base - pv}`;
+        el.querySelector('[data-cd]').textContent = `− ${eur(desc)}`;
+      }
+      el.querySelectorAll('[data-st]').forEach(b => { b.disabled = (+b.dataset.st < 0 && n <= cfg.min) || (+b.dataset.st > 0 && n >= cfg.max); });
+    };
+    el.querySelectorAll('[data-st]').forEach(b => b.addEventListener('click', () => { n = Math.min(cfg.max, Math.max(cfg.min, n + (+b.dataset.st))); pinta(); }));
+    pinta();
+  });
   $('#condicoes').innerHTML = P.condicoes.map(c => `<dt>${esc(c.t)}</dt><dd>${esc(c.p === '{validade}' ? validade : c.p)}</dd>`).join('');
 
   // 06 Trabalho

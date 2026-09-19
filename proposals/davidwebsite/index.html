@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="theme-color" content="#201F22">
+<title>David Caleja · Proposta CreativeSete</title>
+<meta name="description" content="Página premium para o consultor imobiliário David Caleja. Proposta da CreativeSete.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="David Caleja">
+<meta property="og:description" content="Página premium de consultor imobiliário. Filme e página por CreativeSete.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300..600&display=swap">
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+<style>
+  /* DAVID CALEJA · página premium · v1
+     Referência: Velora Villas (Behance). Carvão #201F22, cinzas #707070 e #858585, branco.
+     Inter Tight leve e apertada, contentores de cantos muito redondos, pílulas, cartões brancos de números. */
+  :root{--k:#201F22;--k2:#2A292D;--g1:#707070;--g2:#858585;--g3:#B9B9BB;--w:#fff;--soft:#F3F3F2;--l:rgba(32,31,34,.12);--lw:rgba(255,255,255,.14);
+    --f:'Inter Tight','Helvetica Neue',Helvetica,Arial,sans-serif;--p:clamp(12px,1.2vw,18px);--R:clamp(22px,2.6vw,40px);--ease:cubic-bezier(.2,.7,.2,1);--ease2:cubic-bezier(.7,0,.2,1)}
+  *{box-sizing:border-box} html{scroll-behavior:auto} html.lenis,html.lenis body{height:auto}
+  body{margin:0;background:var(--w);color:var(--k);font:400 14px/1.45 var(--f);letter-spacing:-.01em;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding:var(--p)}
+  ::selection{background:var(--k);color:#fff} a{color:inherit} img{display:block;max-width:100%} button{font:inherit;color:inherit}
+  :focus-visible{outline:2px solid currentColor;outline-offset:3px}
+  .wrap{max-width:1560px;margin-inline:auto}
+  h1,h2,h3{font-weight:300;margin:0;letter-spacing:-.045em;text-wrap:balance}
+  .xl{font-size:clamp(40px,6.2vw,104px);line-height:.95} .lg{font-size:clamp(28px,3.4vw,56px);line-height:1.02} .md{font-size:clamp(22px,2.3vw,38px);line-height:1.08;letter-spacing:-.04em;font-weight:400}
+  .mu{color:var(--g2)} .dk .mu{color:var(--g1)}
+  .tagn{font:400 11px/1.3 var(--f);letter-spacing:.06em;text-transform:uppercase;color:var(--g1);margin:0} .dk .tagn{color:var(--g2)}
+  .small{font-size:12.5px;line-height:1.5;color:var(--g1);max-width:44ch;margin:0} .dk .small{color:var(--g3)}
+  .pillbtn{display:inline-flex;align-items:center;gap:0;text-decoration:none;cursor:pointer;border:0;background:none;padding:0}
+  .pillbtn span{display:inline-flex;align-items:center;height:40px;padding:0 20px;border-radius:999px;background:var(--k);color:#fff;font:500 10.5px/1 var(--f);letter-spacing:.1em;text-transform:uppercase;transition:background .4s,color .4s}
+  .pillbtn i{width:40px;height:40px;border-radius:50%;border:1px solid var(--k);display:grid;place-items:center;margin-left:-6px;background:var(--w);color:var(--k);transition:transform .6s var(--ease),background .4s,color .4s} .pillbtn i svg{width:12px;height:12px}
+  .pillbtn:hover i{transform:translateX(8px) rotate(-45deg);background:var(--k);color:#fff}
+  .pillbtn.w span{background:#fff;color:var(--k)} .pillbtn.w i{border-color:#fff;background:transparent;color:#fff} .pillbtn.w:hover i{background:#fff;color:var(--k)}
+
+  /* revelações */
+  .rv{opacity:0;transform:translateY(26px);transition:opacity 1.1s var(--ease),transform 1.1s var(--ease);transition-delay:var(--d,0s)} .rv.in{opacity:1;transform:none}
+  .ln{display:block;overflow:hidden;padding-bottom:.14em;margin-bottom:-.14em} .ln>span{display:block;transform:translateY(112%);transition:transform 1.25s var(--ease);transition-delay:calc(var(--i,0)*.11s + var(--d,0s))} .in .ln>span{transform:none}
+  .cur{position:relative;overflow:hidden} .cur::after{content:'';position:absolute;inset:-1px;background:var(--c,#fff);transform-origin:top;transition:transform 1.4s var(--ease2);transition-delay:var(--d,0s);z-index:3;pointer-events:none} .cur.in::after{transform:scaleY(0)} .dk .cur{--c:var(--k)}
+  .cur img{transform:scale(1.2);transition:transform 2.2s var(--ease);transition-delay:var(--d,0s)} .cur.in img{transform:none}
+  .pi{position:absolute;left:0;right:0;top:-12%;height:124%;will-change:transform} .pi img{width:100%;height:100%;object-fit:cover} .fx{will-change:transform}
+  .tone img{filter:saturate(.82) contrast(1.03)}
+
+  /* abertura */
+  .pre{position:fixed;inset:0;z-index:200;background:var(--k);color:#fff;display:grid;place-items:center;pointer-events:none;transition:transform 1.1s var(--ease2)} .pre.off{transform:translateY(-100%)}
+  .pre b{font:300 clamp(26px,3.4vw,52px)/1 var(--f);letter-spacing:-.04em;opacity:0;animation:pin 1s var(--ease) .1s forwards} .pre i{position:absolute;left:0;bottom:0;height:2px;width:0;background:#fff} @keyframes pin{to{opacity:1}}
+
+  /* HERO */
+  .hero{position:relative;height:calc(100svh - 2*var(--p));min-height:600px;border-radius:var(--R);overflow:hidden;background:var(--k);color:#fff;isolation:isolate}
+  .hero .bg{position:absolute;inset:0;will-change:transform} .hero .bg img{width:100%;height:100%;object-fit:cover;animation:kb 26s ease-out forwards;filter:saturate(.8) contrast(1.04)} @keyframes kb{from{transform:scale(1.14)}to{transform:scale(1)}}
+  .hero::after{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(20,20,22,.55),rgba(20,20,22,.05) 28%,rgba(20,20,22,.1) 50%,rgba(20,20,22,.8));pointer-events:none}
+  .nav{position:absolute;left:0;right:0;top:0;z-index:5;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;padding:clamp(16px,1.8vw,28px) clamp(18px,2.4vw,38px)}
+  .logo{display:flex;align-items:center;gap:10px;text-decoration:none;font:500 13px/1 var(--f);letter-spacing:.08em;text-transform:uppercase} .logo i{width:22px;height:22px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.7);border-radius:6px;font:500 9px var(--f);font-style:normal;letter-spacing:.02em}
+  .tabs{display:flex;gap:6px} .tabs a{height:34px;padding:0 18px;border-radius:999px;border:1px solid rgba(255,255,255,.28);display:inline-flex;align-items:center;text-decoration:none;font-size:11.5px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);background:rgba(32,31,34,.18);transition:background .4s,color .4s,border-color .4s} .tabs a:hover,.tabs a.on{background:#fff;color:var(--k);border-color:#fff}
+  .nav .rt{display:flex;justify-content:flex-end;align-items:center;gap:14px}
+  .lang{white-space:nowrap;font-size:11.5px} .lang button{all:unset;cursor:pointer;opacity:.55;transition:opacity .3s;padding:4px 2px} .lang button.on,.lang button:hover{opacity:1}
+  .hbody{position:absolute;left:clamp(18px,2.4vw,38px);right:clamp(18px,2.4vw,38px);bottom:clamp(18px,2.4vw,38px);z-index:4;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end}
+  .chip{display:inline-flex;height:28px;align-items:center;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.4);font-size:11px;margin-bottom:16px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+  .hbody h1{max-width:12em;text-shadow:0 2px 30px rgba(20,20,22,.45)} .hbody .small{color:#e2e2e2;margin-top:16px;max-width:40ch}
+  .cards{display:flex;gap:10px} .card{width:clamp(150px,13vw,200px);background:#fff;color:var(--k);border-radius:22px;padding:8px 8px 16px;text-align:center;transition:transform .7s var(--ease)} .card:hover{transform:translateY(-8px)}
+  .card .im{aspect-ratio:16/10;border-radius:16px;overflow:hidden} .card .im img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)} .card:hover .im img{transform:scale(1.08)}
+  .card b{display:block;margin-top:12px;font:400 clamp(24px,2.2vw,34px)/1 var(--f);letter-spacing:-.04em} .card p{margin:8px 6px 0;font-size:10px;line-height:1.35;color:var(--g1)}
+  .ha{opacity:0;transform:translateY(18px);transition:opacity 1.2s var(--ease),transform 1.2s var(--ease);transition-delay:var(--d,0s)} .hero.in .ha{opacity:1;transform:none}
+
+  /* SOBRE */
+  .sec{padding:clamp(70px,9vw,150px) clamp(10px,2vw,30px)}
+  .about{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(24px,4vw,70px)} .about .l{display:flex;flex-direction:column;justify-content:space-between;gap:40px}
+  .about .md{max-width:19em} .about .r .pillbtn{margin-top:clamp(28px,3vw,48px)}
+
+  /* BANNER */
+  .banner{position:relative;border-radius:var(--R);overflow:hidden;min-height:clamp(420px,56vw,780px);background:var(--k);color:#fff;display:flex;align-items:flex-end}
+  .banner .pi{top:-14%;height:128%} .banner::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,20,22,.35),rgba(20,20,22,.05) 35%,rgba(20,20,22,.78))}
+  .banner .tagn{position:absolute;left:clamp(18px,2.4vw,38px);top:clamp(18px,2.4vw,34px);z-index:2;color:#fff} .banner .mk{position:absolute;right:clamp(18px,2.4vw,38px);top:clamp(18px,2.4vw,34px);z-index:2;font:500 12px var(--f);letter-spacing:.08em}
+  .banner .inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;width:100%;padding:clamp(18px,2.4vw,38px)} .banner h2{max-width:15em} .banner .small{color:#dedede;margin-top:14px}
+  .orb{width:clamp(64px,6vw,92px);aspect-ratio:1;border-radius:50%;border:1px solid rgba(255,255,255,.7);display:grid;place-items:center;color:#fff;text-decoration:none;transition:transform .7s var(--ease),background .4s,color .4s} .orb svg{width:22px;height:22px} .orb:hover{background:#fff;color:var(--k);transform:scale(1.08) rotate(-45deg)}
+
+  /* ESCURO · carrossel */
+  .dk{background:var(--k);color:#fff;border-radius:var(--R);overflow:hidden;margin-top:var(--p)}
+  .dk .hd{display:grid;grid-template-columns:1fr 2fr;gap:24px;padding:clamp(40px,5vw,84px) clamp(18px,2.4vw,38px) clamp(30px,4vw,60px)}
+  .car{position:relative;height:clamp(340px,40vw,600px);overflow:hidden;touch-action:pan-y} .track{position:absolute;inset:0}
+  .sl{position:absolute;left:50%;top:0;width:clamp(200px,22vw,330px);transform:translateX(-50%);transition:transform 1.1s var(--ease),width 1.1s var(--ease),opacity 1s;cursor:pointer}
+  .sl .im{border-radius:18px;overflow:hidden;aspect-ratio:1/1;transition:aspect-ratio 1.1s var(--ease)} .sl .im img{width:100%;height:100%;object-fit:cover;transition:transform 1.6s var(--ease),filter 1s;filter:saturate(.75) brightness(.72)}
+  .sl.on{width:clamp(280px,31vw,470px)} .sl.on .im{aspect-ratio:4/5} .sl.on .im img{filter:saturate(.9)} .sl:hover .im img{transform:scale(1.05)}
+  .sl p{display:flex;justify-content:space-between;margin:10px 4px 0;font-size:11px;color:#d8d8d8} .sl p span:last-child{color:var(--g2)}
+  .arr{position:absolute;top:58%;z-index:6;width:clamp(48px,4.4vw,66px);aspect-ratio:1;border-radius:50%;border:1px solid rgba(255,255,255,.65);background:rgba(32,31,34,.35);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff;display:grid;place-items:center;cursor:pointer;transition:background .4s,color .4s,transform .5s var(--ease)} .arr svg{width:14px;height:14px} .arr:hover{background:#fff;color:var(--k);transform:scale(1.08)}
+  .arr.p{left:clamp(18px,8vw,130px)} .arr.n{right:clamp(18px,8vw,130px)}
+  .dk .ft{display:flex;justify-content:space-between;gap:20px;padding:clamp(24px,3vw,44px) clamp(18px,2.4vw,38px)}
+  .nums{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--lw);margin:0 clamp(18px,2.4vw,38px);padding:clamp(30px,4vw,64px) 0 clamp(40px,5vw,84px)}
+  .nums div{padding-right:20px} .nums b{display:block;font:300 clamp(40px,5.2vw,88px)/1 var(--f);letter-spacing:-.05em} .nums span{display:block;margin-top:12px;font-size:12.5px;color:var(--g3);max-width:22ch}
+
+  /* IMÓVEIS */
+  .phead{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(24px,4vw,70px);align-items:end;margin-bottom:clamp(30px,4vw,60px)}
+  .plist{border-top:1px solid var(--l)} .pr{position:relative;display:grid;grid-template-columns:40px 1.5fr 1fr .8fr auto;gap:18px;align-items:center;padding:clamp(16px,1.7vw,26px) 0;border-bottom:1px solid var(--l);text-decoration:none;transition:padding .6s var(--ease),color .4s}
+  .pr::before{content:'';position:absolute;inset:0 calc(-1*clamp(10px,2vw,30px));background:var(--k);border-radius:18px;transform:scaleY(0);transform-origin:bottom;transition:transform .6s var(--ease2);z-index:-1} .pr{isolation:isolate}
+  .pr:hover{color:#fff;padding-left:14px;padding-right:14px} .pr:hover::before{transform:scaleY(1)} .pr:hover .mu,.pr:hover .k{color:var(--g3)}
+  .pr .k{color:var(--g2);font-size:12px} .pr h3{font:400 clamp(19px,2vw,32px)/1.05 var(--f);letter-spacing:-.04em} .pr .mu{font-size:13px} .pr .v{font:400 clamp(17px,1.5vw,24px)/1 var(--f);letter-spacing:-.03em;text-align:right}
+  .pr .go{width:38px;height:38px;border-radius:50%;border:1px solid currentColor;display:grid;place-items:center;transition:transform .6s var(--ease)} .pr .go svg{width:11px;height:11px} .pr:hover .go{transform:rotate(-45deg);background:#fff;color:var(--k);border-color:#fff}
+  .pv{position:fixed;z-index:80;width:300px;aspect-ratio:3/2;border-radius:16px;overflow:hidden;pointer-events:none;opacity:0;transform:scale(.86);transition:opacity .45s var(--ease),transform .6s var(--ease);box-shadow:0 30px 70px rgba(0,0,0,.35)} .pv.on{opacity:1;transform:none} .pv img{width:100%;height:100%;object-fit:cover}
+  .pnote{margin-top:22px}
+
+  /* MÉTODO */
+  .met{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(24px,4vw,70px)} .mph{position:relative;border-radius:var(--R);overflow:hidden;min-height:520px;background:var(--k)} .mph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.07);transition:opacity 1.1s var(--ease),transform 1.8s var(--ease);filter:saturate(.8)} .mph img.on{opacity:1;transform:none}
+  .mph .lab{position:absolute;left:18px;bottom:16px;z-index:2;height:30px;padding:0 14px;border-radius:999px;background:rgba(32,31,34,.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.25);color:#fff;display:inline-flex;align-items:center;font-size:11px}
+  .steps{margin-top:clamp(30px,4vw,60px)} .stp{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;padding:clamp(18px,2vw,28px) 0;border-top:1px solid var(--l);cursor:default;transition:padding .6s var(--ease)} .stp:last-child{border-bottom:1px solid var(--l)}
+  .stp h3{font:400 clamp(20px,2vw,32px)/1.05 var(--f);letter-spacing:-.04em;color:var(--g2);transition:color .5s,transform .6s var(--ease)} .stp h3 em{font-style:normal;font-size:.5em;vertical-align:.7em;margin-right:10px;letter-spacing:0}
+  .stp p{margin:8px 0 0;max-width:46ch;font-size:13px;color:var(--g1);max-height:0;overflow:hidden;opacity:0;transition:max-height .8s var(--ease),opacity .6s} .stp.on p{max-height:90px;opacity:1} .stp.on h3{color:var(--k);transform:translateX(8px)}
+  .stp .t{height:30px;padding:0 14px;border-radius:999px;border:1px solid var(--l);display:inline-flex;align-items:center;font-size:11px;transition:background .4s,color .4s} .stp.on .t{background:var(--k);color:#fff;border-color:var(--k)}
+
+  /* CONTACTO */
+  .cta{position:relative;border-radius:var(--R);overflow:hidden;min-height:calc(100svh - 2*var(--p));background:var(--k);color:#fff;display:flex;align-items:flex-end;margin-top:var(--p)}
+  .cta .pi{top:-14%;height:128%} .cta::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,20,22,.6),rgba(20,20,22,.25) 35%,rgba(20,20,22,.88)),linear-gradient(90deg,rgba(20,20,22,.55),transparent 70%)}
+  .cta .inner{position:relative;z-index:2;width:100%;display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(24px,5vw,90px);align-items:end;padding:clamp(90px,10vw,160px) clamp(18px,2.4vw,38px) clamp(18px,2.4vw,38px)}
+  .glass{width:100%;max-width:540px;justify-self:end;padding:clamp(20px,2vw,30px);border-radius:26px;background:rgba(32,31,34,.5);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border:1px solid rgba(255,255,255,.16);display:grid;gap:12px;margin:0}
+  .glass .ht{margin:0 0 6px;font:400 clamp(20px,1.8vw,26px)/1.12 var(--f);letter-spacing:-.035em} .glass .ht span{color:#a9a9ab}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:12px} .hf{border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:9px 14px 5px;transition:border-color .3s,background .3s} .hf:focus-within{border-color:#fff;background:rgba(255,255,255,.06)}
+  .hf label{display:block;font:400 9.5px/1 var(--f);letter-spacing:.08em;text-transform:uppercase;color:#a9a9ab} .hf input,.hf select,.hf textarea{width:100%;background:transparent;border:0;outline:none;box-shadow:none;color:#fff;font:400 14.5px/1.4 var(--f);padding:5px 0;border-radius:0} .hf select option{color:#000} .hf textarea{resize:vertical;min-height:44px}
+  .hf input:focus,.hf input:focus-visible,.hf select:focus-visible,.hf textarea:focus-visible{outline:none}
+  .glass button{all:unset;box-sizing:border-box;cursor:pointer;text-align:center;padding:15px;border-radius:999px;background:#fff;color:var(--k);font:500 11px/1 var(--f);letter-spacing:.1em;text-transform:uppercase;transition:background .4s,transform .5s var(--ease)} .glass button:hover{background:var(--g3);transform:translateY(-2px)}
+  .glass .fine{margin:0;text-align:center;font-size:11.5px;color:#a9a9ab}
+  footer{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:24px;padding:clamp(50px,6vw,90px) clamp(10px,2vw,30px) 10px} footer .t{color:var(--g2);margin:0 0 10px;font-size:12px} footer p{margin:0;line-height:1.6} footer a{text-decoration:none} footer a:hover{text-decoration:underline;text-underline-offset:3px}
+  .giant{font:300 clamp(60px,17.4vw,330px)/.8 var(--f);letter-spacing:-.07em;white-space:nowrap;margin:clamp(30px,4vw,60px) 0 0 -.04em;padding:0 clamp(10px,2vw,30px);color:transparent;background:linear-gradient(105deg,var(--k) 0,var(--k) 42%,var(--g2) 47%,#d5d5d5 50%,var(--g2) 53%,var(--k) 58%,var(--k) 100%) 100% 0/300% 100% no-repeat;-webkit-background-clip:text;background-clip:text;animation:shine 7s var(--ease2) 1s infinite;user-select:none}
+  @keyframes shine{0%{background-position:100% 0}55%,100%{background-position:0 0}}
+  .legal{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:16px clamp(10px,2vw,30px) 6px;font-size:11.5px;color:var(--g2)} .legal span{max-width:90ch}
+  .toast{position:fixed;left:50%;bottom:24px;translate:-50% 0;background:var(--k);color:#fff;padding:13px 20px;border-radius:999px;z-index:210;opacity:0;pointer-events:none;transition:opacity .3s} .toast.on{opacity:1}
+
+  @media (max-width:980px){ .tabs{display:none} .nav{grid-template-columns:1fr auto} .nav .pillbtn{display:none} .hbody,.about,.phead,.met,.cta .inner,.dk .hd,.banner .inner{grid-template-columns:1fr} .cards{order:2}
+    .nums{grid-template-columns:1fr 1fr;row-gap:34px} .pr{grid-template-columns:30px 1fr auto;row-gap:4px} .pr .mu{grid-column:2} .pr .v{grid-column:2;text-align:left} .pr .go{grid-row:1/span 3;grid-column:3} .pv{display:none}
+    .mph{min-height:320px} .glass{justify-self:stretch;max-width:none} footer{grid-template-columns:1fr 1fr} .orb{justify-self:start} .arr.p{left:10px} .arr.n{right:10px} }
+  @media (max-width:980px){ .hero::after{background:linear-gradient(180deg,rgba(20,20,22,.6),rgba(20,20,22,.05) 22%,rgba(20,20,22,.35) 42%,rgba(20,20,22,.92) 72%)} }
+  @media (max-width:560px){ .two{grid-template-columns:1fr} .card{width:50%} .cards{width:100%} footer{grid-template-columns:1fr} }
+  @media (prefers-reduced-motion:reduce){ *,*::before,*::after{animation:none!important;transition:none!important} .pre{display:none} .rv,.ha{opacity:1;transform:none} .ln>span{transform:none} .cur::after{display:none} .cur img{transform:none} .giant{color:var(--k);background:none} }
+</style>
+</head>
+<body>
+<div class="pre" id="pre" aria-hidden="true"><b>David Caleja</b><i id="preBar"></i></div>
+<main class="wrap" id="topo">
+<section class="hero" id="hero">
+  <div class="bg" id="hbg"><img src="media/lux-hero.jpg" alt=""></div>
+  <nav class="nav ha" style="--d:.2s" aria-label="Navegação">
+    <a class="logo" href="#topo"><i>DC</i>David Caleja</a>
+    <div class="tabs"><a class="on" href="#sobre" data-t="n.sobre">Sobre</a><a href="#imoveis" data-t="n.imoveis">Imóveis</a><a href="#metodo" data-t="n.metodo">Método</a><a href="#contacto" data-t="n.contacto">Contacto</a></div>
+    <div class="rt"><span class="lang" id="langBtn" role="group" aria-label="Idioma"><button type="button" data-lang="pt" class="on">PT</button> / <button type="button" data-lang="en">EN</button> / <button type="button" data-lang="es">ES</button></span>
+      <a class="pillbtn w" href="#contacto"><span data-t="n.cta">Confiar o meu imóvel</span><i><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M1 6h10M7 2l4 4-4 4"/></svg></i></a></div>
+  </nav>
+  <div class="hbody">
+    <div><span class="chip ha" style="--d:.5s" data-t="h.chip">Consultor imobiliário · RE/MAX Latina II</span>
+      <h1 class="xl lines" style="--d:.6s" data-th="h.h1">Cada imóvel, uma<br>nova possibilidade</h1>
+      <p class="small ha" style="--d:1.1s" data-t="h.sub">Acompanho quem vende e quem compra casa na Grande Lisboa, com método, presença e uma apresentação à altura de cada imóvel.</p></div>
+    <div class="cards">
+      <a class="card ha" style="--d:1.2s;text-decoration:none" href="#imoveis"><div class="im"><img src="media/int-sala.jpg" alt=""></div><b><span data-count="22">22</span></b><p data-t="h.c1">Imóveis em carteira, de apartamentos a prédios inteiros</p></a>
+      <a class="card ha" style="--d:1.35s;text-decoration:none" href="#imoveis"><div class="im"><img src="media/lux-entrada.jpg" alt=""></div><b><span data-count="7">7</span></b><p data-t="h.c2">Concelhos, de Lisboa e Sintra à margem sul</p></a>
+    </div>
+  </div>
+</section>
+
+<section class="sec about" id="sobre">
+  <div class="l"><p class="tagn rv" data-th="a.tag">(01)<br>Sobre o David</p><p class="small rv" style="--d:.2s" data-t="a.small">David Ramalho Caleja é consultor associado da RE/MAX Latina II, do Grupo Latina, em Lisboa. Trabalha com proprietários e compradores em toda a área metropolitana, com acompanhamento pessoal do primeiro contacto à escritura.</p></div>
+  <div class="r"><h2 class="md rv" data-th="a.big">David Caleja <span class="mu">trabalha para quem quer</span> vender bem e comprar com segurança, <span class="mu">com uma apresentação cuidada,</span> um preço defendido <span class="mu">e uma presença constante até ao fim.</span></h2>
+    <a class="pillbtn rv" style="--d:.2s" href="#imoveis"><span data-t="a.btn">Ver imóveis</span><i><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M1 6h10M7 2l4 4-4 4"/></svg></i></a></div>
+</section>
+
+<section class="banner px">
+  <div class="pi" data-amp="1.5"><img src="media/lux-entrada.jpg" alt="" class="tone"></div>
+  <p class="tagn" data-th="b.tag">(02)<br>Serviço</p><span class="mk">DAVID CALEJA</span>
+  <div class="inner"><div><h2 class="lg lines rv" data-th="b.h2"><span class="mu" style="color:#c9c9cb">Uma casa bem apresentada</span> vende melhor:<br>luz, enquadramento, detalhe</h2><p class="small rv" style="--d:.2s" data-t="b.small">Fotografia, filme e uma página como esta para cada imóvel que merece ser mostrado assim. O comprador certo decide em segundos se quer visitar.</p></div>
+    <a class="orb rv" href="#contacto" aria-label="Contacto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4 12h16M13 5l7 7-7 7"/></svg></a></div>
+</section>
+
+<section class="dk" id="espacos">
+  <div class="hd"><p class="tagn rv" data-th="c.tag">(03)<br>Apresentação</p><h2 class="lg lines rv" data-th="c.h2">Cada divisão tem um argumento.<br><span class="mu">O meu trabalho é fazê-lo ver.</span></h2></div>
+  <div class="car rv" id="car"><div class="track" id="track"></div>
+    <button class="arr p" id="prev" type="button" aria-label="Anterior"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M8 1 3 6l5 5"/></svg></button>
+    <button class="arr n" id="next" type="button" aria-label="Seguinte"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3"><path d="m4 1 5 5-5 5"/></svg></button></div>
+  <div class="ft"><span></span><p class="small rv" style="text-align:right" data-t="c.note">Imagens de ambiente, ilustrativas do nível de apresentação. Não representam imóveis em carteira.</p></div>
+  <div class="nums" id="nums">
+    <div class="rv"><b><span data-count="22">22</span></b><span data-t="s.1">Imóveis à venda neste momento</span></div>
+    <div class="rv" style="--d:.1s"><b><span data-count="7">7</span></b><span data-t="s.2">Concelhos da Grande Lisboa com imóveis em carteira</span></div>
+    <div class="rv" style="--d:.2s"><b><span data-count="1">1</span> M€</b><span data-t="s.3">Valor do imóvel de maior dimensão, um prédio na Amadora</span></div>
+    <div class="rv" style="--d:.3s"><b>AMI <span data-count="7001">7001</span></b><span data-t="s.4">Licença de mediação, RE/MAX Latina II</span></div>
+  </div>
+</section>
+
+<section class="sec" id="imoveis">
+  <div class="phead"><div><p class="tagn rv" data-th="p.tag">(04)<br>Imóveis em carteira</p></div><div><h2 class="lg lines rv" data-th="p.h2">Uma seleção real,<br><span class="mu">atualizada a partir da RE/MAX</span></h2></div></div>
+  <div class="plist" id="plist"></div>
+  <p class="small pnote rv" data-t="p.note">Dados e fotografias dos anúncios públicos do David na RE/MAX. Cada linha abre a ficha completa.</p>
+</section>
+
+<section class="sec met" id="metodo">
+  <div class="mph cur rv-c"><img id="mA" class="on" src="media/int-jantar.jpg" alt=""><img id="mB" src="" alt=""><span class="lab" id="mLab">01</span></div>
+  <div><p class="tagn rv" data-th="m.tag">(05)<br>Método</p><h2 class="lg lines rv" style="margin-top:22px" data-th="m.h2">Quatro etapas,<br><span class="mu">pela ordem certa</span></h2><div class="steps" id="steps"></div></div>
+</section>
+
+<section class="cta px" id="contacto">
+  <div class="pi" data-amp="1.5"><img src="media/lux-noite.jpg" alt="" class="tone"></div>
+  <div class="inner"><div><p class="tagn rv" style="color:#fff" data-th="k.tag">(06)<br>Contacto</p><h2 class="xl lines rv" style="margin-top:22px" data-th="k.h2">Vamos falar<br>da sua casa</h2><p class="small rv" style="--d:.2s;color:#dedede;margin-top:20px" data-t="k.small">Diga-me o que tem, ou o que procura. Respondo pessoalmente, sem call center.</p></div>
+    <form class="glass rv" id="leadForm" style="--d:.15s" novalidate>
+      <p class="ht" data-th="f.t">Confie o seu imóvel,<br><span>a quem o sabe mostrar</span></p>
+      <div class="two"><div class="hf"><label for="nome" data-t="f.nome">Nome</label><input id="nome" autocomplete="name" required></div><div class="hf"><label for="tel" data-t="f.tel">Telemóvel</label><input id="tel" type="tel" inputmode="tel" autocomplete="tel" required></div></div>
+      <div class="two"><div class="hf"><label for="email">Email</label><input id="email" type="email" autocomplete="email"></div><div class="hf"><label for="perfil" data-t="f.perfil">Quero</label><select id="perfil"><option data-t="f.p1">Vender</option><option data-t="f.p2">Comprar</option><option data-t="f.p3">Arrendar</option></select></div></div>
+      <div class="hf"><label for="msg" data-t="f.msg">Mensagem</label><textarea id="msg" rows="2"></textarea></div>
+      <button type="submit" data-t="f.enviar">Enviar por WhatsApp</button><p class="fine" data-t="f.nota">Abre o WhatsApp com a mensagem já escrita.</p>
+    </form></div>
+</section>
+
+<footer>
+  <div><a class="logo" href="#topo" style="color:var(--k)"><i style="border-color:var(--k)">DC</i>David Caleja</a><p class="small" style="margin-top:16px" data-t="ft.bio">Consultor imobiliário associado · RE/MAX Latina II · Sold Fast, Mediação Imobiliária, Lda · AMI 7001</p></div>
+  <div><p class="t" data-t="ft.c">Contacto</p><p><a href="tel:+351932291897">+351 932 291 897</a><br><a class="js-wa" href="#" target="_blank" rel="noopener">WhatsApp</a></p></div>
+  <div><p class="t">Social</p><p><a href="https://www.instagram.com/davidcaleja.remax/" target="_blank" rel="noopener">Instagram</a><br><a href="https://remax.pt/pt/agente/david-caleja/120992095" target="_blank" rel="noopener">RE/MAX</a></p></div>
+  <div><p class="t" data-t="ft.v">Morada</p><p>Av. Casal Ribeiro 12 B<br>1000-092 Lisboa</p></div>
+</footer>
+<div class="giant" aria-hidden="true">David Caleja</div>
+<div class="legal"><span data-t="ft.legal">Página de demonstração. As imagens de ambiente são ilustrativas, do banco Pexels. Os imóveis listados são anúncios reais da RE/MAX.</span><span><span data-t="ft.by">Página e filme por</span> <a href="https://creativesete.com" target="_blank" rel="noopener">CreativeSete</a> · © 2026</span></div>
+</main>
+<div class="pv" id="pv"><img id="pvImg" src="" alt=""></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(()=>{
+const PAGINA={ whatsapp:'351932291897',
+ slides:[{img:'media/int-sala.jpg',pt:'Sala',en:'Living room',es:'Salón'},{img:'media/int-jantar.jpg',pt:'Zona de refeições',en:'Dining area',es:'Comedor'},{img:'media/int-cozinha.jpg',pt:'Cozinha',en:'Kitchen',es:'Cocina'},{img:'media/int-quarto.jpg',pt:'Suite',en:'Master suite',es:'Suite'},{img:'media/int-banho.jpg',pt:'Casa de banho',en:'Bathroom',es:'Baño'},{img:'media/int-sala2.jpg',pt:'Sala de estar',en:'Lounge',es:'Sala de estar'},{img:'media/int-lounge.jpg',pt:'Bar e lounge',en:'Bar and lounge',es:'Bar y lounge'}],
+ imoveis:[
+  {img:'media/im-amadora.jpg',pt:'Prédio T7 · Amadora',en:'T7 building · Amadora',es:'Edificio T7 · Amadora',loc:'Venteira, Amadora',a:'248 m²',v:'1.000.000 €',u:'https://remax.pt/pt/imoveis/venda-predio-t7-amadora-venteira/120992095-158'},
+  {img:'media/im-avenidas.jpg',pt:'Apartamento T2 · Avenidas Novas',en:'T2 apartment · Avenidas Novas',es:'Piso T2 · Avenidas Novas',loc:'Avenidas Novas, Lisboa',a:'130 m²',v:'635.000 €',u:'https://remax.pt/pt/imoveis/venda-apartamento-t2-lisboa-avenidas-novas/120992095-142'},
+  {img:'media/im-loja.jpg',pt:'Loja · Santo António',en:'Shop · Santo António',es:'Local · Santo António',loc:'Santo António, Lisboa',a:'70 m²',v:'395.000 €',u:'https://remax.pt/pt/imoveis/venda-loja-tlisboa-santo-antonio/120992095-156'},
+  {img:'media/im-sintra.jpg',pt:'Apartamento T3 · Sintra',en:'T3 apartment · Sintra',es:'Piso T3 · Sintra',loc:'Algueirão-Mem Martins, Sintra',a:'145 m²',v:'350.000 €',u:'https://remax.pt/pt/imoveis/venda-apartamento-t3-sintra-algueirao-mem-martins/120992095-129'},
+  {img:'media/im-odivelas.jpg',pt:'Apartamento T3 · Odivelas',en:'T3 apartment · Odivelas',es:'Piso T3 · Odivelas',loc:'Odivelas',a:'96 m²',v:'300.000 €',u:'https://remax.pt/pt/imoveis/venda-apartamento-t3-odivelas-odivelas/120992095-152'},
+  {img:'media/im-ajuda.jpg',pt:'Apartamento T3 · Ajuda',en:'T3 apartment · Ajuda',es:'Piso T3 · Ajuda',loc:'Ajuda, Lisboa',a:'141 m²',v:{pt:'2.200 € / mês',en:'€2,200 / month',es:'2.200 € / mes'},u:'https://remax.pt/pt/imoveis/arrendamento-apartamento-t3-lisboa-ajuda/120992095-155'}],
+ passos:[
+  {img:'media/int-jantar.jpg',pt:['Avaliação','Estudo comparativo da zona e um preço que defende o valor da casa, sem a deixar parada no mercado.','Dia 1'],en:['Valuation','A comparative study of the area and a price that protects the value of the home without leaving it sitting on the market.','Day 1'],es:['Valoración','Estudio comparativo de la zona y un precio que defiende el valor de la casa, sin dejarla parada en el mercado.','Día 1']},
+  {img:'media/int-sala.jpg',pt:['Preparação e imagem','Fotografia, filme e uma página própria, produzidos antes de a casa entrar no mercado.','Semana 1'],en:['Preparation and imagery','Photography, film and a dedicated page, produced before the home goes to market.','Week 1'],es:['Preparación e imagen','Fotografía, película y una página propia, producidas antes de que la casa salga al mercado.','Semana 1']},
+  {img:'media/lux-entrada.jpg',pt:['Visitas qualificadas','Divulgação na rede RE/MAX e visitas apenas com compradores com capacidade real de compra.','Semanas 2 a 6'],en:['Qualified viewings','Exposure across the RE/MAX network and viewings only with buyers who can actually buy.','Weeks 2 to 6'],es:['Visitas cualificadas','Difusión en la red RE/MAX y visitas solo con compradores con capacidad real de compra.','Semanas 2 a 6']},
+  {img:'media/int-quarto.jpg',pt:['CPCV e escritura','Negociação, contrato promessa e escritura acompanhados de perto, até à entrega das chaves.','Fecho'],en:['Promissory contract and deed','Negotiation, promissory contract and deed followed closely, up to the handover of the keys.','Closing'],es:['Contrato de arras y escritura','Negociación, contrato de arras y escritura acompañados de cerca, hasta la entrega de llaves.','Cierre']}] };
+const T={
+ pt:{'n.sobre':'Sobre','n.imoveis':'Imóveis','n.metodo':'Método','n.contacto':'Contacto','n.cta':'Confiar o meu imóvel','h.chip':'Consultor imobiliário · RE/MAX Latina II','h.h1':'Cada imóvel, uma<br>nova possibilidade','h.sub':'Acompanho quem vende e quem compra casa na Grande Lisboa, com método, presença e uma apresentação à altura de cada imóvel.','h.c1':'Imóveis em carteira, de apartamentos a prédios inteiros','h.c2':'Concelhos, de Lisboa e Sintra à margem sul',
+  'a.tag':'(01)<br>Sobre o David','a.small':'David Ramalho Caleja é consultor associado da RE/MAX Latina II, do Grupo Latina, em Lisboa. Trabalha com proprietários e compradores em toda a área metropolitana, com acompanhamento pessoal do primeiro contacto à escritura.','a.big':'David Caleja <span class="mu">trabalha para quem quer</span> vender bem e comprar com segurança, <span class="mu">com uma apresentação cuidada,</span> um preço defendido <span class="mu">e uma presença constante até ao fim.</span>','a.btn':'Ver imóveis',
+  'b.tag':'(02)<br>Serviço','b.h2':'<span class="mu" style="color:#c9c9cb">Uma casa bem apresentada</span> vende melhor:<br>luz, enquadramento, detalhe','b.small':'Fotografia, filme e uma página como esta para cada imóvel que merece ser mostrado assim. O comprador certo decide em segundos se quer visitar.',
+  'c.tag':'(03)<br>Apresentação','c.h2':'Cada divisão tem um argumento.<br><span class="mu">O meu trabalho é fazê-lo ver.</span>','c.note':'Imagens de ambiente, ilustrativas do nível de apresentação. Não representam imóveis em carteira.',
+  's.1':'Imóveis à venda neste momento','s.2':'Concelhos da Grande Lisboa com imóveis em carteira','s.3':'Valor do imóvel de maior dimensão, um prédio na Amadora','s.4':'Licença de mediação, RE/MAX Latina II',
+  'p.tag':'(04)<br>Imóveis em carteira','p.h2':'Uma seleção real,<br><span class="mu">atualizada a partir da RE/MAX</span>','p.note':'Dados e fotografias dos anúncios públicos do David na RE/MAX. Cada linha abre a ficha completa.',
+  'm.tag':'(05)<br>Método','m.h2':'Quatro etapas,<br><span class="mu">pela ordem certa</span>','k.tag':'(06)<br>Contacto','k.h2':'Vamos falar<br>da sua casa','k.small':'Diga-me o que tem, ou o que procura. Respondo pessoalmente, sem call center.',
+  'f.t':'Confie o seu imóvel,<br><span>a quem o sabe mostrar</span>','f.nome':'Nome','f.tel':'Telemóvel','f.perfil':'Quero','f.p1':'Vender','f.p2':'Comprar','f.p3':'Arrendar','f.msg':'Mensagem','f.enviar':'Enviar por WhatsApp','f.nota':'Abre o WhatsApp com a mensagem já escrita.','f.erro':'Falta o nome ou o telemóvel.',
+  'ft.bio':'Consultor imobiliário associado · RE/MAX Latina II · Sold Fast, Mediação Imobiliária, Lda · AMI 7001','ft.c':'Contacto','ft.v':'Morada','ft.legal':'Página de demonstração. As imagens de ambiente são ilustrativas, do banco Pexels. Os imóveis listados são anúncios reais da RE/MAX.','ft.by':'Página e filme por',
+  'wa':'Olá David, vi a sua página.\nNome: {nome}\nTelemóvel: {tel}\nEmail: {email}\nQuero: {perfil}\n{msg}','wa0':'Olá David, vi a sua página e gostava de falar consigo.'},
+ en:{'n.sobre':'About','n.imoveis':'Properties','n.metodo':'Method','n.contacto':'Contact','n.cta':'Entrust my property','h.chip':'Real estate consultant · RE/MAX Latina II','h.h1':'Every property,<br>a new possibility','h.sub':'I work with people selling and buying homes across Greater Lisbon, with method, presence and a presentation worthy of each property.','h.c1':'Properties in portfolio, from apartments to whole buildings','h.c2':'Municipalities, from Lisbon and Sintra to the south bank',
+  'a.tag':'(01)<br>About David','a.small':'David Ramalho Caleja is an associate consultant at RE/MAX Latina II, part of Grupo Latina, in Lisbon. He works with owners and buyers across the metropolitan area, with personal guidance from first contact to deed.','a.big':'David Caleja <span class="mu">works for those who want to</span> sell well and buy with confidence, <span class="mu">with careful presentation,</span> a defended price <span class="mu">and a constant presence to the end.</span>','a.btn':'View properties',
+  'b.tag':'(02)<br>Service','b.h2':'<span class="mu" style="color:#c9c9cb">A well presented home</span> sells better:<br>light, framing, detail','b.small':'Photography, film and a page like this one for every property that deserves to be shown this way. The right buyer decides in seconds whether to visit.',
+  'c.tag':'(03)<br>Presentation','c.h2':'Every room makes a case.<br><span class="mu">My job is to make it seen.</span>','c.note':'Mood images, illustrating the level of presentation. They do not represent properties in portfolio.',
+  's.1':'Properties for sale right now','s.2':'Greater Lisbon municipalities with properties in portfolio','s.3':'Value of the largest property, a building in Amadora','s.4':'Brokerage licence, RE/MAX Latina II',
+  'p.tag':'(04)<br>Portfolio','p.h2':'A real selection,<br><span class="mu">updated from RE/MAX</span>','p.note':'Data and photographs from David\'s public RE/MAX listings. Each row opens the full listing.',
+  'm.tag':'(05)<br>Method','m.h2':'Four steps,<br><span class="mu">in the right order</span>','k.tag':'(06)<br>Contact','k.h2':'Let\'s talk<br>about your home','k.small':'Tell me what you have, or what you are looking for. I answer personally, no call centre.',
+  'f.t':'Entrust your property,<br><span>to someone who knows how to show it</span>','f.nome':'Name','f.tel':'Phone','f.perfil':'I want to','f.p1':'Sell','f.p2':'Buy','f.p3':'Rent','f.msg':'Message','f.enviar':'Send via WhatsApp','f.nota':'Opens WhatsApp with the message already written.','f.erro':'Name or phone is missing.',
+  'ft.bio':'Associate real estate consultant · RE/MAX Latina II · Sold Fast, Mediação Imobiliária, Lda · AMI 7001','ft.c':'Contact','ft.v':'Address','ft.legal':'Demonstration page. Mood images are illustrative, from the Pexels library. The properties listed are real RE/MAX listings.','ft.by':'Page and film by',
+  'wa':'Hello David, I saw your page.\nName: {nome}\nPhone: {tel}\nEmail: {email}\nI want to: {perfil}\n{msg}','wa0':'Hello David, I saw your page and would like to talk.'},
+ es:{'n.sobre':'Sobre','n.imoveis':'Inmuebles','n.metodo':'Método','n.contacto':'Contacto','n.cta':'Confiar mi inmueble','h.chip':'Consultor inmobiliario · RE/MAX Latina II','h.h1':'Cada inmueble, una<br>nueva posibilidad','h.sub':'Acompaño a quien vende y a quien compra casa en el Gran Lisboa, con método, presencia y una presentación a la altura de cada inmueble.','h.c1':'Inmuebles en cartera, de pisos a edificios enteros','h.c2':'Municipios, de Lisboa y Sintra a la orilla sur',
+  'a.tag':'(01)<br>Sobre David','a.small':'David Ramalho Caleja es consultor asociado de RE/MAX Latina II, del Grupo Latina, en Lisboa. Trabaja con propietarios y compradores en toda el área metropolitana, con acompañamiento personal del primer contacto a la escritura.','a.big':'David Caleja <span class="mu">trabaja para quien quiere</span> vender bien y comprar con seguridad, <span class="mu">con una presentación cuidada,</span> un precio defendido <span class="mu">y una presencia constante hasta el final.</span>','a.btn':'Ver inmuebles',
+  'b.tag':'(02)<br>Servicio','b.h2':'<span class="mu" style="color:#c9c9cb">Una casa bien presentada</span> se vende mejor:<br>luz, encuadre, detalle','b.small':'Fotografía, película y una página como esta para cada inmueble que merece mostrarse así. El comprador adecuado decide en segundos si quiere visitar.',
+  'c.tag':'(03)<br>Presentación','c.h2':'Cada estancia tiene un argumento.<br><span class="mu">Mi trabajo es hacerlo ver.</span>','c.note':'Imágenes de ambiente, ilustrativas del nivel de presentación. No representan inmuebles en cartera.',
+  's.1':'Inmuebles en venta en este momento','s.2':'Municipios del Gran Lisboa con inmuebles en cartera','s.3':'Valor del inmueble de mayor dimensión, un edificio en Amadora','s.4':'Licencia de mediación, RE/MAX Latina II',
+  'p.tag':'(04)<br>Inmuebles en cartera','p.h2':'Una selección real,<br><span class="mu">actualizada desde RE/MAX</span>','p.note':'Datos y fotografías de los anuncios públicos de David en RE/MAX. Cada línea abre la ficha completa.',
+  'm.tag':'(05)<br>Método','m.h2':'Cuatro etapas,<br><span class="mu">en el orden correcto</span>','k.tag':'(06)<br>Contacto','k.h2':'Hablemos<br>de su casa','k.small':'Dígame qué tiene, o qué busca. Respondo personalmente, sin call center.',
+  'f.t':'Confíe su inmueble,<br><span>a quien sabe mostrarlo</span>','f.nome':'Nombre','f.tel':'Móvil','f.perfil':'Quiero','f.p1':'Vender','f.p2':'Comprar','f.p3':'Alquilar','f.msg':'Mensaje','f.enviar':'Enviar por WhatsApp','f.nota':'Abre WhatsApp con el mensaje ya escrito.','f.erro':'Falta el nombre o el móvil.',
+  'ft.bio':'Consultor inmobiliario asociado · RE/MAX Latina II · Sold Fast, Mediação Imobiliária, Lda · AMI 7001','ft.c':'Contacto','ft.v':'Dirección','ft.legal':'Página de demostración. Las imágenes de ambiente son ilustrativas, del banco Pexels. Los inmuebles listados son anuncios reales de RE/MAX.','ft.by':'Página y película por',
+  'wa':'Hola David, he visto su página.\nNombre: {nome}\nMóvil: {tel}\nEmail: {email}\nQuiero: {perfil}\n{msg}','wa0':'Hola David, he visto su página y me gustaría hablar con usted.'}};
+let LANG='pt',FIRST=true;
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const tr=k=>T[LANG][k]??T.pt[k]??'';const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const QS=new URLSearchParams(location.search);const REDUCED=matchMedia('(prefers-reduced-motion: reduce)').matches||QS.get('motion')==='off';
+const ARROW='<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M1 6h10M7 2l4 4-4 4"/></svg>';
+
+(function(){const pre=$('#pre');if(REDUCED){pre.remove();$('#hero').classList.add('in');return;}let n=0;const iv=setInterval(()=>{n=Math.min(100,n+Math.ceil(Math.random()*8));$('#preBar').style.width=n+'%';if(n>=100){clearInterval(iv);setTimeout(()=>{pre.classList.add('off');$('#hero').classList.add('in');$('#hero h1').classList.add('in');},250);}},45);})();
+
+function split(el){if(el.dataset.s===el.innerHTML)return;el.innerHTML=el.innerHTML.split(/<br\s*\/?>/i).map((p,i)=>`<span class="ln"><span style="--i:${i}">${p}</span></span>`).join('');el.dataset.s=el.innerHTML;}
+let io;function observe(){$$('.lines').forEach(split);const els=$$('.rv,.rv-c,.lines').filter(e=>!e.classList.contains('in')&&!e.closest('#hero'));
+ if(REDUCED||!FIRST||!('IntersectionObserver'in window)){els.forEach(e=>e.classList.add('in'));if(!FIRST)$('#hero h1').classList.add('in');return;}
+ io=io||new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.1,rootMargin:'0px 0px -5% 0px'});els.forEach(e=>io.observe(e));}
+
+/* carrossel */
+let CI=0;function renderCar(){const tk=$('#track');tk.innerHTML=PAGINA.slides.map((s,i)=>`<div class="sl" data-i="${i}"><div class="im"><img src="${s.img}" alt="" loading="lazy"></div><p><span>${esc(s[LANG])}</span><span>2026</span></p></div>`).join('');$$('.sl').forEach(el=>el.addEventListener('click',()=>setCar(+el.dataset.i)));setCar(CI);}
+function setCar(i){const n=PAGINA.slides.length;CI=(i+n)%n;const W=$('#car').clientWidth,on=Math.min(470,Math.max(280,W*.31)),sm=Math.min(330,Math.max(200,W*.22)),gap=Math.max(14,W*.014);
+ $$('.sl').forEach((el,k)=>{let d=k-CI;if(d>n/2)d-=n;if(d<-n/2)d+=n;el.classList.toggle('on',d===0);const x=d===0?0:Math.sign(d)*(on/2+gap+sm/2+(Math.abs(d)-1)*(sm+gap));el.style.transform=`translateX(calc(-50% + ${x}px))`;el.style.opacity=Math.abs(d)>3?0:1;el.style.zIndex=10-Math.abs(d);});}
+$('#prev').addEventListener('click',()=>setCar(CI-1));$('#next').addEventListener('click',()=>setCar(CI+1));addEventListener('resize',()=>setCar(CI));
+let sx=null;$('#car').addEventListener('pointerdown',e=>sx=e.clientX);$('#car').addEventListener('pointerup',e=>{if(sx==null)return;const dx=e.clientX-sx;if(Math.abs(dx)>40)setCar(CI+(dx<0?1:-1));sx=null;});
+
+/* imóveis */
+function renderProps(){ $('#plist').innerHTML=PAGINA.imoveis.map((m,i)=>`<a class="pr rv" style="--d:${i*.06}s" href="${m.u}" target="_blank" rel="noopener" data-img="${m.img}"><span class="k">0${i+1}</span><h3>${esc(m[LANG])}</h3><span class="mu">${esc(m.loc)} · ${esc(m.a)}</span><span class="v">${esc(typeof m.v==='string'?m.v:m.v[LANG])}</span><span class="go">${ARROW}</span></a>`).join('');
+ const pv=$('#pv'),im=$('#pvImg');$$('.pr').forEach(a=>{a.addEventListener('mouseenter',()=>{im.src=a.dataset.img;pv.classList.add('on');});a.addEventListener('mouseleave',()=>pv.classList.remove('on'));a.addEventListener('mousemove',e=>{pv.style.left=Math.min(innerWidth-320,e.clientX+24)+'px';pv.style.top=Math.max(10,e.clientY-220)+'px';});}); }
+
+/* método */
+let MI=0,flip=false;function renderSteps(){ $('#steps').innerHTML=PAGINA.passos.map((p,i)=>{const[a,b,c]=p[LANG];return `<div class="stp rv${i===MI?' on':''}" style="--d:${i*.08}s" tabindex="0" data-i="${i}"><div><h3><em>0${i+1}</em>${esc(a)}</h3><p>${esc(b)}</p></div><span class="t">${esc(c)}</span></div>`}).join('');
+ $$('.stp').forEach(el=>{const f=()=>setStep(+el.dataset.i);el.addEventListener('mouseenter',f);el.addEventListener('focus',f);el.addEventListener('click',f);});setStep(MI,true);}
+function setStep(i,force){if(i===MI&&!force)return;MI=i;$$('.stp').forEach((e,k)=>e.classList.toggle('on',k===i));const p=PAGINA.passos[i];$('#mLab').textContent=`0${i+1} · ${p[LANG][0]}`;const a=$('#mA'),b=$('#mB'),show=flip?a:b,hide=flip?b:a;if(show.getAttribute('src')!==p.img)show.src=p.img;show.classList.add('on');hide.classList.remove('on');flip=!flip;}
+
+/* contagem */
+function counts(){if(REDUCED||!('IntersectionObserver'in window))return;const o=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;o.unobserve(e.target);const el=e.target,to=+el.dataset.count,t0=performance.now(),dur=1500;const st=n=>{const k=Math.min(1,(n-t0)/dur),v=1-Math.pow(1-k,4);el.textContent=Math.round(to*v);if(k<1)requestAnimationFrame(st);};el.textContent='0';requestAnimationFrame(st);}),{threshold:.6});$$('[data-count]').forEach(x=>o.observe(x));}
+
+/* movimento */
+let lenis=null,lastY=scrollY,vel=0;function motion(){const y=scrollY,raw=lenis?lenis.velocity:(y-lastY);lastY=y;vel+=(raw-vel)*.1;const v=Math.max(-60,Math.min(60,vel)),vh=innerHeight;
+ $$('.px,.fx').forEach(el=>{const r=el.getBoundingClientRect();if(r.bottom<-200||r.top>vh+200)return;const pi=el.querySelector('.pi');if(pi){const f=(r.top+r.height/2-vh/2)/(vh/2+r.height/2),amp=+(pi.dataset.amp||1);pi.style.transform=`translate3d(0,${(-f*9*amp).toFixed(2)}%,0) scale(${(1.04+Math.abs(f)*.04).toFixed(4)})`;}});
+ $$('.sl.on .im').forEach(el=>el.style.transform=`skewY(${(v*.03).toFixed(3)}deg)`);
+ const hb=$('#hbg');if(hb&&y<vh*1.2){const f=y/vh;hb.style.transform=`translate3d(0,${(f*12).toFixed(2)}%,0) scale(${(1+f*.1).toFixed(4)})`;}
+ requestAnimationFrame(motion);}
+function startMotion(){if(REDUCED)return;try{if(window.Lenis){lenis=new Lenis({lerp:.085,smoothWheel:true});const raf=t=>{lenis.raf(t);requestAnimationFrame(raf)};requestAnimationFrame(raf);$$('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const id=a.getAttribute('href');if(id.length>1&&$(id)){e.preventDefault();lenis.scrollTo(id);}}));}}catch(e){}requestAnimationFrame(motion);}
+
+const wa=m=>`https://wa.me/${PAGINA.whatsapp}?text=${encodeURIComponent(m)}`;
+$('#leadForm').addEventListener('submit',e=>{e.preventDefault();const v=id=>$('#'+id).value.trim();if(!v('nome')||!v('tel')){toast(tr('f.erro'));return;}const m=tr('wa').replace('{nome}',v('nome')).replace('{tel}',v('tel')).replace('{email}',v('email')||'·').replace('{perfil}',$('#perfil').selectedOptions[0].textContent).replace('{msg}',v('msg'));window.open(wa(m),'_blank','noopener');});
+let tt;function toast(m){const el=$('#toast');el.textContent=m;el.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>el.classList.remove('on'),3000);}
+function setLang(l){LANG=T[l]?l:'pt';document.documentElement.lang={pt:'pt-PT',en:'en',es:'es'}[LANG];
+ $$('[data-t]').forEach(el=>{const s=T[LANG][el.dataset.t];if(s!=null)el.textContent=s;});$$('[data-th]').forEach(el=>{const s=T[LANG][el.dataset.th];if(s!=null){el.innerHTML=s;delete el.dataset.s;}});
+ $$('#langBtn button').forEach(b=>b.classList.toggle('on',b.dataset.lang===LANG));$$('.js-wa').forEach(a=>a.href=wa(tr('wa0')));
+ renderCar();renderProps();renderSteps();observe();try{localStorage.setItem('dc.lang',LANG);}catch(e){}const u=new URL(location.href);u.searchParams.set('lang',LANG);history.replaceState(null,'',u);}
+$$('#langBtn button').forEach(b=>b.addEventListener('click',()=>{FIRST=false;setLang(b.dataset.lang);}));
+(function(){let l=QS.get('lang');if(!l){try{l=localStorage.getItem('dc.lang');}catch(e){}}if(!l){const n=(navigator.language||'pt').toLowerCase();l=n.startsWith('pt')?'pt':n.startsWith('es')?'es':'en';}setLang(l);startMotion();counts();})();
+})();
+</script>
+</body>
+</html>

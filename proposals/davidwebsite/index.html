@@ -42,6 +42,8 @@
   .cur{position:relative;overflow:hidden} .cur::after{content:'';position:absolute;inset:-1px;background:var(--c,#fff);transform-origin:top;transition:transform 1.4s var(--ease2);transition-delay:var(--d,0s);z-index:3;pointer-events:none} .cur.in::after{transform:scaleY(0)} .dk .cur{--c:var(--k)}
   .cur img{transform:scale(1.2);transition:transform 2.2s var(--ease);transition-delay:var(--d,0s)} .cur.in img{transform:none}
   .pi{position:absolute;left:0;right:0;top:-12%;height:124%;will-change:transform} .pi img{width:100%;height:100%;object-fit:cover} .fx{will-change:transform}
+  /* cantos redondos: o recorte tem de aguentar filhos com transform (paralaxe), senão a imagem escapa pelo canto */
+  .hero,.banner,.cta,.mph{isolation:isolate;clip-path:inset(0 round var(--R))}
   .tone img{filter:saturate(.82) contrast(1.03)}
 
   /* abertura */

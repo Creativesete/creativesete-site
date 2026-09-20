@@ -54,11 +54,11 @@
   .lang{font-size:12.5px;font-weight:600;white-space:nowrap} .lang button{all:unset;cursor:pointer;opacity:.4;padding:4px 2px;transition:opacity .3s} .lang button.on,.lang button:hover{opacity:1}
 
   /* HERO · o retrato do Pedro no Dubai ocupa a capa inteira; título e pesquisa por cima */
-  .hero{position:relative;height:max(100svh,740px);color:#fff;overflow:hidden;isolation:isolate;background:#1a1714}
+  .hero{position:relative;height:max(100svh,820px);color:#fff;overflow:hidden;isolation:isolate;background:#1a1714}
   .hph{position:absolute;inset:0;z-index:0} .hph.cur{clip-path:none} .hph .in2{position:absolute;top:-6%;bottom:-6%;left:0;width:136%;will-change:transform} .hph img{width:100%;height:100%;object-fit:cover;object-position:50% 57%;animation:kb 24s ease-out forwards} @keyframes kb{from{transform:scale(1.12)}to{transform:scale(1)}}
   .hero::before{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(18,16,14,.78) 0,rgba(18,16,14,.5) 30%,rgba(18,16,14,.08) 58%,transparent 75%),linear-gradient(180deg,rgba(18,16,14,.62) 0,transparent 24%,transparent 52%,rgba(18,16,14,.7))}
   .hero .nav{color:#fff} .hero .mark{background:#fff;color:var(--k)} .hero .nav .btn.soft{background:rgba(255,255,255,.14);color:#fff;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.28)} .hero .nav .btn.soft:hover{background:#fff;color:var(--k)}
-  .hcopy{position:relative;z-index:3;padding-top:clamp(150px,21vh,230px)}
+  .hcopy{position:relative;z-index:3;padding-top:clamp(130px,17vh,190px)}
   .eyebrow{display:inline-flex;align-items:center;gap:10px;height:32px;padding:0 16px;border-radius:999px;border:1px solid rgba(255,255,255,.32);background:rgba(255,255,255,.1);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);font:600 11.5px/1 var(--f);margin:0 0 26px} .eyebrow i{width:6px;height:6px;border-radius:50%;background:#fff;box-shadow:0 0 0 0 rgba(255,255,255,.6);animation:pulseW 2.4s infinite} @keyframes pulseW{70%{box-shadow:0 0 0 8px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}
   .hero h1{font-size:clamp(42px,5.5vw,86px);line-height:1;position:relative;max-width:11em;text-shadow:0 2px 40px rgba(10,8,6,.35)}
   .hero h1 em{font-family:'Instrument Serif','Times New Roman',serif;font-style:italic;font-weight:400;letter-spacing:-.025em;font-size:1.12em;line-height:.9;padding-right:.04em}
@@ -69,15 +69,19 @@
   @keyframes glint{0%,14%,100%{text-shadow:0 0 0 rgba(255,255,255,0);color:#fff}6%{text-shadow:0 0 26px rgba(255,236,200,.95),0 0 3px rgba(255,255,255,.9);color:#FFF6E6}}
   .hcopy .sub{margin-top:24px;font-size:15.5px;line-height:1.55;max-width:42ch;color:#EDEAE6}
   .hchip{position:absolute;z-index:4;right:var(--gut);top:clamp(96px,13vh,120px);height:30px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.32);background:rgba(255,255,255,.1);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);font:600 11.5px/1 var(--f);display:inline-flex;align-items:center}
-  .hbadge{position:absolute;z-index:4;right:var(--gut);bottom:clamp(230px,30vh,290px);background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:20px;padding:18px 22px;display:flex;align-items:center;gap:16px} .hbadge b{font-size:clamp(28px,2.6vw,40px);font-weight:600;letter-spacing:-.045em;line-height:1;white-space:nowrap} .hbadge span{font-size:11.5px;line-height:1.35;color:#E6E2DC;max-width:14ch}
+  .hbadge{position:absolute;z-index:4;right:var(--gut);bottom:clamp(360px,44vh,430px);background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:20px;padding:18px 22px;display:flex;align-items:center;gap:16px} .hbadge b{font-size:clamp(28px,2.6vw,40px);font-weight:600;letter-spacing:-.045em;line-height:1;white-space:nowrap} .hbadge span{font-size:11.5px;line-height:1.35;color:#E6E2DC;max-width:14ch}
   .hero.on .hbadge{animation:float 7s ease-in-out 2.8s infinite} .hero.on .hchip{animation:float 8s ease-in-out 3.4s infinite reverse} @keyframes float{50%{transform:translateY(-9px)}}
   .search{position:absolute;z-index:5;left:50%;bottom:clamp(64px,9vh,104px);width:min(900px,calc(100% - 2*var(--gut)));color:var(--k)}
   .tabs{display:inline-flex;gap:4px;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:8px 8px 14px;border-radius:22px 22px 0 0;margin-bottom:-8px;position:relative}
   .tabs button{border:0;background:transparent;height:34px;padding:0 22px;border-radius:999px;font:600 13px/1 var(--f);color:var(--g1);transition:background .4s,color .4s} .tabs button.on{background:var(--k);color:#fff}
   .sbox{position:relative;background:rgba(255,255,255,.95);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-radius:0 26px 26px 26px;padding:12px;box-shadow:0 40px 80px -24px rgba(8,6,4,.7)}
-  .sbox form{display:flex;align-items:center;gap:10px;background:var(--pill);border-radius:18px;padding:0 8px 0 18px;height:60px;transition:box-shadow .4s} .sbox form:focus-within{box-shadow:inset 0 0 0 1.5px var(--k)}
+  .srow{display:flex;align-items:center;gap:10px;background:var(--pill);border-radius:18px;padding:0 18px;height:56px;transition:box-shadow .4s} .srow:focus-within{box-shadow:inset 0 0 0 1.5px var(--k)}
+  .srow2{display:grid;grid-template-columns:1fr 1fr auto;gap:8px;margin-top:8px}
+  .sf{display:block;background:var(--pill);border-radius:14px;padding:8px 16px 5px;border:1.5px solid transparent;transition:border-color .3s,background .3s;cursor:text} .sf:focus-within{border-color:var(--k);background:#fff}
+  .sf span{display:block;font:600 9.5px/1 var(--f);letter-spacing:.09em;text-transform:uppercase;color:var(--g1)} .sf.req span::after{content:' *';color:#D9443A} .sf input{width:100%;border:0;background:transparent;outline:none;font:500 14.5px/1.3 var(--f);color:var(--k);padding:5px 0 3px}
+  .sf.err{border-color:#D9443A;background:#FFF5F4;animation:shake .5s var(--ease)} @keyframes shake{20%{transform:translateX(-6px)}40%{transform:translateX(5px)}60%{transform:translateX(-3px)}80%{transform:translateX(2px)}}
   .sbox .plus{font-size:20px;font-weight:400;color:var(--g1);line-height:1} .sbox input{flex:1;min-width:0;border:0;background:transparent;outline:none;font:500 15px/1 var(--f);color:var(--k)} .sbox input::placeholder{color:var(--g1)}
-  .sbox .go{width:44px;height:44px;border-radius:50%;border:0;background:var(--k);color:#fff;display:grid;place-items:center;flex:none;transition:transform .5s var(--ease)} .sbox .go:hover{transform:rotate(-45deg) scale(1.05)} .sbox .go svg{width:14px;height:14px}
+  .sbox .go.wide{border:0;background:var(--k);color:#fff;border-radius:14px;padding:0 22px;display:inline-flex;align-items:center;gap:10px;font:600 13px/1 var(--f);white-space:nowrap;transition:background .3s,transform .5s var(--ease)} .sbox .go.wide:hover{background:#000;transform:translateY(-2px)} .sbox .go.wide svg{width:12px;height:12px;transition:transform .5s var(--ease)} .sbox .go.wide:hover svg{transform:translateX(4px)}
   .chips{display:flex;gap:8px;margin-top:12px;overflow-x:auto;scrollbar-width:none} .chips::-webkit-scrollbar{display:none}
   .chips button{flex:none;border:1px solid rgba(255,255,255,.32);background:rgba(18,16,14,.42);color:#fff;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);height:32px;padding:0 16px;border-radius:999px;font:500 12px/1 var(--f);transition:background .3s,color .3s,transform .4s var(--ease)} .chips button:hover{background:#fff;color:var(--k);transform:translateY(-2px)}
   .ha{opacity:0;transform:translateY(22px);transition:opacity 1.2s var(--ease),transform 1.2s var(--ease);transition-delay:var(--d,0s)} .hero.on .ha{opacity:1;transform:none} .search.ha{transform:translate(-50%,22px)} .hero.on .search.ha{transform:translateX(-50%)}
@@ -182,10 +186,10 @@
   .toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);background:var(--k);color:#fff;padding:12px 20px;border-radius:999px;font-size:13px;opacity:0;transition:.5s var(--ease);z-index:90;pointer-events:none} .toast.on{opacity:1;transform:translate(-50%,0)}
 
   @media (max-width:1024px){ .team{grid-template-columns:repeat(3,1fr)} .scols{grid-template-columns:1fr 1fr} .st:nth-child(3){border-left:0} .st:nth-child(n+3){border-top:1px solid rgba(255,255,255,.1)} }
-  @media (max-width:860px){ .links{display:none} .nav .wrap{grid-template-columns:1fr auto} .nav .rt .btn{display:none} .hcopy{padding-top:118px} .hero h1{font-size:clamp(40px,11vw,64px)} .hero::before{background:linear-gradient(180deg,rgba(18,16,14,.8) 0,rgba(18,16,14,.35) 36%,transparent 52%,rgba(18,16,14,.78))} .hchip{display:none} .hbadge{right:auto;left:var(--gut);bottom:236px;padding:12px 16px} .hph .in2{width:100%} .hph img{object-position:56% 50%}
+  @media (max-width:860px){ .links{display:none} .nav .wrap{grid-template-columns:1fr auto} .nav .rt .btn{display:none} .hcopy{padding-top:118px} .hero h1{font-size:clamp(40px,11vw,64px)} .hero::before{background:linear-gradient(180deg,rgba(18,16,14,.8) 0,rgba(18,16,14,.35) 36%,transparent 52%,rgba(18,16,14,.78))} .hchip,.hbadge{display:none} .hero{height:max(100svh,860px)} .srow2{grid-template-columns:1fr 1fr} .sbox .go.wide{grid-column:1/-1;height:48px;justify-content:center} .hph .in2{width:100%} .hph img{object-position:56% 50%}
     .exp .panel,.sell,.cta,.duo{grid-template-columns:1fr} .duo .tc{min-height:420px} .exp .lst{height:auto} .exp .scroll{display:flex;overflow-x:auto;overflow-y:hidden;-webkit-mask-image:none;mask-image:none;padding-bottom:6px;scroll-snap-type:x mandatory} .exp .mc{flex:0 0 72%;scroll-snap-align:start} .map{min-height:0;aspect-ratio:1/1}
     .grid{grid-template-columns:1fr 1fr} .about .cols{grid-template-columns:1fr} .legal{text-align:left;margin-left:0} .soc{justify-content:flex-start} }
-  @media (max-width:560px){ .about h2{font-size:22px} .grid,.two{grid-template-columns:1fr} .team{grid-template-columns:1fr 1fr} .hc{aspect-ratio:4/4.6} .tabs button{padding:0 16px} .sbox form{height:54px} }
+  @media (max-width:560px){ .about h2{font-size:22px} .grid,.two{grid-template-columns:1fr} .team{grid-template-columns:1fr 1fr} .hc{aspect-ratio:4/4.6} .tabs button{padding:0 16px} .srow{height:52px} }
   @media (prefers-reduced-motion:reduce){ *,*::before,*::after{animation:none!important;transition:none!important} }
   .nomotion .rv,.nomotion .hc,.nomotion .ha,.nomotion .word span{opacity:1!important;transform:none!important} .nomotion .pin{opacity:1!important} .nomotion .search.ha{transform:translateX(-50%)!important} .nomotion .ln>span{transform:none!important} .nomotion .ch{transform:none!important;opacity:1!important;filter:none!important;animation:none!important} .nomotion .odc{transform:translateY(calc(var(--to)*-1em))!important;transition:none!important} .nomotion .st::before{transform:none!important} .nomotion .cur::after{display:none} .nomotion .cur img{transform:none}
 </style>
@@ -209,7 +213,10 @@
   <div class="hbadge ha" style="--d:1.45s"><b>+30 M€</b><span data-t="u.1">em imóveis vendidos</span></div>
   <div class="search ha" style="--d:1.1s">
     <div class="tabs" id="tabs" role="tablist"><button type="button" class="on" data-m="comprar" data-t="s.t1">Comprar</button><button type="button" data-m="vender" data-t="s.t2">Vender</button><button type="button" data-m="avaliar" data-t="s.t3">Avaliar</button></div>
-    <div class="sbox"><form id="sform"><span class="plus">+</span><input id="sq" type="text" autocomplete="off" aria-label="Pedido"><button class="go" type="submit" aria-label="Enviar"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 12V2M2.5 6.5 7 2l4.5 4.5"/></svg></button></form></div>
+    <div class="sbox"><form id="sform" novalidate>
+        <div class="srow"><span class="plus">+</span><input id="sq" type="text" autocomplete="off" aria-label="Pedido"></div>
+        <div class="srow2"><label class="sf" id="fNome"><span data-t="s.nome">Nome</span><input id="sNome" type="text" autocomplete="name"></label><label class="sf req" id="fTel"><span data-t="s.tel">Telemóvel</span><input id="sTel" type="tel" inputmode="tel" autocomplete="tel" placeholder="+351" required></label><button class="go wide" type="submit"><span data-t="s.go">Enviar pedido</span><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 6h10M7 2l4 4-4 4"/></svg></button></div>
+      </form></div>
     <div class="chips" id="chips"></div>
   </div>
 </header>
@@ -327,9 +334,10 @@ const T={
   'ft.h':'A casa certa,<br>com a equipa certa','ft.legal':'RE/MAX Prestige · Sentir Lisboa, Mediação Imobiliária, Lda · AMI 10006. Página de demonstração: imóveis, preços e fotografias vêm dos anúncios públicos da RE/MAX.',
   tipo:{ap:'Apartamento',mo:'Moradia',ho:'Hotel'},quartos:'quartos',wc:'WC',
   filtros:{todos:'Todos',novo:'Novos',ap:'Apartamentos',mo:'Moradias',inv:'Investimento',sold:'Vendidos'},
-  ph:{comprar:['T2 com varanda em Alvalade, até 500 mil','Moradia com jardim na Margem Sul','T1 perto do mar em Oeiras'],vender:['Quero vender o meu T3 em Lisboa','Tenho uma moradia em Palmela para vender'],avaliar:['Quanto vale a minha casa em Alvalade?','Avaliação de um T2 na Amadora']},
-  chips:['Quanto vale a minha casa?','T2 em Alvalade','Moradia na Margem Sul','Investir em alojamento local'],
-  waS:{comprar:'Olá Pedro, vi a sua página. Procuro: {q}',vender:'Olá Pedro, vi a sua página. Quero vender: {q}',avaliar:'Olá Pedro, vi a sua página. Gostava de uma avaliação: {q}'},
+  ph:{comprar:['Procuro um apartamento T2 com varanda em Alvalade, até 500 mil euros','Procuro uma moradia T3 com jardim na Margem Sul','Quero investir num T1 para arrendar em Oeiras'],vender:['Quero vender o meu apartamento T3 em Alvalade','Quero vender uma moradia T4 com piscina em Palmela'],avaliar:['Avaliação do meu apartamento T4 em Alvalade','Quanto vale a minha moradia T3 em Oeiras?']},
+  chips:[['avaliar','Quanto vale o meu T3 em Alvalade?'],['comprar','Procuro um T2 em Alvalade'],['comprar','Procuro uma moradia na Margem Sul'],['vender','Quero vender a minha casa']],
+  's.nome':'Nome','s.tel':'Telemóvel','s.go':'Enviar pedido','s.err':'Indique o seu telemóvel para o Pedro ou a equipa lhe ligarem.','s.modo':{comprar:'Comprar',vender:'Vender',avaliar:'Avaliação'},
+  waS:'Olá Pedro, vi a sua página.\nPedido ({modo}): {q}\nNome: {n}\nTelemóvel: {t}',
   wa:'Olá Pedro, vi a sua página.\nNome: {nome}\nTelemóvel: {tel}\nQuero: {perfil}\nZona: {zona}\n{msg}','wa0':'Olá Pedro, vi a sua página e gostava de falar consigo.','waSell':'Olá Pedro, vi a sua página e gostava de pedir uma avaliação da minha casa.','waAg':'Olá, vi a página da Equipa Pedro Fernandes e gostava de falar com {n}.'},
  en:{'n.comprar':'Buy','n.vender':'Sell','n.sobre':'About','n.equipa':'Team','n.cta':'Contact',
   'h.eye':'Equipa Pedro Fernandes · RE/MAX Prestige','h.h1':'Find the <em>home</em><br>where it all begins','h.sub':'Over 30 million euros in property sold. A full team working so that your next decision is the right one.',
@@ -346,9 +354,10 @@ const T={
   'ft.h':'The right home,<br>with the right team','ft.legal':'RE/MAX Prestige · Sentir Lisboa, Mediação Imobiliária, Lda · AMI 10006. Demonstration page: properties, prices and photographs come from public RE/MAX listings.',
   tipo:{ap:'Apartment',mo:'House',ho:'Hotel'},quartos:'beds',wc:'baths',
   filtros:{todos:'All',novo:'New',ap:'Apartments',mo:'Houses',inv:'Investment',sold:'Sold'},
-  ph:{comprar:['T2 with balcony in Alvalade, up to 500k','House with a garden on the South Bank','T1 near the sea in Oeiras'],vender:['I want to sell my T3 in Lisbon','I have a house in Palmela to sell'],avaliar:['How much is my home in Alvalade worth?','Valuation of a T2 in Amadora']},
-  chips:['How much is my home worth?','T2 in Alvalade','House on the South Bank','Invest in short-term rental'],
-  waS:{comprar:'Hello Pedro, I saw your page. I am looking for: {q}',vender:'Hello Pedro, I saw your page. I want to sell: {q}',avaliar:'Hello Pedro, I saw your page. I would like a valuation: {q}'},
+  ph:{comprar:['I am looking for a 2-bedroom apartment with a balcony in Alvalade, up to 500k','I am looking for a 3-bedroom house with a garden on the South Bank','I want to invest in a 1-bedroom to rent out in Oeiras'],vender:['I want to sell my 3-bedroom apartment in Alvalade','I want to sell a 4-bedroom house with a pool in Palmela'],avaliar:['Valuation of my 4-bedroom apartment in Alvalade','How much is my 3-bedroom house in Oeiras worth?']},
+  chips:[['avaliar','How much is my T3 in Alvalade worth?'],['comprar','Looking for a T2 in Alvalade'],['comprar','Looking for a house on the South Bank'],['vender','I want to sell my home']],
+  's.nome':'Name','s.tel':'Phone','s.go':'Send request','s.err':'Please add your phone number so Pedro or the team can call you.','s.modo':{comprar:'Buy',vender:'Sell',avaliar:'Valuation'},
+  waS:'Hello Pedro, I saw your page.\nRequest ({modo}): {q}\nName: {n}\nPhone: {t}',
   wa:'Hello Pedro, I saw your page.\nName: {nome}\nPhone: {tel}\nI want to: {perfil}\nArea: {zona}\n{msg}','wa0':'Hello Pedro, I saw your page and would like to talk.','waSell':'Hello Pedro, I saw your page and would like a valuation of my home.','waAg':'Hello, I saw the Equipa Pedro Fernandes page and would like to speak with {n}.'}};
 
 let LANG='pt',FIRST=true,MODE='comprar',FILTER='todos';
@@ -375,9 +384,14 @@ let io;function observe(){$$('.lines').forEach(split);chars($('#h1'));const els=
 /* pesquisa do hero: escreve exemplos sozinho, envia para o WhatsApp */
 let tw=null;function typer(){clearTimeout(tw);const inp=$('#sq');const list=T[LANG].ph[MODE];let i=0,c=0,dir=1;if(REDUCED){inp.placeholder=list[0];return;}
  const step=()=>{const s=list[i%list.length];c+=dir;inp.placeholder=s.slice(0,c)+(dir>0&&c<s.length?'▍':'');if(c>=s.length){dir=-1;tw=setTimeout(step,2200);return;}if(c<=0){dir=1;i++;tw=setTimeout(step,350);return;}tw=setTimeout(step,dir>0?42:16);};step();}
-$$('#tabs button').forEach(b=>b.addEventListener('click',()=>{MODE=b.dataset.m;$$('#tabs button').forEach(x=>x.classList.toggle('on',x===b));typer();$('#sq').focus();}));
-$('#sform').addEventListener('submit',e=>{e.preventDefault();const q=$('#sq').value.trim();window.open(wa(q?T[LANG].waS[MODE].replace('{q}',q):tr('wa0')),'_blank','noopener');});
-function renderChips(){ $('#chips').innerHTML=T[LANG].chips.map(c=>`<button type="button">${esc(c)}</button>`).join('');$$('#chips button').forEach(b=>b.addEventListener('click',()=>{const inp=$('#sq');inp.value=b.textContent;inp.focus();}));}
+function setMode(m,focus){MODE=m;$$('#tabs button').forEach(x=>x.classList.toggle('on',x.dataset.m===m));typer();if(focus)$('#sq').focus();}
+$$('#tabs button').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.m,true)));
+/* o telemóvel é obrigatório nos três separadores: sem ele o pedido não segue */
+$('#sform').addEventListener('submit',e=>{e.preventDefault();const q=$('#sq').value.trim(),n=$('#sNome').value.trim(),t=$('#sTel').value.trim(),F=$('#fTel');
+ if(t.replace(/\D/g,'').length<9){F.classList.remove('err');void F.offsetWidth;F.classList.add('err');toast(tr('s.err'));$('#sTel').focus();return;}F.classList.remove('err');
+ window.open(wa(T[LANG].waS.replace('{modo}',T[LANG]['s.modo'][MODE]).replace('{q}',q||'·').replace('{n}',n||'·').replace('{t}',t)),'_blank','noopener');});
+$('#sTel').addEventListener('input',()=>$('#fTel').classList.remove('err'));
+function renderChips(){ $('#chips').innerHTML=T[LANG].chips.map(([m,c])=>`<button type="button" data-m="${m}">${esc(c)}</button>`).join('');$$('#chips button').forEach(b=>b.addEventListener('click',()=>{setMode(b.dataset.m,false);const inp=$('#sq');inp.value=b.textContent;($('#sTel').value?inp:$('#sTel')).focus();}));}
 
 /* lista + mapa */
 function renderMap(){const act=PAGINA.imoveis.filter(m=>!m.sold);

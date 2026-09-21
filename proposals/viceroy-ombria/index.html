@@ -256,9 +256,7 @@ h1,h2{font-family:var(--cond);text-transform:uppercase;font-weight:500;letter-sp
 </div></nav>
 
 <header class="hero" id="topo">
-  <video autoplay muted loop playsinline poster="/proposals/viceroy-ombria/img/plaza.jpg">
-    <source src="/proposals/viceroy-ombria/img/hero.mp4" type="video/mp4">
-  </video>
+  <video id="hvid" autoplay muted loop playsinline preload="auto" poster="/proposals/viceroy-ombria/img/hero_poster.jpg"></video>
   <div class="in">
     <p class="eyebrow" data-t="hero.eyebrow"></p>
     <h1 data-t="hero.titulo"></h1>
@@ -326,9 +324,7 @@ h1,h2{font-family:var(--cond);text-transform:uppercase;font-weight:500;letter-sp
 <section class="prox" id="proximidade">
   <div class="wrap"><div class="grid">
     <div class="pvid rv">
-      <video autoplay muted loop playsinline preload="metadata" poster="/proposals/viceroy-ombria/img/ombria_poster.jpg">
-        <source src="/proposals/viceroy-ombria/img/ombria_lucas.mp4" type="video/mp4">
-      </video>
+      <video id="pvid" muted loop playsinline preload="none" poster="/proposals/viceroy-ombria/img/ombria_poster.jpg" data-src="/proposals/viceroy-ombria/img/ombria_lucas.mp4"></video>
       <button class="psom" id="psom" aria-label="Ligar o som">
         <svg viewBox="0 0 24 24"><path d="M11 5 6.5 9H3v6h3.5L11 19V5Z"/><path class="on" d="M15.5 8.5a5 5 0 0 1 0 7M18 6a8.5 8.5 0 0 1 0 12" style="display:none"/><path class="off" d="m16 9 5 6m0-6-5 6"/></svg>
       </button>
@@ -523,6 +519,16 @@ $('#btn-wa').href = `https://wa.me/${PROPOSTA.contacto.tel}?text=${encodeURIComp
 const d = new Date(PROPOSTA.data + 'T12:00:00');
 $('#rodape-data').textContent = `Proposta preparada a ${d.toLocaleDateString('pt-PT', { day: 'numeric', month: 'long', year: 'numeric' })}`;
 
+/* Heroi: fonte conforme o ecra e arranque garantido */
+const hv = document.getElementById('hvid');
+if (hv) {
+  hv.src = matchMedia('(max-width:820px)').matches ? '/proposals/viceroy-ombria/img/hero_m.mp4' : '/proposals/viceroy-ombria/img/hero.mp4';
+  const tenta = () => hv.play().catch(() => {});
+  hv.addEventListener('loadeddata', tenta);
+  document.addEventListener('touchstart', tenta, { once: true, passive: true });
+  document.addEventListener('click', tenta, { once: true });
+}
+
 /* Modal */
 const vm = $('#vmodal'), vf = $('#vframe');
 function abrir(id){ if (!/^[\w-]{11}$/.test(id)) return; vf.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0" title="Vídeo" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`; vm.classList.add('on'); document.body.style.overflow = 'hidden'; }
@@ -530,8 +536,18 @@ function fechar(){ vm.classList.remove('on'); vf.innerHTML = ''; document.body.s
 document.addEventListener('click', e => { const c = e.target.closest('[data-video]'); if (c) abrir(c.dataset.video); if (e.target.closest('[data-fechar]')) fechar(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') fechar(); });
 
-/* Som do video pessoal */
-const pv = document.querySelector('.pvid video'), ps = document.getElementById('psom');
+/* Video pessoal: carrega e arranca quando entra no ecra */
+const pv = document.getElementById('pvid'), ps = document.getElementById('psom');
+if (pv) {
+  const ioPv = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    if (!pv.src) { pv.src = pv.dataset.src; }
+    pv.play().catch(() => {});
+    ioPv.unobserve(pv);
+  }), { rootMargin: '300px' });
+  ioPv.observe(pv);
+}
+
 if (pv && ps) ps.addEventListener('click', () => {
   pv.muted = !pv.muted;
   ps.querySelector('.on').style.display = pv.muted ? 'none' : '';

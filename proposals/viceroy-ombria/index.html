@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Viceroy at Ombria Algarve · Proposta CreativeSete</title>
+<meta name="description" content="Proposta de parceria de conteúdo entre a CreativeSete e o Viceroy at Ombria Algarve.">
+<link rel="icon" href="/assets/mark7_dark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#141414; --muted:#5C5C58; --faint:#98948C;
+  --bg:#FFFFFF; --bg2:#F6F5F2;
+  --ouro:#B08D57;
+  --linha:rgba(20,20,20,.12);
+  --cond:'Oswald',system-ui,sans-serif; --sans:'Manrope',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--bg);font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,video{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.cond{font-family:var(--cond);text-transform:uppercase;font-weight:500;letter-spacing:.06em;line-height:1.08}
+h1,h2{font-family:var(--cond);text-transform:uppercase;font-weight:500;letter-spacing:.05em;line-height:1.06}
+.wrap{width:min(1240px,92vw);margin:0 auto}
+.eyebrow{font-size:10px;font-weight:700;letter-spacing:.34em;text-transform:uppercase;color:var(--ouro)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--cond);font-size:12px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;padding:15px 34px;border:1px solid var(--ink);color:var(--ink);background:transparent;cursor:pointer;transition:all .3s ease}
+.btn:hover{background:var(--ink);color:#fff}
+.btn.cheio{background:var(--ink);color:#fff}
+.btn.cheio:hover{background:transparent;color:var(--ink)}
+.btn.claro{border-color:rgba(255,255,255,.85);color:#fff}
+.btn.claro:hover{background:#fff;color:var(--ink)}
+.btn.claro.cheio{background:#fff;color:var(--ink);border-color:#fff}
+.btn.claro.cheio:hover{background:transparent;color:#fff}
+
+/* Reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity 1s cubic-bezier(.22,.7,.3,1),transform 1s cubic-bezier(.22,.7,.3,1);transition-delay:var(--d,0s)}
+.rv.on{opacity:1;transform:none}
+.zi{overflow:hidden}
+.zi img{transform:scale(1.08);transition:transform 1.6s cubic-bezier(.22,.7,.3,1)}
+.zi.on img{transform:scale(1)}
+.hdr .eyebrow{position:relative;display:inline-block;padding-bottom:14px}
+.hdr .eyebrow::after{content:"";position:absolute;left:50%;bottom:0;width:0;height:1px;background:var(--ouro);transition:width 1s ease .35s,left 1s ease .35s}
+.hdr.on .eyebrow::after{width:46px;left:calc(50% - 23px)}
+.wipe{clip-path:inset(0 100% 0 0);transition:clip-path 1.3s cubic-bezier(.22,.7,.3,1)}
+.wipe.on{clip-path:inset(0 0 0 0)}
+
+/* ===== TOP CreativeSete ===== */
+.nav{position:fixed;inset:14px 0 auto;z-index:100;pointer-events:none}
+.nav-bar{pointer-events:auto;display:flex;align-items:center;gap:22px;width:min(1240px,94vw);margin:0 auto;padding:10px 12px 10px 22px;border-radius:999px;background:rgba(255,255,255,.82);border:1px solid rgba(20,20,20,.08);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 10px 34px rgba(20,20,20,.1)}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800}
+.brand img{height:20px;width:auto}
+.brand .para{font-weight:500;font-size:12.5px;color:var(--muted);border-left:1px solid var(--linha);padding-left:12px}
+.nav-links{display:flex;gap:22px;margin-left:8px;font-size:13px;font-weight:600;color:var(--muted)}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{margin-left:auto}
+.nav-cta .btn{border-radius:999px;padding:12px 24px;font-size:11px}
+
+/* ===== Heroi cinematografico ===== */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;overflow:hidden}
+.hero video,.hero .hposter{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.35),rgba(10,10,10,.14) 45%,rgba(10,10,10,.55))}
+.hero .in{position:relative;z-index:2;padding:120px 20px;max-width:900px}
+.hero .eyebrow{color:#E5CFA6}
+.hero h1{font-size:clamp(40px,6.4vw,86px);margin-top:22px;text-shadow:0 4px 40px rgba(0,0,0,.35)}
+.hero .sub{margin-top:20px;font-size:14px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.82)}
+.hero .cta{margin-top:38px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.hero .in>*{opacity:0;transform:translateY(24px);animation:entra 1.1s cubic-bezier(.22,.7,.3,1) forwards}
+.hero h1{animation-delay:.15s}.hero .sub{animation-delay:.3s}.hero .cta{animation-delay:.45s}
+@keyframes entra{to{opacity:1;transform:none}}
+.seta{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:2;color:rgba(255,255,255,.75);animation:desce 2.2s ease-in-out infinite}
+.seta svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+@keyframes desce{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,10px)}}
+
+/* ===== Intro branca ===== */
+.intro{padding:130px 0 120px;text-align:center}
+.intro h2{font-size:clamp(34px,4.6vw,62px);margin-top:20px}
+.intro p{max-width:560px;margin:26px auto 0;font-size:14.5px;color:var(--muted)}
+.intro .assina{margin-top:26px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--faint)}
+
+/* ===== Mosaico com moldura ===== */
+.terr{padding:20px 0 90px}
+.terr .hdr{max-width:760px;margin:0 auto 56px;text-align:center}
+.terr .hdr h2{font-size:clamp(30px,4vw,54px);margin-top:20px}
+.mosaico{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;max-width:1160px;margin:0 auto}
+.mcard{border-top:1px solid var(--linha);padding-top:24px}
+.mcard .moldura{overflow:hidden;position:relative;margin-top:16px}
+.mcard img{width:100%;height:300px;object-fit:cover;transition:transform 1.4s cubic-bezier(.22,.7,.3,1),filter .6s ease}
+.mcard:hover img{transform:scale(1.05);filter:brightness(1.04)}
+.mcard .mtxt{padding:18px 0 0}
+.mcard .rom{font-family:var(--cond);font-size:12px;letter-spacing:.3em;color:var(--ouro)}
+.mcard h3{font-family:var(--cond);text-transform:uppercase;font-weight:500;letter-spacing:.07em;font-size:17px;margin-top:0}
+.mcard p{margin-top:10px;font-size:12.5px;color:var(--muted);line-height:1.65}
+.mcard .fmt{margin-top:12px;font-size:9px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--ink)}
+
+/* ===== Full bleed ===== */
+.bleed{position:relative;min-height:92svh;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;overflow:hidden;margin:80px 0}
+.bleed .bimg{position:absolute;inset:0;width:100%;height:112%;object-fit:cover;will-change:transform}
+.bleed::after{content:"";position:absolute;inset:0;background:rgba(10,10,10,.34)}
+.bleed .in{position:relative;z-index:2;padding:60px 20px;max-width:860px}
+.bleed h2{font-size:clamp(32px,4.8vw,64px);text-shadow:0 4px 40px rgba(0,0,0,.4)}
+.bleed p{margin-top:18px;font-size:13.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,.85)}
+.bleed .eyebrow{color:#E5CFA6}
+.bleed h2{margin-top:18px}
+
+/* ===== Parceria (4 passos) ===== */
+.motor{padding:120px 0 110px;text-align:center}
+.motor h2{font-size:clamp(30px,4vw,54px);margin-top:20px}
+.motor .lead{max-width:520px;margin:22px auto 0;font-size:14px;color:var(--muted)}
+.passos{display:grid;grid-template-columns:repeat(4,1fr);gap:0;max-width:1140px;margin:64px auto 0;border-top:1px solid var(--linha)}
+.passo{padding:34px 26px 6px;border-left:1px solid var(--linha);text-align:left}
+.passo:first-child{border-left:0}
+.passo .n{font-family:var(--cond);font-size:13px;letter-spacing:.3em;color:var(--ouro)}
+.passo h3{font-family:var(--cond);text-transform:uppercase;letter-spacing:.08em;font-weight:500;font-size:17px;margin-top:10px}
+.passo p{margin-top:10px;font-size:13px;color:var(--muted)}
+
+/* ===== CreativeSete: sala escura ===== */
+.nos{position:relative;padding:130px 0;text-align:center;background:#0C0C0C;color:#F2EDE4;overflow:hidden}
+.nos::before{content:"";position:absolute;inset:0;background:radial-gradient(60vw 40vw at 50% 0%,rgba(176,141,87,.12),transparent 60%)}
+.nos .in{position:relative;z-index:2;max-width:680px;margin:0 auto}
+.nos h2{font-size:clamp(30px,4vw,54px);margin-top:20px}
+.nos .lead{margin:22px auto 0;font-size:14px;color:#A8A399;max-width:56ch}
+.reel{position:relative;z-index:2;max-width:960px;margin:56px auto 0;aspect-ratio:21/9;overflow:hidden;cursor:pointer;border:1px solid rgba(176,141,87,.45);border-radius:22px;padding:10px;background:rgba(255,255,255,.03)}
+.reel .rimg{position:absolute;inset:10px;overflow:hidden;border-radius:14px}
+.reel img{width:100%;height:100%;object-fit:cover;filter:saturate(.9);transition:transform 1.6s cubic-bezier(.22,.7,.3,1),filter .6s ease}
+.reel:hover img{transform:scale(1.05);filter:saturate(1.05)}
+.reel::after{content:"";position:absolute;inset:10px;border-radius:14px;background:linear-gradient(180deg,rgba(8,8,8,.05) 40%,rgba(8,8,8,.55));pointer-events:none}
+.anel{position:absolute;z-index:3;top:50%;left:50%;transform:translate(-50%,-50%);width:86px;height:86px;border-radius:50%;border:1px solid rgba(229,207,166,.85);background:rgba(8,8,8,.35);display:grid;place-items:center;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:background .3s ease,transform .3s ease}
+.anel::before{content:"";position:absolute;inset:-1px;border-radius:50%;border:1px solid rgba(229,207,166,.5);animation:pulso 2.8s ease-out infinite}
+.anel svg{width:26px;height:26px;fill:#E5CFA6;margin-left:4px}
+.reel:hover .anel{background:rgba(176,141,87,.45);transform:translate(-50%,-50%) scale(1.07)}
+@keyframes pulso{from{transform:scale(1);opacity:.9}to{transform:scale(1.6);opacity:0}}
+.rlbl{position:absolute;z-index:3;left:0;right:0;bottom:26px;font-family:var(--cond);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:rgba(242,237,228,.85);pointer-events:none}
+.quotes{display:grid;grid-template-columns:1fr auto 1fr;gap:44px;align-items:start;max-width:920px;margin:74px auto 0;position:relative;z-index:2;text-align:left}
+.quotes .risca{width:1px;height:100%;background:rgba(176,141,87,.35)}
+.quote .topo{display:flex;align-items:center;gap:14px}
+.quote .avatar{width:52px;height:52px;border-radius:50%;object-fit:cover;border:1px solid rgba(176,141,87,.55);padding:2px;background:#0C0C0C}
+.quote .stars{color:var(--ouro);letter-spacing:4px;font-size:12px}
+.quote q{quotes:"“" "”";display:block;margin-top:12px;font-size:13.5px;line-height:1.75;color:#DDD8CE;font-weight:500}
+.quote .quem{margin-top:12px;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#8A857C}
+
+/* ===== Proximidade ===== */
+.prox{padding:120px 0;background:var(--bg)}
+.prox .grid{display:grid;grid-template-columns:5fr 6fr;gap:70px;align-items:center;max-width:1080px;margin:0 auto}
+.pvid{position:relative;justify-self:center;width:min(380px,84vw);aspect-ratio:9/16;border:1px solid rgba(176,141,87,.5);border-radius:24px;padding:10px;background:var(--bg2)}
+.pvid video{position:absolute;inset:10px;width:calc(100% - 20px);height:calc(100% - 20px);object-fit:cover;border-radius:16px}
+.psom{position:absolute;right:22px;bottom:22px;z-index:3;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.6);background:rgba(10,10,10,.45);color:#fff;cursor:pointer;display:grid;place-items:center;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:background .3s}
+.psom:hover{background:rgba(176,141,87,.6)}
+.psom svg{width:19px;height:19px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.prox .txt .eyebrow{position:relative;display:inline-block;padding-bottom:14px}
+.prox h2{font-size:clamp(28px,3.6vw,48px);margin-top:16px}
+.prox .txt p{margin-top:18px;font-size:14.5px;color:var(--muted);max-width:46ch}
+.prox .assin{margin-top:24px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink);font-weight:700}
+.prox .assin span{display:block;margin-top:4px;color:var(--faint);font-weight:600;font-size:10px}
+
+/* ===== A nossa ideia ===== */
+.caminhos{padding:120px 0 110px;text-align:center}
+.caminhos h2{font-size:clamp(30px,4vw,54px);margin-top:20px}
+.caminhos .lead{max-width:620px;margin:24px auto 0;font-size:14px;color:var(--muted)}
+.cgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:56px;max-width:1080px;margin:60px auto 0;text-align:left}
+.cam{position:relative;padding-top:26px;transition:transform .5s cubic-bezier(.22,.7,.3,1)}
+.cam:hover{transform:translateY(-6px)}
+.cam h3{transition:color .4s ease}
+.cam:hover h3{color:var(--ouro)}
+.cam li{transition:padding-left .35s ease}
+.cam:hover li{padding-left:6px}
+.cam::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:var(--linha)}
+.cam::after{content:"";position:absolute;top:0;left:0;width:0;height:1px;background:var(--ouro);transition:width .9s cubic-bezier(.22,.7,.3,1)}
+.cam:hover::after{width:100%}
+.cam.rec::after{width:100%}
+.cam .lbl{font-family:var(--cond);font-size:11px;letter-spacing:.3em;color:var(--ouro)}
+.cam h3{font-family:var(--cond);text-transform:uppercase;letter-spacing:.08em;font-weight:500;font-size:20px;margin-top:10px}
+.cam .mote{margin-top:4px;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+.cam ul{margin:18px 0 0;padding:0;list-style:none}
+.cam li{padding:10px 0;border-top:1px solid var(--linha);font-size:12.5px;color:var(--muted);line-height:1.6}
+.cam li:first-child{border-top:0}
+.cam.rec h3::after{content:"O modelo que pediram";display:block;font-family:var(--sans);font-size:9px;font-weight:700;letter-spacing:.24em;color:var(--ouro);margin-top:6px}
+.cnota{max-width:620px;margin:64px auto 0;font-size:14px;color:var(--muted)}
+.cnota b{color:var(--ink)}
+
+/* ===== Fecho ===== */
+.fecho{position:relative;min-height:92svh;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;overflow:hidden}
+.fecho .bimg{position:absolute;inset:0;width:100%;height:112%;object-fit:cover;will-change:transform}
+.fecho::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.3),rgba(10,10,10,.55))}
+.fecho .in{position:relative;z-index:2;padding:60px 20px;max-width:820px}
+.fecho .eyebrow{color:#E5CFA6}
+.fecho h2{font-size:clamp(34px,5vw,68px);margin-top:20px;text-shadow:0 4px 40px rgba(0,0,0,.4)}
+.fecho p{margin-top:20px;font-size:14px;color:rgba(255,255,255,.88);max-width:52ch;margin-left:auto;margin-right:auto}
+.fecho .agenda{margin:26px auto 0;padding:0;list-style:none;display:inline-grid;gap:8px;counter-reset:ag;text-align:left}
+.fecho .agenda li{display:flex;gap:12px;font-size:13.5px;color:rgba(255,255,255,.92)}
+.fecho .agenda li::before{counter-increment:ag;content:"0" counter(ag);font-family:var(--cond);color:#E5CFA6}
+.fecho .cta{margin-top:36px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.rodape{background:#0E0E0E;color:#8F8B84;padding:26px 0;font-size:12px}
+.rodape .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.rodape a{color:#D8D4CC}
+.rodape a:hover{color:#fff}
+
+/* ===== Modal video ===== */
+.vmodal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:20px}
+.vmodal.on{display:flex}
+.vscrim{position:absolute;inset:0;background:rgba(8,8,8,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.vbox{position:relative;width:min(980px,94vw);aspect-ratio:16/9;overflow:hidden;background:#000;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.vmodal iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vclose{position:absolute;top:12px;right:12px;z-index:4;width:42px;height:42px;border-radius:50%;background:rgba(10,10,10,.6);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:22px;cursor:pointer;display:grid;place-items:center;line-height:1}
+.vclose:hover{background:rgba(10,10,10,.85)}
+
+@media (max-width:980px){
+  .nav-links{display:none}
+  .passos{grid-template-columns:1fr 1fr}
+  .passo{border-left:0;border-top:1px solid var(--linha)}
+  .mosaico{grid-template-columns:1fr 1fr}
+  .cgrid{grid-template-columns:1fr;gap:40px}
+  .quotes{grid-template-columns:1fr}
+}
+@media (max-width:820px){
+  .prox .grid{grid-template-columns:1fr;gap:44px}
+  .mosaico{grid-template-columns:1fr 1fr;gap:22px}
+  .mcard img{height:44vw}
+  .quotes{grid-template-columns:1fr;gap:30px}
+  .quotes .risca{display:none}
+  .reel{aspect-ratio:16/9}
+  .bleed,.fecho{min-height:70svh}
+}
+@media (max-width:560px){
+  .brand .para{display:none}
+  .intro,.motor,.caminhos{padding:90px 0 80px}
+  .nos{padding:100px 0}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rv,.hero .in>*{opacity:1;transform:none;transition:none;animation:none}
+  .zi img{transform:none;transition:none}
+  .seta{animation:none}
+  .bleed .bimg,.fecho .bimg{height:100%}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav"><div class="nav-bar">
+  <a class="brand" href="#topo" aria-label="CreativeSete">
+    <img src="/assets/logo_dark.png" alt="CreativeSete">
+    <span class="para">para o Viceroy at Ombria Algarve</span>
+  </a>
+  <div class="nav-links">
+    <a href="#visao">A visão</a>
+    <a href="#territorios">Territórios</a>
+    <a href="#parceria">Parceria</a>
+    <a href="#caminhos">Caminhos</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+  <span class="nav-cta"><a class="btn cheio" data-mail href="#" style="border-radius:999px">Marcar conversa</a></span>
+</div></nav>
+
+<header class="hero" id="topo">
+  <video autoplay muted loop playsinline poster="/proposals/viceroy-ombria/img/plaza.jpg">
+    <source src="/proposals/viceroy-ombria/img/hero.mp4" type="video/mp4">
+  </video>
+  <div class="in">
+    <p class="eyebrow" data-t="hero.eyebrow"></p>
+    <h1 data-t="hero.titulo"></h1>
+    <p class="sub" data-t="hero.sub"></p>
+    <div class="cta"><a class="btn claro" href="#visao" data-t="hero.cta"></a></div>
+  </div>
+  <a class="seta" href="#visao" aria-label="Descer"><svg viewBox="0 0 24 24"><path d="M12 4v16m0 0 6-6m-6 6-6-6"/></svg></a>
+</header>
+
+<section class="intro" id="visao">
+  <div class="wrap rv">
+    <p class="eyebrow" data-t="intro.eyebrow"></p>
+    <h2 data-t="intro.titulo"></h2>
+    <p data-t="intro.texto"></p>
+    <p class="assina" data-t="intro.assina"></p>
+  </div>
+</section>
+
+<section class="terr" id="territorios">
+  <div class="wrap">
+    <div class="hdr rv">
+      <p class="eyebrow" data-t="pl.eyebrow"></p>
+      <h2 data-t="pl.titulo"></h2>
+    </div>
+    <div class="mosaico" id="mosaico"></div>
+  </div>
+</section>
+
+<section class="bleed" id="diferenca">
+  <img class="bimg" src="/proposals/viceroy-ombria/img/golfe.jpg" alt="">
+  <div class="in rv">
+    <p class="eyebrow" data-t="bleed.eyebrow"></p>
+    <h2 data-t="bleed.titulo"></h2>
+    <p data-t="bleed.texto"></p>
+  </div>
+</section>
+
+<section class="motor" id="parceria">
+  <div class="wrap">
+    <div class="rv">
+      <p class="eyebrow" data-t="mt.eyebrow"></p>
+      <h2 data-t="mt.titulo"></h2>
+      <p class="lead" data-t="mt.texto"></p>
+    </div>
+    <div class="passos rv" id="passos"></div>
+  </div>
+</section>
+
+<section class="nos" id="creativesete">
+  <div class="in hdr rv">
+    <p class="eyebrow" data-t="nos.eyebrow"></p>
+    <h2 data-t="nos.titulo"></h2>
+    <p class="lead" data-t="nos.texto"></p>
+  </div>
+  <div class="wrap">
+    <div class="reel rv" data-video="IUaF55ES9co" role="button" tabindex="0" aria-label="Ver depoimento de Barbara Lia">
+      <div class="rimg"><img src="https://i.ytimg.com/vi/IUaF55ES9co/maxresdefault.jpg" alt="Barbara Lia em depoimento sobre a CreativeSete"></div>
+      <span class="anel"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+      <span class="rlbl" data-t="nos.cta"></span>
+    </div>
+    <div class="quotes rv" id="quotes"></div>
+  </div>
+</section>
+
+<section class="prox" id="proximidade">
+  <div class="wrap"><div class="grid">
+    <div class="pvid rv">
+      <video autoplay muted loop playsinline preload="metadata" poster="/proposals/viceroy-ombria/img/ombria_poster.jpg">
+        <source src="/proposals/viceroy-ombria/img/ombria_lucas.mp4" type="video/mp4">
+      </video>
+      <button class="psom" id="psom" aria-label="Ligar o som">
+        <svg viewBox="0 0 24 24"><path d="M11 5 6.5 9H3v6h3.5L11 19V5Z"/><path class="on" d="M15.5 8.5a5 5 0 0 1 0 7M18 6a8.5 8.5 0 0 1 0 12" style="display:none"/><path class="off" d="m16 9 5 6m0-6-5 6"/></svg>
+      </button>
+    </div>
+    <div class="txt rv" style="--d:.15s">
+      <p class="eyebrow" data-t="prox.eyebrow"></p>
+      <h2 data-t="prox.titulo"></h2>
+      <p data-t="prox.t1"></p>
+      <p data-t="prox.t2"></p>
+      <p class="assin" data-t="prox.assinatura" data-html="1"></p>
+    </div>
+  </div></div>
+</section>
+
+<section class="caminhos" id="caminhos">
+  <div class="wrap">
+    <div class="hdr rv">
+      <p class="eyebrow" data-t="cm.eyebrow"></p>
+      <h2 data-t="cm.titulo"></h2>
+      <p class="lead" data-t="cm.texto"></p>
+    </div>
+    <div class="cgrid" id="cgrid"></div>
+    <p class="cnota rv" data-t="cm.nota" data-html="1"></p>
+  </div>
+</section>
+
+<section class="fecho" id="contacto">
+  <img class="bimg" src="/proposals/viceroy-ombria/img/plaza.jpg" alt="">
+  <div class="in rv">
+    <p class="eyebrow" data-t="fecho.eyebrow"></p>
+    <h2 data-t="fecho.titulo"></h2>
+    <p data-t="fecho.texto"></p>
+    <ol class="agenda" id="agenda"></ol>
+    <div class="cta">
+      <a class="btn claro cheio" data-mail href="#">Marcar reunião</a>
+      <a class="btn claro" id="btn-wa" href="#" target="_blank" rel="noopener">Falar por WhatsApp</a>
+    </div>
+  </div>
+</section>
+<div class="rodape"><div class="wrap">
+  <span>CreativeSete · produção de vídeo · Portugal</span>
+  <span><a data-mail href="#">contact@creativesete.com</a> · <a href="https://creativesete.com" target="_blank" rel="noopener">creativesete.com</a> · <a href="https://instagram.com/creativesete" target="_blank" rel="noopener">@creativesete</a></span>
+  <span id="rodape-data"></span>
+</div></div>
+
+<div class="vmodal" id="vmodal" role="dialog" aria-modal="true" aria-label="Vídeo">
+  <div class="vscrim" data-fechar></div>
+  <div class="vbox"><button class="vclose" data-fechar aria-label="Fechar">×</button><div id="vframe" style="width:100%;height:100%"></div></div>
+</div>
+
+<script>
+const PROPOSTA = {
+  data: '2026-09-21',
+  contacto: { email: 'contact@creativesete.com', tel: '351933275663' },
+  assuntoEmail: 'Reunião · parceria de conteúdo Viceroy at Ombria Algarve x CreativeSete',
+
+  hero: {
+    eyebrow: 'Viceroy at Ombria Algarve × CreativeSete',
+    titulo: 'O próximo capítulo do Ombria',
+    sub: 'Uma parceria de conteúdo para 2026/2027',
+    cta: 'Descobrir a proposta'
+  },
+
+  intro: {
+    eyebrow: 'O que nos pediram',
+    titulo: 'Presença constante',
+    texto: 'A Marta escreveu-nos à procura de produção de conteúdo regular ao longo do ano: avença mensal, packs de dias de captação ou outra colaboração recorrente. É exatamente o modelo em que trabalhamos melhor. Esta página mostra o que faríamos com um lugar assim.',
+    assina: 'Preparada para Marta Matias · Social Media & Marketing'
+  },
+
+  pl: { eyebrow: 'A matéria-prima', titulo: 'Quatro territórios' },
+
+  territorios: [
+    { rom: 'I', t: 'Estadia e Residências', img: 'estadia.jpg', alt: 'Sala de uma residência com vista para o vale',
+      p: 'Quartos, suítes e residências abertos à serra. A luz da manhã, os terraços, o ritmo de quem fica. O conteúdo que vende noites e desperta o desejo de viver cá.', fmt: 'Reels · fotografia · film tour' },
+    { rom: 'II', t: 'Gastronomia', img: 'gastronomia.jpg', alt: 'Prato do Ombria Kitchen sobre madeira',
+      p: 'Do Casa E Fora ao Café Central, cada restaurante tem uma linguagem. Produto local, cozinha à vista, o gesto do chef. Conteúdo que enche mesas.', fmt: 'Reels · menus em vídeo · fotografia' },
+    { rom: 'III', t: 'Spa e Wellness', img: 'spa.jpg', alt: 'Piscina interior do spa com teto de madeira',
+      p: 'O silêncio também se filma. Texturas, vapor, movimento lento. Conteúdo que se sente antes de se ler.', fmt: 'Reels · fotografia de ambiente' },
+    { rom: 'IV', t: 'Experiências', img: 'experiencias.jpg', alt: 'Peças de olaria em barro do Algarve',
+      p: 'O mel de Salir, a olaria, os mercados de Loulé, os trilhos a cavalo, a praia. As Viceroy Experiences são histórias prontas a contar, e ninguém as está a contar em vídeo.', fmt: 'Mini documentários · reels' }
+  ],
+
+  bleed: {
+    eyebrow: 'A diferença',
+    titulo: 'Filmado por quem conhece a casa',
+    texto: 'A mesma equipa em cada visita · um calendário por estações · pronto a publicar'
+  },
+
+  mt: {
+    eyebrow: 'A parceria em movimento',
+    titulo: 'Como funciona, mês após mês',
+    texto: 'Um motor simples, afinado com a vossa equipa de marketing.',
+    passos: [
+      { t: 'Calendário editorial', p: 'Planeamos convosco o mês seguinte: estações, ocupação, lançamentos e campanhas, tudo vertido em pautas de captação.' },
+      { t: 'Dias de captação', p: 'A mesma equipa em cada visita. O resort deixa de ser um cenário novo e passa a ser uma casa que conhecemos.' },
+      { t: 'Edição contínua', p: 'Vertical para as redes, horizontal para site e campanhas, legendado em português e inglês, com a identidade Viceroy respeitada ao detalhe.' },
+      { t: 'Banco de conteúdo', p: 'Tudo organizado e pronto a publicar, entregue em fluxo contínuo para a equipa nunca ficar sem material.' }
+    ]
+  },
+
+  nos: {
+    eyebrow: 'Quem filma',
+    titulo: 'A CreativeSete',
+    texto: 'Uma produtora habituada a marcas e espaços onde o detalhe importa: eventos, hotelaria, institucionais e conteúdo vertical com grafismos e legendas. Já acompanham o nosso trabalho. Aqui fica quem trabalhou connosco, na primeira pessoa.',
+    cta: 'Depoimento · Barbara Lia'
+  },
+
+  quotes: [
+    { nome: 'Nadia Lopes · Avaliação no Google', foto: '/assets/rev_nadia.jpg', txt: 'Já vão 3 anos e não trabalho com mais nenhuma empresa de captação de vídeos. São incríveis em tudo, entrega rápida com máxima qualidade. Recomendo de olhos fechados!' },
+    { nome: 'Cátia Rodrigues · Avaliação no Google', foto: '/assets/rev_catia.jpg', txt: 'O trabalho da CreativeSete é simplesmente extraordinário. Destacam-se pela inovação e pelo perfeccionismo em cada captação.' }
+  ],
+
+  prox: {
+    eyebrow: 'Uma nota pessoal',
+    titulo: 'Nós conhecemos o Ombria',
+    t1: 'Estive no resort este ano, e este vídeo ficou dessa visita. A experiência foi incrível: sem dúvida a melhor estadia que tive até hoje, daquelas que marcam uma passagem pelo Algarve.',
+    t2: 'É também por isso que esta proposta existe. Conhecemos o lugar por dentro, como hóspedes, e é assim que o queremos filmar.',
+    assinatura: 'Lucas Müller<span>Fundador, CreativeSete</span>'
+  },
+
+  cm: {
+    eyebrow: 'Três caminhos possíveis',
+    titulo: 'A nossa ideia',
+    texto: 'Primeiro, uma conversa: perceber os volumes que fazem sentido para a equipa e o investimento com que estão confortáveis. Depois, desenhamos a produção no formato certo. Estes são os três caminhos em cima da mesa.',
+    caminhos: [
+      { lbl: 'Modelo 01', t: 'Avença mensal', mote: 'presença contínua', rec: true, itens: [
+        'Dias de captação todos os meses, com calendário editorial incluído',
+        'Fluxo mensal de reels, fotografia e vídeo horizontal',
+        'Banco de conteúdo sempre abastecido e organizado',
+        'Prioridade de agenda, incluindo em época alta'
+      ]},
+      { lbl: 'Modelo 02', t: 'Packs sazonais', mote: 'quatro estações', itens: [
+        'Uma imersão de captação por estação',
+        'Conteúdo planeado para render meses de publicação',
+        'Ideal para testar a parceria antes da avença'
+      ]},
+      { lbl: 'Modelo 03', t: 'Produções especiais', mote: 'momentos maiores', itens: [
+        'Filmes de marca e campanhas de temporada',
+        'Golfe, residências e real estate em produção dedicada',
+        'Cobertura de eventos e celebrações, com sameday'
+      ]}
+    ],
+    nota: 'Os contornos, os volumes e o investimento desenham-se na reunião, à medida do vosso calendário. <b>É por isso que esta página não tem números: tem uma visão.</b>'
+  },
+
+  fecho: {
+    eyebrow: 'O próximo passo',
+    titulo: 'Vamos desenhar o vosso ano?',
+    texto: 'Trinta minutos chegam para percebermos o que falta de 2026, o calendário de 2027 e devolvermos o desenho da parceria, já com volumes e valores.',
+    agenda: [
+      'O que a equipa precisa, mês a mês e por canal',
+      'O que ainda dá para captar em 2026 e o calendário de 2027',
+      'O caminho certo: avença, packs sazonais ou um misto'
+    ]
+  }
+};
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+document.querySelectorAll('[data-t]').forEach(el => {
+  const v = el.dataset.t.split('.').reduce((o,k) => o && o[k], PROPOSTA);
+  if (v == null) return;
+  if (el.dataset.html) el.innerHTML = v; else el.textContent = v;
+});
+
+$('#mosaico').innerHTML = PROPOSTA.territorios.map((t,i) => `
+  <article class="mcard rv" style="--d:${i*.12}s">
+    <p class="rom">${esc(t.rom)} · <span style="color:var(--ink)">${esc(t.t)}</span></p>
+    <figure class="moldura zi"><img src="/proposals/viceroy-ombria/img/${esc(t.img)}" alt="${esc(t.alt)}" loading="lazy"></figure>
+    <div class="mtxt">
+      <p>${esc(t.p)}</p>
+      <p class="fmt">${esc(t.fmt)}</p>
+    </div>
+  </article>`).join('');
+
+$('#passos').innerHTML = PROPOSTA.mt.passos.map((p,i) => `<div class="passo"><p class="n">0${i+1}</p><h3>${esc(p.t)}</h3><p>${esc(p.p)}</p></div>`).join('');
+$('#quotes').innerHTML = PROPOSTA.quotes.map((q,i) => `${i ? '<div class="risca" aria-hidden="true"></div>' : ''}<div class="quote"><div class="topo"><img class="avatar" src="${esc(q.foto)}" alt="${esc(q.nome.split(' ·')[0])}" loading="lazy"><div class="stars" aria-label="5 estrelas">★★★★★</div></div><q>${esc(q.txt)}</q><p class="quem">${esc(q.nome)}</p></div>`).join('');
+$('#cgrid').innerHTML = PROPOSTA.cm.caminhos.map((c,i) => `
+  <div class="cam rv${c.rec ? ' rec' : ''}" style="--d:${i*.15}s">
+    <p class="lbl">${esc(c.lbl)}</p>
+    <h3>${esc(c.t)}</h3>
+    <p class="mote">${esc(c.mote)}</p>
+    <ul>${c.itens.map(x => `<li>${esc(x)}</li>`).join('')}</ul>
+  </div>`).join('');
+$('#agenda').innerHTML = PROPOSTA.fecho.agenda.map(a => `<li>${esc(a)}</li>`).join('');
+
+const mailHref = `mailto:${PROPOSTA.contacto.email}?subject=${encodeURIComponent(PROPOSTA.assuntoEmail)}`;
+document.querySelectorAll('[data-mail]').forEach(a => a.href = mailHref);
+$('#btn-wa').href = `https://wa.me/${PROPOSTA.contacto.tel}?text=${encodeURIComponent('Olá Lucas, vi a proposta para o Viceroy at Ombria Algarve e gostava de marcar a reunião.')}`;
+const d = new Date(PROPOSTA.data + 'T12:00:00');
+$('#rodape-data').textContent = `Proposta preparada a ${d.toLocaleDateString('pt-PT', { day: 'numeric', month: 'long', year: 'numeric' })}`;
+
+/* Modal */
+const vm = $('#vmodal'), vf = $('#vframe');
+function abrir(id){ if (!/^[\w-]{11}$/.test(id)) return; vf.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0" title="Vídeo" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`; vm.classList.add('on'); document.body.style.overflow = 'hidden'; }
+function fechar(){ vm.classList.remove('on'); vf.innerHTML = ''; document.body.style.overflow = ''; }
+document.addEventListener('click', e => { const c = e.target.closest('[data-video]'); if (c) abrir(c.dataset.video); if (e.target.closest('[data-fechar]')) fechar(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') fechar(); });
+
+/* Som do video pessoal */
+const pv = document.querySelector('.pvid video'), ps = document.getElementById('psom');
+if (pv && ps) ps.addEventListener('click', () => {
+  pv.muted = !pv.muted;
+  ps.querySelector('.on').style.display = pv.muted ? 'none' : '';
+  ps.querySelector('.off').style.display = pv.muted ? '' : 'none';
+  ps.setAttribute('aria-label', pv.muted ? 'Ligar o som' : 'Desligar o som');
+  if (!pv.muted) pv.play();
+});
+
+/* Reveal */
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } }), { threshold: .14 });
+document.querySelectorAll('.rv,.zi,.hdr,.wipe').forEach(el => io.observe(el));
+
+/* Parallax subtil nos full bleed */
+const movOk = !matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (movOk) {
+  const bs = [...document.querySelectorAll('.bleed .bimg,.fecho .bimg')];
+  let tick = false;
+  addEventListener('scroll', () => {
+    if (tick) return; tick = true;
+    requestAnimationFrame(() => {
+      bs.forEach(b => {
+        const r = b.parentElement.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > innerHeight) return;
+        const p = (r.top + r.height/2 - innerHeight/2) / innerHeight;
+        b.style.transform = `translateY(${p * -46}px)`;
+      });
+      tick = false;
+    });
+  }, { passive: true });
+}
+</script>
+</body>
+</html>

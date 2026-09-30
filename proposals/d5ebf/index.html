@@ -1,0 +1,1102 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>CreativeSete · Serviços</title>
+<meta name="description" content="CreativeSete · produção de vídeo para empresas. Gravação de conteúdo, podcast, cursos, institucionais, eventos e transmissões em direto.">
+<link rel="icon" href="/assets/mark7_dark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EDEDF2; --bg2:#F6F6F9; --white:#FFFFFF;
+  --ink:#14151A; --muted:#5B5D68; --faint:#9698A2;
+  --line:rgba(20,21,26,.10);
+  --dark:#0D0D10; --dark2:#16161B; --dark-ink:#F2F1EE; --dark-muted:#A6A5AE;
+  --c1:#E6A45C; --c2:#E8608F; --c3:#8A5CF0; --c4:#3FA9F0;
+  --grad:linear-gradient(115deg,var(--c1),var(--c2) 38%,var(--c3) 68%,var(--c4));
+  --grad-anim:linear-gradient(100deg,var(--c1),var(--c2) 25%,var(--c3) 50%,var(--c4) 75%,var(--c1));
+  --wa:#25B34A;
+  --shadow:0 24px 60px rgba(20,21,26,.14); --shadow-sm:0 10px 28px rgba(20,21,26,.09);
+  --ease:cubic-bezier(.22,.7,.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Manrope',system-ui,sans-serif;color:var(--ink);background:var(--bg);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,video{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit}
+h1,h2,h3{font-weight:800;letter-spacing:-.035em;line-height:1.04}
+h2{font-size:clamp(32px,4.4vw,58px)}
+.wrap{width:min(1200px,92vw);margin:0 auto}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.eyebrow b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.eyebrow::before{content:"";width:26px;height:2px;border-radius:2px;background:var(--grad)}
+.gt{background:var(--grad-anim);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:brilho 7s linear infinite}
+@keyframes brilho{to{background-position:250% 0}}
+section{scroll-margin-top:120px}
+
+/* Botoes */
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:10px;font-size:14px;font-weight:700;padding:15px 26px;border-radius:999px;border:1px solid transparent;cursor:pointer;transition:transform .3s var(--ease),box-shadow .3s ease,background .3s ease,color .3s ease;white-space:nowrap}
+.btn svg{width:18px;height:18px;flex:none}
+.btn::after{content:"";position:absolute;top:0;left:-70%;width:45%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.4),transparent);transform:skewX(-20deg);transition:left .6s ease}
+.btn:hover::after{left:130%}
+.btn:hover{transform:translateY(-2px)}
+.btn-ink{background:var(--ink);color:#fff}
+.btn-ink:hover{box-shadow:0 14px 30px rgba(20,21,26,.28)}
+.btn-grad{background:var(--grad);color:#fff;box-shadow:0 12px 30px rgba(138,92,240,.3)}
+.btn-grad:hover{box-shadow:0 18px 40px rgba(232,96,143,.4)}
+.btn-wa{background:var(--wa);color:#fff}
+.btn-wa:hover{box-shadow:0 14px 30px rgba(37,179,74,.35)}
+.btn-line{border-color:rgba(20,21,26,.2);color:var(--ink);background:rgba(255,255,255,.5)}
+.btn-line:hover{background:#fff}
+.dark .btn-line,.hero .btn-line{border-color:rgba(255,255,255,.35);color:#fff;background:rgba(255,255,255,.06)}
+.dark .btn-line:hover,.hero .btn-line:hover{background:rgba(255,255,255,.14)}
+
+/* Reveal */
+.rv{opacity:0;transform:translateY(28px);transition:opacity 1s var(--ease),transform 1s var(--ease);transition-delay:var(--d,0s)}
+.rv.on{opacity:1;transform:none}
+.wipe{clip-path:inset(100% 0 0 0);transition:clip-path 1.3s var(--ease);transition-delay:var(--d,0s)}
+.wipe img{transform:scale(1.14);transition:transform 1.8s var(--ease);transition-delay:var(--d,0s)}
+.wipe.on{clip-path:inset(0 0 0 0)}
+.wipe.on img{transform:scale(1)}
+
+/* Barra de progresso */
+.prog{position:fixed;top:0;left:0;height:3px;width:0;background:var(--grad);z-index:200}
+
+/* ===== Topo ===== */
+.nav{position:fixed;inset:14px 0 auto;z-index:100;pointer-events:none}
+.nav-bar{pointer-events:auto;display:flex;align-items:center;gap:22px;width:min(1200px,94vw);margin:0 auto;padding:9px 10px 9px 22px;border-radius:999px;background:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.8);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);box-shadow:0 10px 34px rgba(20,21,26,.12)}
+.brand img{height:20px;width:auto}
+.nav-links{display:flex;gap:22px;margin-left:10px;font-size:13.5px;font-weight:600;color:var(--muted)}
+.nav-links a{position:relative}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:2px;border-radius:2px;background:var(--grad);transition:width .35s var(--ease)}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a:hover::after{width:100%}
+.nav-r{margin-left:auto;display:flex;align-items:center;gap:10px}
+.lang{display:flex;padding:3px;border-radius:999px;background:rgba(20,21,26,.06)}
+.lang button{border:0;background:transparent;font-size:11.5px;font-weight:800;letter-spacing:.08em;padding:7px 11px;border-radius:999px;cursor:pointer;color:var(--muted);transition:all .25s ease}
+.lang button.on{background:#fff;color:var(--ink);box-shadow:0 3px 10px rgba(20,21,26,.12)}
+.nav-r .btn{padding:11px 20px;font-size:13px}
+
+/* ===== Heroi ===== */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;color:#fff;overflow:hidden;background:var(--dark);padding:140px 0 90px}
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(70vw 50vw at 85% 10%,rgba(138,92,240,.35),transparent 60%),radial-gradient(60vw 45vw at 5% 100%,rgba(232,96,143,.25),transparent 60%);z-index:1}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,13,16,.55),rgba(13,13,16,.1) 35%,rgba(13,13,16,.85));z-index:1}
+.hero .wrap{position:relative;z-index:2}
+.hero .eyebrow{color:rgba(255,255,255,.75)}
+.hero h1{font-size:clamp(42px,7.2vw,104px);letter-spacing:-.045em;line-height:.98;margin-top:22px;max-width:14ch}
+.hero h1 .w{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.08em;margin-bottom:-.08em}
+.hero h1 .w>span{display:inline-block;transform:translateY(105%);animation:sobe 1s var(--ease) forwards;animation-delay:var(--d)}
+@keyframes sobe{to{transform:none}}
+.rot{display:inline-grid;vertical-align:bottom;overflow:hidden;height:1.04em;padding-bottom:.08em;margin-bottom:-.08em}
+.rot span{grid-area:1/1;transform:translateY(110%);opacity:0;transition:transform .8s var(--ease),opacity .8s ease;white-space:nowrap}
+.rot span.on{transform:none;opacity:1}
+.rot span.sai{transform:translateY(-110%);opacity:0}
+.hero .sub{margin-top:26px;max-width:58ch;font-size:clamp(15.5px,1.6vw,18.5px);color:rgba(255,255,255,.82);font-weight:500}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.hero .fade{opacity:0;transform:translateY(20px);animation:entra 1s var(--ease) forwards;animation-delay:var(--d)}
+@keyframes entra{to{opacity:1;transform:none}}
+.seta{position:absolute;right:4vw;bottom:34px;z-index:2;display:flex;align-items:center;gap:10px;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.seta i{width:1px;height:46px;background:linear-gradient(180deg,transparent,#fff);position:relative;overflow:hidden}
+.seta i::after{content:"";position:absolute;left:0;top:-40%;width:1px;height:40%;background:#fff;animation:desce 2s ease-in-out infinite}
+@keyframes desce{to{top:110%}}
+
+/* ===== Numeros ===== */
+.nums{background:var(--white);padding:56px 0;border-bottom:1px solid var(--line)}
+.nums .g{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.num .v{display:flex;align-items:baseline;font-variant-numeric:tabular-nums;font-size:clamp(40px,5vw,64px);font-weight:800;letter-spacing:-.04em;line-height:1}
+.num .v .mais{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;margin-right:2px}
+.dg{display:inline-block;height:1em;overflow:hidden;vertical-align:bottom}
+.dg>span{display:flex;flex-direction:column;transition:transform 1.8s var(--ease);transition-delay:var(--d,0s)}
+.dg>span>i{font-style:normal;height:1em;line-height:1}
+.num p{margin-top:10px;font-size:13.5px;color:var(--muted);font-weight:600}
+
+/* ===== Logos ===== */
+.logos{padding:46px 0 50px;background:var(--white);overflow:hidden}
+.logos .t{text-align:center;font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--faint);margin-bottom:28px}
+.mq{display:flex;width:max-content;animation:corre 42s linear infinite}
+.logos:hover .mq{animation-play-state:paused}
+.mq img{height:34px;width:auto;margin:0 38px;filter:grayscale(1);opacity:.55;transition:filter .3s ease,opacity .3s ease}
+.mq img:hover{filter:none;opacity:1}
+@keyframes corre{to{transform:translateX(-50%)}}
+
+/* ===== Chips de servicos ===== */
+.chips{position:sticky;top:84px;z-index:50;padding:12px 0;pointer-events:none}
+.chips .in{pointer-events:auto;display:flex;gap:6px;justify-content:center;flex-wrap:wrap;width:max-content;max-width:94vw;margin:0 auto;padding:6px;border-radius:999px;background:rgba(255,255,255,.78);border:1px solid rgba(255,255,255,.9);backdrop-filter:saturate(180%) blur(18px);-webkit-backdrop-filter:saturate(180%) blur(18px);box-shadow:0 8px 26px rgba(20,21,26,.1);opacity:0;transform:translateY(-10px);transition:opacity .4s ease,transform .4s ease}
+.chips.vis .in{opacity:1;transform:none}
+.chips a{font-size:12.5px;font-weight:700;padding:8px 14px;border-radius:999px;color:var(--muted);transition:all .25s ease}
+.chips a:hover{color:var(--ink);background:rgba(20,21,26,.05)}
+.chips a.on{background:var(--ink);color:#fff}
+
+/* ===== Indice de servicos ===== */
+.indice{padding:110px 0 70px}
+.indice .hd{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:44px}
+.indice .hd p{max-width:44ch;color:var(--muted)}
+.ig{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.ic{position:relative;display:flex;flex-direction:column;justify-content:space-between;min-height:190px;padding:22px;border-radius:24px;background:var(--white);border:1px solid var(--line);overflow:hidden;transition:transform .45s var(--ease),box-shadow .45s ease}
+.ic::before{content:"";position:absolute;inset:0;background:var(--grad);opacity:0;transition:opacity .45s ease}
+.ic:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.ic:hover::before{opacity:1}
+.ic>*{position:relative}
+.ic .n{font-size:12px;font-weight:800;color:var(--faint);transition:color .45s ease}
+.ic h3{font-size:21px;letter-spacing:-.02em;transition:color .45s ease}
+.ic p{font-size:13px;color:var(--muted);margin-top:6px;transition:color .45s ease}
+.ic .ar{position:absolute;top:20px;right:20px;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--bg);transition:all .45s var(--ease)}
+.ic .ar svg{width:15px;height:15px;stroke:var(--ink);fill:none;stroke-width:2}
+.ic:hover .n,.ic:hover h3,.ic:hover p{color:#fff}
+.ic:hover .ar{background:#fff;transform:rotate(-45deg)}
+.ic.top{grid-column:span 2;grid-row:span 2;min-height:394px;background:var(--dark);color:#fff;border-color:transparent}
+.ic.top p{color:var(--dark-muted)}
+.ic.top .n{color:rgba(255,255,255,.6)}
+.ic.top .ar{background:rgba(255,255,255,.12)}
+.ic.top .ar svg{stroke:#fff}
+.ic.top h3{font-size:clamp(28px,3vw,40px);letter-spacing:-.03em}
+.ic.top p{font-size:15px;max-width:36ch}
+.ig .ic:last-child{grid-column:span 2}
+.ic .tag{display:inline-block;margin-bottom:10px;font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;padding:5px 10px;border-radius:999px;background:var(--grad);color:#fff}
+
+/* Video de fundo no cartao em destaque */
+.ic .icbg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;opacity:.55;transition:opacity .45s ease,transform 1.2s var(--ease)}
+.ic.top::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,13,16,.35),rgba(13,13,16,.15) 40%,rgba(13,13,16,.88));z-index:0}
+.ic.top:hover .icbg{opacity:.75;transform:scale(1.04)}
+.ic.top:hover::before{opacity:0}
+.ic.top>div,.ic.top .ar{z-index:1}
+
+/* ===== Seccao de servico ===== */
+.sv{padding:110px 0}
+.sv.w{background:var(--white)}
+.sv .g{display:grid;grid-template-columns:1fr 1.05fr;gap:70px;align-items:center}
+.sv.inv .g .txt{order:2}
+.sv h2{margin-top:18px}
+.sv .lead{margin-top:20px;font-size:17px;color:var(--muted);max-width:52ch}
+.sv ul.lst{margin:26px 0 0;padding:0;list-style:none;display:grid;gap:11px}
+.sv ul.lst li{display:flex;gap:12px;align-items:flex-start;font-size:15px;font-weight:500}
+.sv ul.lst li::before{content:"";flex:none;width:18px;height:18px;margin-top:3px;border-radius:50%;background:var(--grad);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%23000' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round' d='M4 12.5 9.5 18 20 6.5'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%23000' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round' d='M4 12.5 9.5 18 20 6.5'/%3E%3C/svg%3E") center/contain no-repeat}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.tags span{font-size:12px;font-weight:700;padding:7px 13px;border-radius:999px;background:var(--bg);border:1px solid var(--line)}
+.sv.w .tags span{background:var(--bg2)}
+.dark .tags span{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14);color:var(--dark-ink)}
+
+/* Colagem de fotos */
+.col{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.col figure{border-radius:22px;overflow:hidden;box-shadow:var(--shadow-sm);position:relative}
+.col img{width:100%;height:100%;object-fit:cover}
+.col figure:nth-child(1){grid-row:span 2;height:520px}
+.col figure:nth-child(2),.col figure:nth-child(3){height:253px}
+.col.dois figure:nth-child(1),.col.dois figure:nth-child(2){grid-row:auto;height:420px}
+.col.dois figure:nth-child(2){margin-top:60px}
+.col.larga{grid-template-columns:1fr}
+.col.larga figure{height:auto!important;grid-row:auto!important;aspect-ratio:16/10}
+.col figcaption{position:absolute;left:14px;bottom:14px;right:14px;font-size:12px;font-weight:700;color:#fff;padding:9px 13px;border-radius:12px;background:rgba(13,13,16,.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+
+/* Galeria do podcast */
+.pgal{display:grid;grid-template-columns:1.3fr 1fr 1fr;grid-template-rows:250px 250px;gap:12px}
+.pgal figure{border-radius:20px;overflow:hidden;box-shadow:var(--shadow-sm)}
+.pgal figure.big{grid-row:1/3}
+.pgal img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.pgal figure:hover img{transform:scale(1.05)}
+
+/* Cartoes de video */
+.vg{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.vc{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:16/10;cursor:pointer;isolation:isolate;box-shadow:var(--shadow-sm);background:var(--dark)}
+.vc.vert{aspect-ratio:9/13}
+.vc.big{grid-column:span 2;aspect-ratio:16/8}
+.vc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease),filter .5s ease}
+.vc::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,13,16,0) 45%,rgba(13,13,16,.75))}
+.vc:hover img{transform:scale(1.06);filter:saturate(1.1)}
+.vc .pl{position:absolute;z-index:3;top:50%;left:50%;transform:translate(-50%,-50%) scale(.92);width:60px;height:60px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:transform .35s var(--ease),background .35s ease}
+.vc .pl::before{content:"";position:absolute;inset:-1px;border-radius:50%;border:1px solid rgba(255,255,255,.55);animation:pulso 2.6s ease-out infinite}
+@keyframes pulso{from{transform:scale(1);opacity:.9}to{transform:scale(1.7);opacity:0}}
+.vc .pl svg{width:20px;height:20px;fill:#fff;margin-left:3px}
+.vc:hover .pl{transform:translate(-50%,-50%) scale(1.06);background:var(--c3)}
+.vc .cap{position:absolute;z-index:3;left:16px;right:16px;bottom:14px;color:#fff}
+.vc .cap b{display:block;font-size:15px;font-weight:800;letter-spacing:-.01em}
+.vc .cap span{font-size:12px;color:rgba(255,255,255,.75)}
+
+.atg{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.atg .vc.big{grid-column:1/3}
+.atg .vc.vert{grid-row:span 2;aspect-ratio:auto;min-height:440px}
+.atg figure{border-radius:20px;overflow:hidden;height:213px;box-shadow:var(--shadow-sm)}
+.atg figure img{width:100%;height:100%;object-fit:cover}
+.vc video.prev{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vc .badge{position:absolute;z-index:3;top:14px;left:14px;font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:6px 11px;border-radius:999px;background:rgba(13,13,16,.55);color:#fff;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.vg .fotos2{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.vg .fotos2 figure{border-radius:20px;overflow:hidden;height:220px;box-shadow:var(--shadow-sm)}
+.vg .fotos2 figure img{width:100%;height:100%;object-fit:cover}
+
+/* Linha de contacto no fim de cada servico */
+.ctl{margin-top:34px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding-top:26px;border-top:1px solid var(--line)}
+.ctl .q{flex:1 1 100%;font-size:14px;font-weight:700}
+.dark .ctl{border-top-color:rgba(255,255,255,.12)}
+
+/* ===== Seccao escura (conteudo) ===== */
+.dark{background:var(--dark);color:var(--dark-ink);position:relative;overflow:hidden}
+.dark .eyebrow{color:var(--dark-muted)}
+.dark .lead{color:var(--dark-muted)!important}
+.dark::before{content:"";position:absolute;inset:0;background:radial-gradient(520px 520px at var(--mx,70%) var(--my,20%),rgba(138,92,240,.22),transparent 70%);pointer-events:none;transition:background .15s linear}
+.dark>.wrap{position:relative}
+.ct-top{display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:end}
+.ct-top .selo{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;padding:7px 14px;border-radius:999px;background:var(--grad);color:#fff;margin-bottom:18px}
+.ct-top .selo i{width:7px;height:7px;border-radius:50%;background:#fff;animation:pisca 1.6s ease-in-out infinite}
+@keyframes pisca{50%{opacity:.25}}
+.passos{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:60px}
+.passo{padding:30px 26px;border-radius:24px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);transition:transform .45s var(--ease),border-color .45s ease,background .45s ease}
+.passo:hover{transform:translateY(-6px);border-color:rgba(232,96,143,.5);background:rgba(255,255,255,.07)}
+.passo .n{font-size:44px;font-weight:800;letter-spacing:-.04em;line-height:1}
+.passo h3{margin-top:14px;font-size:20px;letter-spacing:-.02em}
+.passo p{margin-top:10px;font-size:14.5px;color:var(--dark-muted)}
+.fmq{margin-top:54px;overflow:hidden;border-top:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1);padding:18px 0}
+.fmq .tr{display:flex;width:max-content;animation:corre 36s linear infinite}
+.fmq span{font-size:clamp(20px,2.6vw,32px);font-weight:800;letter-spacing:-.02em;white-space:nowrap;padding:0 22px;color:rgba(255,255,255,.18);transition:color .3s ease}
+.fmq span:nth-child(3n+1){color:rgba(255,255,255,.85)}
+.fmq span::after{content:"✦";font-size:.5em;vertical-align:middle;margin-left:44px;color:var(--c2)}
+.ct-media{display:grid;grid-template-columns:81fr 256fr;gap:14px;margin-top:60px;align-items:stretch}
+.ct-media .f1{aspect-ratio:9/16!important;min-height:0}
+.ct-media .fh{aspect-ratio:16/9!important}
+.ct-fotos{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.ct-fotos figure{border-radius:22px;overflow:hidden;position:relative;height:280px}
+.ct-fotos figure img{width:100%;height:100%;object-fit:cover}
+.avenca{margin-top:60px;display:grid;grid-template-columns:auto 1fr auto;gap:28px;align-items:center;padding:30px 34px;border-radius:26px;position:relative;background:rgba(255,255,255,.04);border:1px solid transparent;background-clip:padding-box}
+.avenca::before{content:"";position:absolute;inset:-1px;border-radius:27px;padding:1px;background:var(--grad-anim);background-size:250% 100%;animation:brilho 7s linear infinite;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.avenca .ico{width:58px;height:58px;border-radius:18px;background:var(--grad);display:grid;place-items:center}
+.avenca .ico svg{width:26px;height:26px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.avenca h3{font-size:22px;letter-spacing:-.02em}
+.avenca p{margin-top:6px;color:var(--dark-muted);font-size:15px;max-width:62ch}
+
+/* ===== Processo ===== */
+.proc{padding:110px 0;background:var(--white)}
+.proc .hd{text-align:center;max-width:720px;margin:0 auto 60px}
+.proc .hd h2{margin-top:18px}
+.proc .hd p{margin-top:16px;color:var(--muted)}
+.linha{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.linha::before{content:"";position:absolute;left:28px;right:28px;top:27px;height:2px;background:var(--line)}
+.linha .fio{position:absolute;left:28px;top:27px;height:2px;width:0;background:var(--grad);transition:width 2.2s var(--ease)}
+.linha.on .fio{width:calc(100% - 56px)}
+.et{position:relative}
+.et .b{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:var(--white);border:2px solid var(--line);font-weight:800;font-size:17px;position:relative;z-index:1;transition:all .6s var(--ease);transition-delay:var(--d,0s)}
+.linha.on .et .b{border-color:transparent;background:var(--ink);color:#fff}
+.et h3{margin-top:20px;font-size:19px;letter-spacing:-.02em}
+.et p{margin-top:8px;font-size:14.5px;color:var(--muted)}
+
+/* ===== Porque ===== */
+.pq{padding:0 0 110px;background:var(--white)}
+.pqg{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.pqc{padding:24px 20px;border-radius:22px;background:var(--bg2);border:1px solid var(--line);transition:transform .4s var(--ease),box-shadow .4s ease}
+.pqc:hover{transform:translateY(-5px);box-shadow:var(--shadow-sm)}
+.pqc .i{width:42px;height:42px;border-radius:14px;background:var(--ink);display:grid;place-items:center}
+.pqc .i svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.pqc h3{margin-top:16px;font-size:16px;letter-spacing:-.01em}
+.pqc p{margin-top:6px;font-size:13px;color:var(--muted)}
+
+/* ===== Prova ===== */
+.prova{padding:110px 0}
+.prova .hd{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:44px}
+.prova .hd .gg{display:flex;align-items:center;gap:12px;font-weight:700;font-size:14px}
+.prova .hd .gg b{font-size:34px;letter-spacing:-.03em}
+.prova .hd .gg .st{color:#F5B301;letter-spacing:2px}
+.pg{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.rev{padding:28px;border-radius:24px;background:var(--white);border:1px solid var(--line);box-shadow:var(--shadow-sm);display:flex;flex-direction:column;transition:transform .4s var(--ease)}
+.rev:hover{transform:translateY(-5px)}
+.rev .st{color:#F5B301;letter-spacing:3px;font-size:14px}
+.rev q{quotes:"“" "”";display:block;margin-top:14px;font-size:16px;line-height:1.6;font-weight:500;flex:1}
+.rev .who{display:flex;align-items:center;gap:12px;margin-top:20px}
+.rev .who img{width:46px;height:46px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px #fff,0 0 0 3px rgba(138,92,240,.5)}
+.rev .who b{display:block;font-size:14px}
+.rev .who span{font-size:12px;color:var(--faint)}
+.pv{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.pv .vc{aspect-ratio:16/8}
+
+/* ===== Fecho ===== */
+.fecho{padding:130px 0;text-align:center}
+.fecho h2{font-size:clamp(40px,6.4vw,92px);letter-spacing:-.045em;max-width:14ch;margin:20px auto 0}
+.fecho .lead{margin:24px auto 0;max-width:52ch;font-size:17px}
+.fecho .cta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:38px}
+.fecho .dados{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;margin-top:40px;font-size:14px;color:var(--dark-muted)}
+.fecho .dados a:hover{color:#fff}
+.rodape{background:#08080A;color:#77767E;font-size:12.5px;padding:24px 0}
+.rodape .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+
+/* ===== Modal ===== */
+.vmodal{position:fixed;inset:0;z-index:300;display:none;align-items:center;justify-content:center;padding:20px}
+.vmodal.on{display:flex}
+.vscrim{position:absolute;inset:0;background:rgba(8,8,10,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.vbox{position:relative;width:min(1000px,94vw);aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:#000;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.vbox.vert{width:min(400px,88vw);aspect-ratio:9/16;max-height:88svh}
+.vmodal video{position:absolute;inset:0;width:100%;height:100%;background:#000}
+.vmodal iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vclose{position:absolute;top:12px;right:12px;z-index:4;width:42px;height:42px;border-radius:50%;background:rgba(10,10,12,.6);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:22px;cursor:pointer;display:grid;place-items:center;line-height:1}
+
+/* ===== Responsivo ===== */
+@media (max-width:1080px){
+  .nav-links{display:none}
+  .ig{grid-template-columns:repeat(2,1fr)}
+  .ic.top{grid-row:auto;min-height:230px}
+  .pqg{grid-template-columns:repeat(3,1fr)}
+  .pg{grid-template-columns:1fr 1fr}
+}
+@media (max-width:860px){
+  .sv .g,.ct-top{grid-template-columns:1fr;gap:40px}
+  .sv.inv .g .txt{order:0}
+  .passos{grid-template-columns:1fr}
+  .ct-media{grid-template-columns:1fr}
+  .ct-media .f1{width:min(100%,340px);justify-self:center}
+  .ct-fotos figure{height:200px}
+  .linha{grid-template-columns:1fr 1fr;row-gap:36px}
+  .linha::before,.linha .fio{display:none}
+  .avenca{grid-template-columns:1fr;text-align:left}
+  .nums .g{grid-template-columns:1fr 1fr;row-gap:36px}
+  .chips{top:78px}
+}
+@media (max-width:600px){
+  .nav-r .btn{display:none}
+  .ig{grid-template-columns:1fr}
+  .ic.top,.ig .ic:last-child{grid-column:auto}
+  .ic{min-height:120px}
+  .ic.top{min-height:200px}
+  .pqg{grid-template-columns:1fr 1fr}
+  .pg{grid-template-columns:1fr}
+  .pv{grid-template-columns:1fr}
+  .col figure:nth-child(1){height:360px}
+  .col figure:nth-child(2),.col figure:nth-child(3){height:173px}
+  .col.dois figure:nth-child(1),.col.dois figure:nth-child(2){height:300px}
+  .vg{grid-template-columns:1fr}
+  .pgal{grid-template-columns:1fr 1fr;grid-template-rows:320px 170px 170px}
+  .pgal figure.big{grid-row:auto;grid-column:1/-1}
+  .vc.big{grid-column:auto;aspect-ratio:16/10}
+  .atg{grid-template-columns:1fr}
+  .atg .vc.big{grid-column:auto}
+  .atg .vc.vert{grid-row:auto;min-height:520px}
+  .vg .fotos2 figure{height:160px}
+  .sv,.indice,.proc,.prova,.fecho{padding:84px 0}
+  .chips .in{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;scrollbar-width:none}
+  .chips .in::-webkit-scrollbar{display:none}
+  .seta{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .rv,.hero .fade,.hero h1 .w>span{opacity:1!important;transform:none!important}
+  .wipe{clip-path:none!important}.wipe img{transform:none!important}
+  .rot span{transform:none!important}
+}
+</style>
+</head>
+<body>
+<div class="prog" id="prog"></div>
+
+<nav class="nav"><div class="nav-bar">
+  <a class="brand" href="#topo" aria-label="CreativeSete"><img src="/assets/logo_dark.png" alt="CreativeSete"></a>
+  <div class="nav-links">
+    <a href="#servicos" data-i="nav.servicos"></a>
+    <a href="#conteudo" data-i="nav.conteudo"></a>
+    <a href="#processo" data-i="nav.processo"></a>
+    <a href="#clientes" data-i="nav.clientes"></a>
+  </div>
+  <div class="nav-r">
+    <div class="lang" role="group" aria-label="Idioma / Language">
+      <button type="button" data-lang="pt">PT</button>
+      <button type="button" data-lang="en">EN</button>
+    </div>
+    <a class="btn btn-ink" href="#contacto" data-i="nav.cta"></a>
+  </div>
+</div></nav>
+
+<header class="hero" id="topo">
+  <video autoplay muted loop playsinline preload="auto" poster="/assets/heroposter.jpg"><source src="/assets/hero.mp4" type="video/mp4"></video>
+  <div class="wrap">
+    <p class="eyebrow fade" style="--d:.1s" data-i="hero.eyebrow"></p>
+    <h1 id="h1"></h1>
+    <p class="sub fade" style="--d:.9s" data-i="hero.sub"></p>
+    <div class="cta fade" style="--d:1.05s">
+      <a class="btn btn-grad" href="#servicos" data-i="hero.cta1"></a>
+      <a class="btn btn-line" href="#contacto" data-i="hero.cta2"></a>
+    </div>
+  </div>
+  <a class="seta" href="#servicos"><i></i><span data-i="hero.desce"></span></a>
+</header>
+
+<section class="nums" aria-label="Números">
+  <div class="wrap g" id="nums"></div>
+</section>
+<section class="logos" aria-label="Clientes">
+  <p class="t" data-i="logos"></p>
+  <div class="mq" id="mq"></div>
+</section>
+
+<section class="indice" id="servicos">
+  <div class="wrap">
+    <div class="hd">
+      <div class="rv"><p class="eyebrow" data-i="idx.eyebrow"></p><h2 style="margin-top:18px" data-i="idx.titulo" data-h="1"></h2></div>
+      <p class="rv" style="--d:.1s" data-i="idx.texto"></p>
+    </div>
+    <div class="ig" id="ig"></div>
+  </div>
+</section>
+
+<div class="chips" id="chips"><div class="in" id="chips-in"></div></div>
+
+<!-- 01 Conteudo -->
+<section class="sv dark" id="conteudo">
+  <div class="wrap">
+    <div class="ct-top">
+      <div class="rv">
+        <span class="selo"><i></i><span data-i="ct.selo"></span></span><br>
+        <p class="eyebrow"><b>01</b> <span data-i="ct.eyebrow"></span></p>
+        <h2 data-i="ct.titulo" data-h="1"></h2>
+      </div>
+      <p class="lead rv" style="--d:.12s" data-i="ct.lead"></p>
+    </div>
+    <div class="passos" id="ct-passos"></div>
+    <div class="ct-media">
+      <div class="vc vert rv" id="ct-vid"></div>
+      <div class="vc fh rv" id="ct-dep"></div>
+      <div class="ct-fotos">
+        <figure class="wipe" style="--d:.1s"><img src="/proposals/pharmcare/img/bts_teleponto.jpg" alt="" loading="lazy"></figure>
+        <figure class="wipe" style="--d:.2s"><img src="img/ct_retratos.jpg" alt="" loading="lazy"></figure>
+      </div>
+    </div>
+    <div class="fmq" aria-hidden="true"><div class="tr" id="fmq"></div></div>
+    <div class="avenca rv">
+      <div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4M8 15h3"/></svg></div>
+      <div><h3 data-i="ct.av.t"></h3><p data-i="ct.av.p"></p></div>
+    </div>
+    <div class="ctl rv" data-svc="conteudo"></div>
+  </div>
+</section>
+
+<!-- 02 Ativacoes -->
+<section class="sv w" id="ativacoes">
+  <div class="wrap g">
+    <div class="txt">
+      <div class="rv"><p class="eyebrow"><b>02</b> <span data-i="at.eyebrow"></span></p><h2 data-i="at.titulo" data-h="1"></h2><p class="lead" data-i="at.lead"></p></div>
+      <div class="tags rv" style="--d:.1s" data-tags="at.tags"></div>
+      <div class="ctl rv" data-svc="ativacoes"></div>
+    </div>
+    <div class="atg" id="at-vids"></div>
+  </div>
+</section>
+
+<!-- 03 Cursos -->
+<section class="sv inv" id="cursos">
+  <div class="wrap g">
+    <div class="txt">
+      <div class="rv"><p class="eyebrow"><b>03</b> <span data-i="cur.eyebrow"></span></p><h2 data-i="cur.titulo" data-h="1"></h2><p class="lead" data-i="cur.lead"></p></div>
+      <div class="tags rv" style="--d:.1s" data-tags="cur.tags"></div>
+      <div class="ctl rv" data-svc="cursos"></div>
+    </div>
+    <div class="vg" id="cur-vids"></div>
+  </div>
+</section>
+
+<!-- 04 Institucionais -->
+<section class="sv w" id="institucionais">
+  <div class="wrap g">
+    <div class="txt">
+      <div class="rv"><p class="eyebrow"><b>04</b> <span data-i="ins.eyebrow"></span></p><h2 data-i="ins.titulo" data-h="1"></h2><p class="lead" data-i="ins.lead"></p></div>
+      <ul class="lst rv" style="--d:.1s" data-list="ins.lista"></ul>
+      <div class="ctl rv" data-svc="institucionais"></div>
+    </div>
+    <div class="vg" id="ins-vids" style="grid-template-columns:1fr"></div>
+  </div>
+</section>
+
+<!-- 05 Eventos -->
+<section class="sv" id="eventos">
+  <div class="wrap">
+    <div class="g" style="align-items:end">
+      <div class="rv"><p class="eyebrow"><b>05</b> <span data-i="ev.eyebrow"></span></p><h2 data-i="ev.titulo" data-h="1"></h2></div>
+      <div class="rv" style="--d:.1s"><p class="lead" style="margin-top:0" data-i="ev.lead"></p><div class="tags" data-tags="ev.tags"></div></div>
+    </div>
+    <div class="vg" id="ev-vids" style="grid-template-columns:repeat(3,1fr);margin-top:50px"></div>
+    <div class="ctl rv" data-svc="eventos"></div>
+  </div>
+</section>
+
+<!-- 06 Na integra -->
+<section class="sv w" id="integra">
+  <div class="wrap g">
+    <div class="txt">
+      <div class="rv"><p class="eyebrow"><b>06</b> <span data-i="int.eyebrow"></span></p><h2 data-i="int.titulo" data-h="1"></h2><p class="lead" data-i="int.lead"></p></div>
+      <ul class="lst rv" style="--d:.1s" data-list="int.lista"></ul>
+      <div class="ctl rv" data-svc="integra"></div>
+    </div>
+    <div class="vg" id="int-vids" style="grid-template-columns:1fr"></div>
+  </div>
+</section>
+
+<!-- 07 Direto -->
+<section class="sv dark" id="direto">
+  <div class="wrap g">
+    <div class="txt">
+      <div class="rv"><p class="eyebrow"><b>07</b> <span data-i="dir.eyebrow"></span></p><h2 data-i="dir.titulo" data-h="1"></h2><p class="lead" data-i="dir.lead"></p></div>
+      <div class="tags rv" style="--d:.1s" data-tags="dir.tags"></div>
+      <div class="ctl rv" data-svc="direto"></div>
+    </div>
+    <div class="vg" id="dir-vids" style="grid-template-columns:1fr"></div>
+  </div>
+</section>
+
+<!-- 08 Podcast -->
+<section class="sv w inv" id="podcast">
+  <div class="wrap g">
+    <div class="txt">
+      <div class="rv"><p class="eyebrow"><b>08</b> <span data-i="pod.eyebrow"></span></p><h2 data-i="pod.titulo" data-h="1"></h2><p class="lead" data-i="pod.lead"></p></div>
+      <ul class="lst rv" style="--d:.1s" data-list="pod.lista"></ul>
+      <div class="ctl rv" data-svc="podcast"></div>
+    </div>
+    <div class="pgal">
+      <figure class="wipe big"><img src="img/pod_set1.jpg" alt="" loading="lazy"></figure>
+      <figure class="wipe" style="--d:.08s"><img src="img/pod_set3.jpg" alt="" loading="lazy"></figure>
+      <figure class="wipe" style="--d:.16s"><img src="img/pod_set4.jpg" alt="" loading="lazy"></figure>
+      <figure class="wipe" style="--d:.24s"><img src="img/pod_set2.jpg" alt="" loading="lazy"></figure>
+      <figure class="wipe" style="--d:.32s"><img src="img/pod_set5.jpg" alt="" loading="lazy"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- Processo -->
+<section class="proc" id="processo">
+  <div class="wrap">
+    <div class="hd rv"><p class="eyebrow" data-i="proc.eyebrow"></p><h2 data-i="proc.titulo" data-h="1"></h2><p data-i="proc.texto"></p></div>
+    <div class="linha" id="linha"><div class="fio"></div></div>
+  </div>
+</section>
+<section class="pq">
+  <div class="wrap pqg" id="pqg"></div>
+</section>
+
+<!-- Prova -->
+<section class="prova" id="clientes">
+  <div class="wrap">
+    <div class="hd">
+      <div class="rv"><p class="eyebrow" data-i="pr.eyebrow"></p><h2 style="margin-top:18px" data-i="pr.titulo" data-h="1"></h2></div>
+      <div class="gg rv" style="--d:.1s"><div class="st">★★★★★</div><span data-i="pr.google"></span></div>
+    </div>
+    <div class="pg" id="pg"></div>
+  </div>
+</section>
+
+<!-- Fecho -->
+<section class="fecho dark" id="contacto">
+  <div class="wrap">
+    <p class="eyebrow rv" data-i="fe.eyebrow" style="justify-content:center"></p>
+    <h2 class="rv" style="--d:.08s" data-i="fe.titulo" data-h="1"></h2>
+    <p class="lead rv" style="--d:.16s" data-i="fe.lead"></p>
+    <div class="cta rv" style="--d:.24s" id="fe-cta"></div>
+    <div class="dados rv" style="--d:.32s">
+      <a href="mailto:contact@creativesete.com">contact@creativesete.com</a>
+      <a href="tel:+351963899070">+351 963 899 070</a>
+      <a href="https://creativesete.com" target="_blank" rel="noopener">creativesete.com</a>
+      <a href="https://instagram.com/creativesete" target="_blank" rel="noopener">@creativesete</a>
+    </div>
+  </div>
+</section>
+<div class="rodape"><div class="wrap"><span>© CreativeSete</span><span data-i="rodape"></span></div></div>
+
+<div class="vmodal" id="vmodal" role="dialog" aria-modal="true" aria-label="Vídeo">
+  <div class="vscrim" data-fechar></div>
+  <div class="vbox" id="vbox"><button class="vclose" data-fechar aria-label="Fechar">×</button><div id="vframe"></div></div>
+</div>
+
+<script>
+/* ============================================================
+   CONTEUDO DA PAGINA · a unica parte a editar
+   ============================================================ */
+const CONTACTO = { email: 'contact@creativesete.com', wa: '351963899070' };
+const YT = id => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+const LOGOS = ['transalpino','ey','tangivel','guru','novosistema','cazzulu','layve','vitafor','ovation','plantdesigner','subido','azzagal','bauter'];
+
+const T = {
+pt: {
+  nav: { servicos: 'Serviços', conteudo: 'Conteúdo', processo: 'Como trabalhamos', clientes: 'Clientes', cta: 'Vamos falar?' },
+  hero: {
+    eyebrow: 'CreativeSete · produção de vídeo para empresas',
+    antes: 'Gravamos', depois: 'com a mensagem certa.',
+    rot: ['vídeos curtos', 'podcasts', 'cursos', 'institucionais', 'eventos'],
+    sub: 'Percebemos o que a sua empresa quer comunicar e a quem, preparamos os guiões consigo e gravamos com a mesma equipa do briefing à entrega. Em Portugal e no estrangeiro.',
+    cta1: 'Ver serviços', cta2: 'Vamos falar do seu projeto?', desce: 'Descer'
+  },
+  nums: [ ['5', 'anos de experiência'], ['130', 'coberturas realizadas'], ['1100', 'vídeos entregues'], ['8', 'países'] ],
+  logos: 'Marcas que confiam em nós',
+  idx: {
+    eyebrow: 'O que fazemos',
+    titulo: 'Oito formas de pôr a sua marca <span class="gt">em vídeo.</span>',
+    texto: 'Escolha por onde começar. Cada serviço tem exemplos reais do nosso trabalho e um contacto direto no fim.'
+  },
+  servicos: [
+    { id: 'conteudo', t: 'Gravação de conteúdo', p: 'Vídeos curtos com especialistas, fundadores e marcas, para publicar todas as semanas.', top: true, tag: 'O mais pedido' },
+    { id: 'ativacoes', t: 'Ativações de marca', p: 'Empresas, agências e influenciadores.' },
+    { id: 'cursos', t: 'Cursos e formação', p: 'Aulas, cursos online e formação interna.' },
+    { id: 'institucionais', t: 'Institucionais', p: 'A sua empresa explicada em vídeo.' },
+    { id: 'eventos', t: 'Cobertura de eventos', p: 'Filmagem, fotografia e sameday.' },
+    { id: 'integra', t: 'Captação na íntegra', p: 'O evento inteiro, pronto a usar.' },
+    { id: 'direto', t: 'Transmissão em direto', p: 'Lançamentos e eventos ao vivo.' },
+    { id: 'podcast', t: 'Podcast em vídeo', p: 'Set, várias câmaras, episódio completo e cortes.' }
+  ],
+  chips: { conteudo: 'Conteúdo', podcast: 'Podcast', cursos: 'Cursos', institucionais: 'Institucionais', eventos: 'Eventos', integra: 'Na íntegra', direto: 'Em direto', ativacoes: 'Ativações' },
+  ct: {
+    selo: 'O que mais nos pedem agora',
+    eyebrow: 'Gravação de conteúdo',
+    titulo: 'Num dia de gravação saem dez vídeos. <span class="gt">São dez semanas</span> de publicações.',
+    lead: 'Para especialistas, fundadores, médicos, formadores e marcas que precisam de aparecer todas as semanas. Lemos os guiões consigo antes do dia e ajustamos o que for preciso para a mensagem chegar certa a quem vê.',
+    passos: [
+      ['Antes do dia', 'Revemos os guiões consigo, escolhemos o local e pensamos o cenário para que o sítio, a luz e o texto digam a mesma coisa.'],
+      ['No dia', 'Luz, som e teleponto preparados. Quem está à frente da câmara só tem de falar, e nós dirigimos cada take.'],
+      ['Depois', 'Seis a doze vídeos editados, com legendas, em vertical para as redes e em horizontal para o site e os anúncios.']
+    ],
+    video: { t: 'Barbara Lia · Estudo da Mulher', s: 'Dez vídeos curtos e um longo, num só dia' },
+    dep: { t: 'Barbara Lia', s: 'O que diz de gravar connosco' },
+    formatos: ['Reels', 'Shorts', 'TikTok', 'LinkedIn', 'Anúncios', 'Site e landing pages', 'Depoimentos', 'Bastidores'],
+    av: { t: 'Precisa de conteúdo todos os meses?', p: 'Um dia de gravação por mês, com a mesma equipa e um calendário editorial feito connosco. Chega ao fim de cada mês com os vídeos do mês seguinte prontos a publicar.' }
+  },
+  pod: {
+    eyebrow: 'Podcast em vídeo',
+    titulo: 'O seu podcast, com imagem <span class="gt">à altura da conversa.</span>',
+    lead: 'Montamos o set no seu espaço ou num estúdio, gravamos com várias câmaras e um microfone por convidado, e entregamos o episódio completo e os melhores momentos para as redes.',
+    lista: ['Set com luz e cenário pensados para a sua marca', 'Duas a três câmaras e som individual por convidado', 'Episódio completo para YouTube e Spotify', 'Cortes verticais legendados com os melhores momentos', 'Formato mensal, sempre com a mesma equipa']
+  },
+  cur: {
+    eyebrow: 'Cursos e formação',
+    titulo: 'Uma aula gravada hoje pode chegar a <span class="gt">milhares de pessoas</span> amanhã.',
+    lead: 'Cursos online, aulas e formação interna de empresas: acolhimento de novos colaboradores, produto e procedimentos. Imagem profissional, som limpo e a mesma equipa do primeiro ao último módulo, para o curso inteiro parecer da mesma escola.',
+    tags: ['Centenas de aulas produzidas', 'Cursos online', 'Formação interna', 'Teleponto', 'Edição com grafismos'],
+    videos: [ ['K_N4hydChbo', 'Showreel de cursos', 'Aulas gravadas pela CreativeSete'], ['Bk8nNKh8TPw', 'Maria Maia', 'Depoimento de quem grava connosco'] ]
+  },
+  ins: {
+    eyebrow: 'Vídeos institucionais',
+    titulo: 'Quem é a sua empresa, <span class="gt">em dois minutos.</span>',
+    lead: 'Começamos pelo que precisa de dizer e a quem, e só depois pensamos em planos e câmaras. O local, a luz e as pessoas escolhidas fazem parte da mensagem.',
+    lista: ['Vídeo institucional', 'Vídeo de produto ou serviço', 'Entrevistas e depoimentos de clientes', 'Recrutamento e marca empregadora'],
+    video: ['Elisa Carvalho · Unividros', 'Vídeo institucional']
+  },
+  ev: {
+    eyebrow: 'Cobertura de eventos',
+    titulo: 'Material que vende <span class="gt">a próxima edição.</span>',
+    lead: 'Captamos o momento essencial e a frase do orador que vai dar o conteúdo da semana seguinte. Fotografias em tempo real e o filme no mesmo dia ou no dia seguinte: seja um filme ou vários, o que muda é a estrutura da equipa.',
+    tags: ['Captação', 'Edição', 'Fotografia', 'Sameday', 'Storymaker'],
+    videos: [
+      ['xTujXrqqKoE', '/assets/p_guru.jpg', 'Guru', 'Casa de Verão'],
+      ['ERc2OkH3rlo', '/assets/p_ey.jpg', 'EY', 'Entrepreneurial Winning Women'],
+      ['YRYGLNL2pxU', '/assets/p_ovation1.jpg', 'Ovation', 'Pátio da Galé'],
+      ['3VCYdJsKqTU', '/assets/p_ovation2.jpg', 'Ovation', 'TimeOut Lisboa'],
+      ['x80_8_JytVU', '/assets/p_cazzulu.jpg', 'Cazzulu', 'Travel and Events'],
+      ['Ng3reWaOZug', '/assets/svc_cobertura.jpg', 'Tathi Deandhela', 'Bastidores em Portugal']
+    ]
+  },
+  int: {
+    eyebrow: 'Captação na íntegra',
+    titulo: 'O evento passa. <span class="gt">O conteúdo fica.</span>',
+    lead: 'Captamos na íntegra para que possa formar, vender e distribuir sem limites de tempo ou de audiência. Uma gravação completa serve hoje para formações internas, amanhã como bónus de um lançamento e depois como prova do que a sua marca construiu.',
+    lista: ['Empresas que formam equipas à distância', 'Especialistas que fazem do evento um produto digital', 'Quem quer ter o evento inteiro guardado'],
+    cap: 'Régie de um evento com captação na íntegra',
+    video: ['Showreel', 'Gravação na íntegra']
+  },
+  dir: {
+    eyebrow: 'Transmissão em direto',
+    titulo: 'No ao vivo não há <span class="gt">segundas oportunidades.</span>',
+    lead: 'Lançamentos digitais, conferências e eventos em direto, com uma equipa que já viu tudo acontecer e sabe reagir antes que algo corra mal. O seu público vê exatamente o que planeou.',
+    tags: ['Live stream', 'Lançamentos digitais', 'Várias câmaras', 'Régie'],
+    videos: [ ['jbr7HtDUzq8', '/assets/live.jpg', 'Ana Lisboa', 'Lançamento digital · 4 dias de transmissão'] ]
+  },
+  at: {
+    eyebrow: 'Ativações de marca',
+    titulo: 'A experiência acaba. <span class="gt">A marca continua a comunicar.</span>',
+    lead: 'Para empresas, agências e influenciadores: lançamentos, experiências e viagens de marca. Filmamos o que as pessoas viveram, para a marca ter conteúdo muito depois do dia.',
+    tags: ['Empresas', 'Agências', 'Influenciadores', 'Viagens de marca'],
+    videos: [ ['37Bs_2sEOkU', '/assets/p_transalpino.jpg', 'Transalpino', 'AllStars Trip Portugal'] ],
+    bast: ['Bastidores', 'Ana Lisboa · um dia connosco', 'Descontraído']
+  },
+  ctl: {
+    q: { conteudo: 'Quer gravar conteúdo com a sua equipa?', podcast: 'Tem um podcast em mente?', cursos: 'Tem um curso ou formação para gravar?', institucionais: 'Precisa de um vídeo para a sua empresa?', eventos: 'Tem um evento a caminho?', integra: 'Quer o seu evento gravado na íntegra?', direto: 'Vai transmitir em direto?', ativacoes: 'Tem uma ativação de marca a caminho?' },
+    email: 'Enviar email', wa: 'Falar no WhatsApp',
+    msg: 'Olá! Vi a apresentação da CreativeSete e gostava de saber mais sobre: ',
+    assunto: 'Pedido de informação · '
+  },
+  proc: {
+    eyebrow: 'Como trabalhamos',
+    titulo: 'Do briefing à entrega, <span class="gt">a mesma equipa.</span>',
+    texto: 'Os profissionais que trabalham connosco são sempre os mesmos. É isso que nos deixa manter uma identidade e a qualidade de projeto para projeto.',
+    etapas: [
+      ['Briefing', 'Percebemos o que quer comunicar, a quem e onde vai publicar.'],
+      ['Plano', 'Guiões, local, equipa e datas. Recebe a proposta em menos de 24 horas.'],
+      ['Gravação', 'Chegamos preparados, montamos e dirigimos. Do seu lado, só falar.'],
+      ['Entrega', 'Prazos definidos, revisões incluídas, todos os formatos de que precisa.']
+    ]
+  },
+  pq: [
+    ['Processos claros', 'Sabe sempre o que acontece a seguir.'],
+    ['Registo pensado', 'Cada plano tem uma razão de estar lá.'],
+    ['Estrutura sem riscos', 'Equipamento e equipa de reserva.'],
+    ['Entrega rápida', 'Fotos em tempo real, filmes no dia seguinte.'],
+    ['A mesma equipa', 'Quem começa o projeto acaba o projeto.']
+  ],
+  pr: {
+    eyebrow: 'Clientes',
+    titulo: 'O que dizem <span class="gt">sobre nós.</span>',
+    google: 'Avaliações no Google',
+    reviews: [
+      ['nadia', 'Nadia Lopes', 'Já vão 3 anos e não trabalho com mais nenhuma empresa de captação de vídeos. São incríveis em tudo, entrega rápida com máxima qualidade. Recomendo de olhos fechados!'],
+      ['pedro', 'Pedro Fernandes', 'O trabalho da CreativeSete é simplesmente extraordinário. Destacam-se pela inovação e pelo perfeccionismo em cada captação.'],
+      ['catia', 'Cátia Rodrigues', 'Não confio noutra equipa para os meus negócios. Entregam sempre dentro dos timings definidos. Recomendo vivamente!']
+    ],
+    depo: [ ['IUaF55ES9co', 'Barbara Lia', 'Depoimento em vídeo'], ['Bk8nNKh8TPw', 'Maria Maia', 'Depoimento em vídeo'] ]
+  },
+  fe: {
+    eyebrow: 'Próximo passo',
+    titulo: 'Vamos falar do <span class="gt">seu projeto?</span>',
+    lead: 'Conte-nos o que precisa. Recebe uma proposta à medida em menos de 24 horas.',
+    wa: 'Falar no WhatsApp', email: 'Enviar email', svc: 'um projeto de vídeo'
+  },
+  rodape: 'Produção de vídeo para empresas · Lisboa, Portugal'
+},
+
+en: {
+  nav: { servicos: 'Services', conteudo: 'Content', processo: 'How we work', clientes: 'Clients', cta: "Let's talk" },
+  hero: {
+    eyebrow: 'CreativeSete · video production for companies',
+    antes: 'We film', depois: 'with the right message.',
+    rot: ['short videos', 'podcasts', 'courses', 'brand films', 'events'],
+    sub: 'We work out what your company wants to say and to whom, prepare the scripts with you, and film with the same team from briefing to delivery. In Portugal and abroad.',
+    cta1: 'See services', cta2: "Let's talk about your project", desce: 'Scroll'
+  },
+  nums: [ ['5', 'years of experience'], ['130', 'events covered'], ['1100', 'videos delivered'], ['8', 'countries'] ],
+  logos: 'Brands that trust us',
+  idx: {
+    eyebrow: 'What we do',
+    titulo: 'Eight ways to put your brand <span class="gt">on video.</span>',
+    texto: 'Pick where to start. Every service has real examples of our work and a direct contact at the end.'
+  },
+  servicos: [
+    { id: 'conteudo', t: 'Content production', p: 'Short videos with experts, founders and brands, to publish every week.', top: true, tag: 'Most requested' },
+    { id: 'ativacoes', t: 'Brand activations', p: 'Companies, agencies and influencers.' },
+    { id: 'cursos', t: 'Courses and training', p: 'Lessons, online courses and internal training.' },
+    { id: 'institucionais', t: 'Brand films', p: 'Your company explained on video.' },
+    { id: 'eventos', t: 'Event coverage', p: 'Filming, photography and same day edits.' },
+    { id: 'integra', t: 'Full event recording', p: 'The whole event, ready to use.' },
+    { id: 'direto', t: 'Live streaming', p: 'Launches and events, live.' },
+    { id: 'podcast', t: 'Video podcast', p: 'Set, multiple cameras, full episode and clips.' }
+  ],
+  chips: { conteudo: 'Content', podcast: 'Podcast', cursos: 'Courses', institucionais: 'Brand films', eventos: 'Events', integra: 'Full recording', direto: 'Live', ativacoes: 'Activations' },
+  ct: {
+    selo: 'What clients ask us for most',
+    eyebrow: 'Content production',
+    titulo: 'One filming day gives you ten videos. <span class="gt">That is ten weeks</span> of posts.',
+    lead: 'For experts, founders, doctors, trainers and brands who need to show up every week. We go through the scripts with you before the day and adjust whatever is needed so the message lands with the people watching.',
+    passos: [
+      ['Before the day', 'We review the scripts with you, pick the location and plan the set so the place, the light and the words all say the same thing.'],
+      ['On the day', 'Light, sound and teleprompter ready. The person on camera only has to talk, and we direct every take.'],
+      ['After', 'Six to twelve edited videos with subtitles, vertical for social media and horizontal for your website and ads.']
+    ],
+    video: { t: 'Barbara Lia · Estudo da Mulher', s: 'Ten short videos and one long, in a single day' },
+    dep: { t: 'Barbara Lia', s: 'What she says about filming with us' },
+    formatos: ['Reels', 'Shorts', 'TikTok', 'LinkedIn', 'Ads', 'Websites and landing pages', 'Testimonials', 'Behind the scenes'],
+    av: { t: 'Need content every month?', p: 'One filming day a month, with the same team and an editorial calendar planned with us. By the end of each month, next month’s videos are ready to publish.' }
+  },
+  pod: {
+    eyebrow: 'Video podcast',
+    titulo: 'Your podcast, with images <span class="gt">worthy of the conversation.</span>',
+    lead: 'We build the set at your place or in a studio, film with several cameras and one microphone per guest, and deliver the full episode plus the best moments for social media.',
+    lista: ['Set, light and backdrop designed around your brand', 'Two to three cameras and individual sound per guest', 'Full episode for YouTube and Spotify', 'Subtitled vertical clips with the best moments', 'Monthly format, always with the same team']
+  },
+  cur: {
+    eyebrow: 'Courses and training',
+    titulo: 'A lesson filmed today can reach <span class="gt">thousands of people</span> tomorrow.',
+    lead: 'Online courses, lessons and internal company training: onboarding, product and procedures. Professional image, clean sound and the same team from the first module to the last, so the whole course looks like it comes from the same school.',
+    tags: ['Hundreds of lessons produced', 'Online courses', 'Internal training', 'Teleprompter', 'Editing with graphics'],
+    videos: [ ['K_N4hydChbo', 'Courses showreel', 'Lessons filmed by CreativeSete'], ['Bk8nNKh8TPw', 'Maria Maia', 'Testimonial from a client who films with us'] ]
+  },
+  ins: {
+    eyebrow: 'Brand films',
+    titulo: 'Who your company is, <span class="gt">in two minutes.</span>',
+    lead: 'We start with what you need to say and to whom, and only then think about shots and cameras. The location, the light and the people on screen are all part of the message.',
+    lista: ['Company film', 'Product or service video', 'Interviews and client testimonials', 'Recruitment and employer branding'],
+    video: ['Elisa Carvalho · Unividros', 'Brand film']
+  },
+  ev: {
+    eyebrow: 'Event coverage',
+    titulo: 'Footage that sells <span class="gt">the next edition.</span>',
+    lead: 'We capture the key moment and the speaker’s line that becomes next week’s content. Photos in real time and the film on the same day or the next: whether it is one film or several, only the size of the team changes.',
+    tags: ['Filming', 'Editing', 'Photography', 'Same day edit', 'Storymaker'],
+    videos: [
+      ['xTujXrqqKoE', '/assets/p_guru.jpg', 'Guru', 'Summer House'],
+      ['ERc2OkH3rlo', '/assets/p_ey.jpg', 'EY', 'Entrepreneurial Winning Women'],
+      ['YRYGLNL2pxU', '/assets/p_ovation1.jpg', 'Ovation', 'Pátio da Galé'],
+      ['3VCYdJsKqTU', '/assets/p_ovation2.jpg', 'Ovation', 'TimeOut Lisbon'],
+      ['x80_8_JytVU', '/assets/p_cazzulu.jpg', 'Cazzulu', 'Travel and Events'],
+      ['Ng3reWaOZug', '/assets/svc_cobertura.jpg', 'Tathi Deandhela', 'Behind the scenes in Portugal']
+    ]
+  },
+  int: {
+    eyebrow: 'Full event recording',
+    titulo: 'The event ends. <span class="gt">The content stays.</span>',
+    lead: 'We record everything so you can train, sell and distribute with no limits on time or audience. A full recording works today for internal training, tomorrow as a launch bonus, and later as proof of what your brand has built.',
+    lista: ['Companies training remote teams', 'Experts turning their event into a digital product', 'Anyone who wants the whole event on record'],
+    cap: 'Control room of a fully recorded event',
+    video: ['Showreel', 'Full event recording']
+  },
+  dir: {
+    eyebrow: 'Live streaming',
+    titulo: 'Live, there are <span class="gt">no second chances.</span>',
+    lead: 'Digital launches, conferences and live events, with a team that has seen it all and knows how to react before anything goes wrong. Your audience sees exactly what you planned.',
+    tags: ['Live stream', 'Digital launches', 'Multi camera', 'Control room'],
+    videos: [ ['jbr7HtDUzq8', '/assets/live.jpg', 'Ana Lisboa', 'Digital launch · 4 days of streaming'] ]
+  },
+  at: {
+    eyebrow: 'Brand activations',
+    titulo: 'The experience ends. <span class="gt">The brand keeps talking.</span>',
+    lead: 'For companies, agencies and influencers: launches, experiences and brand trips. We film what people lived, so the brand has content long after the day.',
+    tags: ['Companies', 'Agencies', 'Influencers', 'Brand trips'],
+    videos: [ ['37Bs_2sEOkU', '/assets/p_transalpino.jpg', 'Transalpino', 'AllStars Trip Portugal'] ],
+    bast: ['Behind the scenes', 'Ana Lisboa · a day with us', 'Laid back']
+  },
+  ctl: {
+    q: { conteudo: 'Want to film content with your team?', podcast: 'Have a podcast in mind?', cursos: 'Have a course or training to film?', institucionais: 'Need a video for your company?', eventos: 'Have an event coming up?', integra: 'Want your event fully recorded?', direto: 'Going live?', ativacoes: 'Have a brand activation coming up?' },
+    email: 'Send an email', wa: 'Chat on WhatsApp',
+    msg: 'Hi! I saw the CreativeSete presentation and would like to know more about: ',
+    assunto: 'Information request · '
+  },
+  proc: {
+    eyebrow: 'How we work',
+    titulo: 'From briefing to delivery, <span class="gt">the same team.</span>',
+    texto: 'The people who work with us are always the same. That is how we keep our identity and our quality from one project to the next.',
+    etapas: [
+      ['Briefing', 'We learn what you want to say, to whom and where it will be published.'],
+      ['Plan', 'Scripts, location, crew and dates. You get a proposal in under 24 hours.'],
+      ['Filming', 'We arrive prepared, set up and direct. All you do is talk.'],
+      ['Delivery', 'Set deadlines, revisions included, every format you need.']
+    ]
+  },
+  pq: [
+    ['Clear processes', 'You always know what happens next.'],
+    ['Purposeful shots', 'Every shot is there for a reason.'],
+    ['Risk free setup', 'Backup gear and a backup crew.'],
+    ['Fast delivery', 'Photos in real time, films the next day.'],
+    ['The same team', 'Whoever starts the project finishes it.']
+  ],
+  pr: {
+    eyebrow: 'Clients',
+    titulo: 'What they <span class="gt">say about us.</span>',
+    google: 'Google reviews',
+    reviews: [
+      ['nadia', 'Nadia Lopes', 'It has been 3 years and I don’t work with any other video company. They are amazing at everything, fast delivery with top quality. I recommend them with my eyes closed!'],
+      ['pedro', 'Pedro Fernandes', 'CreativeSete’s work is simply extraordinary. They stand out for their innovation and perfectionism in every shoot.'],
+      ['catia', 'Cátia Rodrigues', 'I don’t trust any other team with my business. They always deliver on time. Highly recommended!']
+    ],
+    depo: [ ['IUaF55ES9co', 'Barbara Lia', 'Video testimonial'], ['Bk8nNKh8TPw', 'Maria Maia', 'Video testimonial'] ]
+  },
+  fe: {
+    eyebrow: 'Next step',
+    titulo: "Let's talk about <span class=\"gt\">your project.</span>",
+    lead: 'Tell us what you need. You will get a tailored proposal in under 24 hours.',
+    wa: 'Chat on WhatsApp', email: 'Send an email', svc: 'a video project'
+  },
+  rodape: 'Video production for companies · Lisbon, Portugal'
+}
+};
+
+/* ============================================================
+   Motor da pagina
+   ============================================================ */
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const get = (o, p) => p.split('.').reduce((a, k) => a && a[k], o);
+const ICON = {
+  play: '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>',
+  seta: '<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
+  mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7 8 6 8-6"/></svg>',
+  wa: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg>',
+  pq: [
+    '<svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h7"/></svg>',
+    '<svg viewBox="0 0 24 24"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="m16 10 5-3v10l-5-3"/></svg>',
+    '<svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>',
+    '<svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg>',
+    '<svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17.5" cy="9" r="2.5"/><path d="M16 14.2a5 5 0 0 1 5.5 5.3"/></svg>'
+  ]
+};
+const mcard = (mp4, img, t, s, cls = '', vert = false, badge = '', preview = false) =>
+  `<div class="vc ${cls} rv" data-mp4="${esc(mp4)}"${vert ? ' data-vert="1"' : ''} role="button" tabindex="0" aria-label="${esc(t)}">
+    <img src="${esc(img)}" alt="" loading="lazy">${preview ? `<video class="prev" muted loop playsinline preload="none" data-src="${esc(mp4)}" poster="${esc(img)}"></video>` : ''}
+    ${badge ? `<span class="badge">${esc(badge)}</span>` : ''}<span class="pl">${ICON.play}</span>
+    <div class="cap"><b>${esc(t)}</b><span>${esc(s)}</span></div></div>`;
+const vcard = (id, img, t, s, cls = '', vert = false) =>
+  `<div class="vc ${cls} rv" data-video="${esc(id)}"${vert ? ' data-vert="1"' : ''} role="button" tabindex="0" aria-label="${esc(t)}">
+    <img src="${esc(img)}" alt="" loading="lazy"><span class="pl">${ICON.play}</span>
+    <div class="cap"><b>${esc(t)}</b><span>${esc(s)}</span></div></div>`;
+
+let LANG = 'pt';
+let rotTimer = null;
+
+function render(lang) {
+  LANG = lang;
+  const L = T[lang];
+  document.documentElement.lang = lang;
+  document.querySelectorAll('.lang button').forEach(b => b.classList.toggle('on', b.dataset.lang === lang));
+
+  document.querySelectorAll('[data-i]').forEach(el => {
+    const v = get(L, el.dataset.i); if (v == null) return;
+    if (el.dataset.h) el.innerHTML = v; else el.textContent = v;
+  });
+  document.querySelectorAll('[data-list]').forEach(el => { el.innerHTML = get(L, el.dataset.list).map(x => `<li>${esc(x)}</li>`).join(''); });
+  document.querySelectorAll('[data-tags]').forEach(el => { el.innerHTML = get(L, el.dataset.tags).map(x => `<span>${esc(x)}</span>`).join(''); });
+
+  /* Titulo do heroi: palavras a subir + palavra rotativa */
+  let d = .2;
+  const palavras = s => s.split(' ').map(w => { const h = `<span class="w"><span style="--d:${d.toFixed(2)}s">${esc(w)}</span></span> `; d += .07; return h; }).join('');
+  const rot = `<span class="w"><span style="--d:${(d + .07).toFixed(2)}s"><span class="rot" id="rot">${L.hero.rot.map((r, i) => `<span class="gt${i ? '' : ' on'}">${esc(r)}</span>`).join('')}</span></span></span> `;
+  const antes = palavras(L.hero.antes); d += .07;
+  $('#h1').innerHTML = antes + rot + '<br>' + palavras(L.hero.depois);
+  clearInterval(rotTimer);
+  let ri = 0;
+  rotTimer = setInterval(() => {
+    const it = [...document.querySelectorAll('#rot span')]; if (!it.length) return;
+    it[ri].classList.remove('on'); it[ri].classList.add('sai');
+    const prev = ri; setTimeout(() => it[prev] && it[prev].classList.remove('sai'), 800);
+    ri = (ri + 1) % it.length; it[ri].classList.add('on');
+  }, 2300);
+
+  /* Numeros com digitos a rolar */
+  $('#nums').innerHTML = L.nums.map(([n, p], k) => {
+    const s = n.replace(/\B(?=(\d{3})+(?!\d))/g, lang === 'pt' ? '.' : ',');
+    const dig = [...s].map((c, j) => /\d/.test(c)
+      ? `<span class="dg"><span data-alvo="${c}" style="--d:${(k * .12 + j * .08).toFixed(2)}s">${[...Array(10).keys()].map(x => `<i>${x}</i>`).join('')}</span></span>`
+      : `<span>${c}</span>`).join('');
+    return `<div class="num rv" style="--d:${k * .08}s"><div class="v"><span class="mais">+</span>${dig}</div><p>${esc(p)}</p></div>`;
+  }).join('');
+
+  /* Indice */
+  $('#ig').innerHTML = L.servicos.map((s, i) => `<a class="ic rv${s.top ? ' top' : ''}" style="--d:${(i % 4) * .06}s" href="#${s.id}">${s.top ? '<video class="icbg" autoplay muted loop playsinline preload="auto" poster="img/barbara_bg_poster.jpg" src="img/barbara_bg.mp4" aria-hidden="true"></video>' : ''}
+    <div>${s.tag ? `<span class="tag">${esc(s.tag)}</span>` : ''}<p class="n">0${i + 1}</p></div>
+    <div><h3>${esc(s.t)}</h3><p>${esc(s.p)}</p></div><span class="ar">${ICON.seta}</span></a>`).join('');
+  $('#chips-in').innerHTML = L.servicos.map(s => `<a href="#${s.id}" data-chip="${s.id}">${esc(L.chips[s.id])}</a>`).join('');
+
+  /* Conteudo */
+  $('#ct-passos').innerHTML = L.ct.passos.map(([t, p], i) => `<div class="passo rv" style="--d:${i * .1}s"><div class="n gt">0${i + 1}</div><h3>${esc(t)}</h3><p>${esc(p)}</p></div>`).join('');
+  $('#ct-vid').outerHTML = vcard('r65IenphFY8', YT('r65IenphFY8'), L.ct.video.t, L.ct.video.s, 'vert f1', true).replace('class="vc vert f1 rv"', 'class="vc vert f1 rv" id="ct-vid"');
+  $('#ct-dep').outerHTML = vcard('IUaF55ES9co', 'https://i.ytimg.com/vi/IUaF55ES9co/maxresdefault.jpg', L.ct.dep.t, L.ct.dep.s, 'fh').replace('class="vc fh rv"', 'class="vc fh rv" id="ct-dep"');
+  const fm = L.ct.formatos.map(f => `<span>${esc(f)}</span>`).join('');
+  $('#fmq').innerHTML = fm + fm;
+
+  /* Videos por seccao */
+  $('#cur-vids').innerHTML = L.cur.videos.map(([id, t, s], i) => vcard(id, id === 'K_N4hydChbo' ? '/assets/svc_cursos.jpg' : YT(id), t, s, i ? '' : 'big')).join('')
+    + `<figure class="vc rv wipe" style="cursor:default"><img src="img/cur_a.jpg" alt="" loading="lazy" style="object-position:center 22%"></figure>`
+    + `<figure class="vc rv wipe" style="cursor:default;--d:.1s"><img src="img/cur_b.jpg" alt="" loading="lazy"></figure>`
+    + `<figure class="vc rv wipe" style="cursor:default;--d:.2s"><img src="img/cur_c.jpg" alt="" loading="lazy"></figure>`;
+  $('#ins-vids').innerHTML = mcard('img/elisa.mp4', 'img/elisa_poster.jpg', L.ins.video[0], L.ins.video[1], 'big');
+  $('#int-vids').innerHTML = vcard('XFzU8DSu0Ng', 'https://i.ytimg.com/vi/XFzU8DSu0Ng/maxresdefault.jpg', L.int.video[0], L.int.video[1], 'big')
+    + `<div class="fotos2"><figure class="wipe"><img src="img/int_regie.jpg" alt="" loading="lazy"></figure><figure class="wipe" style="--d:.12s"><img src="img/int_auditorio.jpg" alt="" loading="lazy"></figure></div>`;
+  $('#ev-vids').innerHTML = L.ev.videos.map(([id, img, t, s], i) => vcard(id, img, t, s)).join('');
+  $('#dir-vids').innerHTML = L.dir.videos.map(([id, img, t, s]) => vcard(id, img, t, s, 'big')).join('');
+  $('#at-vids').innerHTML = mcard('img/bastidores.mp4', 'img/bastidores_poster.jpg', L.at.bast[0], L.at.bast[1], 'vert', true, L.at.bast[2], true)
+    + `<figure class="wipe"><img src="img/at_cam3.jpg" alt="" loading="lazy" style="object-position:center 28%"></figure><figure class="wipe" style="--d:.12s"><img src="img/at_cam4.jpg" alt="" loading="lazy" style="object-position:center 40%"></figure>`;
+
+  /* Contacto no fim de cada servico */
+  document.querySelectorAll('[data-svc]').forEach(el => {
+    const id = el.dataset.svc, nome = L.servicos.find(s => s.id === id).t;
+    const wa = `https://wa.me/${CONTACTO.wa}?text=${encodeURIComponent(L.ctl.msg + nome)}`;
+    const ml = `mailto:${CONTACTO.email}?subject=${encodeURIComponent(L.ctl.assunto + nome)}&body=${encodeURIComponent(L.ctl.msg + nome)}`;
+    const escuro = el.closest('.dark');
+    el.innerHTML = `<p class="q">${esc(L.ctl.q[id])}</p>
+      <a class="btn btn-wa" href="${wa}" target="_blank" rel="noopener">${ICON.wa}${esc(L.ctl.wa)}</a>
+      <a class="btn ${escuro ? 'btn-line' : 'btn-ink'}" href="${ml}">${ICON.mail}${esc(L.ctl.email)}</a>`;
+  });
+
+  /* Processo, porque, prova */
+  $('#linha').innerHTML = '<div class="fio"></div>' + L.proc.etapas.map(([t, p], i) => `<div class="et"><div class="b" style="--d:${(.4 + i * .5).toFixed(1)}s">${i + 1}</div><h3>${esc(t)}</h3><p>${esc(p)}</p></div>`).join('');
+  $('#pqg').innerHTML = L.pq.map(([t, p], i) => `<div class="pqc rv" style="--d:${i * .06}s"><div class="i">${ICON.pq[i]}</div><h3>${esc(t)}</h3><p>${esc(p)}</p></div>`).join('');
+  const revs = L.pr.reviews.map(([f, n, q], i) => `<div class="rev rv" style="--d:${i * .08}s"><div class="st">★★★★★</div><q>${esc(q)}</q><div class="who"><img src="/assets/rev_${f}.jpg" alt="${esc(n)}" loading="lazy"><div><b>${esc(n)}</b><span>${esc(L.pr.google)}</span></div></div></div>`).join('');
+  $('#pg').innerHTML = revs + `<div class="pv">${L.pr.depo.map(([id, n, s]) => vcard(id, YT(id), n, s)).join('')}</div>`;
+
+  /* Fecho */
+  const waF = `https://wa.me/${CONTACTO.wa}?text=${encodeURIComponent(L.ctl.msg + L.fe.svc)}`;
+  const mlF = `mailto:${CONTACTO.email}?subject=${encodeURIComponent(L.ctl.assunto + 'CreativeSete')}`;
+  $('#fe-cta').innerHTML = `<a class="btn btn-wa" href="${waF}" target="_blank" rel="noopener">${ICON.wa}${esc(L.fe.wa)}</a><a class="btn btn-grad" href="${mlF}">${ICON.mail}${esc(L.fe.email)}</a>`;
+
+  observar();
+  document.querySelectorAll('.icbg').forEach(v => { v.muted = true; v.play().catch(() => {}); });
+  try { localStorage.setItem('cs_lang', lang); } catch (e) {}
+}
+
+/* Logos (fora do render: nao dependem da lingua) */
+const lg = LOGOS.map(l => `<img src="/assets/logos/${l}.png" alt="${l}" loading="lazy">`).join('');
+$('#mq').innerHTML = lg + lg;
+
+/* Revelacao */
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return;
+  e.target.classList.add('on');
+  e.target.querySelectorAll && e.target.querySelectorAll('[data-alvo]').forEach(s => s.style.transform = `translateY(-${s.dataset.alvo}em)`);
+  io.unobserve(e.target);
+}), { threshold: .14 });
+const ioPrev = new IntersectionObserver(es => es.forEach(e => {
+  const v = e.target;
+  if (e.isIntersecting) { v.muted = true; if (!v.src) v.src = v.dataset.src; v.play().catch(() => {}); } else v.pause();
+}), { threshold: .25 });
+const ioW = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return;
+  e.target.querySelectorAll(':scope > .wipe:not(.on), :scope > * > .wipe:not(.on)').forEach(w => w.classList.add('on'));
+  ioW.unobserve(e.target);
+}), { threshold: .05 });
+function observar() {
+  document.querySelectorAll('video.prev').forEach(v => ioPrev.observe(v));
+  document.querySelectorAll('.rv:not(.on):not(.wipe),.linha:not(.on)').forEach(el => io.observe(el));
+  new Set([...document.querySelectorAll('.wipe:not(.on)')].map(w => w.parentElement)).forEach(p => ioW.observe(p));
+  document.querySelectorAll('.num.on [data-alvo]').forEach(s => s.style.transform = `translateY(-${s.dataset.alvo}em)`);
+}
+
+/* Lingua */
+document.querySelectorAll('.lang button').forEach(b => b.addEventListener('click', () => render(b.dataset.lang)));
+let inicial = 'pt';
+const qs = new URLSearchParams(location.search).get('lang');
+if (qs === 'en' || qs === 'pt') inicial = qs;
+else { try { const g = localStorage.getItem('cs_lang'); if (g === 'en' || g === 'pt') inicial = g; } catch (e) {} }
+render(inicial);
+
+/* Barra de progresso, chips e seccao ativa */
+const prog = $('#prog'), chips = $('#chips');
+const ids = T.pt.servicos.map(s => s.id);
+addEventListener('scroll', () => {
+  const h = document.documentElement;
+  prog.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+  const a = $('#conteudo').getBoundingClientRect().top < 200, b = $('#processo').getBoundingClientRect().top > 300;
+  chips.classList.toggle('vis', a && b);
+  let atual = null;
+  ids.forEach(id => { const r = document.getElementById(id).getBoundingClientRect(); if (r.top < 260) atual = id; });
+  document.querySelectorAll('[data-chip]').forEach(c => c.classList.toggle('on', c.dataset.chip === atual));
+}, { passive: true });
+
+/* Foco de luz nas seccoes escuras */
+document.querySelectorAll('.dark').forEach(s => s.addEventListener('mousemove', e => {
+  const r = s.getBoundingClientRect();
+  s.style.setProperty('--mx', (e.clientX - r.left) + 'px'); s.style.setProperty('--my', (e.clientY - r.top) + 'px');
+}));
+
+/* Modal de video */
+const vm = $('#vmodal'), vf = $('#vframe'), vb = $('#vbox');
+function abrirMp4(src, vert) {
+  vb.classList.toggle('vert', !!vert);
+  vf.innerHTML = `<video src="${esc(src)}" controls autoplay playsinline></video>`;
+  vm.classList.add('on'); document.body.style.overflow = 'hidden';
+}
+function abrir(id, vert) {
+  if (!/^[\w-]{11}$/.test(id)) return;
+  vb.classList.toggle('vert', !!vert);
+  vf.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0" title="Vídeo" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
+  vm.classList.add('on'); document.body.style.overflow = 'hidden';
+}
+function fechar() { vm.classList.remove('on'); vf.innerHTML = ''; document.body.style.overflow = ''; }
+document.addEventListener('click', e => { const c = e.target.closest('[data-video]'); if (c) abrir(c.dataset.video, c.dataset.vert); const m = e.target.closest('[data-mp4]'); if (m) abrirMp4(m.dataset.mp4, m.dataset.vert); if (e.target.closest('[data-fechar]')) fechar(); });
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') fechar();
+  const c = e.target.closest && e.target.closest('[data-video]');
+  if (c && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); abrir(c.dataset.video, c.dataset.vert); }
+  const m = e.target.closest && e.target.closest('[data-mp4]');
+  if (m && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); abrirMp4(m.dataset.mp4, m.dataset.vert); }
+});
+</script>
+</body>
+</html>

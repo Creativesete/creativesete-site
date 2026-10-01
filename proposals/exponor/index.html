@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow,noarchive">
 <meta name="theme-color" content="#0d0e12">
-<title>Exponor · Feiras 2027 · CreativeSete</title>
-<meta name="description" content="Proposta de cobertura fotográfica e vídeo para as feiras Exponor 2027.">
+<title>Exponor · 360 Tech Industry · CreativeSete</title>
+<meta name="description" content="Proposta da CreativeSete para a Exponor: a primeira experiência no 360 Tech Industry, marketing para os vídeos das feiras e o desenho para 2027.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Exponor · Feiras 2027">
+<meta property="og:title" content="Exponor · 360 Tech Industry">
 <meta property="og:description" content="O espaço é o mesmo. As feiras nunca são. Proposta da CreativeSete.">
 <meta property="og:image" content="https://creativesete.com/proposals/exponor/img/pavilhao-1.jpg">
 <link rel="icon" href="/assets/mark7_dark.png">
@@ -70,6 +70,12 @@ nav{position:fixed;top:14px;left:0;right:0;z-index:80}
 .brand .for{font-size:12.5px;font-weight:600;color:var(--muted);padding-left:12px;border-left:1px solid var(--line);white-space:nowrap}
 .nav-links{display:flex;gap:24px;margin-left:8px;font-size:14.5px;color:var(--muted);font-weight:500}
 .nav-links a:hover{color:var(--ink)}
+.nav-links a{white-space:nowrap}
+#grupos-risco h3{font-size:clamp(26px,3vw,36px)}
+#grupos-risco .gs{font-size:16px;max-width:760px}
+.grupos.tres{grid-template-columns:repeat(3,1fr)}
+@media (max-width:1060px){.grupos.tres{grid-template-columns:1fr}}
+@media (max-width:1180px){.nav-links{display:none}}
 .nav-cta{margin-left:auto}
 .nav-cta .btn{padding:11px 20px;font-size:14px}
 
@@ -107,6 +113,12 @@ nav{position:fixed;top:14px;left:0;right:0;z-index:80}
 .hero .btn-glass{color:#fff;background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.38)}
 .hero .btn-glass:hover{background:rgba(255,255,255,.26)}
 .hero .para{margin-top:22px;font-size:13px;color:rgba(255,255,255,.66)}
+.hero-parc{display:inline-flex;align-items:center;gap:10px;margin-bottom:22px;padding:9px 18px 9px 13px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.34);backdrop-filter:blur(14px) saturate(160%);-webkit-backdrop-filter:blur(14px) saturate(160%);font-size:14px;font-weight:600;color:#fff;line-height:1.35;transition:background .25s,transform .25s}
+.hero-parc:hover{background:rgba(255,255,255,.22);transform:translateY(-1px)}
+.hero-parc i{flex:none;width:8px;height:8px;border-radius:50%;background:#E8608F;box-shadow:0 0 0 0 rgba(232,96,143,.7);animation:pulso 1.8s ease-out infinite}
+.hero-parc b{font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+@media (max-width:560px){.hero-parc{font-size:12.5px;padding:8px 14px 8px 11px}}
+@media (prefers-reduced-motion:reduce){.hero-parc i{animation:none}}
 
 .agora{position:relative;z-index:2;display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap}
 .painel{width:min(440px,100%);padding:18px 22px 18px;border-radius:22px;background:rgba(24,24,30,.42);border:1px solid rgba(255,255,255,.26);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);box-shadow:0 20px 50px rgba(0,0,0,.28)}
@@ -436,11 +448,11 @@ footer{padding:40px 0 34px;color:var(--muted);font-size:13px}
       <span class="for">para a Exponor</span>
     </a>
     <div class="nav-links">
-      <a href="#equipa">Proposta</a>
-      <a href="#feira">Como funciona</a>
-      <a href="#recinto-sec">O recinto</a>
+      <a href="#parceria">O próximo evento</a>
+      <a href="#estrategia">Marketing</a>
+      <a href="#servicos">Serviços</a>
       <a href="#trabalho">Trabalho</a>
-      <a href="#investimento">Investimento</a>
+      <a href="#equipa">2027</a>
     </div>
     <div class="nav-cta"><a class="btn btn-primary" data-agenda target="_blank" rel="noopener">Marcar conversa</a></div>
   </div></div>
@@ -451,12 +463,12 @@ footer{padding:40px 0 34px;color:var(--muted);font-size:13px}
   <div class="hero-ov"></div>
 
   <div class="wrap hero-in">
-    <p class="eyebrow" data-t="hero.eyebrow"></p>
+    <a class="hero-parc" href="#parceria"><i></i><span data-h="hero.parceria"></span></a>
     <h1 data-h="hero.titulo"></h1>
     <p class="sub" data-t="hero.sub"></p>
     <div class="cta">
       <a class="btn btn-light" data-agenda target="_blank" rel="noopener">Marcar uma conversa</a>
-      <a class="btn btn-glass" href="#equipa">Ver a proposta</a>
+      <a class="btn btn-glass" href="#parceria">Ver a primeira experiência</a>
     </div>
     <p class="para" id="para"></p>
   </div>
@@ -483,11 +495,86 @@ footer{padding:40px 0 34px;color:var(--muted);font-size:13px}
   </div>
 </section>
 
-<section class="pane tint" id="equipa">
+<section class="pane tint" id="parceria">
   <div class="rim"></div>
   <div class="wrap">
     <div class="sec-head rv">
-      <p class="eyebrow num"><b>01</b> Porquê equipa fixa</p>
+      <p class="eyebrow num"><b>01</b> O próximo evento</p>
+      <h2 data-t="parceria.titulo"></h2>
+      <p data-t="parceria.texto"></p>
+    </div>
+    <div class="grupos" id="grupos-risco" style="grid-template-columns:1fr"></div>
+  </div>
+</section>
+
+<section class="pane light" id="estrategia">
+  <div class="rim"></div>
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow num"><b>02</b> Marketing estratégico</p>
+      <h2 data-t="estrategia.titulo"></h2>
+      <p data-t="estrategia.texto"></p>
+    </div>
+    <div class="grupos tres" id="grupos-estrategia"></div>
+    <p class="grupos-nota rv" data-t="estrategia.nota"></p>
+  </div>
+</section>
+
+<section class="pane tint" id="servicos">
+  <div class="rim"></div>
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow num"><b>03</b> Outros serviços</p>
+      <h2 data-t="servicos.titulo"></h2>
+      <p data-t="servicos.texto"></p>
+    </div>
+    <div class="grupos" id="grupos-extra"></div>
+    <p class="grupos-nota rv" data-t="servicos.nota"></p>
+  </div>
+</section>
+
+<section class="pane light" id="recinto-sec">
+  <div class="rim"></div>
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow num"><b>04</b> Para lá do registo</p>
+      <h2 data-t="recintoSec.titulo"></h2>
+      <p data-t="recintoSec.texto"></p>
+    </div>
+    <div class="obs rv">
+      <div class="obs-txt">
+        <p class="k" data-t="recintoSec.observacao.kicker"></p>
+        <h3 data-t="recintoSec.observacao.titulo"></h3>
+        <p data-t="recintoSec.observacao.texto"></p>
+        <p class="fonte" data-t="recintoSec.observacao.fonte"></p>
+      </div>
+      <div class="obs-fotos" id="obs-fotos"></div>
+    </div>
+    <div class="grupos" id="grupos"></div>
+    <p class="grupos-nota rv" data-t="recintoSec.nota"></p>
+  </div>
+</section>
+
+<section class="pane tint" id="trabalho">
+  <div class="rim"></div>
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow num"><b>05</b> Trabalho</p>
+      <h2 data-t="trabalho.titulo"></h2>
+      <p data-t="trabalho.texto"></p>
+    </div>
+    <div id="destaque"></div>
+    <div class="wgrid" id="wgrid"></div>
+    <div class="prova" id="prova"></div>
+    <div class="logos rv"><p class="lbl">Quem já trabalhou connosco</p><div class="row" id="logos"></div></div>
+  </div>
+</section>
+
+<section class="pane light" id="equipa">
+  <div class="rim"></div>
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow num"><b>06</b> 2027 · Equipa fixa</p>
       <h2 data-t="equipa.titulo"></h2>
       <p data-t="equipa.texto"></p>
     </div>
@@ -499,7 +586,7 @@ footer{padding:40px 0 34px;color:var(--muted);font-size:13px}
   <div class="rim"></div>
   <div class="wrap">
     <div class="sec-head rv">
-      <p class="eyebrow num"><b>02</b> Como funciona uma feira</p>
+      <p class="eyebrow num"><b>07</b> Como funciona uma feira</p>
       <h2 data-t="cronologia.titulo"></h2>
       <p data-t="cronologia.texto"></p>
     </div>
@@ -533,7 +620,7 @@ footer{padding:40px 0 34px;color:var(--muted);font-size:13px}
   <div class="rim"></div>
   <div class="wrap">
     <div class="sec-head rv">
-      <p class="eyebrow num"><b>03</b> O que cobrimos</p>
+      <p class="eyebrow num"><b>08</b> O que cobrimos</p>
       <h2 data-t="ambitoTitulo"></h2>
       <p data-t="ambitoTexto"></p>
     </div>
@@ -541,54 +628,15 @@ footer{padding:40px 0 34px;color:var(--muted);font-size:13px}
   </div>
 </section>
 
-<section class="pane tint" id="recinto-sec">
-  <div class="rim"></div>
-  <div class="wrap">
-    <div class="sec-head rv">
-      <p class="eyebrow num"><b>04</b> Para lá do registo</p>
-      <h2 data-t="recintoSec.titulo"></h2>
-      <p data-t="recintoSec.texto"></p>
-    </div>
-    <div class="obs rv">
-      <div class="obs-txt">
-        <p class="k" data-t="recintoSec.observacao.kicker"></p>
-        <h3 data-t="recintoSec.observacao.titulo"></h3>
-        <p data-t="recintoSec.observacao.texto"></p>
-        <p class="fonte" data-t="recintoSec.observacao.fonte"></p>
-      </div>
-      <div class="obs-fotos" id="obs-fotos"></div>
-    </div>
-    <div class="grupos" id="grupos"></div>
-    <p class="grupos-nota rv" data-t="recintoSec.nota"></p>
-  </div>
-</section>
-
-<section class="pane light" id="trabalho">
-  <div class="rim"></div>
-  <div class="wrap">
-    <div class="sec-head rv">
-      <p class="eyebrow num"><b>05</b> Trabalho</p>
-      <h2 data-t="trabalho.titulo"></h2>
-      <p data-t="trabalho.texto"></p>
-    </div>
-    <div id="destaque"></div>
-    <div class="wgrid" id="wgrid"></div>
-    <div class="prova" id="prova"></div>
-    <div class="logos rv"><p class="lbl">Quem já trabalhou connosco</p><div class="row" id="logos"></div></div>
-  </div>
-</section>
-
 <section class="pane tint" id="investimento">
   <div class="rim"></div>
   <div class="wrap">
     <div class="sec-head rv">
-      <p class="eyebrow num"><b>06</b> Investimento</p>
+      <p class="eyebrow num"><b>09</b> Depois do 360 Tech</p>
       <h2 data-t="investimento.titulo"></h2>
       <p data-t="investimento.texto"></p>
     </div>
-    <div class="simulador rv" id="simulador"></div>
     <div class="fora rv" id="fora"></div>
-    <div class="notas rv" id="notas"></div>
     <div class="condicoes rv">
       <h3>Condições gerais</h3>
       <dl id="condicoes"></dl>
@@ -639,7 +687,7 @@ const PROPOSTA = {
   cliente: 'Exponor',
   para: 'Amélia Estêvão',
   cargo: 'Diretora de Marketing',
-  data: '2026-09-14',          // data de envio (AAAA-MM-DD)
+  data: '2026-10-01',          // data de envio (AAAA-MM-DD)
   validadeDias: 15,
 
   contacto: {
@@ -653,9 +701,9 @@ const PROPOSTA = {
   },
 
   hero: {
-    eyebrow: 'Proposta para a Exponor · Feiras 2027',
+    parceria: 'Primeiro trabalho em parceria · <b>360 Tech Industry</b> · 26 e 27 de novembro',
     titulo: 'O espaço é&nbsp;o&nbsp;mesmo.<br>As feiras <span class="gt">nunca&nbsp;são.</span>',
-    sub: 'Fotografia e vídeo para as quinze feiras de 2027, com a mesma equipa em todas. E, com cada feira, as imagens que vendem o recinto aos próximos eventos.',
+    sub: 'Propomos começar a nossa parceria no 360 Tech Industry, no Pavilhão Carlos Lopes: filmamos ao lado da vossa equipa atual, sem custo para a Exponor. A partir daí, mostramos o que o vídeo pode fazer pelas vossas feiras, antes, durante e depois.',
     // Cada espaco comeca vazio e ganha vida com uma das feiras do calendario.
     // Para trocar o vazio por uma fotografia real da feira, acrescentar  cheia: '/proposals/exponor/img/ficheiro.jpg'
     espacos: [
@@ -679,7 +727,7 @@ const PROPOSTA = {
 
   equipa: {
     titulo: 'Quinze feiras. Uma só equipa.',
-    texto: 'Uma feira dura um ou dois dias. A comunicação dela dura o ano inteiro, e é para isso que serve ter sempre as mesmas pessoas atrás da câmara.',
+    texto: 'Se a experiência fizer sentido, este é o desenho para 2027. Uma feira dura um ou dois dias, mas a comunicação dela dura o ano inteiro, e é para isso que serve ter sempre as mesmas pessoas atrás da câmara.',
     argumentos: [
       { ic: 'olho',   t: 'O mesmo olhar em todas as feiras', p: 'A mesma equipa de janeiro a dezembro. Cada feira fica com o mesmo tratamento visual, e ninguém tem de voltar a explicar o que a Exponor precisa.' },
       { ic: 'raio',   t: 'Entregas com a feira aberta',       p: 'Fotografias em quatro momentos e vídeos no próprio dia e no seguinte. A comunicação acontece enquanto os visitantes ainda estão nos pavilhões.' },
@@ -761,15 +809,18 @@ const PROPOSTA = {
 
   trabalho: {
     titulo: 'Eventos que já filmámos.',
-    texto: 'Coberturas e produções para marcas que comunicam com intenção.',
-    destaque: { video: 'Ng3reWaOZug', img: '/assets/svc_cobertura.jpg', quem: 'Cobertura de eventos', ctx: 'Showreel CreativeSete' },
+    texto: 'Coberturas de eventos, transmissões em direto e gravações na íntegra, para marcas que comunicam com intenção.',
+    destaque: { video: '37Bs_2sEOkU', img: '/assets/p_transalpino.jpg', quem: 'Transalpino', ctx: 'All Star + · Ativação de marca' },
     projetos: [
+      { video: 'Ng3reWaOZug', img: '/assets/svc_cobertura.jpg', quem: 'Cobertura de eventos', ctx: 'Showreel CreativeSete' },
       { video: 'ERc2OkH3rlo', img: '/assets/p_ey.jpg',          quem: 'EY',                   ctx: 'Winning Women · Evento corporativo' },
       { video: 'xTujXrqqKoE', img: '/assets/p_guru.jpg',        quem: 'Digital Manager Guru', ctx: 'Casa de Verão · Evento de marca' },
       { video: 'YRYGLNL2pxU', img: '/assets/p_ovation1.jpg',    quem: 'Ovation Global DMC',   ctx: 'Pátio Galé · Evento premium' },
       { video: '3VCYdJsKqTU', img: '/assets/p_ovation2.jpg',    quem: 'Ovation Global DMC',   ctx: 'Time Out Market' },
-      { video: '37Bs_2sEOkU', img: '/assets/p_transalpino.jpg', quem: 'Transalpino',          ctx: 'All Star + · Ativação de marca' },
-      { video: 'x80_8_JytVU', img: '/assets/p_cazzulu.jpg',     quem: 'Cazzulu',              ctx: 'Travel and Events' }
+      { video: 'x80_8_JytVU', img: '/assets/p_cazzulu.jpg',     quem: 'Cazzulu',              ctx: 'Travel and Events' },
+      { video: 'jbr7HtDUzq8', img: 'https://i.ytimg.com/vi/jbr7HtDUzq8/maxresdefault.jpg', quem: 'Ana Lisboa', ctx: 'Bastidores de uma transmissão em direto' },
+      { video: 'K_N4hydChbo', img: '/assets/svc_cursos.jpg',    quem: 'Gravação na íntegra', ctx: 'Showreel de cursos e formações' },
+      { video: 'IUaF55ES9co', img: 'https://i.ytimg.com/vi/IUaF55ES9co/maxresdefault.jpg', quem: 'Barbara Lia', ctx: 'Depoimento de cliente' }
     ],
     caso: { logo: '/assets/logos/vitafor.png', quem: 'Vitafor', texto: 'Um evento em três cidades, com vídeo editado e entregue no próprio dia.' },
     avaliacoes: [
@@ -779,39 +830,65 @@ const PROPOSTA = {
     logos: ['ey','ovation','vitafor','transalpino','guru','cazzulu','azzagal','bauter','layve','novosistema','plantdesigner','subido','tangivel']
   },
 
+  parceria: {
+    titulo: 'Começamos pelo 360 Tech Industry.',
+    texto: 'Na reunião de 29 de setembro disseram-nos que a vossa cobertura atual funciona e perguntaram o que podemos fazer de diferente. Isso vê-se melhor do que se explica. Por isso propomos que a nossa parceria comece no próximo evento, a 26 e 27 de novembro, no Pavilhão Carlos Lopes.',
+    risco: { titulo: 'A primeira experiência. O risco é nosso.', sub: 'Filmamos ao lado da vossa equipa atual. Sem custo e sem compromisso: depois de verem o resultado, decidem se faz sentido para vocês.', escuro: true, tag: 'Sem custo · sem compromisso', itens: [
+      { t: 'Sem custo para a Exponor', p: 'Assumimos a equipa, o equipamento e a edição. Não há nada a pagar nem nada a assinar.' },
+      { t: 'Sem mexer no que já está contratado', p: 'A vossa equipa atual faz o trabalho de sempre. Nós filmamos ao lado, sem interferir na feira nem nas entregas.' },
+      { t: '1 vídeo e 20 a 30 fotografias', p: 'Entregues durante a feira, com os mesmos prazos do vosso caderno de encargos, para compararem lado a lado.' },
+      { t: 'Com o plano de publicação incluído', p: 'Antes da feira combinamos convosco para quem é o vídeo e o que tem de fazer. Chega pronto a publicar, com as versões para as redes e para os anúncios e a sugestão de quando sair.' },
+      { t: 'A decisão fica convosco', p: 'Se não fizer sentido, fica a relação e o material para usarem. Se fizer, falamos de 2027.' }
+    ]}
+  },
+
+  estrategia: {
+    titulo: 'Vídeos que vendem a próxima feira.',
+    texto: 'A vossa equipa atual regista a feira. O que acrescentamos é o trabalho à volta do vídeo: a quem se fala, que mensagem tem de passar e onde vai ser visto. É a parte de marketing do nosso trabalho, e é ela que leva os vídeos a visitantes que ainda não vieram e a expositores que ainda não reservaram.',
+    grupos: [
+      { tag: 'Antes da feira', titulo: 'Encher os pavilhões', sub: 'Duas a quatro semanas antes da abertura.', itens: [
+        { t: 'Plano de conteúdo', p: 'Com a vossa equipa de marketing definimos o público da feira, a mensagem e o calendário de publicação. Os vídeos já nascem com um destino.' },
+        { t: 'Vídeo convite', p: 'A edição anterior em 30 segundos, com as datas e as novidades. Serve os anúncios para visitantes, e os expositores partilham-no nas redes deles.' }
+      ]},
+      { tag: 'Durante', titulo: 'Publicar com a feira aberta', sub: 'Enquanto os pavilhões ainda estão cheios.', itens: [
+        { t: 'Os primeiros 3 segundos', p: 'Cortes que abrem com o melhor momento, para prender quem faz scroll e ainda não conhece a feira.' },
+        { t: 'Uma versão para cada canal', p: 'Vertical para o Instagram e o TikTok, 4:5 para o feed, horizontal para o LinkedIn e o YouTube. Sempre com legendas, porque a maioria vê sem som.' }
+      ]},
+      { tag: 'Depois', titulo: 'Vender a próxima edição', sub: 'Da semana seguinte à abertura da próxima.', itens: [
+        { t: 'Versões para anúncios', p: 'Três cortes de 15 segundos com aberturas diferentes, para testarem nos anúncios e ficarem com o que traz mais resultado.' },
+        { t: 'Todas as feiras com o seu vídeo', p: 'No YouTube da Exponor encontrámos vídeos de quatro feiras entre 2025 e 2026. Propomos que todas tenham o seu, e que os cortes continuem a sair entre feiras.' },
+        { t: 'Ler os resultados', p: 'Com os números que nos passarem, vemos o que funcionou e ajustamos a feira seguinte.' }
+      ]}
+    ],
+    nota: 'No 360 Tech Industry entram o plano de publicação e as versões do vídeo. O resto desenhamos convosco, feira a feira.'
+  },
+
+  servicos: {
+    titulo: 'Outros serviços que podemos somar.',
+    texto: 'Há trabalho que hoje fica por fazer nas feiras e nos eventos que a Exponor acolhe. Alguns destes serviços podem até ser receita para vocês.',
+    grupos: [
+      { titulo: 'Serviços para expositores', sub: 'A Exponor já vende fotografia e vídeo aos expositores e aos organizadores que acolhe. Os dois packs abaixo são um exemplo, para mostrar o que podemos criar juntos: o modelo final desenhamos convosco, para que seja interessante para a Exponor e para os expositores.', escuro: false, tag: 'Exemplo · nova receita', itens: [
+        { t: 'Pack Stand', p: '30 fotografias e 1 vídeo vertical de 30 segundos do stand, para o expositor usar nas redes e no site.' },
+        { t: 'Pack Stand+', p: '50 fotografias, 1 vídeo de 60 segundos e 1 testemunho gravado no stand.' },
+        { t: 'Sem tocar na cobertura da Exponor', p: 'Até dois stands por dia, a nossa equipa trata deles nos intervalos. A partir de três, juntamos um profissional dedicado. Os packs são entregues em 48 a 72 horas.' }
+      ]},
+      { titulo: 'Também fazemos', sub: 'Para as feiras com palco e para os congressos que acolhem, incluindo o auditório de 945 lugares.', tag: 'Outros serviços', itens: [
+        { t: 'Transmissão em direto', p: 'Palcos, talks e conferências em direto no YouTube ou na plataforma do organizador, com visita técnica antes.' },
+        { t: 'Gravação na íntegra', p: 'Palestras gravadas com duas ou mais câmaras e som direto da mesa, editadas uma a uma, com capa e sem as perguntas.' },
+        { t: 'Vídeo no próprio dia', p: 'Um resumo editado e entregue no mesmo dia, para publicar enquanto a feira ainda decorre.' }
+      ]}
+    ],
+    nota: 'Os packs são um exemplo: o que entra em cada um acertamos convosco. Se tiverem interesse, enviamos os valores por email.'
+  },
+
   investimento: {
-    titulo: 'O investimento de 2027.',
-    texto: 'Fotógrafo, videógrafo e editor em cada feira, com a edição incluída. Quanto mais feiras fecharmos juntos, maior o desconto. Deslocação, alojamento e alimentação ficam de fora de propósito, para os acertarmos juntos.',
-    iva: 0.23,
-    planos: [
-      { nome: '1 dia de cobertura',  dias: 1, subtotal: 2610 },
-      { nome: '2 dias de cobertura', dias: 2, subtotal: 4770 }
-    ],
-    // Desconto por volume sobre o investimento s/IVA, pelo total de feiras
-    descontos: [
-      { min: 4,  pct: 0.03 },
-      { min: 7,  pct: 0.06 },
-      { min: 10, pct: 0.09 },
-      { min: 13, pct: 0.11 }
-    ],
-    descontoMax: 0.11,           // teto do desconto, nunca acima deste valor
-    inclui: 'Equipa fixa, entregas em tempo real durante a feira e edição do vídeo resumo no dia seguinte.',
-    anual: {
-      k: 'O ano inteiro',
-      titulo: 'Simule o investimento de 2027',
-      texto: 'Abrimos com 7 feiras de 2 dias de cobertura e 7 de 1 dia. Ajuste os números ao calendário que tem em mente: o desconto e o total atualizam. O valor final acerta-se na reunião, com as datas à frente.',
-      comDoisDias: 7,            // valores com que o simulador abre
-      comUmDia: 7
-    },
+    titulo: 'Se fizer sentido, 2027.',
+    texto: 'O primeiro trabalho, no 360 Tech Industry, é por nossa conta. Se depois quiserem avançar para as feiras de 2027, preparamos os valores convosco, com o calendário à frente.',
     fora: {
-      titulo: 'Fica para a reunião',
-      texto: 'São doze feiras no Porto e uma no Algarve. Com o calendário à frente conseguimos juntar feiras próximas na mesma deslocação, e isso muda o custo real. Preferimos fazer essa conta consigo a pôr aqui um número às cegas.',
-      itens: ['Deslocação', 'Alojamento', 'Alimentação da equipa']
-    },
-    notas: [
-      'Investimento s/IVA por feira: € 2.610,00 com 1 dia de cobertura e € 4.770,00 com 2 dias, antes do desconto por volume.',
-      'O desconto aplica-se ao número de feiras confirmadas no contrato anual. Condições do contrato a acordar.'
-    ]
+      titulo: 'Já incluído em cada feira',
+      texto: 'Tal como hoje, a equipa desloca-se a todos os espaços e trata da própria estadia. Quando houver feiras seguidas no Porto, juntamos a deslocação na mesma viagem.',
+      itens: ['Deslocação', 'Alojamento', 'Alimentação da equipa', 'Edição no local']
+    }
   },
 
   condicoes: [
@@ -823,13 +900,13 @@ const PROPOSTA = {
   ],
 
   fecho: {
-    titulo: 'O que falta fecha-se numa conversa.',
-    texto: 'Esta página deixa quatro coisas em aberto. Com o calendário de 2027 à frente, resolvemo-las em vinte minutos.',
+    titulo: 'O próximo passo.',
+    texto: 'Começamos pelo 360 Tech Industry. Numa conversa curta, acertamos:',
     agenda: [
-      'O calendário das feiras e os dias de cobertura em cada uma',
-      'Deslocação, alojamento e alimentação no Porto e no Algarve',
-      'As peças para o recinto e as datas de montagem',
-      'As condições do contrato anual'
+      'Os horários do 360 Tech Industry e quem nos acompanha na feira',
+      'O público e a mensagem do vídeo da experiência',
+      'Um modelo de packs para expositores que sirva a Exponor e os expositores',
+      'O calendário de 2027, quando fizer sentido'
     ]
   }
 };
@@ -895,6 +972,17 @@ const PROPOSTA = {
       <div class="itens">${g.itens.map(it => `<div class="item"><span class="n">${String(++nItem).padStart(2, '0')}</span><div><h4>${esc(it.t)}</h4><p>${esc(it.p)}</p></div></div>`).join('')}</div>
     </div>`).join('');
 
+  // 01 a 03: experiencia, marketing e servicos (numeracao propria em cada secao)
+  const grpF = () => { let n = 0; return g => `
+    <div class="grupo rv${g.escuro ? ' escuro' : ''}">
+      <span class="tag">${esc(g.tag || 'Proposta')}</span><h3>${esc(g.titulo)}</h3>
+      <p class="gs">${esc(g.sub)}</p>
+      <div class="itens">${g.itens.map(it => `<div class="item"><span class="n">${String(++n).padStart(2, '0')}</span><div><h4>${esc(it.t)}</h4><p>${esc(it.p)}</p></div></div>`).join('')}</div>
+    </div>`; };
+  $('#grupos-risco').innerHTML = grpF()(P.parceria.risco);
+  $('#grupos-estrategia').innerHTML = P.estrategia.grupos.map(grpF()).join('');
+  $('#grupos-extra').innerHTML = P.servicos.grupos.map(grpF()).join('');
+
   // 05
   const T = P.trabalho;
   const card = (w, cls) => `<div class="${cls} rv" data-video="${esc(w.video)}" role="button" tabindex="0" aria-label="Ver vídeo · ${esc(w.quem)}">
@@ -909,69 +997,7 @@ const PROPOSTA = {
 
   // 06
   const I = P.investimento;
-  $('#notas').innerHTML = I.notas.map(n => `<p>${esc(n)}</p>`).join('');
 
-  // Simulador anual, com desconto por volume
-  const A = I.anual, p1 = I.planos.find(p => p.dias === 1), p2 = I.planos.find(p => p.dias === 2);
-  const D = I.descontos.slice().sort((x, y) => x.min - y.min);
-  const pctPara = n => Math.min(I.descontoMax, D.reduce((acc, d) => n >= d.min ? d.pct : acc, 0));
-  const pctTxt = v => (Math.round(v * 1000) / 10).toString().replace('.', ',') + '%';
-  const qtd = { 2: A.comDoisDias, 1: A.comUmDia };
-  $('#simulador').innerHTML = `
-    <div>
-      <p class="k">${esc(A.k)}</p>
-      <h3>${esc(A.titulo)}</h3>
-      <p class="t">${esc(A.texto)}</p>
-      <div class="mix">
-        <div class="ln"><span>Feiras com 2 dias de cobertura</span><div class="step"><button type="button" data-q="2" data-d="-1" aria-label="Menos uma feira com 2 dias">−</button><b id="q2"></b><button type="button" data-q="2" data-d="1" aria-label="Mais uma feira com 2 dias">+</button></div></div>
-        <div class="ln"><span>Feiras com 1 dia de cobertura</span><div class="step"><button type="button" data-q="1" data-d="-1" aria-label="Menos uma feira com 1 dia">−</button><b id="q1"></b><button type="button" data-q="1" data-d="1" aria-label="Mais uma feira com 1 dia">+</button></div></div>
-      </div>
-      <div class="escalas">
-        <span class="k">Desconto por volume</span>
-        <div class="row">${D.map(d => `<span data-min="${d.min}"><b>${pctTxt(Math.min(I.descontoMax, d.pct))}</b>${d.min}+ feiras</span>`).join('')}</div>
-      </div>
-    </div>
-    <div class="sim-res" aria-live="polite">
-      <p class="k" id="s-feiras"></p>
-      <div class="grande" id="s-total"></div><div class="iva">total anual, IVA incluído</div>
-      <div class="linhas" style="margin-top:20px">
-        <div><span id="s-l2"></span><b id="s-v2"></b></div>
-        <div><span id="s-l1"></span><b id="s-v1"></b></div>
-        <div><span id="s-ld"></span><b id="s-desc"></b></div>
-        <div><span>Investimento s/IVA</span><b id="s-sub"></b></div>
-        <div><span>IVA (${Math.round(I.iva * 100)}%)</span><b id="s-iva"></b></div>
-        <div class="total"><span>Total anual</span><b id="s-tot"></b></div>
-      </div>
-      <p class="prox" id="s-prox"></p>
-      <p class="media" id="s-media"></p>
-    </div>`;
-  function simular(){
-    const n = qtd[1] + qtd[2], pct = pctPara(n);
-    const v2 = qtd[2] * p2.subtotal, v1 = qtd[1] * p1.subtotal, bruto = v2 + v1;
-    const desc = Math.round(bruto * pct * 100) / 100, sub = Math.round((bruto - desc) * 100) / 100;
-    const iva = Math.round(sub * I.iva * 100) / 100, tot = Math.round((sub + iva) * 100) / 100;
-    $('#q2').textContent = qtd[2]; $('#q1').textContent = qtd[1];
-    $('#s-feiras').textContent = n + (n === 1 ? ' feira' : ' feiras') + ' em 2027';
-    $('#s-l2').textContent = qtd[2] + ' × 2 dias, a ' + eur(p2.subtotal);
-    $('#s-l1').textContent = qtd[1] + ' × 1 dia, a ' + eur(p1.subtotal);
-    $('#s-v2').textContent = eur(v2); $('#s-v1').textContent = eur(v1);
-    $('#s-ld').textContent = pct ? 'Desconto por volume, ' + pctTxt(pct) : 'Desconto por volume';
-    $('#s-desc').textContent = pct ? '− ' + eur(desc) : eur(0);
-    $('#s-sub').textContent = eur(sub); $('#s-iva').textContent = eur(iva);
-    $('#s-tot').textContent = eur(tot); $('#s-total').textContent = eur(tot);
-    const seg = D.find(d => d.min > n && Math.min(I.descontoMax, d.pct) > pct), falta = seg ? seg.min - n : 0;
-    $('#s-prox').textContent = !n ? '' : seg
-      ? 'Com mais ' + falta + (falta === 1 ? ' feira' : ' feiras') + ', o desconto passa para ' + pctTxt(Math.min(I.descontoMax, seg.pct)) + '.'
-      : 'Desconto máximo por volume aplicado.';
-    $('#s-media').textContent = n ? 'Média de ' + eur(sub / n) + ' por feira, s/IVA, já com o desconto. Deslocação, alojamento e alimentação à parte.' : '';
-    document.querySelectorAll('#simulador .escalas [data-min]').forEach(s => s.classList.toggle('on', pct > 0 && Math.min(I.descontoMax, D.find(d => d.min === +s.dataset.min).pct) === pct));
-    document.querySelectorAll('#simulador [data-q]').forEach(b => { b.disabled = +b.dataset.d < 0 && qtd[b.dataset.q] <= 0; });
-  }
-  $('#simulador').addEventListener('click', e => {
-    const b = e.target.closest('[data-q]'); if (!b) return;
-    const k = b.dataset.q; qtd[k] = Math.max(0, Math.min(20, qtd[k] + +b.dataset.d)); simular();
-  });
-  simular();
 
   // Fica para a reuniao
   const F = I.fora;

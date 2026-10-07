@@ -39,4 +39,9 @@
     <loc>https://creativesete.com/en/privacy</loc>
     <priority>0.3</priority>
   </url>
+  <url>
+    <loc>https://creativesete.com/en/services/events/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>

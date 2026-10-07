@@ -411,7 +411,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
 .vid .leg{position:absolute;left:22px;bottom:18px;color:#fff;pointer-events:none}
 .vid .leg b{display:block;font-size:18px;font-weight:500}
 .vid .leg span{font-size:13px;color:rgba(255,255,255,.75)}
-.vid.on .play,.vid.on .leg{display:none}
+.vid.tocar .play,.vid.tocar .leg{display:none}
 /* takes */
 .takes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:44px}
 .take{position:relative;aspect-ratio:16/9;border-radius:18px;overflow:hidden;background:#111;transform:translateZ(0)}
@@ -750,8 +750,8 @@ new IntersectionObserver(es => es.forEach(e => {
 depSom.onclick = () => { if (depV.muted) comSom().catch(() => {}); else semSom(); };
 /* vídeos do YouTube só carregam no clique */
 $$('.vid[data-yt]').forEach(v => v.onclick = () => {
-  if (v.classList.contains('on')) return;
-  v.classList.add('on');
+  if (v.classList.contains('tocar')) return;
+  v.classList.add('tocar');
   v.insertAdjacentHTML('beforeend', `<iframe src="https://www.youtube-nocookie.com/embed/${v.dataset.yt}?autoplay=1&rel=0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen title="Vídeo"></iframe>`);
 });
 

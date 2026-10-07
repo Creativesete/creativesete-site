@@ -16,6 +16,22 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://creativesete.com/servicos/</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://creativesete.com/servicos/eventos/</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://creativesete.com/servicos/podcast/</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://creativesete.com/servicos/cursos/</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://creativesete.com/privacidade</loc>
     <priority>0.3</priority>
   </url>

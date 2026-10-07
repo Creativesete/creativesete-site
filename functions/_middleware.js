@@ -38,7 +38,7 @@ ANTIGOS[SERVICOS_RAIZ] = `${PRINCIPAL}/servicos/`;
 
 // Ficheiros partilhados (imagens, vídeos, logótipos). Páginas HTML de /proposals/ não passam,
 // para não se abrir uma proposta pelo nome da pasta noutro subdomínio.
-const partilhado = p => p.startsWith('/assets/') || p.startsWith('/api/') || p === '/favicon.ico' ||
+const partilhado = p => p.startsWith('/assets/') || p.startsWith('/api/') || p === '/favicon.ico' || p === '/apple-touch-icon.png' ||
   (p.startsWith('/proposals/') && /\.[a-z0-9]{2,5}$/i.test(p) && !p.endsWith('.html'));
 
 const ROBOTS_PROPOSTAS = 'User-agent: *\nDisallow: /\n';

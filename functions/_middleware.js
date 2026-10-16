@@ -18,6 +18,7 @@ const PROPOSTAS = {
   franc60bd9: 'franciscowebsite',// Francisco Lima Marques
   davidcxzz1: 'davidwebsite',    // David Caleja
   pedro5xmkk: 'pedrowebsite',    // Pedro Fernandes
+  ruifilt55ha: 'b7bfd',          // Rui & Filipa · casamento 17 out 2026
 };
 
 const SERVICOS = {

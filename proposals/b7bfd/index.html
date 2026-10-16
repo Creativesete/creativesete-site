@@ -1,0 +1,934 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#000000">
+<title>Rui &amp; Filipa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500&family=Inter+Tight:wght@200;300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<style>
+/* ================================================================
+   Rui & Filipa · 17 out 2026
+   Head no modelo ykproduce.co.jp (sem menu), com alianças e transição luma até ao vídeo.
+   Tudo o que muda vive no objeto CASAMENTO, no início do <script>.
+   Testes: ?rapido=1 (3x mais rápido) · ?saltar=1 (vai direto às fotografias)
+   ================================================================ */
+:root{
+  --red:#c4212a;
+  --hn:"Helvetica Neue",Helvetica,"Inter Tight",Arial,sans-serif;
+  --mono:"Roboto Mono",ui-monospace,monospace;
+  --pad:23px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:#000;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}
+body{background:#fff;color:#000;font-family:var(--hn);-webkit-font-smoothing:antialiased;overflow-x:clip}
+body.preso{overflow:hidden;height:100svh}
+img,video,canvas{display:block}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+
+/* ================= CARREGAMENTO ================= */
+.loading{position:fixed;top:0;left:0;width:100%;height:100svh;background:#000;color:#fff;z-index:999;overflow:hidden;cursor:default}
+.aneis{position:absolute;top:50%;left:50%;width:clamp(104px,9.5vw,142px);opacity:0;will-change:transform,filter}
+.aneis svg{width:100%;height:auto;overflow:visible}
+
+/* letra fina e cinematográfica; cada letra entra e sai com desfoque */
+.frase{font-family:var(--hn);font-weight:200;font-size:clamp(23px,2.8vw,40px);line-height:1.25;letter-spacing:.01em;color:#fff;text-align:center}
+.frase .w,.mv__final h2 .w,.fecho h2 .w{display:inline-block;white-space:nowrap}
+.frase .c,.mv__final h2 .c,.fecho h2 .c{display:inline-block;will-change:transform,filter,opacity}
+.loading__frase{position:absolute;left:var(--pad);right:var(--pad);top:calc(50% + clamp(70px,6.5vw,96px))}
+.loading__toca{position:absolute;left:var(--pad);right:var(--pad);top:calc(50% + clamp(70px,6.5vw,96px));text-align:center;font-family:var(--mono);font-size:12px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;opacity:0;pointer-events:none}
+.loading__toca span{display:block;margin-top:10px;color:rgba(255,255,255,.5);font-size:11px}
+
+.loading__progress{position:absolute;left:var(--pad);bottom:53px;width:calc(100% - var(--pad) * 2);min-height:40px}
+.loading__num{position:absolute;left:0;bottom:0;font-size:clamp(24px,2.93vw,44px);font-weight:300;line-height:1;letter-spacing:.02em;font-variant-numeric:tabular-nums}
+.loading__main{position:absolute;left:22px;bottom:-44px;width:2px;height:8px;background:var(--red)}
+.regua{position:absolute;left:var(--pad);bottom:var(--pad);width:calc(100% - var(--pad) * 2);height:14px;border-bottom:1px solid rgba(255,255,255,.3);overflow:hidden}
+.regua i{position:absolute;bottom:1px;width:1px;height:3px;background:#fff;opacity:.3}
+.regua b{position:absolute;bottom:0;width:1px;height:14px;background:rgba(255,255,255,.3)}
+.regua b.l{left:0}.regua b.r{right:0}
+
+/* sequência luma: as fotografias entram pela luz e a última abre-se para o vídeo */
+.luma{position:absolute;inset:0;width:100%;height:100%;opacity:0;pointer-events:none}
+/* véu por cima das fotografias: centro e fundo mais escuros para as alianças, as frases e a régua */
+.loading__veu{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 75% 65% at 50% 54%,rgba(0,0,0,.6) 0%,rgba(0,0,0,.42) 55%,rgba(0,0,0,.3) 100%),linear-gradient(to top,rgba(0,0,0,.7) 0%,rgba(0,0,0,0) 26%)}
+.loading__frase{text-shadow:0 0 28px rgba(0,0,0,.55)}
+.luma-css{position:absolute;inset:0;opacity:0;pointer-events:none}
+.luma-css img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}
+
+/* ================= HEAD ================= */
+.mv{position:relative;height:100svh;background:#000;overflow:hidden;color:#fff;transition:height 1.4s cubic-bezier(.76,0,.24,1)}
+.mv.encolhe{height:calc(100svh - 64px)}
+.mv__video{position:absolute;inset:0}
+.mv__video video{width:100%;height:100%;object-fit:cover}
+/* telemóvel na vertical: o filme aparece inteiro, para não cortar as legendas do Rui */
+@media (orientation:portrait){.mv__video video{object-fit:contain}}
+.vira{position:absolute;left:0;right:0;top:calc(50% + 31vw);z-index:4;display:none;flex-direction:column;align-items:center;gap:10px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.7);opacity:0;pointer-events:none}
+.vira svg{width:26px;height:26px;animation:vira 2.4s cubic-bezier(.76,0,.24,1) infinite}
+@keyframes vira{0%,20%{transform:rotate(0)}55%,80%{transform:rotate(-90deg)}100%{transform:rotate(0)}}
+@media (orientation:portrait){.vira{display:flex}}
+.mv__escuro{position:absolute;inset:0;background:#000;opacity:0;z-index:1;pointer-events:none}
+
+.logo{position:absolute;top:calc(var(--pad) + 5px);left:var(--pad);z-index:6;display:flex;align-items:center;gap:12px;color:#fff;mix-blend-mode:difference;opacity:0;text-decoration:none}
+.logo svg{width:clamp(30px,2.6vw,38px);height:auto}
+.logo span{font-weight:400;font-size:clamp(14px,1.35vw,19px);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+
+.toque{position:absolute;inset:0;z-index:3;display:none}
+.mv.a-tocar .toque{display:block}
+.estado{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:4;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .4s}
+.estado.on{opacity:1}
+
+/* régua do vídeo: o traço vermelho acompanha o tempo, como no carregamento */
+.mv__barra{position:absolute;left:0;right:0;bottom:0;height:90px;z-index:4;opacity:0;pointer-events:none}
+.mv__progresso{position:absolute;left:var(--pad);bottom:53px;width:calc(100% - var(--pad) * 2);min-height:20px}
+.mv__tempo{position:absolute;left:0;bottom:0;font-family:var(--mono);font-size:12px;letter-spacing:-.03em;line-height:1}
+.mv__main{position:absolute;left:0;bottom:-44px;width:2px;height:8px;background:var(--red)}
+.mv__som{position:absolute;right:var(--pad);top:calc(var(--pad) + 5px);z-index:6;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;display:none;border-bottom:1px solid #fff;padding-bottom:2px}
+.mv.sem-som .mv__som{display:block}
+
+.mv__frase{position:absolute;left:var(--pad);right:var(--pad);top:50%;transform:translateY(-50%);z-index:3;pointer-events:none}
+.mv__final{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 var(--pad);pointer-events:none;visibility:hidden}
+.mv__final.on{visibility:visible}
+.mv__final h2{font-weight:200;font-size:clamp(40px,5.6vw,80px);line-height:1.08;letter-spacing:-.01em}
+.mv__final p{margin-top:26px;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:0}
+.descer{position:absolute;left:50%;bottom:var(--pad);transform:translateX(-50%);z-index:4;width:1px;height:40px;background:rgba(255,255,255,.3);overflow:hidden;opacity:0}
+.descer::after{content:"";position:absolute;left:0;top:-50%;width:1px;height:50%;background:var(--red);animation:cai 1.8s cubic-bezier(.76,0,.24,1) infinite}
+@keyframes cai{to{top:110%}}
+
+/* cartão "ver outra vez", igual ao Play Showreel */
+.reel{position:absolute;right:20px;bottom:80px;z-index:6;display:flex;gap:16px;width:min(300px,calc(100% - 40px));background:#000;border-radius:3px;padding:7px;text-align:left;opacity:0;pointer-events:none}
+.reel.on{pointer-events:auto}
+.reel__video{width:136px;height:77px;border-radius:3px;overflow:hidden;position:relative;flex:none}
+.reel__video img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.16,1,.3,1)}
+.reel:hover .reel__video img{transform:scale(1.08)}
+.reel__video svg{position:absolute;top:50%;left:50%;width:20px;height:20px;transform:translate(-50%,-50%)}
+.reel__textos{padding-block:7px;flex:1;position:relative;min-width:110px}
+.reel__titulo{display:block;font-family:var(--mono);font-size:12px;font-weight:500;line-height:1.2;margin-bottom:9px}
+.reel__tempo{display:block;font-family:var(--mono);font-size:12px;font-weight:500;line-height:1.2;letter-spacing:-.03em}
+.reel__seta{position:absolute;right:12px;bottom:6px;width:11px}
+
+/* escala vertical à direita, presa ao scroll */
+.escala{position:fixed;top:34.2%;right:40px;z-index:50;width:0;height:300px;mix-blend-mode:difference;opacity:0;pointer-events:none;transition:opacity 1s}
+.escala i{position:absolute;right:0;width:4px;height:1px;background:#fff;opacity:.2}
+.escala__main{position:fixed;top:34.2%;right:40px;z-index:51;width:0;opacity:0;pointer-events:none;transition:opacity 1s}
+.escala__main span{position:absolute;top:0;right:-22px;width:14px;height:2px;background:var(--red)}
+body.livre .escala,body.livre .escala__main{opacity:1}
+
+/* ================= FOTOGRAFIAS ================= */
+.galeria{display:none;background:#fff;color:#000}
+.galeria.on{display:block}
+.galeria__topo{height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 var(--pad)}
+.galeria__topo h2{font-weight:400;font-size:17px;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
+.galeria__topo span{font-family:var(--mono);font-size:11px;color:#888;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* as colunas acabam todas à mesma altura: as fotografias das mais curtas esticam um pouco (recorte suave) */
+.grelha{display:flex;align-items:stretch;gap:8px;padding:0 var(--pad) clamp(48px,7vw,96px)}
+.grelha__col{flex:1;min-width:0;display:flex;flex-direction:column;gap:8px}
+.grelha figure{flex:1 0 auto;cursor:zoom-in;background:#f4f4f4;overflow:hidden}
+.grelha figure img{height:100%;object-fit:cover}
+/* cada fotografia entra desfocada e ganha foco */
+.grelha img{width:100%;height:auto;opacity:0;filter:blur(16px);transform:scale(1.07);transition:opacity 1.1s ease,filter 1.4s cubic-bezier(.16,1,.3,1),transform 1.8s cubic-bezier(.16,1,.3,1)}
+.grelha figure.ver img.ok{opacity:1;filter:blur(0);transform:scale(1)}
+.grelha figure.ver:hover img.ok{transform:scale(1.03);transition-duration:1.1s,1.4s,1.2s}
+
+/* bastidores: vídeo rápido por cima do fecho, para descontrair */
+.bts{position:relative;margin:0 var(--pad) clamp(12px,1.6vw,20px);border-radius:10px;clip-path:inset(0 round 10px);overflow:hidden;background:#000;color:#fff;isolation:isolate}
+.bts[hidden]{display:none}
+.bts video{width:100%;height:auto;max-height:88svh;object-fit:cover;filter:blur(var(--foco,0px));transition:filter .9s ease}
+.bts__rotulo{position:absolute;top:18px;left:20px;z-index:2;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;mix-blend-mode:difference}
+.bts__som{position:absolute;right:16px;bottom:16px;z-index:2;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;background:rgba(0,0,0,.45);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-radius:99px;padding:9px 14px}
+@media (max-width:767px){.bts{margin:0 12px 10px}}
+
+/* fecho: fotografia a preto e branco, escurecida, sempre em movimento */
+.fecho{position:relative;min-height:min(100svh,920px);margin:0 var(--pad);border-radius:10px;clip-path:inset(0 round 10px);display:grid;place-items:center;text-align:center;color:#fff;background:#000;overflow:hidden;isolation:isolate;padding:110px var(--pad)}
+.fecho__foto{position:absolute;left:0;right:0;top:-12%;bottom:-12%;z-index:-2;will-change:transform}
+.fecho__foto img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.08) brightness(.42) blur(var(--foco,14px));transform-origin:58% 42%;animation:respira 22s ease-in-out infinite alternate;will-change:transform,filter}
+@keyframes respira{0%{transform:scale(1.06) translate3d(0,0,0)}50%{transform:scale(1.13) translate3d(-1.6%,-1%,0)}100%{transform:scale(1.2) translate3d(1.2%,-2%,0)}}
+.fecho::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 50% 55%,rgba(0,0,0,.05) 0%,rgba(0,0,0,.55) 100%)}
+.fecho::after{content:"";position:absolute;inset:-50%;z-index:-1;pointer-events:none;opacity:.09;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:grao 1s steps(6) infinite}
+@keyframes grao{0%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-4%)}60%{transform:translate(-4%,-1%)}80%{transform:translate(3%,3%)}100%{transform:translate(0,0)}}
+.fecho__miolo{display:flex;flex-direction:column;align-items:center}
+.fecho__data{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:rgba(255,255,255,.7);margin-bottom:24px;opacity:0}
+.fecho h2{font-weight:200;font-size:clamp(42px,6vw,88px);line-height:1.06;letter-spacing:-.01em}
+.fecho p{margin-top:24px;font-size:17px;font-weight:300;line-height:1.55;color:rgba(255,255,255,.85);max-width:34ch;opacity:0}
+.fecho small{display:block;margin-top:28px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.6);opacity:0}
+
+.rodape{position:relative;padding:clamp(40px,6vw,72px) var(--pad) var(--pad);overflow:hidden;background:#fff}
+.rodape .regua{position:relative;left:0;bottom:auto;width:100%;border-bottom-color:rgba(0,0,0,.3)}
+.rodape .regua i{background:#000}
+.rodape .regua b{background:rgba(0,0,0,.3)}
+.rodape__main{position:relative;height:12px}
+.rodape__main span{position:absolute;top:4px;left:0;width:2px;height:8px;background:var(--red)}
+.rodape__nomes{font-weight:200;font-size:clamp(44px,11.6vw,220px);line-height:.9;letter-spacing:-.03em;text-transform:uppercase;white-space:nowrap;margin-top:clamp(18px,3vw,40px)}
+.rodape__linha{display:flex;justify-content:space-between;gap:16px;margin-top:18px;font-family:var(--mono);font-size:11px;color:#888;letter-spacing:.06em}
+
+/* caixa de luz branca, como numa galeria Pixieset */
+.caixa{position:fixed;inset:0;z-index:200;background:#fff;display:grid;place-items:center;opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s}
+.caixa.on{opacity:1;visibility:visible}
+.caixa img{max-width:calc(100vw - 140px);max-height:calc(100svh - 120px);object-fit:contain;transition:opacity .45s ease,filter .6s ease;opacity:0;filter:blur(10px)}
+.caixa img.ok{opacity:1;filter:blur(0)}
+.caixa__btn{position:absolute;width:48px;height:48px;display:grid;place-items:center;color:#000;opacity:.6;transition:opacity .3s}
+.caixa__btn:hover{opacity:1}
+.caixa__btn svg{width:20px;height:20px}
+.caixa__fechar{top:12px;right:12px}
+.caixa__baixar{top:12px;right:62px}
+.caixa__ant{left:12px;top:50%;transform:translateY(-50%)}
+.caixa__seg{right:12px;top:50%;transform:translateY(-50%)}
+.caixa__n{position:absolute;top:28px;left:var(--pad);font-family:var(--mono);font-size:11px;color:#888}
+
+@media (max-width:767px){
+  .loading__main{left:14px}
+  .escala,.escala__main{right:21px}
+  .escala__main span{width:10px;right:-18px}
+  .reel{left:20px;right:auto;bottom:74px;width:auto}
+  .reel__video{width:112px;height:63px}
+  .grelha{gap:4px;padding:0 4px 48px}
+  .grelha__col{gap:4px}
+  .fecho{margin:0 12px;padding:90px 20px}
+  .galeria__topo h2{font-size:14px}
+  .caixa img{max-width:100vw;max-height:calc(100svh - 140px)}
+  .caixa__ant,.caixa__seg{top:auto;bottom:16px;transform:none}
+}
+@media (prefers-reduced-motion:reduce){.fecho__foto img,.fecho::after{animation:none}}
+</style>
+</head>
+<body class="preso">
+
+<!-- ================= CARREGAMENTO ================= -->
+<div class="loading" id="loading">
+  <canvas class="luma" id="luma"></canvas>
+  <div class="luma-css" id="lumaCss"></div>
+  <div class="loading__veu" id="veu"></div>
+  <div class="aneis" id="aneis"></div>
+  <p class="frase loading__frase" id="fraseLoading" aria-live="polite"></p>
+  <div class="loading__toca" id="toca">Toca no ecrã para ver<span>Liga o som</span></div>
+  <div class="loading__progress" data-fade>
+    <p class="loading__num" id="num">00</p>
+    <div class="loading__main" id="main"></div>
+  </div>
+  <div class="regua" id="reguaLoading" data-fade><b class="l"></b><b class="r"></b></div>
+</div>
+
+<!-- ================= HEAD ================= -->
+<header class="mv" id="mv">
+  <div class="mv__video"><video id="video" playsinline webkit-playsinline preload="auto"></video></div>
+  <div class="vira" id="vira"><svg viewBox="0 0 26 26" fill="none" stroke="#fff" stroke-width="1.2"><rect x="8" y="3" width="10" height="20" rx="2"/><path d="M12 19.5h2"/></svg>Vira o telemóvel para ver maior</div>
+  <div class="mv__escuro" id="escuro"></div>
+  <a class="logo" id="logo"><span class="logo__s"></span><span id="logoNome"></span></a>
+  <button class="mv__som" id="btnSom">Ligar o som</button>
+  <div class="toque" id="toque"></div>
+  <p class="estado" id="estado"></p>
+  <div class="mv__barra" id="mvBarra">
+    <div class="mv__progresso" id="mvProgresso"><p class="mv__tempo" id="mvTempo">00:00</p><div class="mv__main" id="mvMain"></div></div>
+    <div class="regua" id="reguaVideo"><b class="l"></b><b class="r"></b></div>
+  </div>
+  <p class="frase mv__frase" id="fraseFim"></p>
+  <div class="mv__final" id="final">
+    <h2 id="finalTitulo"></h2>
+    <p id="finalTexto">Desce para veres as vossas fotografias</p>
+  </div>
+  <div class="descer" id="descer"></div>
+  <button class="reel" id="reel" aria-label="Ver outra vez">
+    <span class="reel__video"><img id="reelImg" alt=""><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="rgba(0,0,0,.45)"/><path d="M8 6v8l6-4z" fill="#fff"/></svg></span>
+    <span class="reel__textos">
+      <span class="reel__titulo">Ver outra vez</span>
+      <span class="reel__tempo" id="reelTempo">00:00</span>
+      <svg class="reel__seta" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.2"><path d="M2 10 10 2M4 2h6v6"/></svg>
+    </span>
+  </button>
+</header>
+
+<div class="escala" id="escala" aria-hidden="true"></div>
+<div class="escala__main" aria-hidden="true"><span id="escalaMain"></span></div>
+
+<!-- ================= FOTOGRAFIAS ================= -->
+<main class="galeria" id="galeria">
+  <div class="galeria__topo"><h2>As vossas fotografias</h2><span id="galeriaInfo"></span></div>
+  <div class="grelha" id="grelha"></div>
+  <section class="bts" id="bts" hidden>
+    <p class="bts__rotulo">Bastidores</p>
+    <video id="btsVideo" playsinline webkit-playsinline loop preload="metadata"></video>
+    <button class="bts__som" id="btsSom">Som ligado</button>
+  </section>
+  <section class="fecho" id="fecho">
+    <div class="fecho__foto" id="fechoFoto"><picture><source id="fechoVertical" media="(orientation: portrait)"><img id="fechoImg" alt=""></picture></div>
+    <div class="fecho__miolo">
+      <p class="fecho__data" id="fechoData"></p>
+      <h2 id="fechoTitulo">Hoje é o vosso dia.</h2>
+      <p id="fechoTexto">Estamos contigo do primeiro ao último momento. Aproveita cada minuto, o resto fica connosco.</p>
+      <small id="fechoAssina">Com carinho · equipa CreativeSete · Gui</small>
+    </div>
+  </section>
+  <footer class="rodape" id="rodape">
+    <div class="regua" id="reguaRodape"><b class="l"></b><b class="r"></b></div>
+    <div class="rodape__main"><span id="rodapeMain"></span></div>
+    <p class="rodape__nomes" id="rodapeNomes"></p>
+    <div class="rodape__linha"><span id="rodapeData"></span><span>Filmado por CreativeSete</span></div>
+  </footer>
+</main>
+
+<div class="caixa" id="caixa" role="dialog" aria-modal="true">
+  <p class="caixa__n" id="caixaN"></p>
+  <img id="caixaImg" alt="">
+  <a class="caixa__btn caixa__baixar" id="caixaBaixar" download aria-label="Descarregar"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M3 16.5h14"/></svg></a>
+  <button class="caixa__btn caixa__fechar" id="caixaFechar" aria-label="Fechar"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3"><path d="m4 4 12 12M16 4 4 16"/></svg></button>
+  <button class="caixa__btn caixa__ant" id="caixaAnt" aria-label="Anterior"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12.5 4 6.5 10l6 6"/></svg></button>
+  <button class="caixa__btn caixa__seg" id="caixaSeg" aria-label="Seguinte"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3"><path d="m7.5 4 6 6-6 6"/></svg></button>
+</div>
+
+<script>
+/* ================================================================
+   CONFIGURAÇÃO · trocar aqui
+   ================================================================ */
+const n2 = n => String(n).padStart(2, '0');
+const VERTICAIS = [1, 8, 9, 10, 11, 14, 15, 17, 18, 23, 24, 25, 26, 28];
+const FOTO = n => ({ n, grande: `media/fotos/foto-${n2(n)}.jpg`, media: `media/fotos/m/foto-${n2(n)}.jpg`, w: VERTICAIS.includes(n) ? 2 : 3, h: VERTICAIS.includes(n) ? 3 : 2 });
+const CASAMENTO = {
+  noivo: 'Rui',
+  noiva: 'Filipa',
+  data: '17.10.2026',
+  local: 'Outubro 2026',
+
+  // Filme do Rui (59,5 s). O pequeno entra nos telemóveis e tablets, o grande nos computadores.
+  video: {
+    grande: 'media/video/rui-1080.mp4',
+    pequeno: 'media/video/rui-720.mp4',
+    poster: 'media/video/poster.jpg'
+  },
+  // Bastidores por cima do fecho (2:47). Vazio = a secção não aparece.
+  bts: 'media/video/bts-720.mp4',
+  btsPoster: 'media/video/bts-poster.jpg',
+
+  // Frases do Rui durante o carregamento, tiradas das legendas do filme
+  frasesAntes: [
+    'Olá meu amor, bom dia.',
+    'Chegou finalmente o dia mais esperado das nossas vidas.',
+    'Tem sido uma caminhada tão boa.',
+    'Quero te dizer que te amo muito.',
+    'Estou seguro do passo que estamos a dar juntos.'
+  ],
+  frasesDepois: [
+    'O primeiro passo do resto das nossas vidas.',
+    'Amo-te muito. Beijinho.'
+  ],
+
+  // Sessão (28 fotografias), misturada para que momentos parecidos não fiquem lado a lado
+  fotos: [2, 11, 6, 16, 13, 25, 4, 18, 23, 7, 27, 14, 19, 1, 10, 21, 8, 15, 5, 26, 12, 24, 28, 9, 20, 22, 17, 3].map(FOTO),
+  // Fotografias que aparecem durante o carregamento: uma lista para ecrãs largos e outra para telemóvel na vertical.
+  // A última fica no ecrã até ao toque e dissolve-se pela luz até ao vídeo.
+  sequenciaLarga: [2, 5, 7, 16, 19, 27, 21, 13],
+  sequenciaVertical: [1, 9, 15, 18, 24, 25, 10, 23],
+  // Fecho "Hoje é o vosso dia", a preto e branco
+  fecho: { larga: 12, vertical: 11 }
+};
+
+/* ================================================================ */
+const Q = new URLSearchParams(location.search);
+const VEL = Q.has('rapido') ? 1 / 3 : 1;
+if (VEL !== 1) gsap.globalTimeline.timeScale(1 / VEL);
+const $ = s => document.querySelector(s);
+const espera = ms => new Promise(r => setTimeout(r, ms * VEL));
+const mobile = () => innerWidth < 767;
+const retrato = innerHeight > innerWidth;
+const mv = $('#mv'), video = $('#video'), loading = $('#loading');
+
+/* ---------- alianças ----------
+   Duas alianças finas em ouro branco polido, com reflexos duros, um diamante e brilhos.
+   Começam apagadas e acendem com o carregamento. */
+const A = { cx: 95, cy: 100 }, B = { cx: 145, cy: 100 }, R = 62;
+function aneis() {
+  const metal = (id, x1, y1, x2, y2) => `<linearGradient id="${id}" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1c1c1c"/><stop offset=".14" stop-color="#f7f7f7"/><stop offset=".22" stop-color="#7e7e7e"/>
+      <stop offset=".38" stop-color="#ffffff"/><stop offset=".47" stop-color="#2a2a2a"/><stop offset=".6" stop-color="#d8d8d8"/>
+      <stop offset=".7" stop-color="#ffffff"/><stop offset=".82" stop-color="#5c5c5c"/><stop offset="1" stop-color="#ededed"/></linearGradient>`;
+  const anel = (c, g) => `<circle cx="${c.cx}" cy="${c.cy}" r="${R}" fill="none" stroke="url(#${g})" stroke-width="6.5"/>
+    <circle cx="${c.cx}" cy="${c.cy}" r="${R - 2.4}" fill="none" stroke="rgba(255,255,255,.9)" stroke-width=".6"/>
+    <circle cx="${c.cx}" cy="${c.cy}" r="${R + 3}" fill="none" stroke="rgba(0,0,0,.6)" stroke-width=".6"/>`;
+  const estrela = (x, y, s, id) => `<path id="${id}" class="glint" d="M${x} ${y - s} L${x + s * .18} ${y - s * .18} L${x + s} ${y} L${x + s * .18} ${y + s * .18} L${x} ${y + s} L${x - s * .18} ${y + s * .18} L${x - s} ${y} L${x - s * .18} ${y - s * .18} Z" fill="#fff" opacity="0"/>`;
+  return `<svg viewBox="0 0 240 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    ${metal('metalA', 33, 38, 157, 162)}${metal('metalB', 207, 38, 83, 162)}
+    <linearGradient id="brilho" x1="0" y1="0" x2="34" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="translate(-80 0) rotate(-28)">
+      <stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity="1"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="pedra" x1="-7" y1="-7" x2="7" y2="8" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff"/><stop offset=".45" stop-color="#e9edf2"/><stop offset=".7" stop-color="#9aa3ad"/><stop offset="1" stop-color="#ffffff"/>
+    </linearGradient>
+    <clipPath id="cruza"><circle cx="120" cy="43.3" r="11"/></clipPath>
+  </defs>
+  <g>${anel(A, 'metalA')}</g>
+  <g>${anel(B, 'metalB')}</g>
+  <g clip-path="url(#cruza)">${anel(A, 'metalA')}</g>
+  <g id="aneisBrilho" opacity="0">
+    <circle cx="${A.cx}" cy="${A.cy}" r="${R}" fill="none" stroke="url(#brilho)" stroke-width="6.5"/>
+    <circle cx="${B.cx}" cy="${B.cy}" r="${R}" fill="none" stroke="url(#brilho)" stroke-width="6.5"/>
+  </g>
+  <g transform="translate(190.2 45.6) rotate(40)">
+    <polygon points="-6.5,-1.6 -4,-5.8 4,-5.8 6.5,-1.6 0,7.5" fill="url(#pedra)"/>
+    <path d="M-6.5,-1.6 H6.5 M-4,-5.8 L-1.6,-1.6 L0,7.5 L1.6,-1.6 L4,-5.8 M-1.6,-1.6 L0,-5.8 L1.6,-1.6" fill="none" stroke="rgba(255,255,255,.85)" stroke-width=".4"/>
+  </g>
+  ${estrela(194, 30, 7, 'g1')}${estrela(52, 62, 4.5, 'g2')}${estrela(176, 150, 4, 'g3')}${estrela(118, 41, 3.5, 'g4')}
+</svg>`;
+}
+function aneisTraco(w = 7) {
+  return `<svg viewBox="0 0 240 200" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#fff" stroke-width="${w}">
+  <circle cx="${A.cx}" cy="${A.cy}" r="${R}"/><circle cx="${B.cx}" cy="${B.cy}" r="${R}"/></svg>`;
+}
+$('#aneis').innerHTML = aneis();
+$('.logo__s').outerHTML = aneisTraco(12);
+
+/* ---------- textos e imagens fixas ---------- */
+const nomes = `${CASAMENTO.noivo} & ${CASAMENTO.noiva}`;
+$('#logoNome').textContent = nomes;
+$('#galeriaInfo').textContent = `${CASAMENTO.fotos.length} fotografias · ${CASAMENTO.local}`;
+$('#fechoData').textContent = CASAMENTO.data;
+$('#rodapeNomes').textContent = nomes;
+$('#rodapeData').textContent = CASAMENTO.data;
+$('#reelImg').src = CASAMENTO.video.poster;
+$('#fechoImg').src = FOTO(CASAMENTO.fecho.larga).grande;
+$('#fechoVertical').srcset = FOTO(CASAMENTO.fecho.vertical).grande;
+
+/* ---------- vídeo ---------- */
+const ecraPequeno = Math.min(screen.width, screen.height) < 820 || matchMedia('(pointer:coarse)').matches;
+video.src = ecraPequeno ? CASAMENTO.video.pequeno : CASAMENTO.video.grande;
+video.poster = CASAMENTO.video.poster;
+const mmss = s => `${n2(Math.floor(s / 60))}:${n2(Math.floor(s % 60))}`;
+video.addEventListener('loadedmetadata', () => { $('#reelTempo').textContent = mmss(video.duration); });
+
+/* ================================================================
+   FOTOGRAFIAS NO CARREGAMENTO · entram pelas zonas de luz enquanto o vídeo carrega,
+   por trás das alianças e das frases; a última dissolve-se pela luz até ao vídeo
+   ================================================================ */
+const listaSeq = (retrato ? CASAMENTO.sequenciaVertical : CASAMENTO.sequenciaLarga).map(n => FOTO(n).media);
+const imagensSeq = listaSeq.map(src => { const im = new Image(); im.decoding = 'async'; im.src = src; return im; });
+const prontaImg = im => im.complete && im.naturalWidth ? Promise.resolve() : new Promise(r => { im.onload = r; im.onerror = r; });
+
+const Luma = (() => {
+  const cv = $('#luma');
+  const gl = cv.getContext('webgl', { premultipliedAlpha: true, alpha: true, antialias: false });
+  if (!gl) return null;
+  const vs = `attribute vec2 p;varying vec2 v;void main(){v=p*.5+.5;gl_Position=vec4(p,0.,1.);}`;
+  const fs = `precision mediump float;
+  varying vec2 v;
+  uniform sampler2D uA,uB;
+  uniform vec2 uRes,uSA,uSB;
+  uniform float uP,uZA,uZB,uFim,uSoft,uLuz;
+  vec2 cover(vec2 uv,vec2 img,float z){
+    float rs=uRes.x/uRes.y, ri=img.x/img.y;
+    vec2 s = rs>ri ? vec2(1.,ri/rs) : vec2(rs/ri,1.);
+    return (uv-.5)*s/z+.5;
+  }
+  float luma(vec3 c){return dot(c,vec3(.299,.587,.114));}
+  void main(){
+    vec4 a=texture2D(uA,cover(v,uSA,uZA));
+    float s=uSoft;
+    if(uFim>.5){
+      float t=mix(-s,1.+s,uP);
+      float k=smoothstep(t-s,t+s,luma(a.rgb));
+      float e=k*(1.-k)*4.;
+      vec3 c=(a.rgb+vec3(1.,.95,.88)*e*.4)*uLuz;
+      gl_FragColor=vec4(c*k,k);
+    }else{
+      vec4 b=texture2D(uB,cover(v,uSB,uZB));
+      float t=mix(1.+s,-s,uP);
+      float m=smoothstep(t-s,t+s,luma(b.rgb));
+      float e=m*(1.-m)*4.;
+      vec3 c=(mix(a.rgb,b.rgb,m)+vec3(1.,.95,.88)*e*.3)*uLuz;
+      gl_FragColor=vec4(c,1.);
+    }
+  }`;
+  const sh = (t, src) => { const s = gl.createShader(t); gl.shaderSource(s, src); gl.compileShader(s); return s; };
+  const pr = gl.createProgram();
+  gl.attachShader(pr, sh(gl.VERTEX_SHADER, vs));
+  gl.attachShader(pr, sh(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(pr);
+  if (!gl.getProgramParameter(pr, gl.LINK_STATUS)) return null;
+  gl.useProgram(pr);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
+  const loc = gl.getAttribLocation(pr, 'p');
+  gl.enableVertexAttribArray(loc);
+  gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+  const U = {};
+  ['uA', 'uB', 'uRes', 'uSA', 'uSB', 'uP', 'uZA', 'uZB', 'uFim', 'uSoft', 'uLuz'].forEach(n => U[n] = gl.getUniformLocation(pr, n));
+  gl.uniform1i(U.uA, 0); gl.uniform1i(U.uB, 1);
+  gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+  function textura(fonte) {
+    const t = gl.createTexture();
+    gl.bindTexture(gl.TEXTURE_2D, t);
+    if (fonte) gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, fonte);
+    else gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 1, 1, 0, gl.RGBA, gl.UNSIGNED_BYTE, new Uint8Array([0, 0, 0, 255]));
+    [gl.TEXTURE_WRAP_S, gl.TEXTURE_WRAP_T].forEach(k => gl.texParameteri(gl.TEXTURE_2D, k, gl.CLAMP_TO_EDGE));
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+    return { t, w: fonte ? fonte.naturalWidth : 1, h: fonte ? fonte.naturalHeight : 1 };
+  }
+  function tamanho() {
+    const d = Math.min(devicePixelRatio || 1, 2);
+    cv.width = Math.round(innerWidth * d); cv.height = Math.round(innerHeight * d);
+    gl.viewport(0, 0, cv.width, cv.height);
+  }
+  tamanho();
+  addEventListener('resize', tamanho);
+  function desenha(a, b, p, za, zb, fim, luz = 1) {
+    gl.activeTexture(gl.TEXTURE0); gl.bindTexture(gl.TEXTURE_2D, a.t);
+    gl.activeTexture(gl.TEXTURE1); gl.bindTexture(gl.TEXTURE_2D, (b || a).t);
+    gl.uniform2f(U.uRes, cv.width, cv.height);
+    gl.uniform2f(U.uSA, a.w, a.h); gl.uniform2f(U.uSB, (b || a).w, (b || a).h);
+    gl.uniform1f(U.uP, p); gl.uniform1f(U.uZA, za); gl.uniform1f(U.uZB, zb);
+    gl.uniform1f(U.uFim, fim ? 1 : 0); gl.uniform1f(U.uSoft, .16); gl.uniform1f(U.uLuz, luz);
+    gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.drawArrays(gl.TRIANGLES, 0, 3);
+  }
+  return { cv, textura, desenha };
+})();
+
+// cada fotografia aproxima-se devagar desde que entra (movimento contínuo)
+const zoom = nasceu => 1 + .12 * Math.exp(-(performance.now() - nasceu) / (3600 * VEL));
+// pequeno desfoque de foco no meio de cada troca
+const foco = (el, p, max = 3.5) => { const b = Math.sin(Math.PI * p) * max; el.style.filter = b > .05 ? `blur(${b.toFixed(2)}px)` : 'none'; };
+
+const fundo = { a: null, b: null, p: 0, nA: 0, nB: 0, luz: .34, fim: false, ativo: false };
+function desenhaFundo() {
+  if (!Luma || !fundo.ativo || !fundo.a) return;
+  Luma.desenha(fundo.a, fundo.b || fundo.a, fundo.p, zoom(fundo.nA), zoom(fundo.b ? fundo.nB : fundo.nA), fundo.fim, fundo.luz);
+  foco(Luma.cv, fundo.fim ? fundo.p * .6 : (fundo.b ? fundo.p : 0));
+}
+const texturas = [];
+if (Luma) imagensSeq.forEach((im, i) => prontaImg(im).then(() => { if (im.naturalWidth) texturas[i] = Luma.textura(im); }));
+const textura = i => new Promise(r => { const t = () => texturas[i] ? r(texturas[i]) : setTimeout(t, 60); t(); });
+
+// as fotografias passam ao longo de todo o carregamento e acendem com as alianças
+async function fotosNoCarregamento(total) {
+  const n = imagensSeq.length, slot = total / n, troca = Math.min(1.6, slot * .62);
+  if (!Luma) return fotosCss(total);
+  fundo.a = Luma.textura(null); fundo.nA = performance.now(); fundo.ativo = true;
+  gsap.ticker.add(desenhaFundo);
+  gsap.set(Luma.cv, { opacity: 1 });
+  gsap.to(fundo, { luz: .58, duration: total, ease: 'power1.in' });
+  for (let i = 0; i < n; i++) {
+    const t0 = performance.now();
+    fundo.b = await textura(i); fundo.nB = performance.now(); fundo.p = 0;
+    await gsap.to(fundo, { p: 1, duration: troca, ease: 'power2.inOut' });
+    fundo.a = fundo.b; fundo.nA = fundo.nB; fundo.b = null; fundo.p = 0;
+    const resto = slot * 1000 * VEL - (performance.now() - t0);
+    if (i < n - 1 && resto > 0) await new Promise(r => setTimeout(r, resto));
+  }
+}
+// depois do toque: a fotografia ganha luz e dissolve-se pela luz até ao vídeo, que já está a falar
+async function fotosParaVideo() {
+  if (!Luma) return fotosCssParaVideo();
+  await gsap.to(fundo, { luz: 1, duration: 1.1, ease: 'power2.inOut' });
+  loading.style.background = 'transparent';
+  tocar();
+  fundo.fim = true; fundo.p = 0;
+  await gsap.to(fundo, { p: 1, duration: 2.2, ease: 'power2.inOut' });
+  fundo.ativo = false;
+  gsap.ticker.remove(desenhaFundo);
+}
+
+// sem WebGL: as mesmas fotografias em fundido com desfoque
+async function fotosCss(total) {
+  const box = $('#lumaCss'), slot = total / listaSeq.length;
+  box.innerHTML = listaSeq.map(s => `<img src="${s}" alt="">`).join('');
+  const ims = [...box.querySelectorAll('img')];
+  gsap.set(box, { opacity: 1 });
+  for (let i = 0; i < ims.length; i++) {
+    gsap.fromTo(ims[i], { opacity: 0, scale: 1.12, filter: 'blur(10px) brightness(.5)' }, { opacity: 1, scale: 1, filter: 'blur(0px) brightness(.5)', duration: slot + 1.5, ease: 'power2.out' });
+    if (i < ims.length - 1) await espera(slot * 1000);
+  }
+}
+async function fotosCssParaVideo() {
+  const box = $('#lumaCss');
+  await gsap.to(box.querySelectorAll('img'), { filter: 'blur(0px) brightness(1)', duration: 1.1 });
+  loading.style.background = 'transparent';
+  tocar();
+  await gsap.to(box, { opacity: 0, filter: 'blur(14px) brightness(1.8)', duration: 2, ease: 'power2.inOut' });
+}
+
+/* ---------- réguas ---------- */
+function fazRegua(el) {
+  el.querySelectorAll('i').forEach(t => t.remove());
+  const w = el.clientWidth, lista = [];
+  for (let x = 6; x < w; x += 6) {
+    const t = document.createElement('i');
+    t.style.left = x + 'px';
+    el.appendChild(t);
+    lista.push([x, t]);
+  }
+  return lista;
+}
+// traços perto do marcador crescem de 3 para 9 px e acendem (mesma fórmula da referência)
+function acende(tracos, regua, marca) {
+  if (!tracos.length) return;
+  const r = marca.getBoundingClientRect(), mx = r.left + r.width / 2 - regua.getBoundingClientRect().left;
+  for (const [x, t] of tracos) {
+    const s = Math.max(0, 1 - Math.abs(mx - x) / 20);
+    t.style.height = (3 + 6 * s) + 'px';
+    t.style.opacity = .3 + .7 * s;
+  }
+}
+let tracosLoading = fazRegua($('#reguaLoading'));
+let tracosVideo = [];
+let tracosRodape = [];
+
+/* ---------- contador, marcador vermelho e luz das alianças ---------- */
+const prog = { p: 0 };
+const aneisEl = $('#aneis');
+function desenhaProgresso() {
+  const p = prog.p, k = p / 100, m = mobile();
+  $('#num').textContent = n2(Math.floor(p));
+  $('#num').style.left = (p * (m ? .87 : .95)) + '%';
+  const ini = m ? 14 : 22, fim = m ? 94 : 98;
+  $('#main').style.left = `calc(${ini}px + (${fim}% - ${ini}px) * ${k})`;
+  acende(tracosLoading, $('#reguaLoading'), $('#main'));
+  // as alianças acendem: de quase negras a ouro branco polido com halo
+  const luz = .06 + 1.1 * Math.pow(k, 1.2);
+  aneisEl.style.filter = `brightness(${luz.toFixed(3)}) contrast(${(1 + .25 * k).toFixed(3)}) drop-shadow(0 0 ${(k * 7).toFixed(1)}px rgba(255,255,255,${(k * .55).toFixed(3)}))`;
+  $('#aneisBrilho').setAttribute('opacity', Math.min(1, k * 1.2).toFixed(3));
+  const g = Math.max(0, (k - .45) / .55);
+  document.querySelectorAll('.glint').forEach(e => e.style.setProperty('--g', g));
+}
+desenhaProgresso();
+
+// reflexo que atravessa as alianças em ciclo
+const brilho = { x: -80 };
+gsap.to(brilho, { x: 300, duration: 2.6, ease: 'power2.inOut', repeat: -1, repeatDelay: .9, onUpdate: () => {
+  const g = document.getElementById('brilho');
+  if (g) g.setAttribute('gradientTransform', `translate(${brilho.x} 0) rotate(-28)`);
+} });
+// brilhos pequenos que acendem e apagam em tempos diferentes
+document.querySelectorAll('.glint').forEach((e, i) => {
+  gsap.set(e, { transformOrigin: '50% 50%', scale: .2 });
+  gsap.to(e, { scale: 1, rotate: 45, duration: .7, ease: 'sine.inOut', yoyo: true, repeat: -1, repeatDelay: .4 + i * .55, delay: i * .8,
+    onUpdate() {
+      const g = parseFloat(e.style.getPropertyValue('--g')) || 0;
+      e.setAttribute('opacity', (((gsap.getProperty(e, 'scale') - .2) / .8) * g).toFixed(3));
+    } });
+});
+
+/* ---------- frases letra a letra, com desfoque ---------- */
+function parte(el, texto) {
+  el.innerHTML = texto.split(' ').map(w => `<span class="w">${[...w].map(c => `<span class="c">${c}</span>`).join('')}</span>`).join(' ');
+  return el.querySelectorAll('.c');
+}
+function entra(chars, atraso = 0) {
+  return gsap.fromTo(chars,
+    { opacity: 0, yPercent: 45, scaleY: 1.35, filter: 'blur(14px)' },
+    { opacity: 1, yPercent: 0, scaleY: 1, filter: 'blur(0px)', duration: 1.6, delay: atraso, ease: 'power3.out', stagger: { from: 'start', each: .028 } });
+}
+function sai(chars) {
+  return gsap.to(chars, { opacity: 0, yPercent: -35, scaleY: 1.3, filter: 'blur(16px)', duration: .95, ease: 'power2.in', stagger: { from: 'start', each: .016 } });
+}
+
+/* ---------- som: o primeiro toque desbloqueia o vídeo (iPhone e Chrome exigem um toque) ---------- */
+let desbloqueado = false, aTocar = false;
+function desbloqueia() {
+  if (desbloqueado) return;
+  desbloqueado = true;
+  video.muted = false;
+  const p = video.play();
+  if (p) p.then(() => { if (!aTocar) { video.pause(); video.currentTime = 0; } }).catch(() => { desbloqueado = false; });
+}
+loading.addEventListener('click', desbloqueia);
+loading.addEventListener('touchend', desbloqueia, { passive: true });
+
+/* ================================================================
+   SEQUÊNCIA · carregamento linear com as frases do Rui e as fotografias por trás,
+   depois a última fotografia abre-se para o vídeo
+   ================================================================ */
+const DUR_FRASE = 3700;
+async function carregar() {
+  gsap.set(aneisEl, { xPercent: -50, yPercent: -50, rotate: -20 });
+  await espera(500);
+  gsap.to(aneisEl, { opacity: 1, duration: 2, ease: 'power4.out' });
+  await espera(800);
+
+  const frases = CASAMENTO.frasesAntes, total = frases.length * DUR_FRASE / 1000;
+  // o contador anda sempre ao mesmo ritmo, sem paragens
+  gsap.to(prog, { p: 100, duration: total, ease: 'none', onUpdate: desenhaProgresso });
+  gsap.to(aneisEl, { rotate: 0, duration: total, ease: 'power1.inOut' });
+  const fotos = fotosNoCarregamento(total);
+
+  const el = $('#fraseLoading');
+  for (const f of frases) {
+    const chars = parte(el, f);
+    entra(chars);
+    await espera(DUR_FRASE - 1150);
+    await sai(chars);
+    await espera(200);
+  }
+  el.innerHTML = '';
+  await fotos;
+  await espera(150);
+
+  // a 100: se ainda não houve toque, pede um (sem toque o telemóvel não deixa tocar com som)
+  if (!desbloqueado) {
+    gsap.fromTo('#toca', { opacity: 0, filter: 'blur(10px)' }, { opacity: 1, filter: 'blur(0px)', duration: 1.2, ease: 'power3.out' });
+    const pulso = gsap.to(aneisEl, { scale: 1.06, duration: 1.3, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+    await new Promise(res => {
+      const ok = () => { desbloqueia(); res(); };
+      loading.addEventListener('click', ok, { once: true });
+      loading.addEventListener('touchend', ok, { once: true, passive: true });
+    });
+    pulso.kill();
+    gsap.to('#toca', { opacity: 0, filter: 'blur(10px)', duration: .7 });
+  }
+
+  // saída: as alianças afastam-se e desfocam, a régua e o véu apagam
+  gsap.to(aneisEl, { scale: .55, rotate: 20, opacity: 0, duration: 1.6, ease: 'power3.inOut' });
+  gsap.to('#aneis svg', { filter: 'blur(10px)', duration: 1.4, ease: 'power2.in' });
+  gsap.to('[data-fade]', { opacity: 0, pointerEvents: 'none', duration: 1.2, ease: 'power3.out' });
+  gsap.to('#veu', { opacity: 0, duration: 1.4, ease: 'power2.inOut' });
+  await espera(500);
+  await fotosParaVideo();
+
+  loading.remove();
+  gsap.fromTo('#logo', { opacity: 0, filter: 'blur(8px)' }, { opacity: 1, filter: 'blur(0px)', duration: 1.4, ease: 'power3.out' });
+  gsap.to('#mvBarra', { opacity: .9, duration: 1.4, ease: 'power4.out' });
+  tracosVideo = fazRegua($('#reguaVideo'));
+}
+
+/* ---------- vídeo ---------- */
+function tocar() {
+  aTocar = true;
+  video.currentTime = 0;
+  video.muted = false;
+  mv.classList.add('a-tocar');
+  video.play().catch(() => {
+    video.muted = true;
+    mv.classList.add('sem-som');
+    video.play().catch(() => {});
+  });
+  manterEcra();
+  if (matchMedia('(orientation:portrait)').matches) {
+    gsap.fromTo('#vira', { opacity: 0, filter: 'blur(8px)' }, { opacity: 1, filter: 'blur(0px)', duration: 1.2, delay: 2.4, ease: 'power3.out' });
+    gsap.to('#vira', { opacity: 0, filter: 'blur(8px)', duration: 1, delay: 7.5, ease: 'power2.in' });
+  }
+}
+let wakeLock = null;
+async function manterEcra() { try { wakeLock = await navigator.wakeLock?.request('screen'); } catch (e) {} }
+
+$('#btnSom').addEventListener('click', e => { e.stopPropagation(); video.muted = false; mv.classList.remove('sem-som'); if (video.paused) video.play(); });
+$('#toque').addEventListener('click', () => {
+  if (video.muted) { video.muted = false; mv.classList.remove('sem-som'); }
+  else if (video.paused) video.play(); else video.pause();
+  const e = $('#estado');
+  e.textContent = video.paused ? 'Pausa · toca para continuar' : '';
+  e.classList.toggle('on', video.paused);
+});
+
+function desenhaVideo() {
+  if (video.duration) {
+    const k = video.currentTime / video.duration;
+    const w = $('#mvProgresso').clientWidth;
+    $('#mvMain').style.left = (k * (w - 2)) + 'px';
+    const t = $('#mvTempo');
+    t.textContent = mmss(video.duration - video.currentTime);
+    t.style.left = Math.min(w - t.offsetWidth, Math.max(0, k * w - t.offsetWidth / 2)) + 'px';
+    acende(tracosVideo, $('#reguaVideo'), $('#mvMain'));
+  }
+  if (aTocar && !video.paused) requestAnimationFrame(desenhaVideo);
+}
+video.addEventListener('play', () => requestAnimationFrame(desenhaVideo));
+
+/* ---------- fim do vídeo ---------- */
+video.addEventListener('ended', async () => {
+  if (!aTocar) return;
+  aTocar = false;
+  try { wakeLock && wakeLock.release(); } catch (e) {}
+  mv.classList.remove('a-tocar');
+  gsap.to('#mvBarra', { opacity: 0, duration: .8 });
+  await gsap.to('#escuro', { opacity: .62, duration: 1.6, ease: 'power2.out' });
+  const el = $('#fraseFim');
+  for (const f of CASAMENTO.frasesDepois) {
+    const chars = parte(el, f);
+    await entra(chars);
+    await espera(1300);
+    await sai(chars);
+    await espera(200);
+  }
+  el.innerHTML = '';
+  mostraFinal();
+});
+
+function mostraFinal() {
+  $('#final').classList.add('on');
+  gsap.set('#final', { opacity: 1 });
+  entra(parte($('#finalTitulo'), `Tem um dia lindo, ${CASAMENTO.noiva}.`));
+  gsap.fromTo('#finalTexto', { opacity: 0, filter: 'blur(8px)' }, { opacity: .85, filter: 'blur(0px)', duration: 1.4, delay: .9, ease: 'power3.out' });
+  gsap.fromTo('#descer', { opacity: 0 }, { opacity: 1, duration: 1.4, delay: 1.2, ease: 'power4.out' });
+  gsap.fromTo('#reel', { opacity: 0, y: 14, filter: 'blur(6px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1.2, delay: 1.4, ease: 'power4.out', onStart: () => $('#reel').classList.add('on') });
+  liberta();
+}
+
+function liberta() {
+  $('#galeria').classList.add('on');
+  document.body.classList.remove('preso');
+  document.body.classList.add('livre');
+  requestAnimationFrame(() => mv.classList.add('encolhe'));
+  iniciaGaleria();
+}
+
+$('#reel').addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  $('#reel').classList.remove('on');
+  gsap.to(['#final', '#descer', '#reel'], { opacity: 0, duration: .5, onComplete: () => $('#final').classList.remove('on') });
+  gsap.to('#escuro', { opacity: 0, duration: 1 });
+  gsap.to('#mvBarra', { opacity: .9, duration: 1 });
+  if (!tracosVideo.length) tracosVideo = fazRegua($('#reguaVideo'));
+  mv.classList.remove('encolhe');
+  tocar();
+});
+
+/* ---------- modo de teste: ?saltar=1 ---------- */
+function saltar() {
+  loading.remove();
+  gsap.set('#logo', { opacity: 1 });
+  gsap.set('#escuro', { opacity: .62 });
+  const ir = () => { video.currentTime = Math.max(0, video.duration - .1); };
+  video.readyState >= 1 ? ir() : video.addEventListener('loadedmetadata', ir, { once: true });
+  mostraFinal();
+}
+
+/* ================================================================
+   FOTOGRAFIAS · grelha simples em colunas
+   ================================================================ */
+// cada fotografia vai para a coluna mais curta, pela ordem da lista: lê-se da esquerda para a direita
+function montaGrelha() {
+  const F = CASAMENTO.fotos, n = mobile() ? 2 : 3, g = $('#grelha');
+  g.innerHTML = '';
+  const cols = Array.from({ length: n }, () => { const c = document.createElement('div'); c.className = 'grelha__col'; g.appendChild(c); return c; });
+  const alt = new Array(n).fill(0);
+  F.forEach((f, i) => {
+    const k = alt.indexOf(Math.min(...alt));
+    cols[k].insertAdjacentHTML('beforeend', `<figure data-i="${i}" style="aspect-ratio:${f.w}/${f.h}"><img src="${f.media}" alt="" loading="lazy" style="transition-delay:${k * 110}ms"></figure>`);
+    alt[k] += f.h / f.w;
+  });
+  g.querySelectorAll('img').forEach(im => {
+    const ok = () => im.classList.add('ok');
+    im.complete && im.naturalWidth ? ok() : im.addEventListener('load', ok, { once: true });
+  });
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('ver'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+  g.querySelectorAll('figure').forEach(f => io.observe(f));
+}
+
+let galeriaFeita = false;
+function iniciaGaleria() {
+  if (galeriaFeita) return; galeriaFeita = true;
+  montaGrelha();
+  let colunas = mobile() ? 2 : 3;
+  addEventListener('resize', () => { const c = mobile() ? 2 : 3; if (c !== colunas) { colunas = c; montaGrelha(); } });
+  $('#grelha').addEventListener('click', e => { const f = e.target.closest('figure'); if (f) abreCaixa(+f.dataset.i); });
+
+  // bastidores: toca com som quando aparece no ecrã e pára quando sai
+  if (CASAMENTO.bts) {
+    const sec = $('#bts'), bv = $('#btsVideo'), bs = $('#btsSom');
+    sec.hidden = false;
+    bv.src = CASAMENTO.bts;
+    bv.poster = CASAMENTO.btsPoster;
+    bv.muted = false;
+    const somTxt = () => bs.textContent = bv.muted ? 'Ligar o som' : 'Som ligado';
+    bs.addEventListener('click', () => { bv.muted = !bv.muted; somTxt(); if (bv.paused) bv.play().catch(() => {}); });
+    new IntersectionObserver(es => es.forEach(e => {
+      if (e.intersectionRatio > .55) bv.play().catch(() => { bv.muted = true; somTxt(); bv.play().catch(() => {}); });
+      else bv.pause();
+      bv.style.setProperty('--foco', e.intersectionRatio > .55 ? '0px' : '10px');
+    }), { threshold: [0, .55, 1] }).observe(sec);
+  }
+
+  // fecho: letras com desfoque ao entrar, foco que se ajusta e paralaxe da fotografia
+  const fecho = $('#fecho'), fotoF = $('#fechoFoto'), imgF = $('#fechoImg');
+  let fechoVisto = false;
+  const ioF = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting || fechoVisto) return;
+    fechoVisto = true;
+    gsap.fromTo('#fechoData', { opacity: 0, filter: 'blur(8px)' }, { opacity: 1, filter: 'blur(0px)', duration: 1.4, ease: 'power3.out' });
+    entra(parte($('#fechoTitulo'), 'Hoje é o vosso dia.'), .2);
+    gsap.fromTo('#fechoTexto', { opacity: 0, y: 14, filter: 'blur(10px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1.6, delay: .9, ease: 'power3.out' });
+    gsap.fromTo('#fechoAssina', { opacity: 0, filter: 'blur(8px)' }, { opacity: 1, filter: 'blur(0px)', duration: 1.4, delay: 1.4, ease: 'power3.out' });
+  }), { threshold: .35 });
+  ioF.observe(fecho);
+
+  // régua do rodapé: o traço vermelho segue o rato
+  const rr = $('#reguaRodape'), rm = $('#rodapeMain'), rod = $('#rodape');
+  tracosRodape = fazRegua(rr);
+  const casa = () => gsap.to(rm, { x: rr.clientWidth * .1, duration: 1.3, ease: 'power4.out', overwrite: 'auto', onUpdate: () => acende(tracosRodape, rr, rm) });
+  casa();
+  rod.addEventListener('mousemove', e => {
+    const x = e.clientX - rr.getBoundingClientRect().left;
+    gsap.to(rm, { x, duration: .15, ease: 'none', overwrite: 'auto', onUpdate: () => acende(tracosRodape, rr, rm) });
+  });
+  rod.addEventListener('mouseleave', casa);
+
+  // escala vertical à direita
+  const esc = $('#escala'), linhas = [];
+  for (let i = 0; i < 50; i++) { const l = document.createElement('i'); l.style.top = (i * 6) + 'px'; esc.appendChild(l); linhas.push([i * 6, l]); }
+  const em = $('#escalaMain');
+  function aoScroll() {
+    const max = document.documentElement.scrollHeight - innerHeight;
+    const y = (max > 0 ? scrollY / max : 0) * 295;
+    em.style.transform = `translateY(${y}px)`;
+    for (const [ly, l] of linhas) {
+      const s = Math.max(0, 1 - Math.abs(ly - y) / 20);
+      l.style.width = (4 + 8 * s) + 'px';
+      l.style.opacity = .2 + .8 * s;
+    }
+    // fecho: a fotografia sobe mais devagar que a página e entra em foco ao centrar-se
+    const r = fecho.getBoundingClientRect();
+    if (r.top < innerHeight && r.bottom > 0) {
+      const k = (r.top + r.height / 2 - innerHeight / 2) / innerHeight;
+      fotoF.style.transform = `translate3d(0,${(k * -9).toFixed(2)}%,0)`;
+      imgF.style.setProperty('--foco', `${Math.min(14, Math.abs(k) * 22).toFixed(2)}px`);
+    }
+  }
+  aoScroll();
+  addEventListener('scroll', aoScroll, { passive: true });
+  addEventListener('resize', aoScroll);
+}
+
+/* ---------- caixa de luz ---------- */
+let atual = 0;
+const caixa = $('#caixa'), caixaImg = $('#caixaImg');
+function abreCaixa(i) { atual = i; mostraFoto(); caixa.classList.add('on'); document.body.style.overflow = 'hidden'; }
+function fechaCaixa() { caixa.classList.remove('on'); document.body.style.overflow = ''; }
+function mostraFoto() {
+  const F = CASAMENTO.fotos;
+  atual = (atual + F.length) % F.length;
+  const src = F[atual].grande;
+  caixaImg.classList.remove('ok');
+  const im = new Image();
+  im.onload = () => { caixaImg.src = src; requestAnimationFrame(() => caixaImg.classList.add('ok')); };
+  im.src = src;
+  $('#caixaBaixar').href = src;
+  $('#caixaBaixar').setAttribute('download', `rui-e-filipa-${n2(F[atual].n)}.jpg`);
+  $('#caixaN').textContent = `${n2(atual + 1)} / ${n2(F.length)}`;
+}
+$('#caixaFechar').onclick = fechaCaixa;
+$('#caixaAnt').onclick = () => { atual--; mostraFoto(); };
+$('#caixaSeg').onclick = () => { atual++; mostraFoto(); };
+caixa.addEventListener('click', e => { if (e.target === caixa) fechaCaixa(); });
+addEventListener('keydown', e => {
+  if (!caixa.classList.contains('on')) return;
+  if (e.key === 'Escape') fechaCaixa();
+  if (e.key === 'ArrowLeft') { atual--; mostraFoto(); }
+  if (e.key === 'ArrowRight') { atual++; mostraFoto(); }
+});
+let tx0 = null;
+caixa.addEventListener('touchstart', e => tx0 = e.touches[0].clientX, { passive: true });
+caixa.addEventListener('touchend', e => { if (tx0 == null) return; const d = e.changedTouches[0].clientX - tx0; if (Math.abs(d) > 50) { atual += d < 0 ? 1 : -1; mostraFoto(); } tx0 = null; });
+
+addEventListener('resize', () => {
+  if (document.body.contains(loading)) { tracosLoading = fazRegua($('#reguaLoading')); desenhaProgresso(); }
+  if (tracosVideo.length) tracosVideo = fazRegua($('#reguaVideo'));
+  if (galeriaFeita) tracosRodape = fazRegua($('#reguaRodape'));
+});
+
+/* ---------- arranque ---------- */
+if (Q.has('saltar')) saltar(); else carregar();
+</script>
+</body>
+</html>

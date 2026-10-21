@@ -19,6 +19,7 @@ const PROPOSTAS = {
   davidcxzz1: 'davidwebsite',    // David Caleja
   pedro5xmkk: 'pedrowebsite',    // Pedro Fernandes
   ruifilt55ha: 'b7bfd',          // Rui & Filipa · casamento 17 out 2026
+  gocoi4k8vz: '4c7e2',           // Go Coimbra · Web Summit 2026 (CIM Região de Coimbra)
 };
 
 const SERVICOS = {

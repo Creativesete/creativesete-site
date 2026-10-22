@@ -640,9 +640,9 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
     </div>
     <div class="formatos rv"><div class="seg2" id="fmt" role="tablist"><button type="button" data-f="h" class="on" role="tab">Horizontal · 16:9</button><button type="button" data-f="v" role="tab">Vertical · 9:16</button></div><span class="dica">Os dois formatos são para aprovar.</span></div>
     <div class="player rv" id="player">
-      <span class="ver" id="verTag">Versão 1 · 16:9</span>
-      <div class="h-wrap"><video id="vidH" playsinline preload="auto" poster="media/poster.jpg"><source src="media/dicas01.mp4" type="video/mp4"></video></div>
-      <div class="tel"><div class="ecra"><video id="vidV" playsinline preload="metadata" poster="media/poster-vertical.jpg"><source src="media/dicas01-vertical.mp4" type="video/mp4"></video></div></div>
+      <span class="ver" id="verTag">Versão 2 · 16:9</span>
+      <div class="h-wrap"><video id="vidH" playsinline preload="auto" poster="media/poster.jpg"><source src="media/dicas01-v2.mp4" type="video/mp4"></video></div>
+      <div class="tel"><div class="ecra"><video id="vidV" playsinline preload="metadata" poster="media/poster-vertical.jpg"><source src="media/dicas01-vertical-v2.mp4" type="video/mp4"></video></div></div>
       <button type="button" class="grande" id="bigPlay" aria-label="Reproduzir"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
     </div>
     <div class="ctl rv" id="ctl">
@@ -659,7 +659,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
       <p class="info">Nesta página os vídeos estão <b>comprimidos</b> para abrir depressa. Em alta qualidade, os dois formatos estão na pasta partilhada.</p>
       <div class="desc">
         <a class="pill" href="https://drive.google.com/drive/folders/1zfWeOVqUXAoUOO4wlcydZjBUEXprBZQ3" target="_blank" rel="noopener">Descarregar em alta qualidade</a>
-        <a class="pill linha" id="leve" href="media/dicas01.mp4" download="Dicas-da-Farmaceutica-01-16x9-v1.mp4">Versão leve · 16:9</a>
+        <a class="pill linha" id="leve" href="media/dicas01-v2.mp4" download="Dicas-da-Farmaceutica-01-16x9-v2.mp4">Versão leve · 16:9</a>
       </div>
     </div>
   </div>
@@ -710,7 +710,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
 <script>
 const D = {
   codigo: 'dicas01q8zr',
-  peca: 'Dicas da Farmacêutica · vídeo 01, 16:9 e 9:16 (versão 1)',
+  peca: 'Dicas da Farmacêutica · vídeo 01, 16:9 e 9:16 (versão 2)',
   email: 'contact@creativesete.com', tel: '351963899070',
   feito: [
     ['Edição e ritmo', 'Cortes limpos, sem pausas, com o texto aprovado pelo laboratório do princípio ao fim.'],
@@ -755,9 +755,9 @@ function ativa(f){
   if (f === 'v') vidV.preload = 'auto';
   $('#player').classList.toggle('vert', f === 'v'); $('#player').classList.remove('a-tocar'); ctl.classList.remove('a-tocar');
   $$('#fmt button').forEach(b => b.classList.toggle('on', b.dataset.f === f));
-  $('#verTag').textContent = 'Versão 1 · ' + fmt;
-  const leve = $('#leve'); leve.href = f === 'v' ? 'media/dicas01-vertical.mp4' : 'media/dicas01.mp4';
-  leve.download = f === 'v' ? 'Dicas-da-Farmaceutica-01-9x16-v1.mp4' : 'Dicas-da-Farmaceutica-01-16x9-v1.mp4';
+  $('#verTag').textContent = 'Versão 2 · ' + fmt;
+  const leve = $('#leve'); leve.href = f === 'v' ? 'media/dicas01-vertical-v2.mp4' : 'media/dicas01-v2.mp4';
+  leve.download = f === 'v' ? 'Dicas-da-Farmaceutica-01-9x16-v2.mp4' : 'Dicas-da-Farmaceutica-01-16x9-v2.mp4';
   leve.textContent = 'Versão leve · ' + fmt;
   pinta();
 }

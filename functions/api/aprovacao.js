@@ -14,10 +14,17 @@
 const CRM = 'https://crm.creativesete.com';
 
 const ENTREGAS = {
+  // Uma página pode ter vários vídeos: cada um aponta para a sua edição no CRM
   dicas01q8zr: {
-    peca: 'Dicas da Farmacêutica · vídeo 01 (16:9 e 9:16)',
-    editId: '3faea02b83a981fe9dabec4e7e50a670',
     contactId: '3ebea02b83a981878733cb85e54707f6',
+    videos: {
+      '01': { peca: 'Dicas da Farmacêutica · vídeo 01 (16:9 e 9:16)', editId: '3faea02b83a981fe9dabec4e7e50a670' },
+      '02': { peca: 'Dicas da Farmacêutica · vídeo 02 (16:9 e 9:16)', editId: '3faea02b83a98155ba57d77a224f52c7' },
+      '03': { peca: 'Dicas da Farmacêutica · vídeo 03 (16:9 e 9:16)', editId: '3faea02b83a981b1bed7c82a0129b5ed' },
+      '04': { peca: 'Dicas da Farmacêutica · vídeo 04 (16:9 e 9:16)', editId: '3faea02b83a981949fc8d33a9b412884' },
+      '05': { peca: 'Dicas da Farmacêutica · vídeo 05 (16:9 e 9:16)', editId: '3faea02b83a981bdac4ac5bbb5ef03a2' },
+      '06': { peca: 'Dicas da Farmacêutica · vídeo 06 (16:9 e 9:16)', editId: '3faea02b83a98175b581ca6a7e84477c' },
+    },
   },
 };
 
@@ -44,8 +51,12 @@ export async function onRequestPost({ request, env }) {
 
   let d;
   try { d = await request.json(); } catch { return json({ ok: false, erro: 'pedido inválido' }, 400); }
-  const e = ENTREGAS[String(d.codigo || '')];
-  if (!e) return json({ ok: false, erro: 'entrega desconhecida' }, 404);
+  const entrega = ENTREGAS[String(d.codigo || '')];
+  if (!entrega) return json({ ok: false, erro: 'entrega desconhecida' }, 404);
+  // Sem número de vídeo vale o primeiro (páginas antigas, com um só vídeo)
+  const v = entrega.videos[String(d.video || '01')];
+  if (!v) return json({ ok: false, erro: 'vídeo desconhecido' }, 404);
+  const e = { ...v, contactId: entrega.contactId };
   const decisao = d.decisao === 'aprovado' ? 'aprovado' : d.decisao === 'alteracoes' ? 'alteracoes' : null;
   if (!decisao) return json({ ok: false, erro: 'decisão em falta' }, 400);
   const texto = String(d.texto || '').trim().slice(0, 4000);

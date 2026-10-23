@@ -7,8 +7,8 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<title>Dicas da Farmacêutica · Vídeo 01 para aprovação · CreativeSete</title>
-<meta name="description" content="Primeiro vídeo das Dicas da Farmacêutica, editado e pronto a validar.">
+<title>Dicas da Farmacêutica · Vídeos para aprovação · CreativeSete</title>
+<meta name="description" content="Os seis vídeos das Dicas da Farmacêutica, editados e prontos a validar.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@200;300;400;500;600&display=swap" rel="stylesheet">
@@ -524,6 +524,16 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
 .seg2 button{padding:11px 18px;border-radius:999px;border:0;background:transparent;font:inherit;font-size:13px;cursor:pointer;color:var(--texto);transition:all .35s}
 .seg2 button.on{background:var(--carvao);color:#fff}
 .formatos .dica{font-size:13.5px;color:var(--tenue)}
+.vsel{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px}
+.vsel button{display:grid;gap:2px;min-width:96px;padding:12px 18px;border-radius:18px;border:0;background:var(--cinza);font:inherit;text-align:left;cursor:pointer;color:var(--texto);transition:all .35s}
+.vsel button b{font-weight:500;font-size:15px}
+.vsel button small{font-size:11.5px;color:var(--tenue);transition:color .35s}
+.vsel button.on{background:var(--carvao);color:#fff}
+.vsel button.on small{color:rgba(255,255,255,.7)}
+.vsel button.feito small{color:#1F9D61}
+.vsel+.formatos{margin-top:18px}
+.sobre-v{margin:0 0 14px;font-size:13.5px;color:rgba(255,255,255,.7)}
+.sobre-v b{color:#fff;font-weight:500}
 .formatos+.player{margin-top:18px}
 .player .h-wrap{display:block}
 .player .tel{display:none}
@@ -605,7 +615,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
 </head>
 <body><!--email_off-->
 <header class="nav" id="nav"><div class="in">
-  <nav><a href="#video">O vídeo</a><a href="#feito">O que fizemos</a></nav>
+  <nav><a href="#video">Os vídeos</a><a href="#feito">O que fizemos</a></nav>
   <a class="marca" href="https://creativesete.com/"><img src="/assets/logo_dark.png" alt="CreativeSete"></a>
   <nav class="dir"><a href="#aprovacao">Aprovação</a></nav>
   <a class="pill falar" href="#aprovacao">Aprovar</a>
@@ -618,13 +628,13 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
   <div class="brilho"></div>
   <div class="in">
     <div>
-      <p class="onair"><i></i>Para aprovação · 16:9 e 9:16</p>
-      <h1 id="h1"><span class="l"><span style="--i:0">Dicas da Farmacêutica.</span></span><span class="l"><span style="--i:1"><em>Vídeo 01 para validar.</em></span></span></h1>
+      <p class="onair"><i></i>Para aprovação · 6 vídeos · 16:9 e 9:16</p>
+      <h1 id="h1"><span class="l"><span style="--i:0">Dicas da Farmacêutica.</span></span><span class="l"><span style="--i:1"><em>A série para validar.</em></span></span></h1>
     </div>
     <div class="lado">
-      <p>O primeiro vídeo da série, editado do início ao fim, em horizontal e em vertical, para validarem todos os elementos antes de avançarmos com os restantes.</p>
+      <p>Os seis vídeos da série, editados do início ao fim, em horizontal e em vertical. Escolham o vídeo, vejam-no nos dois formatos e aprovem ou peçam alterações, um a um.</p>
       <div class="ondas" id="ondas" aria-hidden="true"></div>
-      <a class="pill claro" href="#video">Ver o vídeo</a>
+      <a class="pill claro" href="#video">Ver os vídeos</a>
     </div>
   </div>
 </section>
@@ -632,17 +642,18 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
 <section class="sec" id="video">
   <div class="wrap">
     <div class="ent-cab">
-      <div class="num rv"><b>01</b><span>[ O vídeo ]</span></div>
+      <div class="num rv"><b>01</b><span>[ Os vídeos ]</span></div>
       <div>
-        <h2 class="tit lin" data-lin="Instituto Pharmcare|Dicas da Farmacêutica 01"></h2>
+        <h2 class="tit lin" data-lin="Instituto Pharmcare|Dicas da Farmacêutica"></h2>
         <p class="sub rv" style="--d:.2s">Com a Dra. Paula Iglésias, gravado a 13 de outubro na Farmácia do Altinho.</p>
       </div>
     </div>
+    <div class="vsel rv" id="vsel" role="tablist" aria-label="Escolher o vídeo"></div>
     <div class="formatos rv"><div class="seg2" id="fmt" role="tablist"><button type="button" data-f="h" class="on" role="tab">Horizontal · 16:9</button><button type="button" data-f="v" role="tab">Vertical · 9:16</button></div><span class="dica">Os dois formatos são para aprovar.</span></div>
     <div class="player rv" id="player">
-      <span class="ver" id="verTag">Versão 2 · 16:9</span>
-      <div class="h-wrap"><video id="vidH" playsinline preload="auto" poster="media/poster.jpg"><source src="media/dicas01-v2.mp4" type="video/mp4"></video></div>
-      <div class="tel"><div class="ecra"><video id="vidV" playsinline preload="metadata" poster="media/poster-vertical.jpg"><source src="media/dicas01-vertical-v2.mp4" type="video/mp4"></video></div></div>
+      <span class="ver" id="verTag"></span>
+      <div class="h-wrap"><video id="vidH" playsinline preload="auto"></video></div>
+      <div class="tel"><div class="ecra"><video id="vidV" playsinline preload="metadata"></video></div></div>
       <button type="button" class="grande" id="bigPlay" aria-label="Reproduzir"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
     </div>
     <div class="ctl rv" id="ctl">
@@ -656,10 +667,10 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
       <button type="button" id="cFull" aria-label="Ecrã inteiro"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
     </div>
     <div class="sob rv">
-      <p class="info">Nesta página os vídeos estão <b>comprimidos</b> para abrir depressa. Em alta qualidade, os dois formatos estão na pasta partilhada.</p>
+      <p class="info">Nesta página os vídeos estão <b>comprimidos</b> para abrir depressa. Em alta qualidade, todos os vídeos estão na pasta partilhada.</p>
       <div class="desc">
         <a class="pill" href="https://drive.google.com/drive/folders/1zfWeOVqUXAoUOO4wlcydZjBUEXprBZQ3" target="_blank" rel="noopener">Descarregar em alta qualidade</a>
-        <a class="pill linha" id="leve" href="media/dicas01-v2.mp4" download="Dicas-da-Farmaceutica-01-16x9-v2.mp4">Versão leve · 16:9</a>
+        <a class="pill linha" id="leve" href="#" download>Versão leve · 16:9</a>
       </div>
     </div>
   </div>
@@ -669,7 +680,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
   <div class="wrap feito-l">
     <div class="num rv"><b>02</b><span>[ O que fizemos ]</span></div>
     <div>
-      <p class="frase rv">Todo o material já está editado. Enviamos primeiro este vídeo, nos dois formatos, para validarem os elementos que acrescentámos; <em>depois de aprovada, os restantes vídeos seguem a mesma linha.</em></p>
+      <p class="frase rv">Os seis vídeos estão editados. Seguem a mesma linha do vídeo 01, que já validaram, <em>com os mesmos elementos em todos.</em></p>
       <div class="levamos rv" style="--d:.15s" id="feitoG"></div>
     </div>
   </div>
@@ -680,15 +691,16 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
     <div>
       <div class="num rv"><b>03</b><span>[ A vossa aprovação ]</span></div>
       <h2 class="tit lin" style="margin-top:26px" data-lin="Está tudo bem,|ou ajustamos?"></h2>
-      <p class="sub rv">Escolham uma opção. Se quiserem alterações, escrevam as observações e os apontamentos na caixa: podem marcar o momento exato do vídeo com um clique. A mensagem segue já escrita por WhatsApp ou email, e fica registada no nosso sistema para a equipa de edição acompanhar cada pedido até ao fim.</p>
+      <p class="sub rv">A resposta vale para o vídeo escolhido acima. Escolham uma opção. Se quiserem alterações, escrevam as observações e os apontamentos na caixa: podem marcar o momento exato do vídeo com um clique. A mensagem segue já escrita por WhatsApp ou email, e fica registada no nosso sistema para a equipa de edição acompanhar cada pedido até ao fim.</p>
     </div>
     <form class="pedido rv" id="form" style="--d:.15s" novalidate>
+      <p class="sobre-v" id="sobreV"></p>
       <div class="opcoes">
         <button type="button" class="op2" data-d="aprovado"><span class="c"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><b>Aprovado</b><small>Sem alterações</small></button>
         <button type="button" class="op2" data-d="alteracoes"><span class="c"><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16v4zM13.5 6.5l4 4"/></svg></span><b>Desejo alterações</b><small>Escrevo o que mudar</small></button>
       </div>
       <div class="caixa-obs" id="obsBox"><div>
-        <label class="cp"><span>Observações e apontamentos</span><textarea id="obs" rows="6" placeholder="Ex.: [16:9 · 0:12] trocar a palavra na legenda · [9:16 · 0:40] logótipo um pouco maior"></textarea></label>
+        <label class="cp"><span>Observações e apontamentos</span><textarea id="obs" rows="6" placeholder="Ex.: [02 · 16:9 · 0:12] trocar a palavra na legenda · [02 · 9:16 · 0:40] logótipo um pouco maior"></textarea></label>
         <button type="button" class="tc" id="tc"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Marcar o momento do vídeo (<span id="tcAgora">0:00</span>)</button>
       </div></div>
       <label class="cp"><span>O seu nome <em>opcional</em></span><input type="text" id="nome" autocomplete="name"></label>
@@ -710,7 +722,8 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
 <script>
 const D = {
   codigo: 'dicas01q8zr',
-  peca: 'Dicas da Farmacêutica · vídeo 01, 16:9 e 9:16 (versão 2)',
+  // cada vídeo: número, versão e os ficheiros leves (16:9 e 9:16) com o cartaz
+  videos: ['01', '02', '03', '04', '05', '06'].map(n => ({ n, ver: n === '01' ? '3' : '1' })),
   email: 'contact@creativesete.com', tel: '351963899070',
   feito: [
     ['Edição e ritmo', 'Cortes limpos, sem pausas, com o texto aprovado pelo laboratório do princípio ao fim.'],
@@ -735,7 +748,9 @@ if (matchMedia('(hover:hover)').matches && !calmo) $('#topo').addEventListener('
 
 /* vídeo e momento atual */
 const vidH = $('#vidH'), vidV = $('#vidV');
-let vid = vidH, fmt = '16:9';
+let vid = vidH, fmt = '16:9', atual = D.videos[0];
+const src = (v, f) => `media/dicas${v.n}${f === 'v' ? '-vertical' : ''}.mp4`;
+const peca = v => `Dicas da Farmacêutica · vídeo ${v.n}, 16:9 e 9:16 (versão ${v.ver})`;
 const mmss = t => Math.floor(t / 60) + ':' + String(Math.floor(t % 60)).padStart(2, '0');
 
 const ctl = $('#ctl'), scrub = $('#scrub');
@@ -755,12 +770,37 @@ function ativa(f){
   if (f === 'v') vidV.preload = 'auto';
   $('#player').classList.toggle('vert', f === 'v'); $('#player').classList.remove('a-tocar'); ctl.classList.remove('a-tocar');
   $$('#fmt button').forEach(b => b.classList.toggle('on', b.dataset.f === f));
-  $('#verTag').textContent = 'Versão 2 · ' + fmt;
-  const leve = $('#leve'); leve.href = f === 'v' ? 'media/dicas01-vertical-v2.mp4' : 'media/dicas01-v2.mp4';
-  leve.download = f === 'v' ? 'Dicas-da-Farmaceutica-01-9x16-v2.mp4' : 'Dicas-da-Farmaceutica-01-16x9-v2.mp4';
-  leve.textContent = 'Versão leve · ' + fmt;
-  pinta();
+  rotula(); pinta();
 }
+function rotula(){
+  const f = fmt === '9:16' ? 'v' : 'h';
+  $('#verTag').textContent = `Vídeo ${atual.n} · versão ${atual.ver} · ${fmt}`;
+  const leve = $('#leve'); leve.href = src(atual, f);
+  leve.download = `Dicas-da-Farmaceutica-${atual.n}-${f === 'v' ? '9x16' : '16x9'}-v${atual.ver}.mp4`;
+  leve.textContent = 'Versão leve · ' + fmt;
+  $('#sobreV').innerHTML = `A responder sobre o <b>vídeo ${atual.n}</b>, nos dois formatos.`;
+}
+/* escolha do vídeo: cada um guarda a sua resposta enquanto a página está aberta */
+const respostas = {};
+function escolhe(v){
+  if (atual && v !== atual) respostas[atual.n] = { decisao, obs: $('#obs').value, enviado: respostas[atual.n]?.enviado };
+  atual = v;
+  [vidH, vidV].forEach(x => x.pause());
+  vidH.src = src(v, 'h'); vidH.poster = `media/poster${v.n}.jpg`;
+  vidV.src = src(v, 'v'); vidV.poster = `media/poster${v.n}-vertical.jpg`;
+  vidV.preload = fmt === '9:16' ? 'auto' : 'metadata';
+  vidH.load(); vidV.load();
+  $('#player').classList.remove('a-tocar'); ctl.classList.remove('a-tocar');
+  $$('#vsel button').forEach(b => b.classList.toggle('on', b.dataset.n === v.n));
+  const r = respostas[v.n] || {};
+  decisao = r.decisao || null; $('#obs').value = r.obs || '';
+  $$('.op2').forEach(x => x.classList.toggle('on', x.dataset.d === decisao));
+  $('#obsBox').classList.toggle('on', decisao === 'alteracoes');
+  $('#okMsg').classList.toggle('on', !!r.enviado);
+  rotula(); pinta(); atualiza();
+}
+$('#vsel').innerHTML = D.videos.map(v => `<button type="button" role="tab" data-n="${v.n}"><b>Vídeo ${v.n}</b><small>versão ${v.ver}</small></button>`).join('');
+$$('#vsel button').forEach(b => b.onclick = () => escolhe(D.videos.find(v => v.n === b.dataset.n)));
 $$('#fmt button').forEach(b => b.onclick = () => ativa(b.dataset.f));
 scrub.addEventListener('input', () => { if (!vid.duration) return; vid.currentTime = scrub.value / 1000 * vid.duration; scrub.style.setProperty('--p', scrub.value / 10 + '%'); $('#tAgora').textContent = mmss(vid.currentTime); });
 $('#barra').addEventListener('pointermove', e => { if (!vid.duration) return; const r = scrub.getBoundingClientRect(), f = Math.min(1, Math.max(0, (e.clientX - r.left) / r.width)); const h = $('#hoverT'); h.textContent = mmss(f * vid.duration); h.style.left = f * 100 + '%'; });
@@ -769,7 +809,7 @@ $('#cSom').onclick = () => { vid.muted = !vid.muted; $('#cSom').classList.toggle
 $('#cFull').onclick = () => { if (document.fullscreenElement) return document.exitFullscreen(); if (vid.requestFullscreen) vid.requestFullscreen(); else if (vid.webkitEnterFullscreen) vid.webkitEnterFullscreen(); };
 addEventListener('keydown', e => { if (e.target.closest('textarea,input')) return; if (e.key === 'ArrowLeft') { vid.currentTime = Math.max(0, vid.currentTime - 5); } if (e.key === 'ArrowRight') { vid.currentTime = Math.min(vid.duration || 0, vid.currentTime + 5); } if (e.key === ' ' && e.target === document.body) { e.preventDefault(); alterna(); } });
 $('#tc').onclick = () => {
-  const ta = $('#obs'), marca = `[${fmt} · ${mmss(vid.currentTime)}] `;
+  const ta = $('#obs'), marca = `[${atual.n} · ${fmt} · ${mmss(vid.currentTime)}] `;
   const p = ta.selectionStart ?? ta.value.length, antes = ta.value.slice(0, p), depois = ta.value.slice(p);
   const pre = antes && !antes.endsWith('\n') ? '\n' : '';
   ta.value = antes + pre + marca + depois; ta.focus();
@@ -777,7 +817,7 @@ $('#tc').onclick = () => {
 };
 
 /* aprovação */
-let decisao = null;
+var decisao = null;
 $$('.op2').forEach(b => b.onclick = () => {
   decisao = b.dataset.d;
   $$('.op2').forEach(x => x.classList.toggle('on', x === b));
@@ -787,7 +827,7 @@ $$('.op2').forEach(b => b.onclick = () => {
 });
 function mensagem(){
   const nome = $('#nome').value.trim(), obs = $('#obs').value.trim();
-  const L = [`Olá Lucas, sobre o vídeo ${D.peca}:`, ''];
+  const L = [`Olá Lucas, sobre o vídeo ${peca(atual)}:`, ''];
   if (decisao === 'aprovado') L.push('Está aprovado, sem alterações.');
   else { L.push('Gostávamos de algumas alterações:', '', obs); }
   if (nome) L.push('', nome);
@@ -797,22 +837,24 @@ function valido(){ return decisao === 'aprovado' || (decisao === 'alteracoes' &&
 function atualiza(){
   const ok = valido(), txt = mensagem();
   $('#wa').href = `https://wa.me/${D.tel}?text=${encodeURIComponent(txt)}`;
-  $('#mail').href = `mailto:${D.email}?subject=${encodeURIComponent('Aprovação · ' + D.peca)}&body=${encodeURIComponent(txt)}`;
+  $('#mail').href = `mailto:${D.email}?subject=${encodeURIComponent('Aprovação · ' + peca(atual))}&body=${encodeURIComponent(txt)}`;
   $$('#wa,#mail').forEach(a => a.setAttribute('aria-disabled', ok ? 'false' : 'true'));
   $('#aviso').textContent = !decisao ? 'Escolha uma das opções acima.' : ok ? 'A mensagem já vai escrita. Só tem de carregar em enviar.' : 'Escreva as observações para podermos enviar.';
   $('#aviso').classList.toggle('ok', ok);
 }
 function regista(canal){
   if (!valido()) return;
-  const corpo = JSON.stringify({ codigo: D.codigo, decisao, texto: $('#obs').value.trim(), nome: $('#nome').value.trim(), canal });
+  const corpo = JSON.stringify({ codigo: D.codigo, video: atual.n, decisao, texto: $('#obs').value.trim(), nome: $('#nome').value.trim(), canal });
   try { fetch('/api/aprovacao', { method: 'POST', headers: { 'content-type': 'application/json' }, body: corpo, keepalive: true }).catch(() => {}); } catch (e) {}
   $('#okMsg').classList.add('on');
+  respostas[atual.n] = { decisao, obs: $('#obs').value, enviado: true };
+  const b = $(`#vsel button[data-n="${atual.n}"]`); b.classList.add('feito'); b.querySelector('small').textContent = decisao === 'aprovado' ? 'aprovado' : 'alterações enviadas';
 }
 $('#wa').addEventListener('click', () => regista('whatsapp'));
 $('#mail').addEventListener('click', () => regista('email'));
 $('#form').addEventListener('input', atualiza);
 $('#form').addEventListener('submit', e => e.preventDefault());
-atualiza();
+escolhe(D.videos[0]);
 
 /* revelações */
 const io = new IntersectionObserver(es => es.forEach(e => {

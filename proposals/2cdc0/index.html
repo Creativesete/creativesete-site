@@ -706,11 +706,25 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
   .galeria figure{margin-bottom:8px;border-radius:12px}
   .pronto{padding:18px}
 }
+/* aprovação na página escura: separador e seletor claro sobre carvão */
+.aprov{border-top:1px solid rgba(255,255,255,.08)}
+.aprov::before{background:radial-gradient(50% 60% at 0% 100%,rgba(154,107,67,.26),transparent 60%)}
+.aprov .wrap{align-items:start}
+.aprov .vsel{margin-top:0;margin-bottom:18px}
+.aprov .vsel button{background:rgba(255,255,255,.07);color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}
+.aprov .vsel button small{color:rgba(255,255,255,.55)}
+.aprov .vsel button.on{background:#fff;color:var(--carvao);box-shadow:none}
+.aprov .vsel button.on small{color:var(--texto)}
+.aprov .vsel button.feito small{color:#7FD4A6}
+.aprov .vsel button.on.feito small{color:#1F9D61}
+.pedido .cp em{font-style:normal;text-transform:none;letter-spacing:0;opacity:.7}
+.ok-msg{background:rgba(217,174,126,.14);border-color:rgba(217,174,126,.4)}
+@media (max-width:640px){.aprov .vsel button{flex:1 1 30%;min-width:0;padding:11px 12px}}
 </style>
 </head>
 <body><!--email_off-->
 <header class="nav" id="nav"><div class="in">
-  <nav><a href="#fotos">As fotografias</a><a href="#videos">Os vídeos</a></nav>
+  <nav><a href="#fotos">As fotografias</a><a href="#videos">Os vídeos</a><a href="#aprovacao">A aprovação</a></nav>
   <a class="marca" href="https://creativesete.com/"><img src="/assets/logo_dark.png" alt="CreativeSete"></a>
   <nav class="dir"><a href="https://clients.creativesete.com/saraneves/" target="_blank" rel="noopener">Galeria</a></nav>
   <a class="pill falar" href="https://clients.creativesete.com/saraneves/" target="_blank" rel="noopener">Galeria</a>
@@ -728,7 +742,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
       <h1 id="h1"><span class="l"><span style="--i:0"><span class="troca" id="troca1">As fotografias</span></span></span><span class="l"><span style="--i:1"><em>estão pront<span class="troca" id="troca2">as</span>.</em></span></span></h1>
     </div>
     <div class="lado">
-      <p>As fotografias do brunch já estão editadas na vossa galeria, prontas a descarregar. Os vídeos também estão prontos: o highlight, o vídeo da mentoria e os depoimentos das alunas, para ver e descarregar mais abaixo.</p>
+      <p>As fotografias do brunch já estão editadas na vossa galeria, prontas a descarregar. Os vídeos também estão prontos: o highlight, o vídeo da mentoria e os depoimentos das alunas, para ver e descarregar mais abaixo. No fim da página podem aprovar cada um ou pedir alterações.</p>
       <div class="ondas" id="ondas" aria-hidden="true"></div>
       <a class="pill claro" href="https://clients.creativesete.com/saraneves/" target="_blank" rel="noopener">Abrir a galeria</a>
     </div>
@@ -759,11 +773,11 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
       <div class="num rv"><b>02</b><span>[ Os vídeos ]</span></div>
       <div>
         <h2 class="tit lin" data-lin="Os vídeos|estão prontos"></h2>
-        <p class="sub rv" style="--d:.2s">O highlight do brunch, o vídeo da mentoria e os depoimentos das alunas estão prontos. Podem vê-los aqui e descarregá-los na versão que precisarem.</p>
+        <p class="sub rv" style="--d:.2s">O highlight do brunch, o vídeo da mentoria e os depoimentos das alunas estão prontos. Podem vê-los aqui, descarregá-los na versão que precisarem e, no fim da página, dizer-nos se aprovam ou se querem alterações.</p>
       </div>
     </div>
     <div class="hl">
-      <div class="ecra rv"><video src="media/highlight.mp4" poster="media/poster-highlight.jpg" controls playsinline preload="metadata"></video></div>
+      <div class="ecra rv"><video id="vHl" src="media/highlight.mp4" poster="media/poster-highlight.jpg" controls playsinline preload="metadata"></video></div>
       <div class="rv" style="--d:.15s">
         <span class="est"><i></i>Pronto</span>
         <h3>O highlight do brunch</h3>
@@ -776,7 +790,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
       </div>
     </div>
     <div class="hl">
-      <div class="ecra rv"><video src="media/mentoria.mp4" poster="media/poster-mentoria.jpg" controls playsinline preload="metadata"></video></div>
+      <div class="ecra rv"><video id="vMt" src="media/mentoria.mp4" poster="media/poster-mentoria.jpg" controls playsinline preload="metadata"></video></div>
       <div class="rv" style="--d:.15s">
         <span class="est"><i></i>Pronto</span>
         <h3>O vídeo da mentoria CEO de Beleza</h3>
@@ -795,6 +809,32 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
     </div>
     <div class="deps"><a class="dep rv" style="--d:0.00s" href="https://drive.usercontent.google.com/download?id=1mAppJxLQE4S3Gu9Xo_fFldxSOGkErRpp&export=download&confirm=t" target="_blank" rel="noopener"><span class="n">01</span><span class="nm"><b>Rebecca</b><small>4:00 · 4K · 611 MB</small></span><svg viewBox="0 0 24 24"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19.5h14"/></svg></a><a class="dep rv" style="--d:0.06s" href="https://drive.usercontent.google.com/download?id=1jZ3B6IIPVnQYuffJUWwmq5WCuwHAipps&export=download&confirm=t" target="_blank" rel="noopener"><span class="n">02</span><span class="nm"><b>Catarina</b><small>1:05 · 4K · 166 MB</small></span><svg viewBox="0 0 24 24"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19.5h14"/></svg></a><a class="dep rv" style="--d:0.12s" href="https://drive.usercontent.google.com/download?id=1zTY1eB9iBzjtesF2xE8r-qKsm9OX_YjR&export=download&confirm=t" target="_blank" rel="noopener"><span class="n">03</span><span class="nm"><b>Sofia</b><small>1:49 · 4K · 279 MB</small></span><svg viewBox="0 0 24 24"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19.5h14"/></svg></a><a class="dep rv" style="--d:0.18s" href="https://drive.usercontent.google.com/download?id=1rIEUG3UtASnlR_88j8siP9xLdRwzhxFr&export=download&confirm=t" target="_blank" rel="noopener"><span class="n">04</span><span class="nm"><b>Liliana</b><small>1:33 · 4K · 237 MB</small></span><svg viewBox="0 0 24 24"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19.5h14"/></svg></a><a class="dep rv" style="--d:0.00s" href="https://drive.usercontent.google.com/download?id=14yJTtE_pnVPsEuBSQDWh0vRLkseQc0Gt&export=download&confirm=t" target="_blank" rel="noopener"><span class="n">05</span><span class="nm"><b>Carmen</b><small>1:50 · 4K · 282 MB</small></span><svg viewBox="0 0 24 24"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19.5h14"/></svg></a><a class="dep rv" style="--d:0.06s" href="https://drive.usercontent.google.com/download?id=1WM1QgHv9a2ZU9exlPJk5IJu3ogJYCGJe&export=download&confirm=t" target="_blank" rel="noopener"><span class="n">06</span><span class="nm"><b>Nilsa</b><small>3:08 · 4K · 479 MB</small></span><svg viewBox="0 0 24 24"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19.5h14"/></svg></a><a class="dep rv" style="--d:0.12s" href="https://drive.usercontent.google.com/download?id=1R-IklsVq7YHnHEbb9EowHkcNYYCKvai_&export=download&confirm=t" target="_blank" rel="noopener"><span class="n">07</span><span class="nm"><b>Ana Serra</b><small>1:49 · 4K · 279 MB</small></span><svg viewBox="0 0 24 24"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19.5h14"/></svg></a><a class="dep rv" style="--d:0.18s" href="https://drive.usercontent.google.com/download?id=1vg-SvNNa12LgteESQFXLJgdMyqAObAWN&export=download&confirm=t" target="_blank" rel="noopener"><span class="n">08</span><span class="nm"><b>Inês</b><small>1:49 · 4K · 278 MB</small></span><svg viewBox="0 0 24 24"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19.5h14"/></svg></a><a class="dep rv" style="--d:0.00s" href="https://drive.usercontent.google.com/download?id=1YflUt0sqA1hk-i4H1JFuvR9WHpakIPUi&export=download&confirm=t" target="_blank" rel="noopener"><span class="n">09</span><span class="nm"><b>Joana</b><small>2:37 · 4K · 401 MB</small></span><svg viewBox="0 0 24 24"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19.5h14"/></svg></a><a class="dep rv" style="--d:0.06s" href="https://drive.usercontent.google.com/download?id=1-AQxMLSOk3NMoOspF3145U9leDHZGZpF&export=download&confirm=t" target="_blank" rel="noopener"><span class="n">10</span><span class="nm"><b>Joana Coelho</b><small>2:24 · 4K · 365 MB</small></span><svg viewBox="0 0 24 24"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19.5h14"/></svg></a><a class="dep rv" style="--d:0.12s" href="https://drive.usercontent.google.com/download?id=1ujLRKfF5EmVvVEC1KsfLHDhr9zlTG997&export=download&confirm=t" target="_blank" rel="noopener"><span class="n">11</span><span class="nm"><b>Vânia</b><small>1:29 · 4K · 226 MB</small></span><svg viewBox="0 0 24 24"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19.5h14"/></svg></a></div>
     <p class="deps-pasta rv">Também estão todos juntos <a href="https://drive.google.com/drive/folders/1WL8IkYSzHNsQDB2a4WkxcMgSthDuFfSb" target="_blank" rel="noopener">nesta pasta da Drive</a>.</p>
+  </div>
+</section>
+
+<section class="sec cta escuro aprov" id="aprovacao">
+  <div class="wrap">
+    <div>
+      <div class="num rv"><b>03</b><span>[ A vossa aprovação ]</span></div>
+      <h2 class="tit lin" style="margin-top:26px" data-lin="Está tudo bem,|ou ajustamos?"></h2>
+      <p class="sub rv">Escolham o vídeo e uma opção. Se quiserem alterações, escrevam as observações na caixa: no highlight e no vídeo da mentoria podem marcar o momento exato com um clique. A mensagem segue já escrita por WhatsApp ou email, e fica registada no nosso sistema para a equipa de edição acompanhar cada pedido até ao fim.</p>
+    </div>
+    <form class="pedido rv" id="form" style="--d:.15s" novalidate>
+      <div class="vsel" id="vsel"></div>
+      <p class="sobre-v" id="sobreV"></p>
+      <div class="opcoes">
+        <button type="button" class="op2" data-d="aprovado"><span class="c"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><b>Aprovado</b><small>Sem alterações</small></button>
+        <button type="button" class="op2" data-d="alteracoes"><span class="c"><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16v4zM13.5 6.5l4 4"/></svg></span><b>Desejo alterações</b><small>Escrevo o que mudar</small></button>
+      </div>
+      <div class="caixa-obs" id="obsBox"><div>
+        <label class="cp"><span>Observações e apontamentos</span><textarea id="obs" rows="6"></textarea></label>
+        <button type="button" class="tc" id="tc"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Marcar o momento do vídeo (<span id="tcAgora">0:00</span>)</button>
+      </div></div>
+      <label class="cp"><span>O seu nome <em>opcional</em></span><input type="text" id="nome" autocomplete="name"></label>
+      <div class="env"><a class="pill claro" id="wa" href="#" target="_blank" rel="noopener" aria-disabled="true">Enviar por WhatsApp</a><a class="pill" id="mail" href="#" aria-disabled="true" style="background:transparent;box-shadow:inset 0 0 0 1px rgba(255,255,255,.4)">Enviar por email</a></div>
+      <p class="aviso" id="aviso">Escolha uma das opções acima.</p>
+      <p class="ok-msg" id="okMsg">Obrigado! Recebemos a vossa resposta e a equipa de edição já está a par.</p>
+    </form>
   </div>
 </section>
 
@@ -854,6 +894,83 @@ if (!calmo) setInterval(() => {
     [t1, t2].forEach(t => { t.classList.remove('sai'); t.classList.add('entra'); void t.offsetWidth; t.classList.remove('entra'); });
   }, 450);
 }, 3200);
+
+/* aprovação: cada vídeo tem a sua resposta, registada no CRM pela função /api/aprovacao */
+const A = {
+  codigo: 'saran65zo6', email: 'contact@creativesete.com', tel: '351963899070',
+  videos: [
+    { n: '01', nome: 'Highlight', sub: 'do brunch', peca: 'o highlight do brunch', el: $('#vHl'), marca: 'Highlight' },
+    { n: '02', nome: 'Mentoria', sub: 'CEO de Beleza', peca: 'o vídeo da mentoria CEO de Beleza', el: $('#vMt'), marca: 'Mentoria' },
+    { n: '03', nome: 'Depoimentos', sub: 'as 11 alunas', peca: 'os depoimentos das alunas', el: null },
+  ],
+};
+const mmss = s => { s = Math.max(0, Math.floor(s || 0)); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); };
+let va = A.videos[0], decisao = null;
+const respostas = {};
+$('#vsel').innerHTML = A.videos.map(v => `<button type="button" data-n="${v.n}"><b>${esc(v.nome)}</b><small>${esc(v.sub)}</small></button>`).join('');
+function escolhe(v){
+  if (va && v !== va) respostas[va.n] = { decisao, obs: $('#obs').value, enviado: respostas[va.n]?.enviado };
+  va = v;
+  $$('#vsel button').forEach(b => b.classList.toggle('on', b.dataset.n === v.n));
+  $('#sobreV').innerHTML = `A responder sobre <b>${esc(v.peca)}</b>.`;
+  $('#tc').style.display = v.el ? '' : 'none';
+  $('#obs').placeholder = v.el ? `Ex.: [${v.marca} · 0:12] trocar esta frase na legenda · [${v.marca} · 0:40] tirar este plano`
+    : 'Ex.: Depoimento 05, Carmen: cortar a frase do início · Depoimento 09, Joana: o nome no ficheiro';
+  const r = respostas[v.n] || {};
+  decisao = r.decisao || null; $('#obs').value = r.obs || '';
+  $$('.op2').forEach(x => x.classList.toggle('on', x.dataset.d === decisao));
+  $('#obsBox').classList.toggle('on', decisao === 'alteracoes');
+  $('#okMsg').classList.toggle('on', !!r.enviado);
+  hora(); atualiza();
+}
+$$('#vsel button').forEach(b => b.onclick = () => escolhe(A.videos.find(v => v.n === b.dataset.n)));
+const hora = () => { if (va.el) $('#tcAgora').textContent = mmss(va.el.currentTime); };
+A.videos.forEach(v => v.el && ['timeupdate', 'seeked'].forEach(t => v.el.addEventListener(t, () => { if (v === va) hora(); })));
+$('#tc').onclick = () => {
+  if (!va.el) return;
+  const ta = $('#obs'), marca = `[${va.marca} · ${mmss(va.el.currentTime)}] `;
+  const antes = ta.value.slice(0, ta.selectionStart), depois = ta.value.slice(ta.selectionEnd);
+  const pre = antes && !/\n$/.test(antes) ? '\n' : '';
+  ta.value = antes + pre + marca + depois; ta.focus();
+  const pos = (antes + pre + marca).length; ta.setSelectionRange(pos, pos); atualiza();
+};
+$$('.op2').forEach(b => b.onclick = () => {
+  decisao = b.dataset.d;
+  $$('.op2').forEach(x => x.classList.toggle('on', x === b));
+  $('#obsBox').classList.toggle('on', decisao === 'alteracoes');
+  if (decisao === 'alteracoes') setTimeout(() => $('#obs').focus(), 350);
+  atualiza();
+});
+function mensagem(){
+  const nome = $('#nome').value.trim(), obs = $('#obs').value.trim();
+  const L = [`Olá Lucas, sobre ${va.peca}:`, ''];
+  if (decisao === 'aprovado') L.push('Está aprovado, sem alterações.');
+  else L.push('Gostávamos de algumas alterações:', '', obs);
+  if (nome) L.push('', nome);
+  return L.join('\n');
+}
+function valido(){ return decisao === 'aprovado' || (decisao === 'alteracoes' && $('#obs').value.trim().length > 2); }
+function atualiza(){
+  const ok = valido(), txt = mensagem();
+  $('#wa').href = `https://wa.me/${A.tel}?text=${encodeURIComponent(txt)}`;
+  $('#mail').href = `mailto:${A.email}?subject=${encodeURIComponent('Aprovação · Sara Neves · ' + va.nome)}&body=${encodeURIComponent(txt)}`;
+  $$('#wa,#mail').forEach(a => a.setAttribute('aria-disabled', ok ? 'false' : 'true'));
+  $('#aviso').textContent = !decisao ? 'Escolha uma das opções acima.' : ok ? 'A mensagem já vai escrita. Só tem de carregar em enviar.' : 'Escreva as observações para podermos enviar.';
+  $('#aviso').classList.toggle('ok', ok);
+}
+function regista(canal){
+  if (!valido()) return;
+  const corpo = JSON.stringify({ codigo: A.codigo, video: va.n, decisao, texto: $('#obs').value.trim(), nome: $('#nome').value.trim(), canal });
+  try { fetch('/api/aprovacao', { method: 'POST', headers: { 'content-type': 'application/json' }, body: corpo, keepalive: true }).catch(() => {}); } catch (e) {}
+  $('#okMsg').classList.add('on');
+  respostas[va.n] = { decisao, obs: $('#obs').value, enviado: true };
+  const b = $(`#vsel button[data-n="${va.n}"]`); b.classList.add('feito'); b.querySelector('small').textContent = decisao === 'aprovado' ? 'aprovado' : 'alterações enviadas';
+}
+$('#wa').addEventListener('click', () => regista('whatsapp'));
+$('#mail').addEventListener('click', () => regista('email'));
+$('#form').addEventListener('input', atualiza);
+$('#form').addEventListener('submit', e => e.preventDefault());
+escolhe(A.videos[0]);
 
 /* revelações */
 const io = new IntersectionObserver(es => es.forEach(e => {

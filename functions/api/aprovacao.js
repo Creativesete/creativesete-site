@@ -26,6 +26,14 @@ const ENTREGAS = {
       '06': { peca: 'Dicas da Farmacêutica · vídeo 06 (16:9 e 9:16)', editId: '3faea02b83a98175b581ca6a7e84477c' },
     },
   },
+  saran65zo6: {
+    contactId: 'e0e64a01-9543-496a-8872-3bd9e38a6d1e',
+    videos: {
+      '01': { peca: 'Sara Neves · highlight do brunch', editId: '3dd9630f-5feb-4caa-a271-39b9fc10a330' },
+      '02': { peca: 'Sara Neves · vídeo da mentoria CEO de Beleza', editId: 'a4dfdeec-a027-424b-bfb5-46688c480079' },
+      '03': { peca: 'Sara Neves · depoimentos das alunas', editId: 'a71b3ff6-7377-421c-a417-f27e4eeb6894' },
+    },
+  },
 };
 
 const json = (o, status = 200) => new Response(JSON.stringify(o), { status, headers: { 'content-type': 'application/json; charset=utf-8' } });

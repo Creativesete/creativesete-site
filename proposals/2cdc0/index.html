@@ -634,6 +634,24 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
 .pronto p{flex:1;min-width:220px;color:var(--carvao)}
 .pronto p small{display:block;color:var(--texto);font-size:13.5px}
 .pronto .pill{margin-top:0}
+/* highlight pronto */
+.hl{display:grid;grid-template-columns:minmax(260px,380px) 1fr;gap:56px;align-items:center;margin-top:56px}
+.hl .ecra{position:relative;aspect-ratio:9/16;border-radius:var(--r);overflow:hidden;background:#000;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.hl video{width:100%;height:100%;object-fit:cover;display:block}
+.hl .est{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ar2)}
+.hl .est i{width:8px;height:8px;border-radius:50%;background:var(--ar2)}
+.hl h3{margin-top:18px;font-size:clamp(26px,3vw,38px);font-weight:500;letter-spacing:-.02em;line-height:1.1;color:#fff}
+.hl p{margin-top:14px;font-size:15.5px;color:rgba(255,255,255,.72);max-width:46ch}
+.dl{display:grid;gap:10px;margin-top:30px;max-width:440px}
+.dl a{display:flex;align-items:center;gap:16px;padding:16px 20px;border-radius:16px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);color:#fff;transition:background .4s,border-color .4s,transform .5s var(--ease)}
+.dl a:hover{background:rgba(255,255,255,.12);border-color:var(--ar2);transform:translateY(-2px)}
+.dl a svg{width:20px;height:20px;stroke:var(--ar2);fill:none;stroke-width:1.8;flex:none}
+.dl a b{font-weight:500;font-size:15px}
+.dl a small{display:block;font-size:12.5px;color:rgba(255,255,255,.6)}
+.dl a span{flex:1}
+.hl .nota{margin-top:14px;font-size:13px;color:rgba(255,255,255,.5)}
+.seg{margin-top:64px;max-width:520px}
+@media (max-width:860px){.hl{grid-template-columns:1fr;gap:34px}.hl .ecra{max-width:380px}}
 /* vídeos em edição */
 .videos{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px}
 .vids-sec{position:relative}
@@ -671,7 +689,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
       <h1 id="h1"><span class="l"><span style="--i:0">As fotografias</span></span><span class="l"><span style="--i:1"><em>estão prontas.</em></span></span></h1>
     </div>
     <div class="lado">
-      <p>As fotografias do brunch já estão editadas na vossa galeria, prontas a descarregar. Os vídeos estão a ser editados e seguem assim que estiverem prontos.</p>
+      <p>As fotografias do brunch já estão editadas na vossa galeria, prontas a descarregar. O highlight do brunch também já está pronto, mais abaixo.</p>
       <div class="ondas" id="ondas" aria-hidden="true"></div>
       <a class="pill claro" href="https://clients.creativesete.com/saraneves/" target="_blank" rel="noopener">Abrir a galeria</a>
     </div>
@@ -701,15 +719,24 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
     <div class="fotos-cab">
       <div class="num rv"><b>02</b><span>[ Os vídeos ]</span></div>
       <div>
-        <h2 class="tit lin" data-lin="Em edição"></h2>
-        <p class="sub rv" style="--d:.2s">Estamos a editar os vídeos do brunch. Quando estiverem prontos, enviamos-vos a página para os verem e aprovarem.</p>
+        <h2 class="tit lin" data-lin="O highlight|está pronto"></h2>
+        <p class="sub rv" style="--d:.2s">O primeiro vídeo do brunch está pronto. Podem vê-lo aqui e descarregá-lo na versão que precisarem.</p>
       </div>
     </div>
-    <div class="videos">
-      <article class="vcard rv"><span class="est"><i></i>Em edição</span><h3>A mentoria</h3><p>O vídeo com a Sara a explicar o que fazem na mentoria e as dores que resolvem.</p><div class="prog"><b></b></div></article>
-      <article class="vcard rv" style="--d:.12s"><span class="est"><i></i>Em edição</span><h3>O brunch</h3><p>O vídeo de cobertura do evento: a sala, as alunas, as conversas e o networking.</p><div class="prog"><b></b></div></article>
-      <article class="vcard rv" style="--d:.24s"><span class="est"><i></i>Em edição</span><h3>Os testemunhos</h3><p>Os testemunhos das clientes presentes, com os cases e as conquistas que partilharam.</p><div class="prog"><b></b></div></article>
+    <div class="hl">
+      <div class="ecra rv"><video src="media/highlight.mp4" poster="media/poster-highlight.jpg" controls playsinline preload="metadata"></video></div>
+      <div class="rv" style="--d:.15s">
+        <span class="est"><i></i>Pronto</span>
+        <h3>O highlight do brunch</h3>
+        <p>As conversas à mesa, as partilhas das alunas e o ambiente da sala Renascença, num vídeo vertical pronto a publicar.</p>
+        <div class="dl">
+          <a href="https://drive.google.com/uc?export=download&id=1UoxuTeOYOW6njzWvOqs409mQP9DZflbb" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19.5h14"/></svg><span><b>Descarregar em 4K</b><small>2160 × 3840 · 208 MB · máxima qualidade, para arquivo e edição</small></span></a>
+          <a href="https://drive.google.com/uc?export=download&id=1C9MBTZkJV3880tilMSY1oEYxyOlEfOSU" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19.5h14"/></svg><span><b>Descarregar em 1080p</b><small>1080 × 1920 · 126 MB · otimizado para Instagram e redes sociais</small></span></a>
+        </div>
+        <p class="nota">O vídeo nesta página está comprimido para ver mais rápido. Para publicar, usem uma das versões acima.</p>
+      </div>
     </div>
+    <article class="vcard seg rv"><span class="est"><i></i>Em edição</span><h3>O próximo vídeo</h3><p>Já estamos a editar o próximo vídeo. Quando estiver pronto, aparece aqui.</p><div class="prog"><b></b></div></article>
   </div>
 </section>
 

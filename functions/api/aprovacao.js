@@ -34,6 +34,14 @@ const ENTREGAS = {
       '03': { peca: 'Sara Neves · depoimentos das alunas', editId: 'a71b3ff6-7377-421c-a417-f27e4eeb6894' },
     },
   },
+  ombria56wfs: {
+    contactId: '3ebea02b83a9816ba11ed58f1b3d5303',
+    videos: {
+      '01': { peca: 'Viceroy at Ombria · vídeo de 30 s', editId: '6421fef0-0619-4ae8-b86a-558e8d185c77' },
+      '02': { peca: 'Viceroy at Ombria · fotografias', editId: '15dcebe7-0aed-4faf-9f68-97db22f0ec00' },
+      '03': { peca: 'Viceroy at Ombria · bastidores da preparação', editId: 'fd237e92-4595-4d57-a44a-501cf8e3a700' },
+    },
+  },
 };
 
 const json = (o, status = 200) => new Response(JSON.stringify(o), { status, headers: { 'content-type': 'application/json; charset=utf-8' } });

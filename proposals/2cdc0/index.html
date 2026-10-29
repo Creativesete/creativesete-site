@@ -614,8 +614,12 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
 
 /* slideshow do topo */
 .hero .slides{position:absolute;inset:0;filter:blur(16px) grayscale(1) brightness(.6);animation:foco 2.4s var(--ease) .15s forwards}
-.hero .bg .slides img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 38%;opacity:0;transform:scale(1.08);transition:opacity 1.8s ease,transform 7s linear;animation:none;filter:none}
-.hero .bg .slides img.on{opacity:1;transform:scale(1)}
+.hero .bg .slides video,.hero .bg .slides img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 38%;opacity:0;transform:scale(1.08);transition:opacity 1.8s ease,transform 7s linear;animation:none;filter:none}
+.hero .bg .slides img.on,.hero .bg .slides video.on{opacity:1;transform:scale(1)}
+.hero .bg .slides video{object-position:50% 30%;transform:none;transition:opacity 1.8s ease}
+.hero h1 .troca{display:inline-block;transition:transform .7s var(--ease),opacity .5s ease,filter .5s ease}
+.hero h1 .troca.sai{transform:translateY(-40%);opacity:0;filter:blur(6px);transition-duration:.45s}
+.hero h1 .troca.entra{transform:translateY(40%);opacity:0;filter:blur(6px);transition:none}
 .hero .barras{position:absolute;z-index:3;left:40px;right:40px;top:110px;display:flex;gap:6px}
 .hero .barras i{flex:1;height:2px;border-radius:2px;background:rgba(255,255,255,.25);overflow:hidden}
 .hero .barras i b{display:block;height:100%;width:0;background:#fff}
@@ -680,16 +684,16 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
 <main class="caixa">
 
 <section class="hero" id="topo">
-  <div class="bg" id="heroBg"><div class="mv" id="heroMv"><div class="slides" id="slides"><img src="media/topo1.jpg" alt="" class="on" loading="eager"><img src="media/topo2.jpg" alt="" loading="eager"><img src="media/topo3.jpg" alt="" loading="lazy"><img src="media/topo4.jpg" alt="" loading="lazy"><img src="media/topo5.jpg" alt="" loading="lazy"><img src="media/topo6.jpg" alt="" loading="lazy"><img src="media/topo7.jpg" alt="" loading="lazy"><img src="media/topo8.jpg" alt="" loading="lazy"></div></div></div>
+  <div class="bg" id="heroBg"><div class="mv" id="heroMv"><div class="slides" id="slides"><video src="media/highlight.mp4" class="on" muted playsinline preload="auto" poster="media/poster-highlight.jpg" aria-hidden="true"></video><img src="media/topo1.jpg" alt="" loading="eager"><img src="media/topo2.jpg" alt="" loading="eager"><img src="media/topo3.jpg" alt="" loading="lazy"><img src="media/topo4.jpg" alt="" loading="lazy"><img src="media/topo5.jpg" alt="" loading="lazy"><img src="media/topo6.jpg" alt="" loading="lazy"><img src="media/topo7.jpg" alt="" loading="lazy"><img src="media/topo8.jpg" alt="" loading="lazy"></div></div></div>
   <div class="barras" id="barras" aria-hidden="true"></div>
   <div class="brilho"></div>
   <div class="in">
     <div>
       <p class="onair"><i></i>Brunch da mentoria · Pestana Palace · 26 out</p>
-      <h1 id="h1"><span class="l"><span style="--i:0">As fotografias</span></span><span class="l"><span style="--i:1"><em>estão prontas.</em></span></span></h1>
+      <h1 id="h1"><span class="l"><span style="--i:0"><span class="troca" id="troca1">As fotografias</span></span></span><span class="l"><span style="--i:1"><em>estão pront<span class="troca" id="troca2">as</span>.</em></span></span></h1>
     </div>
     <div class="lado">
-      <p>As fotografias do brunch já estão editadas na vossa galeria, prontas a descarregar. O highlight do brunch também já está pronto, mais abaixo.</p>
+      <p>As fotografias do brunch já estão editadas na vossa galeria, prontas a descarregar. O highlight do brunch também está pronto, para ver e descarregar mais abaixo.</p>
       <div class="ondas" id="ondas" aria-hidden="true"></div>
       <a class="pill claro" href="https://clients.creativesete.com/saraneves/" target="_blank" rel="noopener">Abrir a galeria</a>
     </div>
@@ -759,20 +763,43 @@ $$('.lin').forEach(h => { h.innerHTML = h.dataset.lin.split('|').map((t, i) => `
 const heroMv = $('#heroMv');
 if (matchMedia('(hover:hover)').matches && !calmo) $('#topo').addEventListener('pointermove', e => { const r = e.currentTarget.getBoundingClientRect(); heroMv.style.setProperty('--mx', ((e.clientX - r.left) / r.width - .5) * -22 + 'px'); heroMv.style.setProperty('--my', ((e.clientY - r.top) / r.height - .5) * -14 + 'px'); });
 
-/* slideshow: troca a cada 5 segundos, com barras como nas stories */
-const fotos = $$('#slides img'), barras = $('#barras');
+/* slideshow: abre com o highlight sem som e segue para as fotos de 5 em 5 segundos, com barras como nas stories */
+const fotos = $$('#slides video, #slides img'), barras = $('#barras'), vid = $('#slides video');
 barras.innerHTML = fotos.map(() => '<i><b></b></i>').join('');
 const bs = $$('#barras i');
 let atual = 0, temp;
+function seguinte(){ mostra((atual + 1) % fotos.length); }
 function mostra(n){
   fotos[atual].classList.remove('on');
-  bs.forEach((b, k) => { b.classList.toggle('feita', k < n); b.classList.remove('on'); });
-  atual = n; fotos[n].classList.add('on');
-  void bs[n].offsetWidth; bs[n].classList.add('on');
+  bs.forEach((b, k) => { b.classList.toggle('feita', k < n); b.classList.remove('on'); b.firstChild.style.animationDuration = ''; });
+  atual = n; const el = fotos[n]; el.classList.add('on');
+  clearTimeout(temp);
+  if (el === vid) {
+    vid.currentTime = 0;
+    const arranca = () => { bs[n].firstChild.style.animationDuration = vid.duration + 's'; void bs[n].offsetWidth; bs[n].classList.add('on'); };
+    vid.play().then(() => { if (vid.readyState >= 1) arranca(); else vid.addEventListener('loadedmetadata', arranca, { once: true }); })
+      .catch(() => { void bs[n].offsetWidth; bs[n].classList.add('on'); temp = setTimeout(seguinte, 5000); });
+  } else {
+    if (!vid.paused) vid.pause();
+    void bs[n].offsetWidth; bs[n].classList.add('on');
+    temp = setTimeout(seguinte, 5000);
+  }
   const prox = fotos[(n + 1) % fotos.length]; if (prox.loading === 'lazy') prox.loading = 'eager';
-  clearTimeout(temp); temp = setTimeout(() => mostra((atual + 1) % fotos.length), 5000);
 }
+vid.addEventListener('ended', () => { if (fotos[atual] === vid) seguinte(); });
 setTimeout(() => mostra(0), 2400);
+
+/* título: alterna entre as fotografias e os vídeos */
+const t1 = $('#troca1'), t2 = $('#troca2'), frases = [['As fotografias', 'as'], ['Os vídeos', 'os']];
+let fi = 0;
+if (!calmo) setInterval(() => {
+  fi = (fi + 1) % frases.length;
+  [t1, t2].forEach(t => t.classList.add('sai'));
+  setTimeout(() => {
+    t1.textContent = frases[fi][0]; t2.textContent = frases[fi][1];
+    [t1, t2].forEach(t => { t.classList.remove('sai'); t.classList.add('entra'); void t.offsetWidth; t.classList.remove('entra'); });
+  }, 450);
+}, 3200);
 
 /* revelações */
 const io = new IntersectionObserver(es => es.forEach(e => {

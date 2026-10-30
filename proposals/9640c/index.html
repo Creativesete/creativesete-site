@@ -658,6 +658,14 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
 @media (max-width:860px){.hl{grid-template-columns:1fr;gap:34px}.hl .ecra{max-width:380px}}
 /* mentoria e depoimentos */
 .hl + .hl{margin-top:96px}
+/* vídeo horizontal: ecrã a toda a largura e o texto ao lado dos downloads */
+.hl.h{grid-template-columns:1fr;gap:40px}
+.hl.h .ecra{aspect-ratio:16/9;max-width:none;width:100%}
+.hl.h .txt{display:grid;grid-template-columns:1fr 1fr;gap:16px 56px;align-items:start}
+.hl.h .txt .dl{margin-top:0;max-width:none;grid-row:1/span 4;grid-column:2}
+.hl.h .txt > *:not(.dl){grid-column:1}
+.hl .nota a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+@media (max-width:860px){.hl.h .txt{grid-template-columns:1fr}.hl.h .txt .dl{grid-row:auto;grid-column:1;margin-top:20px}}
 .deps-cab{margin-top:110px;max-width:640px}
 .deps-cab .est{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ar2)}
 .deps-cab .est i{width:8px;height:8px;border-radius:50%;background:var(--ar2)}
@@ -763,18 +771,18 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
 <main class="caixa">
 
 <section class="hero" id="topo">
-  <div class="bg" id="heroBg"><div class="mv" id="heroMv"><div class="slides" id="slides"><img src="media/topo1.jpg" alt="" class="on" loading="eager"><img src="media/topo2.jpg" alt="" loading="eager"><img src="media/topo3.jpg" alt="" loading="lazy"><img src="media/topo4.jpg" alt="" loading="lazy"><img src="media/topo5.jpg" alt="" loading="lazy"><img src="media/topo6.jpg" alt="" loading="lazy"><img src="media/topo7.jpg" alt="" loading="lazy"><img src="media/topo8.jpg" alt="" loading="lazy"></div></div></div>
+  <div class="bg" id="heroBg"><div class="mv" id="heroMv"><div class="slides" id="slides"><video src="media/topo.mp4" class="on" muted playsinline preload="auto" poster="media/poster-video.jpg" aria-hidden="true"></video><img src="media/topo1.jpg" alt="" loading="eager"><img src="media/topo2.jpg" alt="" loading="eager"><img src="media/topo3.jpg" alt="" loading="lazy"><img src="media/topo4.jpg" alt="" loading="lazy"><img src="media/topo5.jpg" alt="" loading="lazy"><img src="media/topo6.jpg" alt="" loading="lazy"><img src="media/topo7.jpg" alt="" loading="lazy"><img src="media/topo8.jpg" alt="" loading="lazy"></div></div></div>
   <div class="barras" id="barras" aria-hidden="true"></div>
   <div class="brilho"></div>
   <div class="in">
     <div>
       <p class="onair"><i></i><span class="so-d">A World Made by Many · </span>Viceroy at Ombria · 29 out</p>
-      <h1 id="h1"><span class="l"><span style="--i:0"><span class="troca" id="troca1">As fotografias</span></span></span><span class="l"><span style="--i:1"><em><span class="troca" id="troca2">estão prontas</span>.</em></span></span></h1>
+      <h1 id="h1"><span class="l"><span style="--i:0"><span class="troca" id="troca1">O vídeo</span></span></span><span class="l"><span style="--i:1"><em><span class="troca" id="troca2">está pronto</span>.</em></span></span></h1>
     </div>
     <div class="lado">
-      <p>Obrigado por nos receberem no Rooftop Castle. As fotografias da noite já estão editadas: 316 em alta resolução, prontas a ver e descarregar mais abaixo. O vídeo de 30 segundos e os bastidores estão em edição e aparecem aqui assim que estiverem prontos.</p>
+      <p>Obrigado por nos receberem no Rooftop Castle. O vídeo de 30 segundos e as 316 fotografias da noite estão prontos, para ver e descarregar mais abaixo. Os bastidores estão em edição e aparecem aqui assim que estiverem prontos.</p>
       <div class="ondas" id="ondas" aria-hidden="true"></div>
-      <a class="pill claro" href="https://clients.creativesete.com/viceroywbm/" target="_blank" rel="noopener">Abrir a galeria</a>
+      <a class="pill claro" href="#video">Ver o vídeo</a>
     </div>
   </div>
 </section>
@@ -806,17 +814,22 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
       <div class="num rv"><b>02</b><span>[ O vídeo ]</span></div>
       <div>
         <h2 class="tit lin" data-lin="A World|Made by Many"></h2>
-        <p class="sub rv" style="--d:.2s">Trinta segundos do jantar, filmados à mão e perto da mesa, como pede o guia da campanha. Segue sem música: a faixa é aplicada pela vossa equipa.</p>
+        <p class="sub rv" style="--d:.2s">Trinta segundos do jantar, filmados à mão e perto da mesa, como pede o guia da campanha. Em horizontal e vertical, cada um com som e sem som, para aplicarem a faixa da campanha.</p>
       </div>
     </div>
-    <!-- VÍDEO: quando estiver pronto, trocar o .ecra.espera por <video id="vVd" src="media/video.mp4" poster="media/poster-video.jpg" controls playsinline preload="metadata"></video>, o estado para Pronto e juntar o .dl -->
-    <div class="hl">
-      <div class="ecra espera rv" id="ecraVd"><img src="media/topo1.jpg" alt=""><span><i></i>Em edição</span></div>
-      <div class="rv" style="--d:.15s">
-        <span class="est edicao"><i></i>Em edição</span>
+    <div class="hl h">
+      <div class="ecra rv"><video id="vVd" src="media/video.mp4" poster="media/poster-video.jpg" controls playsinline preload="metadata"></video></div>
+      <div class="rv txt" style="--d:.15s">
+        <span class="est"><i></i>Pronto</span>
         <h3>O vídeo de 30 segundos</h3>
-        <p>A sala antes dos convidados, a mesa em pleno, as mãos a trabalhar e o fado. Pronto a publicar nas vossas redes com a música da campanha.</p>
-        <div class="quando"><span>Entrega a 30 de outubro</span><span>Sem música</span></div>
+        <p>A chegada ao Viceroy, o rooftop ao pôr do sol, a sala antes dos convidados, a mesa em pleno e o fado. Pronto a publicar nas vossas redes.</p>
+        <div class="dl">
+          <a href="https://drive.usercontent.google.com/download?id=1ptyRpbwYwG7JVfIoiC24fmFCG-9xV30x&export=download&confirm=t" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19.5h14"/></svg><span><b>Horizontal com som</b><small>1920 × 1080 · 47 MB</small></span></a>
+          <a href="https://drive.google.com/drive/folders/1M7S3_zFtEf3zj56LGuaG41yHnzr9KplV" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19.5h14"/></svg><span><b>Horizontal sem som</b><small>1920 × 1080 · 47 MB · para aplicar a música</small></span></a>
+          <a href="https://drive.google.com/drive/folders/1M7S3_zFtEf3zj56LGuaG41yHnzr9KplV" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19.5h14"/></svg><span><b>Vertical com som</b><small>2160 × 3840 · 46 MB · para reels e stories</small></span></a>
+          <a href="https://drive.google.com/drive/folders/1M7S3_zFtEf3zj56LGuaG41yHnzr9KplV" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19.5h14"/></svg><span><b>Vertical sem som</b><small>2160 × 3840 · 46 MB · para aplicar a música</small></span></a>
+        </div>
+        <p class="nota">O vídeo nesta página está comprimido para ver mais rápido. Para publicar, usem uma das versões acima. Também estão todas juntas <a href="https://drive.google.com/drive/folders/1M7S3_zFtEf3zj56LGuaG41yHnzr9KplV" target="_blank" rel="noopener">nesta pasta da Drive</a>.</p>
       </div>
     </div>
   </div>
@@ -919,7 +932,7 @@ vid.addEventListener('ended', () => { if (fotos[atual] === vid) seguinte(); });
 setTimeout(() => mostra(0), 2400);
 
 /* título: alterna entre o vídeo e as fotografias */
-const t1 = $('#troca1'), t2 = $('#troca2'), frases = [['As fotografias', 'estão prontas'], ['O vídeo', 'está em edição']];
+const t1 = $('#troca1'), t2 = $('#troca2'), frases = [['O vídeo', 'está pronto'], ['As fotografias', 'estão prontas']];
 let fi = 0;
 if (!calmo) setInterval(() => {
   fi = (fi + 1) % frases.length;

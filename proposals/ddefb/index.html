@@ -64,7 +64,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 <meta name="robots" content="noindex,nofollow,noarchive">
 <title>Gravação de podcast em vídeo no seu espaço · Lisboa · CreativeSete</title>
-<meta name="description" content="Gravamos o seu podcast em vídeo no seu espaço, em Lisboa: duas a três câmaras, som por convidado, luz e cenário. Episódios editados, teaser da temporada e cortes para as redes. Gravação a partir de € 290.">
+<meta name="description" content="Gravamos o seu podcast em vídeo no seu espaço, em Lisboa: duas a três câmaras, som por convidado, luz e cenário. Episódios editados, teaser da temporada e cortes para as redes. Gravação a partir de três episódios, por € 550.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@200;300;400;500;600&display=swap" rel="stylesheet">
@@ -292,6 +292,8 @@ b,.n,.tt{font-variant-numeric:lining-nums}
 .peca.dest .preco .q{color:rgba(255,255,255,.5)}
 .peca.dest .ic{background:rgba(255,255,255,.1)}
 .peca.dest .ic svg,.peca.dest li svg{stroke:var(--ar2)}
+.peca .nota{font-size:12.5px;line-height:1.5;margin-top:16px;padding-top:14px;border-top:1px solid rgba(31,30,30,.12);color:var(--tenue)}
+.peca.dest .nota{border-color:rgba(255,255,255,.14);color:rgba(255,255,255,.6)}
 .bonus{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;margin-top:16px;padding:7px 13px;border-radius:999px;background:var(--ar);color:#fff;font-size:12px}
 
 /* 05 investimento */
@@ -422,7 +424,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
 <meta property="og:site_name" content="CreativeSete">
 <meta property="og:locale" content="pt_PT">
 <meta property="og:title" content="Gravação de podcast em vídeo no seu espaço · Lisboa · CreativeSete">
-<meta property="og:description" content="Gravamos o seu podcast em vídeo no seu espaço, em Lisboa: duas a três câmaras, som por convidado, luz e cenário. Episódios editados, teaser da temporada e cortes para as redes. Gravação a partir de € 290.">
+<meta property="og:description" content="Gravamos o seu podcast em vídeo no seu espaço, em Lisboa: duas a três câmaras, som por convidado, luz e cenário. Episódios editados, teaser da temporada e cortes para as redes. Gravação a partir de três episódios, por € 550.">
 <meta property="og:url" content="https://servicos.creativesete.com/podcast/">
 <meta property="og:image" content="https://servicos.creativesete.com/proposals/ddefb/media/pod_set3.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -533,14 +535,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="num rv"><b>05</b><span>[ Investimento ]</span></div>
       <div>
         <h2 class="tit lin" data-lin="Monte o seu podcast"></h2>
-        <p class="sub rv" style="--d:.2s">Escolha quantos episódios, se quer edição e quantos cortes. Juntamos as gravações da forma mais económica para si.</p>
+        <p class="sub rv" style="--d:.2s">Escolha quantos episódios, se quer edição e quantos cortes. Gravamos a partir de três episódios, até seis por dia.</p>
       </div>
     </div>
     <div class="inv-g">
       <div class="painel rv">
         <div class="campo">
           <div class="top"><h4>Episódios</h4></div>
-          <div class="qtd"><p class="n"><span id="nEp">1</span><small id="nEpT">episódio</small></p><div class="passo"><button type="button" id="epMenos" aria-label="Menos um episódio">−</button><button type="button" id="epMais" aria-label="Mais um episódio">+</button></div></div>
+          <div class="qtd"><p class="n"><span id="nEp">3</span><small id="nEpT">episódios</small></p><div class="passo"><button type="button" id="epMenos" aria-label="Menos um episódio">−</button><button type="button" id="epMais" aria-label="Mais um episódio">+</button></div></div>
         </div>
         <div class="campo">
           <div class="top"><h4>Edição</h4><span class="val" id="edTxt"></span></div>
@@ -561,7 +563,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="painel total"><h4>Total estimado</h4><p class="tt" id="tot"></p><p class="por" id="porEp"></p><p class="iv" id="iva"></p><a class="pill" id="avancar" href="#" target="_blank" rel="noopener">Quero avançar</a></div>
       </div>
     </div>
-    <p class="obs">Valores sem IVA. Gravação na Grande Lisboa com deslocação incluída; fora dela, a deslocação soma-se. No seu espaço, ou no local que escolher, o espaço está incluído. Num espaço alugado, o aluguer passa ao valor real e mostramos opções antes de reservar.</p>
+    <p class="obs">Valores sem IVA. A edição inclui a sincronização do som, a correção de cor e grafismo simples (nomes, tema e títulos, Instagram e YouTube); motion graphics e efeitos visuais são orçamentados à parte. Gravação na Grande Lisboa com deslocação incluída; fora dela, a deslocação soma-se. No seu espaço, ou no local que escolher, o espaço está incluído. Num espaço alugado, o aluguer passa ao valor real e mostramos opções antes de reservar.</p>
   </div>
 </section>
 
@@ -677,8 +679,8 @@ const D = {
     { img: 'pod_set5', c: 'O cenário visto de trás' }
   ],
   pecas: [
-    { ic: '<rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3"/>', t: 'Só a gravação', s: 'Para quem já tem quem edite.', itens: ['Duas ou três câmaras e som de cada pessoa', 'Montagem do cenário no local', 'Ficheiros originais por link, no próprio dia'], q: 'Uma gravação de até 2 h', p: '€ 290', sm: 'ou € 790 o dia, até 6 episódios' },
-    { ic: '<path d="M4 7h16M4 12h10M4 17h7"/><circle cx="18" cy="16" r="3"/>', t: 'Edição do episódio', s: 'Depois da gravação, o episódio completo pronto a publicar.', itens: ['Montagem entre câmaras, som tratado e cor', 'Abertura, encerramento e música licenciada', 'Uma ronda de revisão por episódio'], q: 'Por episódio editado', p: '€ 160', sm: 'ou € 130 cada, a partir de dois · soma-se à gravação', dest: true, bonus: 'Bónus: teaser promo da temporada' },
+    { ic: '<rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3"/>', t: 'Só a gravação', s: 'Para quem já tem quem edite.', itens: ['Duas ou três câmaras e som de cada pessoa', 'Montagem do cenário no local', 'Ficheiros originais por link, no próprio dia'], q: 'A partir de 3 episódios', p: '€ 550', sm: '€ 125 por cada episódio a mais · até 6 por dia' },
+    { ic: '<path d="M4 7h16M4 12h10M4 17h7"/><circle cx="18" cy="16" r="3"/>', t: 'Edição do episódio', s: 'Depois da gravação, o episódio completo pronto a publicar.', itens: ['Sincronização do som e montagem entre câmaras', 'Correção de cor', 'Grafismo simples: nomes dos convidados e apresentadores, tema e títulos, Instagram e YouTube', 'Abertura, encerramento e música licenciada', 'Uma ronda de revisão por episódio'], nota: 'Motion graphics, efeitos visuais e grafismo mais elaborado são orçamentados à parte.', q: 'Por episódio editado', p: '€ 160', sm: 'ou € 130 cada, a partir de quatro · soma-se à gravação', dest: true, bonus: 'Bónus: teaser promo da temporada' },
     { ic: '<rect x="7" y="3" width="10" height="18" rx="2"/><path d="M11 17h2"/>', t: 'Cortes para reels', s: 'Os melhores momentos, na vertical, para as redes.', itens: ['Gancho nos primeiros segundos', 'Legendas e enquadramento vertical', 'Prontos para Instagram, TikTok e Shorts'], q: 'Por corte', p: '€ 40', sm: '€ 35 a partir de 6 · € 30 a partir de 16' }
   ],
   fases: [
@@ -690,13 +692,13 @@ const D = {
   ],
   faq: [
     ['Não tenho um espaço bonito. Faz sentido?', 'Faz. Muitas vezes basta escolher o canto certo e acrescentar luz e algumas peças de cenário. Se mesmo assim não servir, gravamos num espaço com carácter ou no nosso estúdio, vestido para si.'],
-    ['Quantos episódios cabem numa gravação?', 'Numa gravação de até 2 horas cabem um ou dois episódios. Num dia de gravação, até seis, com horários marcados para cada convidado.'],
+    ['Quantos episódios gravamos de cada vez?', 'No mínimo três, porque montar o set leva o mesmo trabalho para um episódio ou para seis. Num dia cabem até seis, com horários marcados para cada convidado. Para um ou dois episódios, preparamos um orçamento à medida.'],
     ['Posso levar só os ficheiros e editar com a minha equipa?', 'Pode. Entregamos os ficheiros originais de cada câmara e do som no próprio dia. Se mais tarde quiser a edição, os cortes ou o teaser, fazemos a partir do mesmo material.'],
     ['O que é o teaser da temporada?', 'Um vídeo curto que apresenta o podcast e anuncia a temporada, feito a partir das gravações. Oferecemos sempre que a edição é nossa.']
   ],
   /* preços sem IVA */
-  sessao: { p: 290, eps: 2 }, dia: { p: 790, eps: 6 },
-  edicao: n => n === 1 ? 160 : 130,
+  grav: { base: 550, min: 3, extra: 125, max: 6 },
+  edicao: n => n >= 4 ? 130 : 160,
   corte: c => c >= 16 ? 30 : c >= 6 ? 35 : 40,
   iva: 0.23
 };
@@ -714,7 +716,7 @@ $('#estilos').innerHTML = D.estilos.map((e, i) => `<button type="button" data-i=
 $('#passos').innerHTML = D.passos.map((p, i) => `<li class="rv" style="--d:${i * .1}s"><span class="c">${i + 1}</span><div><h4>${esc(p.t)}</h4><p>${esc(p.p)}</p></div></li>`).join('');
 $('#levamos').innerHTML = D.levamos.map(t => `<span>${esc(t)}</span>`).join('');
 $('#trilho').innerHTML = D.bast.map((b, i) => `<figure class="slide"><div class="img"><img src="${M}${b.img}.jpg" alt="${esc(b.c)}" loading="lazy" draggable="false"></div><figcaption>${esc(b.c)}<span>0${i + 1}</span></figcaption></figure>`).join('');
-$('#pecas').innerHTML = D.pecas.map((p, i) => `<article class="peca rv${p.dest ? ' dest' : ''}" style="--d:${i * .12}s"><span class="ic"><svg viewBox="0 0 24 24">${p.ic}</svg></span><h3>${esc(p.t)}</h3><p class="s">${esc(p.s)}</p><ul>${p.itens.map(x => `<li>${chk}${esc(x)}</li>`).join('')}</ul>${p.bonus ? `<span class="bonus">★ ${esc(p.bonus)}</span>` : ''}<div class="preco"><p class="q">${esc(p.q)}</p><b>${esc(p.p)}</b><small>${esc(p.sm)}</small></div></article>`).join('');
+$('#pecas').innerHTML = D.pecas.map((p, i) => `<article class="peca rv${p.dest ? ' dest' : ''}" style="--d:${i * .12}s"><span class="ic"><svg viewBox="0 0 24 24">${p.ic}</svg></span><h3>${esc(p.t)}</h3><p class="s">${esc(p.s)}</p><ul>${p.itens.map(x => `<li>${chk}${esc(x)}</li>`).join('')}</ul>${p.nota ? `<p class="nota">${esc(p.nota)}</p>` : ''}${p.bonus ? `<span class="bonus">★ ${esc(p.bonus)}</span>` : ''}<div class="preco"><p class="q">${esc(p.q)}</p><b>${esc(p.p)}</b><small>${esc(p.sm)}</small></div></article>`).join('');
 $('#fases').insertAdjacentHTML('beforeend', D.fases.map((f, i) => `<li class="rv" style="--d:${i * .12}s"><i style="--n:${i}">${i + 1}</i><h4>${esc(f.t)}</h4><p>${esc(f.p)}</p></li>`).join(''));
 $('#faq').innerHTML = D.faq.map((q, i) => `<details class="rv" style="--d:${(i % 2) * .1}s"${i === 0 ? ' open' : ''}><summary>${esc(q[0])}</summary><p>${esc(q[1])}</p></details>`).join('');
 $$('.lin').forEach(h => { h.innerHTML = h.dataset.lin.split('|').map((t, i) => `<span class="l"><span style="--i:${i}">${esc(t)}</span></span>`).join(''); });
@@ -730,17 +732,12 @@ let estAuto = 0, estParado = false;
 setEl.closest('.op').addEventListener('pointerenter', () => estParado = true);
 if (!calmo) setInterval(() => { if (estParado) return; estAuto = (estAuto + 1) % D.estilos.length; $$('#estilos button')[estAuto].onclick(); }, 2600);
 
-/* calculadora: combina gravações de 2 h e dias de gravação pelo menor valor */
+/* calculadora: cada dia de gravação começa em 3 episódios e leva até 6; abaixo de 3 o orçamento é à medida */
 function plano(n){
-  const f = [{ v: 0, s: 0, d: 0 }];
-  for (let k = 1; k <= n; k++) {
-    const a = f[Math.max(0, k - D.sessao.eps)], b = f[Math.max(0, k - D.dia.eps)];
-    const va = a.v + D.sessao.p, vb = b.v + D.dia.p;
-    f[k] = va <= vb ? { v: va, s: a.s + 1, d: a.d } : { v: vb, s: b.s, d: b.d + 1 };
-  }
-  return f[n];
+  const g = D.grav, d = Math.ceil(n / g.max);
+  return { d, v: d * g.base + (n - d * g.min) * g.extra };
 }
-let ep = 1, ed = true, co = 6, lo = 0, mostrado = 0;
+let ep = 3, ed = true, co = 6, lo = 0, mostrado = 0;
 const LOCAIS = [['Local da gravação', 'No seu espaço ou onde preferir, na Grande Lisboa', 'Incluído', 'espaço incluído'], ['Espaço alugado', 'Escolhemos consigo e mostramos opções antes de reservar', 'Valor real', 'aluguer à parte']];
 $('#escCo').innerHTML = [['1 a 5', 40, 1], ['6 a 15', 35, 6], ['16 ou mais', 30, 16]].map(x => `<span data-min="${x[2]}">${x[0]} · ${eur(x[1])}</span>`).join('');
 function anima(alvo){
@@ -749,13 +746,12 @@ function anima(alvo){
   mostrado = alvo; requestAnimationFrame(f);
 }
 function calc(){
+  if (ep < D.grav.min) return medida();
   const pl = plano(ep), grav = pl.v;
   const edU = D.edicao(ep), edT = ed ? ep * edU : 0;
   const coU = D.corte(co), coT = co * coU;
   const tot = grav + edT + coT;
-  const partes = [];
-  if (pl.d) partes.push(`${pl.d} ${pl.d === 1 ? 'dia' : 'dias'} de gravação`);
-  if (pl.s) partes.push(`${pl.s} ${pl.s === 1 ? 'gravação' : 'gravações'} de até 2 h`);
+  const partes = [`${pl.d} ${pl.d === 1 ? 'dia' : 'dias'} de gravação`];
   $('#nEp').textContent = ep; $('#nEpT').textContent = ep === 1 ? 'episódio' : 'episódios';
   $('#edTxt').textContent = ed ? `${eur(edU)} por episódio` : 'ficheiros originais';
   $('#coTxt').textContent = co ? `${co} × ${eur(coU)}` : 'nenhum';
@@ -781,10 +777,32 @@ function calc(){
     'Gostava de avançar.'
   ].join('\n');
   $('#avancar').href = `https://wa.me/${D.tel}?text=${encodeURIComponent(msg)}`;
-  $('#epMenos').disabled = ep <= 1; $('#epMais').disabled = ep >= 12;
+  $('#epMenos').disabled = false; $('#epMais').disabled = ep >= 12;
 }
-$('#epMenos').onclick = () => { ep = Math.max(1, ep - 1); calc(); };
-$('#epMais').onclick = () => { ep = Math.min(12, ep + 1); calc(); };
+/* menos de 3 episódios: sem valor na página, pedido de orçamento à medida */
+function medida(){
+  $('#nEp').textContent = '1 ou 2'; $('#nEpT').textContent = 'episódios';
+  $('#edTxt').textContent = ed ? 'episódios editados' : 'ficheiros originais';
+  $('#coTxt').textContent = co ? `${co} ${co === 1 ? 'corte' : 'cortes'}` : 'nenhum';
+  $('#slCo').value = co; $('#slCo').style.setProperty('--p', (co / 40 * 100) + '%');
+  $$('#escCo span').forEach(s => s.classList.remove('on'));
+  $('#linhas').innerHTML = `<li><span>Gravação<small>Montar o set leva o mesmo trabalho para um episódio ou para seis</small></span><b>À medida</b></li><li><span>${LOCAIS[lo][0]}<small>${LOCAIS[lo][1]}</small></span><b>${LOCAIS[lo][2]}</b></li>`;
+  $('#loTxt').textContent = LOCAIS[lo][3];
+  $('#tot').textContent = 'À medida'; mostrado = 0;
+  $('#porEp').textContent = '';
+  $('#iva').textContent = 'Para menos de três episódios, preparamos um orçamento à medida.';
+  const msg = [
+    'Olá Lucas, vi a página do podcast e queria gravar 1 ou 2 episódios.',
+    ed ? '· Com edição' : '· Só gravação, sem edição',
+    co ? `· ${co} cortes para reels` : '· Sem cortes',
+    `· Onde: ${['no meu espaço ou num local escolhido por mim', 'num espaço alugado'][lo]}`,
+    'Podem fazer-me um orçamento?'
+  ].join('\n');
+  $('#avancar').href = `https://wa.me/${D.tel}?text=${encodeURIComponent(msg)}`;
+  $('#epMenos').disabled = true; $('#epMais').disabled = false;
+}
+$('#epMenos').onclick = () => { ep = Math.max(D.grav.min - 1, ep - 1); calc(); };
+$('#epMais').onclick = () => { ep = Math.min(12, Math.max(D.grav.min, ep + 1)); calc(); };
 $$('#segEd button').forEach(b => b.onclick = () => { ed = b.dataset.v === '1'; $$('#segEd button').forEach(x => x.classList.toggle('on', x === b)); calc(); });
 $('#slCo').oninput = e => { co = +e.target.value; calc(); };
 $$('#segLo button').forEach(b => b.onclick = () => { lo = +b.dataset.v; $$('#segLo button').forEach(x => x.classList.toggle('on', x === b)); calc(); });

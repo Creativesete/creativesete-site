@@ -1,6 +1,6 @@
 // Encaminhamento dos subdomínios.
 // proposals.creativesete.com/<abreviação+código>/  → pasta /proposals/<pasta>/
-// servicos.creativesete.com/[podcast|cursos]/      → páginas com preços (privadas)
+// servicos.creativesete.com/[podcast|cursos|conteudo]/ → páginas com preços (privadas)
 // creativesete.com/servicos/[podcast|cursos|eventos]/ → apresentações públicas, sem preços (ficheiros estáticos)
 // creativesete.com/proposals/<pasta>/              → redireciona para o endereço novo
 //
@@ -28,6 +28,7 @@ const PROPOSTAS = {
 const SERVICOS = {
   podcast: 'ddefb',
   cursos: '199a6',
+  conteudo: 'c0e7a',              // conteúdo para marcas (reels e vídeos curtos), com calculadora
 };
 const SERVICOS_RAIZ = 'd5ebf'; // a apresentação geral, agora em creativesete.com/servicos/
 

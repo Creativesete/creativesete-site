@@ -9,21 +9,27 @@
 
 const PROPOSTAS = {
   miriam1y68y: 'aa37c',          // Miriam Monteiro · concierge
-  vicerfdxt4: '092ca',           // Viceroy at Ombria · jantar World Made by Many
-  ombriahy1ew: 'viceroy-ombria', // Viceroy at Ombria · parceria anual
-  selfcupt6f: '1c704',           // SelfCare Market & Summit
-  pharmc93b9k: 'pharmcare',      // Instituto Pharmcare
-  expongtn30: 'exponor',         // Exponor
-  pcdigagf64p: 'e3f53',          // PCDIGA
   franc60bd9: 'franciscowebsite',// Francisco Lima Marques
   davidcxzz1: 'davidwebsite',    // David Caleja
   pedro5xmkk: 'pedrowebsite',    // Pedro Fernandes
   ruifilt55ha: 'b7bfd',          // Rui & Filipa · casamento 17 out 2026
-  gocoi4k8vz: '4c7e2',           // Go Coimbra · Web Summit 2026 (CIM Região de Coimbra)
   dicas01q8zr: 'd1c01',          // Instituto Pharmcare · aprovação do vídeo Dicas da Farmacêutica 01
   saran65zo6: '2cdc0',           // Sara Neves · brunch da mentoria · entrega das fotografias
   ombria56wfs: '9640c',          // Viceroy at Ombria · jantar A World Made by Many · entrega
 };
+
+// Propostas desativadas a 12 nov 2026: o link deixa de abrir e a pasta antiga também.
+// Os ficheiros ficam no repositório (e as imagens continuam a servir outras páginas).
+// Para reativar, voltar a pôr a linha em PROPOSTAS e tirar a pasta daqui.
+const DESATIVADAS = new Set([
+  '092ca',          // Viceroy at Ombria · jantar World Made by Many (vicerfdxt4)
+  'viceroy-ombria', // Viceroy at Ombria · parceria anual (ombriahy1ew)
+  'pharmcare',      // Instituto Pharmcare (pharmc93b9k)
+  '1c704',          // SelfCare Market & Summit (selfcupt6f)
+  'exponor',        // Exponor (expongtn30)
+  '4c7e2',          // Go Coimbra · Web Summit 2026 (gocoi4k8vz)
+  'e3f53',          // PCDIGA (pcdigagf64p)
+]);
 
 const SERVICOS = {
   podcast: 'ddefb',
@@ -83,6 +89,12 @@ export async function onRequest(ctx) {
       return semIndexar(await servir(ctx, url, `/proposals/${pasta}/${resto.join('/')}`));
     }
     return Response.redirect(`${PRINCIPAL}/servicos/`, 301);
+  }
+
+  // proposta desativada: a página não abre em nenhum endereço
+  const pag = p.match(/^\/proposals\/([^/]+)(\/.*)?$/);
+  if (pag && DESATIVADAS.has(pag[1]) && (!pag[2] || pag[2] === '/' || pag[2].endsWith('.html'))) {
+    return Response.redirect(PRINCIPAL + '/', 302);
   }
 
   // creativesete.com/proposals/<pasta>/ → endereço novo (só a página, não os ficheiros)

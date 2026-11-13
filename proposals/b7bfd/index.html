@@ -61,7 +61,10 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 
 /* ================= HEAD ================= */
 .mv{position:relative;height:100svh;background:#000;overflow:hidden;color:#fff;transition:height 1.4s cubic-bezier(.76,0,.24,1)}
-.mv.encolhe{height:calc(100svh - 64px)}
+.mv[hidden]{display:none}
+/* capa da head seguinte: um fotograma escurecido que se vê enquanto ela sobe e se dissolve quando o vídeo começa */
+.mv__capa{position:absolute;inset:0;z-index:1;pointer-events:none}
+.mv__capa img{width:100%;height:100%;object-fit:cover;filter:brightness(.5) contrast(1.05);transform:scale(1.06)}
 .mv__video{position:absolute;inset:0}
 .mv__video video{width:100%;height:100%;object-fit:cover}
 /* telemóvel na vertical: o filme aparece inteiro, para não cortar as legendas do Rui */
@@ -143,33 +146,8 @@ body.livre .escala,body.livre .escala__main{opacity:1}
   <div class="regua" id="reguaLoading" data-fade><b class="l"></b><b class="r"></b></div>
 </div>
 
-<!-- ================= HEAD ================= -->
-<header class="mv" id="mv">
-  <div class="mv__video"><video id="video" playsinline webkit-playsinline preload="auto"></video></div>
-  <div class="vira" id="vira"><svg viewBox="0 0 26 26" fill="none" stroke="#fff" stroke-width="1.2"><rect x="8" y="3" width="10" height="20" rx="2"/><path d="M12 19.5h2"/></svg>Vira o telemóvel para ver maior</div>
-  <div class="mv__escuro" id="escuro"></div>
-  <a class="logo" id="logo"><span class="logo__s"></span><span id="logoNome"></span></a>
-  <button class="mv__som" id="btnSom">Ligar o som</button>
-  <div class="toque" id="toque"></div>
-  <p class="estado" id="estado"></p>
-  <div class="mv__barra" id="mvBarra">
-    <div class="mv__progresso" id="mvProgresso"><p class="mv__tempo" id="mvTempo">00:00</p><div class="mv__main" id="mvMain"></div></div>
-    <div class="regua" id="reguaVideo"><b class="l"></b><b class="r"></b></div>
-  </div>
-  <p class="frase mv__frase" id="fraseFim"></p>
-  <div class="mv__final" id="final">
-    <h2 id="finalTitulo"></h2>
-    <p id="finalTexto"></p>
-  </div>
-  <button class="reel" id="reel" aria-label="Ver outra vez">
-    <span class="reel__video"><img id="reelImg" alt=""><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="rgba(0,0,0,.45)"/><path d="M8 6v8l6-4z" fill="#fff"/></svg></span>
-    <span class="reel__textos">
-      <span class="reel__titulo">Ver outra vez</span>
-      <span class="reel__tempo" id="reelTempo">00:00</span>
-      <svg class="reel__seta" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.2"><path d="M2 10 10 2M4 2h6v6"/></svg>
-    </span>
-  </button>
-</header>
+<!-- ================= HEADS · uma por vídeo, a seguinte abre quando a anterior acaba ================= -->
+<div id="heads"></div>
 
 <script>
 /* ================================================================
@@ -182,12 +160,12 @@ const CASAMENTO = {
   data: '17.10.2026',
   local: 'Outubro 2026',
 
-  // Vídeo da prova do vestido (42,5 s). O pequeno entra nos telemóveis e tablets, o grande nos computadores.
-  video: {
-    grande: 'media/video/vestido-1080.mp4',
-    pequeno: 'media/video/vestido-720.mp4',
-    poster: 'media/video/vestido-poster.jpg'
-  },
+  // Vídeos, um por head, por esta ordem. Quando um acaba, abre-se a head seguinte por baixo e toca o próximo.
+  // O pequeno entra nos telemóveis e tablets, o grande nos computadores.
+  videos: [
+    { grande: 'media/video/vestido-1080.mp4', pequeno: 'media/video/vestido-720.mp4', poster: 'media/video/vestido-poster.jpg' }, // prova do vestido, 42,5 s
+    { grande: 'media/video/shorty-1080.mp4',  pequeno: 'media/video/shorty-720.mp4',  poster: 'media/video/shorty-poster.jpg' }   // shorty do casamento, 45,5 s
+  ],
 
   // Frases durante o carregamento (o vídeo não tem falas)
   frasesAntes: [
@@ -212,7 +190,7 @@ const $ = s => document.querySelector(s);
 const espera = ms => new Promise(r => setTimeout(r, ms * VEL));
 const mobile = () => innerWidth < 767;
 const retrato = innerHeight > innerWidth;
-const mv = $('#mv'), video = $('#video'), loading = $('#loading');
+const loading = $('#loading');
 
 /* ---------- alianças ----------
    Duas alianças finas em ouro branco polido, com reflexos duros, um diamante e brilhos.
@@ -257,19 +235,180 @@ function aneisTraco(w = 7) {
   <circle cx="${A.cx}" cy="${A.cy}" r="${R}"/><circle cx="${B.cx}" cy="${B.cy}" r="${R}"/></svg>`;
 }
 $('#aneis').innerHTML = aneis();
-$('.logo__s').outerHTML = aneisTraco(12);
 
-/* ---------- textos e imagens fixas ---------- */
+/* ================================================================
+   HEADS · cada vídeo tem a sua: leitor, régua com o tempo, fecho e "Ver outra vez"
+   ================================================================ */
 const nomes = `${CASAMENTO.noivo} & ${CASAMENTO.noiva}`;
-$('#logoNome').textContent = nomes;
-$('#reelImg').src = CASAMENTO.video.poster;
-
-/* ---------- vídeo ---------- */
 const ecraPequeno = Math.min(screen.width, screen.height) < 820 || matchMedia('(pointer:coarse)').matches;
-video.src = ecraPequeno ? CASAMENTO.video.pequeno : CASAMENTO.video.grande;
-video.poster = CASAMENTO.video.poster;
 const mmss = s => `${n2(Math.floor(s / 60))}:${n2(Math.floor(s % 60))}`;
-video.addEventListener('loadedmetadata', () => { $('#reelTempo').textContent = mmss(video.duration); });
+const htmlHead = i => `
+<header class="mv" id="mv${i}"${i ? ' hidden' : ''}>
+  <div class="mv__video"><video playsinline webkit-playsinline preload="auto"></video></div>${i ? '<div class="mv__capa"><img alt=""></div>' : ''}
+  <div class="vira"><svg viewBox="0 0 26 26" fill="none" stroke="#fff" stroke-width="1.2"><rect x="8" y="3" width="10" height="20" rx="2"/><path d="M12 19.5h2"/></svg>Vira o telemóvel para ver maior</div>
+  <div class="mv__escuro"></div>
+  <a class="logo"><span class="logo__s"></span><span class="logo__nome"></span></a>
+  <button class="mv__som">Ligar o som</button>
+  <div class="toque"></div>
+  <p class="estado"></p>
+  <div class="mv__barra">
+    <div class="mv__progresso"><p class="mv__tempo">00:00</p><div class="mv__main"></div></div>
+    <div class="regua"><b class="l"></b><b class="r"></b></div>
+  </div>
+  <p class="frase mv__frase"></p>
+  <div class="mv__final"><h2></h2><p></p></div>
+  <button class="reel" aria-label="Ver outra vez">
+    <span class="reel__video"><img alt=""><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="rgba(0,0,0,.45)"/><path d="M8 6v8l6-4z" fill="#fff"/></svg></span>
+    <span class="reel__textos">
+      <span class="reel__titulo">Ver outra vez</span>
+      <span class="reel__tempo">00:00</span>
+      <svg class="reel__seta" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="1.2"><path d="M2 10 10 2M4 2h6v6"/></svg>
+    </span>
+  </button>
+</header>`;
+$('#heads').innerHTML = CASAMENTO.videos.map((_, i) => htmlHead(i)).join('');
+document.querySelectorAll('.logo__s').forEach(e => e.outerHTML = aneisTraco(12));
+document.querySelectorAll('.logo__nome').forEach(e => e.textContent = nomes);
+
+let wakeLock = null;
+async function manterEcra() { try { wakeLock = await navigator.wakeLock?.request('screen'); } catch (e) {} }
+
+function criaHead(sec, cfg, i) {
+  const q = s => sec.querySelector(s);
+  const v = q('video');
+  const h = { sec, i, q, video: v, tracos: [], aTocar: false, porScroll: false };
+  v.src = ecraPequeno ? cfg.pequeno : cfg.grande;
+  v.poster = cfg.poster;
+  q('.reel__video img').src = cfg.poster;
+  if (q('.mv__capa img')) q('.mv__capa img').src = cfg.poster;
+  v.addEventListener('loadedmetadata', () => { q('.reel__tempo').textContent = mmss(v.duration); });
+
+  h.tocar = () => {
+    // só toca um vídeo de cada vez
+    heads.forEach(o => { if (o !== h && !o.video.paused) { o.video.pause(); o.aTocar = false; o.sec.classList.remove('a-tocar'); } });
+    h.aTocar = true; h.porScroll = false;
+    v.currentTime = 0;
+    v.muted = false;
+    sec.classList.add('a-tocar');
+    const capa = q('.mv__capa');
+    if (capa && +getComputedStyle(capa).opacity > 0) gsap.to(capa, { opacity: 0, filter: 'blur(10px)', duration: 1.6, delay: .2, ease: 'power2.inOut' });
+    v.play().catch(() => { v.muted = true; sec.classList.add('sem-som'); v.play().catch(() => {}); });
+    manterEcra();
+    if (!h.tracos.length) h.tracos = fazRegua(q('.mv__barra .regua'));
+    if (matchMedia('(orientation:portrait)').matches) {
+      gsap.fromTo(q('.vira'), { opacity: 0, filter: 'blur(8px)' }, { opacity: 1, filter: 'blur(0px)', duration: 1.2, delay: 2.4, ease: 'power3.out' });
+      gsap.to(q('.vira'), { opacity: 0, filter: 'blur(8px)', duration: 1, delay: 7.5, ease: 'power2.in' });
+    }
+  };
+
+  h.desenha = () => {
+    if (v.duration) {
+      const k = v.currentTime / v.duration, w = q('.mv__progresso').clientWidth, t = q('.mv__tempo');
+      q('.mv__main').style.left = (k * (w - 2)) + 'px';
+      t.textContent = mmss(v.duration - v.currentTime);
+      t.style.left = Math.min(w - t.offsetWidth, Math.max(0, k * w - t.offsetWidth / 2)) + 'px';
+      acende(h.tracos, q('.mv__barra .regua'), q('.mv__main'));
+    }
+    if (h.aTocar && !v.paused) requestAnimationFrame(h.desenha);
+  };
+  v.addEventListener('play', () => requestAnimationFrame(h.desenha));
+
+  q('.mv__som').addEventListener('click', e => { e.stopPropagation(); v.muted = false; sec.classList.remove('sem-som'); if (v.paused) v.play(); });
+  q('.toque').addEventListener('click', () => {
+    if (v.muted) { v.muted = false; sec.classList.remove('sem-som'); }
+    else if (v.paused) v.play(); else v.pause();
+    const e = q('.estado');
+    e.textContent = v.paused ? 'Pausa · toca para continuar' : '';
+    e.classList.toggle('on', v.paused);
+  });
+
+  // fim do vídeo: se houver head seguinte, abre-a e toca o próximo; senão, fecho com os nomes
+  v.addEventListener('ended', async () => {
+    if (!h.aTocar) return;
+    h.aTocar = false;
+    sec.classList.remove('a-tocar');
+    gsap.to(q('.mv__barra'), { opacity: 0, duration: .8 });
+    const seguinte = heads[i + 1];
+    if (seguinte) {
+      gsap.to(q('.mv__escuro'), { opacity: .62, duration: 1.6, ease: 'power2.out' });
+      mostraReel(h, .6);
+      return abre(seguinte);
+    }
+    try { wakeLock && wakeLock.release(); } catch (e) {}
+    await gsap.to(q('.mv__escuro'), { opacity: .62, duration: 1.6, ease: 'power2.out' });
+    const el = q('.mv__frase');
+    for (const f of CASAMENTO.frasesDepois) {
+      const chars = parte(el, f);
+      await entra(chars);
+      await espera(1300);
+      await sai(chars);
+      await espera(200);
+    }
+    el.innerHTML = '';
+    mostraFinal(h);
+  });
+
+  q('.reel').addEventListener('click', async () => {
+    q('.reel').classList.remove('on');
+    gsap.to([q('.mv__final'), q('.reel')], { opacity: 0, duration: .5, onComplete: () => q('.mv__final').classList.remove('on') });
+    gsap.to(q('.mv__escuro'), { opacity: 0, duration: 1 });
+    gsap.to(q('.mv__barra'), { opacity: .9, duration: 1 });
+    await vai(h);
+    h.tocar();
+  });
+  return h;
+}
+const heads = CASAMENTO.videos.map((cfg, i) => criaHead($('#mv' + i), cfg, i));
+const H1 = heads[0];
+
+function mostraReel(h, atraso = 1.4) {
+  gsap.fromTo(h.q('.reel'), { opacity: 0, y: 14, filter: 'blur(6px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1.2, delay: atraso, ease: 'power4.out', onStart: () => h.q('.reel').classList.add('on') });
+}
+function mostraFinal(h) {
+  const fin = h.q('.mv__final');
+  fin.classList.add('on');
+  gsap.set(fin, { opacity: 1 });
+  entra(parte(h.q('.mv__final h2'), nomes));
+  h.q('.mv__final p').textContent = CASAMENTO.data;
+  gsap.fromTo(h.q('.mv__final p'), { opacity: 0, filter: 'blur(8px)' }, { opacity: .85, filter: 'blur(0px)', duration: 1.4, delay: .9, ease: 'power3.out' });
+  mostraReel(h);
+}
+
+// desce (ou sobe) até uma head, com desfoque de movimento a acompanhar a velocidade
+function vai(h) {
+  const y0 = scrollY, y1 = h.sec.offsetTop;
+  if (Math.abs(y1 - y0) < 2) return Promise.resolve();
+  const st = { k: 0 }, vids = document.querySelectorAll('.mv__video');
+  return gsap.to(st, { k: 1, duration: 1.8, ease: 'power3.inOut', onUpdate: () => {
+    scrollTo(0, y0 + (y1 - y0) * st.k);
+    const b = Math.sin(Math.PI * st.k) * 9;
+    vids.forEach(e => e.style.filter = b > .05 ? `blur(${b.toFixed(2)}px)` : 'none');
+  }, onComplete: () => vids.forEach(e => e.style.filter = 'none') }).then(() => {});
+}
+
+// abre a head seguinte por baixo, desce até ela e toca o vídeo
+async function abre(h) {
+  h.sec.hidden = false;
+  document.body.classList.remove('preso');
+  gsap.set(h.q('.logo'), { opacity: 0 });
+  gsap.set(h.q('.mv__barra'), { opacity: 0 });
+  const capaImg = h.q('.mv__capa img');
+  if (capaImg) gsap.fromTo(capaImg, { scale: 1.14 }, { scale: 1.02, duration: 3.2, ease: 'power2.out' });
+  await espera(900);
+  await vai(h);
+  gsap.fromTo(h.q('.logo'), { opacity: 0, filter: 'blur(8px)' }, { opacity: 1, filter: 'blur(0px)', duration: 1.4, ease: 'power3.out' });
+  gsap.to(h.q('.mv__barra'), { opacity: .9, duration: 1.4, ease: 'power4.out' });
+  h.tocar();
+}
+
+// se a pessoa sair de uma head a meio do vídeo, pausa; quando volta, continua
+const ioHeads = new IntersectionObserver(es => es.forEach(e => {
+  const h = heads.find(x => x.sec === e.target);
+  if (!h || !h.aTocar) return;
+  if (e.intersectionRatio < .5 && !h.video.paused) { h.video.pause(); h.porScroll = true; }
+  else if (e.intersectionRatio >= .5 && h.porScroll) { h.porScroll = false; h.video.play().catch(() => {}); }
+}), { threshold: [0, .5, 1] });
+heads.forEach(h => ioHeads.observe(h.sec));
 
 /* ================================================================
    FUNDO DO CARREGAMENTO · o primeiro plano do vídeo entra pela luz e fica escurecido
@@ -397,7 +536,7 @@ async function fotosParaVideo() {
   if (!Luma) return fotosCssParaVideo();
   await gsap.to(fundo, { luz: 1, duration: 1.1, ease: 'power2.inOut' });
   loading.style.background = 'transparent';
-  tocar();
+  H1.tocar();
   fundo.fim = true; fundo.p = 0;
   await gsap.to(fundo, { p: 1, duration: 2.2, ease: 'power2.inOut' });
   fundo.ativo = false;
@@ -419,7 +558,7 @@ async function fotosCssParaVideo() {
   const box = $('#lumaCss');
   await gsap.to(box.querySelectorAll('img'), { filter: 'blur(0px) brightness(1)', duration: 1.1 });
   loading.style.background = 'transparent';
-  tocar();
+  H1.tocar();
   await gsap.to(box, { opacity: 0, filter: 'blur(14px) brightness(1.8)', duration: 2, ease: 'power2.inOut' });
 }
 
@@ -446,7 +585,6 @@ function acende(tracos, regua, marca) {
   }
 }
 let tracosLoading = fazRegua($('#reguaLoading'));
-let tracosVideo = [];
 let tracosRodape = [];
 
 /* ---------- contador, marcador vermelho e luz das alianças ---------- */
@@ -499,13 +637,17 @@ function sai(chars) {
 }
 
 /* ---------- som: o primeiro toque desbloqueia o vídeo (iPhone e Chrome exigem um toque) ---------- */
-let desbloqueado = false, aTocar = false;
+let desbloqueado = false;
 function desbloqueia() {
   if (desbloqueado) return;
   desbloqueado = true;
-  video.muted = false;
-  const p = video.play();
-  if (p) p.then(() => { if (!aTocar) { video.pause(); video.currentTime = 0; } }).catch(() => { desbloqueado = false; });
+  // todos os vídeos ficam desbloqueados no mesmo toque, para o segundo também poder tocar com som
+  heads.forEach(h => {
+    const v = h.video;
+    v.muted = false;
+    const p = v.play();
+    if (p) p.then(() => { if (!h.aTocar) { v.pause(); v.currentTime = 0; } }).catch(() => { if (h === H1) desbloqueado = false; });
+  });
 }
 loading.addEventListener('click', desbloqueia);
 loading.addEventListener('touchend', desbloqueia, { passive: true });
@@ -561,105 +703,27 @@ async function carregar() {
   await fotosParaVideo();
 
   loading.remove();
-  gsap.fromTo('#logo', { opacity: 0, filter: 'blur(8px)' }, { opacity: 1, filter: 'blur(0px)', duration: 1.4, ease: 'power3.out' });
-  gsap.to('#mvBarra', { opacity: .9, duration: 1.4, ease: 'power4.out' });
-  tracosVideo = fazRegua($('#reguaVideo'));
+  gsap.fromTo(H1.q('.logo'), { opacity: 0, filter: 'blur(8px)' }, { opacity: 1, filter: 'blur(0px)', duration: 1.4, ease: 'power3.out' });
+  gsap.to(H1.q('.mv__barra'), { opacity: .9, duration: 1.4, ease: 'power4.out' });
 }
-
-/* ---------- vídeo ---------- */
-function tocar() {
-  aTocar = true;
-  video.currentTime = 0;
-  video.muted = false;
-  mv.classList.add('a-tocar');
-  video.play().catch(() => {
-    video.muted = true;
-    mv.classList.add('sem-som');
-    video.play().catch(() => {});
-  });
-  manterEcra();
-  if (matchMedia('(orientation:portrait)').matches) {
-    gsap.fromTo('#vira', { opacity: 0, filter: 'blur(8px)' }, { opacity: 1, filter: 'blur(0px)', duration: 1.2, delay: 2.4, ease: 'power3.out' });
-    gsap.to('#vira', { opacity: 0, filter: 'blur(8px)', duration: 1, delay: 7.5, ease: 'power2.in' });
-  }
-}
-let wakeLock = null;
-async function manterEcra() { try { wakeLock = await navigator.wakeLock?.request('screen'); } catch (e) {} }
-
-$('#btnSom').addEventListener('click', e => { e.stopPropagation(); video.muted = false; mv.classList.remove('sem-som'); if (video.paused) video.play(); });
-$('#toque').addEventListener('click', () => {
-  if (video.muted) { video.muted = false; mv.classList.remove('sem-som'); }
-  else if (video.paused) video.play(); else video.pause();
-  const e = $('#estado');
-  e.textContent = video.paused ? 'Pausa · toca para continuar' : '';
-  e.classList.toggle('on', video.paused);
-});
-
-function desenhaVideo() {
-  if (video.duration) {
-    const k = video.currentTime / video.duration;
-    const w = $('#mvProgresso').clientWidth;
-    $('#mvMain').style.left = (k * (w - 2)) + 'px';
-    const t = $('#mvTempo');
-    t.textContent = mmss(video.duration - video.currentTime);
-    t.style.left = Math.min(w - t.offsetWidth, Math.max(0, k * w - t.offsetWidth / 2)) + 'px';
-    acende(tracosVideo, $('#reguaVideo'), $('#mvMain'));
-  }
-  if (aTocar && !video.paused) requestAnimationFrame(desenhaVideo);
-}
-video.addEventListener('play', () => requestAnimationFrame(desenhaVideo));
-
-/* ---------- fim do vídeo ---------- */
-video.addEventListener('ended', async () => {
-  if (!aTocar) return;
-  aTocar = false;
-  try { wakeLock && wakeLock.release(); } catch (e) {}
-  mv.classList.remove('a-tocar');
-  gsap.to('#mvBarra', { opacity: 0, duration: .8 });
-  await gsap.to('#escuro', { opacity: .62, duration: 1.6, ease: 'power2.out' });
-  const el = $('#fraseFim');
-  for (const f of CASAMENTO.frasesDepois) {
-    const chars = parte(el, f);
-    await entra(chars);
-    await espera(1300);
-    await sai(chars);
-    await espera(200);
-  }
-  el.innerHTML = '';
-  mostraFinal();
-});
-
-function mostraFinal() {
-  $('#final').classList.add('on');
-  gsap.set('#final', { opacity: 1 });
-  entra(parte($('#finalTitulo'), nomes));
-  $('#finalTexto').textContent = CASAMENTO.data;
-  gsap.fromTo('#finalTexto', { opacity: 0, filter: 'blur(8px)' }, { opacity: .85, filter: 'blur(0px)', duration: 1.4, delay: .9, ease: 'power3.out' });
-  gsap.fromTo('#reel', { opacity: 0, y: 14, filter: 'blur(6px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1.2, delay: 1.4, ease: 'power4.out', onStart: () => $('#reel').classList.add('on') });
-}
-
-$('#reel').addEventListener('click', () => {
-  $('#reel').classList.remove('on');
-  gsap.to(['#final', '#reel'], { opacity: 0, duration: .5, onComplete: () => $('#final').classList.remove('on') });
-  gsap.to('#escuro', { opacity: 0, duration: 1 });
-  gsap.to('#mvBarra', { opacity: .9, duration: 1 });
-  if (!tracosVideo.length) tracosVideo = fazRegua($('#reguaVideo'));
-  tocar();
-});
 
 /* ---------- modo de teste: ?saltar=1 ---------- */
 function saltar() {
   loading.remove();
-  gsap.set('#logo', { opacity: 1 });
-  gsap.set('#escuro', { opacity: .62 });
-  const ir = () => { video.currentTime = Math.max(0, video.duration - .1); };
-  video.readyState >= 1 ? ir() : video.addEventListener('loadedmetadata', ir, { once: true });
-  mostraFinal();
+  document.body.classList.remove('preso');
+  heads.forEach((h, i) => {
+    h.sec.hidden = false;
+    gsap.set(h.q('.logo'), { opacity: 1 });
+    gsap.set(h.q('.mv__escuro'), { opacity: .62 });
+    i < heads.length - 1 ? mostraReel(h, 0) : mostraFinal(h);
+  });
+  const ultima = heads[heads.length - 1];
+  requestAnimationFrame(() => scrollTo(0, ultima.sec.offsetTop));
 }
 
 addEventListener('resize', () => {
   if (document.body.contains(loading)) { tracosLoading = fazRegua($('#reguaLoading')); desenhaProgresso(); }
-  if (tracosVideo.length) tracosVideo = fazRegua($('#reguaVideo'));
+  heads.forEach(h => { if (h.tracos.length) h.tracos = fazRegua(h.q('.mv__barra .regua')); });
 });
 
 /* ---------- arranque ---------- */

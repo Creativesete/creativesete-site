@@ -179,7 +179,12 @@ const CASAMENTO = {
   // Fundo do carregamento: o primeiro plano do vídeo, escurecido (luz no início e no fim do carregamento).
   // Depois do toque ganha luz e dissolve-se no vídeo, que começa neste mesmo plano.
   fundo: 'media/video/vestido-inicio.jpg',
-  luzFundo: [.22, .3]
+  luzFundo: [.22, .3],
+
+  // Página bloqueada: só as alianças e a mensagem, sem vídeos. Para libertar, pôr false e publicar.
+  // Para ver a página completa enquanto está bloqueada: acrescentar ?abrir=1 ao link.
+  bloqueado: true,
+  mensagemBloqueio: 'Só quando chegares a casa :D'
 };
 
 /* ================================================================ */
@@ -191,6 +196,7 @@ const espera = ms => new Promise(r => setTimeout(r, ms * VEL));
 const mobile = () => innerWidth < 767;
 const retrato = innerHeight > innerWidth;
 const loading = $('#loading');
+const BLOQUEADO = CASAMENTO.bloqueado && !Q.has('abrir');
 
 /* ---------- alianças ----------
    Duas alianças finas em ouro branco polido, com reflexos duros, um diamante e brilhos.
@@ -277,7 +283,7 @@ function criaHead(sec, cfg, i) {
   const q = s => sec.querySelector(s);
   const v = q('video');
   const h = { sec, i, q, video: v, tracos: [], aTocar: false, porScroll: false };
-  v.src = ecraPequeno ? cfg.pequeno : cfg.grande;
+  if (!BLOQUEADO) v.src = ecraPequeno ? cfg.pequeno : cfg.grande;
   v.poster = cfg.poster;
   q('.reel__video img').src = cfg.poster;
   if (q('.mv__capa img')) q('.mv__capa img').src = cfg.poster;
@@ -639,7 +645,7 @@ function sai(chars) {
 /* ---------- som: o primeiro toque desbloqueia o vídeo (iPhone e Chrome exigem um toque) ---------- */
 let desbloqueado = false;
 function desbloqueia() {
-  if (desbloqueado) return;
+  if (desbloqueado || BLOQUEADO) return;
   desbloqueado = true;
   // todos os vídeos ficam desbloqueados no mesmo toque, para o segundo também poder tocar com som
   heads.forEach(h => {
@@ -662,6 +668,20 @@ async function carregar() {
   await espera(500);
   gsap.to(aneisEl, { opacity: 1, duration: 2, ease: 'power4.out' });
   await espera(800);
+
+  // bloqueada: o carregamento pára nos 99, as alianças ficam acesas e aparece a mensagem
+  if (BLOQUEADO) {
+    const t = 2.8;
+    gsap.to(prog, { p: 99, duration: t, ease: 'power2.out', onUpdate: desenhaProgresso });
+    gsap.to(aneisEl, { rotate: 0, duration: t, ease: 'power2.inOut' });
+    fotosNoCarregamento(t);
+    await espera(t * 1000 * .7);
+    entra(parte($('#fraseLoading'), CASAMENTO.mensagemBloqueio));
+    await espera(1600);
+    gsap.to(aneisEl, { scale: 1.05, duration: 1.6, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+    gsap.to('#main', { opacity: .15, duration: .7, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+    return;
+  }
 
   const frases = CASAMENTO.frasesAntes, total = frases.length * DUR_FRASE / 1000;
   // o contador anda sempre ao mesmo ritmo, sem paragens
@@ -727,7 +747,7 @@ addEventListener('resize', () => {
 });
 
 /* ---------- arranque ---------- */
-if (Q.has('saltar')) saltar(); else carregar();
+if (Q.has('saltar') && !BLOQUEADO) saltar(); else carregar();
 </script>
 </body>
 </html>

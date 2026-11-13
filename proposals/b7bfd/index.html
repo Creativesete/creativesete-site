@@ -176,8 +176,6 @@ body.livre .escala,body.livre .escala__main{opacity:1}
    CONFIGURAÇÃO · trocar aqui
    ================================================================ */
 const n2 = n => String(n).padStart(2, '0');
-const VERTICAIS = [1, 8, 9, 10, 11, 14, 15, 17, 18, 23, 24, 25, 26, 28];
-const FOTO = n => ({ n, grande: `media/fotos/foto-${n2(n)}.jpg`, media: `media/fotos/m/foto-${n2(n)}.jpg`, w: VERTICAIS.includes(n) ? 2 : 3, h: VERTICAIS.includes(n) ? 3 : 2 });
 const CASAMENTO = {
   noivo: 'Rui',
   noiva: 'Filipa',
@@ -200,10 +198,10 @@ const CASAMENTO = {
   // Frases depois do vídeo. Vazio = passa direto ao fecho da head.
   frasesDepois: [],
 
-  // Fotografias que aparecem durante o carregamento: uma lista para ecrãs largos e outra para telemóvel na vertical.
-  // A última fica no ecrã até ao toque e dissolve-se pela luz até ao vídeo.
-  sequenciaLarga: [2, 16, 27, 21, 13],
-  sequenciaVertical: [1, 15, 24, 10, 23]
+  // Fundo do carregamento: o primeiro plano do vídeo, escurecido (luz no início e no fim do carregamento).
+  // Depois do toque ganha luz e dissolve-se no vídeo, que começa neste mesmo plano.
+  fundo: 'media/video/vestido-inicio.jpg',
+  luzFundo: [.22, .3]
 };
 
 /* ================================================================ */
@@ -274,10 +272,10 @@ const mmss = s => `${n2(Math.floor(s / 60))}:${n2(Math.floor(s % 60))}`;
 video.addEventListener('loadedmetadata', () => { $('#reelTempo').textContent = mmss(video.duration); });
 
 /* ================================================================
-   FOTOGRAFIAS NO CARREGAMENTO · entram pelas zonas de luz enquanto o vídeo carrega,
-   por trás das alianças e das frases; a última dissolve-se pela luz até ao vídeo
+   FUNDO DO CARREGAMENTO · o primeiro plano do vídeo entra pela luz e fica escurecido
+   por trás das alianças e das frases; depois do toque dissolve-se pela luz até ao vídeo
    ================================================================ */
-const listaSeq = (retrato ? CASAMENTO.sequenciaVertical : CASAMENTO.sequenciaLarga).map(n => FOTO(n).media);
+const listaSeq = [CASAMENTO.fundo];
 const imagensSeq = listaSeq.map(src => { const im = new Image(); im.decoding = 'async'; im.src = src; return im; });
 const prontaImg = im => im.complete && im.naturalWidth ? Promise.resolve() : new Promise(r => { im.onload = r; im.onerror = r; });
 
@@ -367,7 +365,7 @@ const zoom = nasceu => 1 + .12 * Math.exp(-(performance.now() - nasceu) / (3600 
 // pequeno desfoque de foco no meio de cada troca
 const foco = (el, p, max = 3.5) => { const b = Math.sin(Math.PI * p) * max; el.style.filter = b > .05 ? `blur(${b.toFixed(2)}px)` : 'none'; };
 
-const fundo = { a: null, b: null, p: 0, nA: 0, nB: 0, luz: .34, fim: false, ativo: false };
+const fundo = { a: null, b: null, p: 0, nA: 0, nB: 0, luz: CASAMENTO.luzFundo[0], fim: false, ativo: false };
 function desenhaFundo() {
   if (!Luma || !fundo.ativo || !fundo.a) return;
   Luma.desenha(fundo.a, fundo.b || fundo.a, fundo.p, zoom(fundo.nA), zoom(fundo.b ? fundo.nB : fundo.nA), fundo.fim, fundo.luz);
@@ -384,7 +382,7 @@ async function fotosNoCarregamento(total) {
   fundo.a = Luma.textura(null); fundo.nA = performance.now(); fundo.ativo = true;
   gsap.ticker.add(desenhaFundo);
   gsap.set(Luma.cv, { opacity: 1 });
-  gsap.to(fundo, { luz: .58, duration: total, ease: 'power1.in' });
+  gsap.to(fundo, { luz: CASAMENTO.luzFundo[1], duration: total, ease: 'power1.in' });
   for (let i = 0; i < n; i++) {
     const t0 = performance.now();
     fundo.b = await textura(i); fundo.nB = performance.now(); fundo.p = 0;
@@ -413,7 +411,7 @@ async function fotosCss(total) {
   const ims = [...box.querySelectorAll('img')];
   gsap.set(box, { opacity: 1 });
   for (let i = 0; i < ims.length; i++) {
-    gsap.fromTo(ims[i], { opacity: 0, scale: 1.12, filter: 'blur(10px) brightness(.5)' }, { opacity: 1, scale: 1, filter: 'blur(0px) brightness(.5)', duration: slot + 1.5, ease: 'power2.out' });
+    gsap.fromTo(ims[i], { opacity: 0, scale: 1.12, filter: 'blur(10px) brightness(.25)' }, { opacity: 1, scale: 1, filter: 'blur(0px) brightness(.25)', duration: slot + 1.5, ease: 'power2.out' });
     if (i < ims.length - 1) await espera(slot * 1000);
   }
 }

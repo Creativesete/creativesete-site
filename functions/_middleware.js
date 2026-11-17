@@ -16,6 +16,7 @@ const PROPOSTAS = {
   dicas01q8zr: 'd1c01',          // Instituto Pharmcare · aprovação do vídeo Dicas da Farmacêutica 01
   saran65zo6: '2cdc0',           // Sara Neves · brunch da mentoria · entrega das fotografias
   ombria56wfs: '9640c',          // Viceroy at Ombria · jantar A World Made by Many · entrega
+  larroxruic: '80750',           // Luciano Larrossa · evento Lagoas Park 27 a 29 nov 2026 · entregas
 };
 
 // Propostas desativadas a 12 nov 2026: o link deixa de abrir e a pasta antiga também.

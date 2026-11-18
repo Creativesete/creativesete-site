@@ -19,6 +19,7 @@ const PROPOSTAS = {
   larroxruic: '80750',           // Luciano Larrossa · evento Lagoas Park 27 a 29 nov 2026 · entregas
   patrivll5f: '5025f',           // Patrícia Teixeira · evento 21 nov 2026 · entregas
   miriaf3faa: 'aa11f',           // Miriam Monteiro · gravação 25 nov 2026 · os cinco reels
+  rafzenbcs3s: 'f9013',          // Rafael Zenke · gravações a 6 dez 2026 · diária + edição por vídeo
 };
 
 // Propostas desativadas a 12 nov 2026: o link deixa de abrir e a pasta antiga também.

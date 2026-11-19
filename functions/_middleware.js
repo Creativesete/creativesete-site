@@ -20,6 +20,7 @@ const PROPOSTAS = {
   patrivll5f: '5025f',           // Patrícia Teixeira · evento 21 nov 2026 · entregas
   miriaf3faa: 'aa11f',           // Miriam Monteiro · gravação 25 nov 2026 · os cinco reels
   rafzenbcs3s: 'f9013',          // Rafael Zenke · gravações a 6 dez 2026 · diária + edição por vídeo
+  possipq7pf: 'a5f15',           // POSSIBLE Europe (Hyve) · Lisboa 12 a 14 out 2027 · proposta com quadro de equipa
 };
 
 // Propostas desativadas a 12 nov 2026: o link deixa de abrir e a pasta antiga também.

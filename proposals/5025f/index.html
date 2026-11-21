@@ -867,11 +867,17 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
 @media (max-width:640px){.conta{width:100%}.conta>div{min-width:0}}
 .rlc .ecra.espera .rnum{position:absolute;top:14px;left:16px;padding:0;border:0;background:none;border-radius:0;font-size:34px;font-weight:200;letter-spacing:-.04em;text-transform:none;color:rgba(255,255,255,.85)}
 .rlc .ecra.espera .rsel{position:absolute;left:12px;right:auto;bottom:12px;padding:8px 12px;font-size:10px;max-width:calc(100% - 24px)}
+/* cartões de vídeo numa secção clara (os da base foram desenhados para fundo escuro) */
+#nuggets .rl{grid-template-columns:repeat(4,1fr)}
+#nuggets .rlc h3{color:inherit;font-size:clamp(17px,1.5vw,20px)}
+#nuggets .rlc .dia{color:var(--ar)}
+#nuggets .rlc .ecra{box-shadow:0 18px 44px rgba(0,0,0,.18)}
+@media (max-width:860px){#nuggets .rl{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body><!--email_off-->
 <header class="nav" id="nav"><div class="in">
-  <nav><a href="#reel">O reel</a><a href="#nuggets">Nuggets</a><a href="#fotos">Fotografias</a></nav>
+  <nav><a href="#reel">O reel</a><a href="#nuggets">Vídeos</a><a href="#fotos">Fotografias</a></nav>
   <a class="marca" href="https://creativesete.com/"><img src="/assets/logo_dark.png" alt="CreativeSete"></a>
   <nav class="dir"><a href="https://drive.google.com/drive/folders/1So1UV6rAZE0InT2XTcrLpBKPAtQaIeDo" target="_blank" rel="noopener">Pasta na Drive</a><a href="#aprovacao">Aprovação</a><a href="#contacto">Falar connosco</a></nav>
   <a class="pill falar" href="#reel">Entregas</a>
@@ -895,7 +901,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
       </div>
     </div>
     <div class="lado">
-      <p id="ladoTxt">Esta é a página das entregas do evento. Aqui vai encontrar o reel, os nuggets para as redes e o acesso às fotografias, à medida que cada um fica pronto.</p>
+      <p id="ladoTxt">Esta é a página das entregas do evento. Aqui vai encontrar o reel, os vídeos para as redes e o acesso às fotografias, à medida que cada um fica pronto.</p>
       <div class="ondas" id="ondas" aria-hidden="true"></div>
       <a class="pill claro" href="#reel">Ver as entregas</a>
     </div>
@@ -918,12 +924,14 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
 <section class="sec" id="nuggets">
   <div class="wrap">
     <div class="fotos-cab">
-      <div class="num rv"><b>02</b><span>[ Os nuggets ]</span></div>
+      <div class="num rv"><b>02</b><span>[ Os vídeos ]</span></div>
       <div>
-        <h2 class="tit lin" data-lin="Pequenos cortes|para as redes"></h2>
-        <p class="sub rv" style="--d:.2s">Momentos curtos do evento, cortados para usar livremente nas redes sociais: frases, reações, detalhes e bastidores.</p>
+        <h2 class="tit lin" data-lin="Os primeiros vídeos|para as redes"></h2>
+        <p class="sub rv" style="--d:.2s">Momentos das palestras e dos talks, na vertical, com o som tratado e sem pausas, para a vossa equipa cortar e publicar à vontade. Aqui ficam quatro; os restantes estão na pasta da Drive.</p>
       </div>
     </div>
+    <div class="rl" id="rlb"></div>
+    <div class="pronto rv" id="vidsPronto" style="margin-top:44px"><span class="ok" id="vidsIco"></span><p id="vidsTxt"></p><a class="pill" id="vidsBtn" href="#" target="_blank" rel="noopener">Abrir a pasta na Drive</a></div>
     <div class="lista" id="lista" style="margin-top:50px"></div>
   </div>
 </section>
@@ -977,7 +985,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
         <p class="sub rv">Respondemos por WhatsApp ou email.</p>
         <div class="rv" style="--d:.2s;display:flex;gap:10px;flex-wrap:wrap"><a class="pill" id="wa" href="#" target="_blank" rel="noopener">WhatsApp</a><a class="pill linha" href="mailto:contact@creativesete.com?subject=Evento%2021%20nov%20%C2%B7%20entregas">Email</a></div>
       </div>
-      <div class="col rv"><h5>Nesta página</h5><a href="https://drive.google.com/drive/folders/1So1UV6rAZE0InT2XTcrLpBKPAtQaIeDo" target="_blank" rel="noopener">A pasta das entregas</a><a href="#reel">O reel</a><a href="#nuggets">Nuggets</a><a href="#fotos">Fotografias</a></div>
+      <div class="col rv"><h5>Nesta página</h5><a href="https://drive.google.com/drive/folders/1So1UV6rAZE0InT2XTcrLpBKPAtQaIeDo" target="_blank" rel="noopener">A pasta das entregas</a><a href="#reel">O reel</a><a href="#nuggets">Vídeos</a><a href="#fotos">Fotografias</a></div>
       <div class="col rv" style="--d:.1s"><h5>Contacto</h5><a href="mailto:contact@creativesete.com">contact@creativesete.com</a><a id="wa2" href="#" target="_blank" rel="noopener">+351 963 899 070</a><p>Lisboa</p></div>
     </div>
     <p class="marcao" id="marcao"><span class="l"><span>Creative<em>Sete</em></span></span></p>
@@ -1195,6 +1203,16 @@ const REEL = { id: 'vReel', etiqueta: 'Entrega até 26 de novembro', titulo: 'O 
   pronto: 'O reel está pronto', textoPronto: 'Veja com calma e diga-nos mais abaixo se está aprovado ou se quer alterações.',
   poster: 'media/topo1-4dadf5.jpg', video: null, dl: null, peso: '' };
 const NUGGETS = [];
+/* Vídeos (brutos longos da timeline "Cortes", exportados a 21 nov): alguns em versão leve na página, todos na pasta da Drive. */
+const VIDEOS = {
+  pasta: 'https://drive.google.com/drive/folders/1LRpeNjK9LHhLbERW8eEj_e3hb7WSGeya', total: 13,
+  itens: [
+    { id: 'vb1', etiqueta: 'Abertura · 0:32', pronto: 'Um dia preparado para vos receber', video: 'media/v-c1637.mp4', poster: 'media/v-c1637.jpg' },
+    { id: 'vb2', etiqueta: 'Palestra · 0:33', pronto: 'Ter menos para ser mais em 2027', video: 'media/v-c1663.mp4', poster: 'media/v-c1663.jpg' },
+    { id: 'vb3', etiqueta: 'Palestra · 0:51', pronto: 'Os aplausos não calam o impostor', video: 'media/v-c1661.mp4', poster: 'media/v-c1661.jpg' },
+    { id: 'vb4', etiqueta: 'Palestra · 0:53', pronto: 'Preparar 2027 já em 2026', video: 'media/v-c1662.mp4', poster: 'media/v-c1662.jpg' },
+  ],
+};
 const FOTOS = {
   galeria: 'https://clients.creativesete.com/proleaderday/',
   tituloPronto: 'As primeiras fotografias já chegaram',
@@ -1210,11 +1228,17 @@ base('Olá Lucas, sobre as entregas do evento de 21 de novembro: ');
 slideshow();
 contagem({
   ...EVENTO,
-  durante: () => ({ a: 'É hoje', b: 'o grande dia', estado: 'Hoje · 21 de novembro', lado: 'Estamos consigo a registar o dia. As primeiras fotografias já estão na galeria; o reel e os nuggets chegam a esta página nos próximos dias.' }),
-  depois: () => ({ a: 'Obrigado', b: 'pela confiança', lado: REEL.video ? 'O reel está pronto para a sua aprovação, e os nuggets e as fotografias juntam-se aqui à medida que ficam prontos.' : 'Já estamos a editar. O reel, os nuggets e as fotografias aparecem nesta página à medida que ficam prontos.' }),
+  durante: () => ({ a: 'É hoje', b: 'o grande dia', estado: 'Hoje · 21 de novembro', lado: 'Estamos consigo a registar o dia. As primeiras fotografias e os primeiros vídeos já estão nesta página; o reel chega nos próximos dias.' }),
+  depois: () => ({ a: 'Obrigado', b: 'pela confiança', lado: REEL.video ? 'O reel está pronto para a sua aprovação, e os vídeos e as fotografias estão mais abaixo.' : 'Já estamos a editar. As fotografias e os vídeos para as redes já estão nesta página; o reel chega até 26 de novembro.' }),
 });
 reels($('#rl'), [REEL], true);
-listaDownloads($('#lista'), NUGGETS, { img: 'media/topo2-058c5c.jpg', est: 'Depois do evento', titulo: 'Os nuggets do evento', texto: 'Cada corte fica num ficheiro próprio, vertical, para descarregar diretamente desta lista.' });
+reels($('#rlb'), VIDEOS.itens, false);
+$('#vidsIco').innerHTML = ICO.certo;
+$('#vidsTxt').innerHTML = `Os ${VIDEOS.total} vídeos estão na Drive<small>Em alta qualidade, um ficheiro por vídeo, para ver e descarregar.</small>`;
+$('#vidsBtn').href = VIDEOS.pasta;
+$$('#rlb video').forEach(v => v.addEventListener('play', () => $$('#rlb video').forEach(o => { if (o !== v) o.pause(); })));
+if (!NUGGETS.length) $('#lista').hidden = true;
+else listaDownloads($('#lista'), NUGGETS, { img: 'media/topo2-058c5c.jpg', est: 'Depois do evento', titulo: 'Os nuggets do evento', texto: 'Cada corte fica num ficheiro próprio, vertical, para descarregar diretamente desta lista.' });
 fotografias(FOTOS);
 if (REEL.video) aprovacao({ codigo: 'patrivll5f', cliente: 'Patrícia Teixeira', pecas: [{ n: '01', nome: 'Reel', sub: 'versão 1', peca: 'o reel do evento', id: 'vReel', marca: 'Reel' }] });
 else { $('#aprovacao').remove(); $$('a[href="#aprovacao"]').forEach(a => a.remove()); }

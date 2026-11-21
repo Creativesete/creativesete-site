@@ -869,15 +869,18 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
 .rlc .ecra.espera .rsel{position:absolute;left:12px;right:auto;bottom:12px;padding:8px 12px;font-size:10px;max-width:calc(100% - 24px)}
 /* cartões de vídeo numa secção clara (os da base foram desenhados para fundo escuro) */
 #nuggets .rl{grid-template-columns:repeat(4,1fr)}
-#nuggets .rlc h3{color:inherit;font-size:clamp(17px,1.5vw,20px)}
-#nuggets .rlc .dia{color:var(--ar)}
-#nuggets .rlc .ecra{box-shadow:0 18px 44px rgba(0,0,0,.18)}
-@media (max-width:860px){#nuggets .rl{grid-template-columns:1fr 1fr}}
+#depoimentos .rl{grid-template-columns:repeat(5,1fr);gap:18px}
+#nuggets .rlc h3,#depoimentos .rlc h3{color:inherit;font-size:clamp(17px,1.5vw,20px)}
+#nuggets .rlc .dia,#depoimentos .rlc .dia{color:var(--ar)}
+#nuggets .rlc .ecra,#depoimentos .rlc .ecra{box-shadow:0 18px 44px rgba(0,0,0,.18)}
+#depoimentos .rlc .dia{font-size:10px;letter-spacing:.1em}
+@media (max-width:1100px){#depoimentos .rl{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:860px){#nuggets .rl,#depoimentos .rl{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body><!--email_off-->
 <header class="nav" id="nav"><div class="in">
-  <nav><a href="#reel">O reel</a><a href="#nuggets">Vídeos</a><a href="#fotos">Fotografias</a></nav>
+  <nav><a href="#reel">O reel</a><a href="#nuggets">Vídeos</a><a href="#depoimentos">Depoimentos</a><a href="#fotos">Fotografias</a></nav>
   <a class="marca" href="https://creativesete.com/"><img src="/assets/logo_dark.png" alt="CreativeSete"></a>
   <nav class="dir"><a href="https://drive.google.com/drive/folders/1So1UV6rAZE0InT2XTcrLpBKPAtQaIeDo" target="_blank" rel="noopener">Pasta na Drive</a><a href="#aprovacao">Aprovação</a><a href="#contacto">Falar connosco</a></nav>
   <a class="pill falar" href="#reel">Entregas</a>
@@ -936,10 +939,24 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
   </div>
 </section>
 
+<section class="sec" id="depoimentos" style="padding-top:0">
+  <div class="wrap">
+    <div class="fotos-cab">
+      <div class="num rv"><b>03</b><span>[ Os depoimentos ]</span></div>
+      <div>
+        <h2 class="tit lin" data-lin="O que dizem|da ProLeader"></h2>
+        <p class="sub rv" style="--d:.2s">Cinco mentoradas contam, na primeira pessoa, porque voltariam a entrar na ProLeader. Cada depoimento abre com a apresentação e segue direto para a resposta, sem perguntas nem pausas.</p>
+      </div>
+    </div>
+    <div class="rl" id="rld"></div>
+    <div class="pronto rv" style="margin-top:44px"><span class="ok" id="depIco"></span><p id="depTxt"></p><a class="pill" id="depBtn" href="#" target="_blank" rel="noopener">Abrir a pasta na Drive</a></div>
+  </div>
+</section>
+
 <section class="sec cinza" id="fotos">
   <div class="wrap">
     <div class="fotos-cab">
-      <div class="num rv"><b>03</b><span>[ As fotografias ]</span></div>
+      <div class="num rv"><b>04</b><span>[ As fotografias ]</span></div>
       <div>
         <h2 class="tit lin" data-lin="Todas as fotografias,|na sua área de cliente"></h2>
         <p class="sub rv" style="--d:.2s">Entregamos todas as fotografias editadas numa galeria protegida, para ver e descarregar em alta resolução, uma a uma ou todas de uma vez.</p>
@@ -954,7 +971,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
 <section class="sec cta escuro aprov" id="aprovacao">
   <div class="wrap">
     <div>
-      <div class="num rv"><b>04</b><span>[ A sua aprovação ]</span></div>
+      <div class="num rv"><b>05</b><span>[ A sua aprovação ]</span></div>
       <h2 class="tit lin" style="margin-top:26px" data-lin="Está tudo bem,|ou ajustamos?"></h2>
       <p class="sub rv">Quando o reel estiver pronto, escolha uma opção. Se quiser alterações, escreva-as na caixa: pode marcar o momento exato do vídeo com um clique. A mensagem segue já escrita por WhatsApp ou email.</p>
     </div>
@@ -985,7 +1002,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
         <p class="sub rv">Respondemos por WhatsApp ou email.</p>
         <div class="rv" style="--d:.2s;display:flex;gap:10px;flex-wrap:wrap"><a class="pill" id="wa" href="#" target="_blank" rel="noopener">WhatsApp</a><a class="pill linha" href="mailto:contact@creativesete.com?subject=Evento%2021%20nov%20%C2%B7%20entregas">Email</a></div>
       </div>
-      <div class="col rv"><h5>Nesta página</h5><a href="https://drive.google.com/drive/folders/1So1UV6rAZE0InT2XTcrLpBKPAtQaIeDo" target="_blank" rel="noopener">A pasta das entregas</a><a href="#reel">O reel</a><a href="#nuggets">Vídeos</a><a href="#fotos">Fotografias</a></div>
+      <div class="col rv"><h5>Nesta página</h5><a href="https://drive.google.com/drive/folders/1So1UV6rAZE0InT2XTcrLpBKPAtQaIeDo" target="_blank" rel="noopener">A pasta das entregas</a><a href="#reel">O reel</a><a href="#nuggets">Vídeos</a><a href="#depoimentos">Depoimentos</a><a href="#fotos">Fotografias</a></div>
       <div class="col rv" style="--d:.1s"><h5>Contacto</h5><a href="mailto:contact@creativesete.com">contact@creativesete.com</a><a id="wa2" href="#" target="_blank" rel="noopener">+351 963 899 070</a><p>Lisboa</p></div>
     </div>
     <p class="marcao" id="marcao"><span class="l"><span>Creative<em>Sete</em></span></span></p>
@@ -1213,6 +1230,17 @@ const VIDEOS = {
     { id: 'vb4', etiqueta: 'Tarde · 1:41', pronto: 'O lugar que ocupamos na cabeça dos outros', video: 'media/v-c1878.mp4', poster: 'media/v-c1878.jpg' },
   ],
 };
+/* Depoimentos sobre a ProLeader (timeline "Depoimentos", C1867 a C1872). As quatro homenagens à Patrícia (C1873 a C1876) não estão aqui. */
+const DEPOIMENTOS = {
+  pasta: 'https://drive.google.com/drive/folders/1MGAQznEw7Bc86GKCb67TcTuPKLw9JnzO',
+  itens: [
+    { id: 'vd1', etiqueta: 'Diretora de segurança · 1:23', pronto: 'Raquel dos Santos', video: 'media/d-raquel.mp4', poster: 'media/d-raquel.jpg' },
+    { id: 'vd2', etiqueta: 'Fisioterapeuta · 0:41', pronto: 'Nádia', video: 'media/d-nadia.mp4', poster: 'media/d-nadia.jpg' },
+    { id: 'vd3', etiqueta: 'Notária · 0:27', pronto: 'Paula Leite', video: 'media/d-paula.mp4', poster: 'media/d-paula.jpg' },
+    { id: 'vd4', etiqueta: 'Administradora · 0:32', pronto: 'Natália', video: 'media/d-natalia.mp4', poster: 'media/d-natalia.jpg' },
+    { id: 'vd5', etiqueta: 'Coordenadora de equipas · 0:35', pronto: 'Diana', video: 'media/d-diana.mp4', poster: 'media/d-diana.jpg' },
+  ],
+};
 const FOTOS = {
   galeria: 'https://clients.creativesete.com/proleaderday/',
   tituloPronto: 'As primeiras fotografias já chegaram',
@@ -1237,7 +1265,11 @@ reels($('#rlb'), VIDEOS.itens, false);
 $('#vidsIco').innerHTML = ICO.certo;
 $('#vidsTxt').innerHTML = `Os ${VIDEOS.total} vídeos estão na Drive<small>Em alta qualidade, um ficheiro por vídeo, para ver e descarregar.</small>`;
 $('#vidsBtn').href = VIDEOS.pasta;
-$$('#rlb video').forEach(v => v.addEventListener('play', () => $$('#rlb video').forEach(o => { if (o !== v) o.pause(); })));
+reels($('#rld'), DEPOIMENTOS.itens, false);
+$('#depIco').innerHTML = ICO.certo;
+$('#depTxt').innerHTML = `Os ${DEPOIMENTOS.itens.length} depoimentos estão na Drive<small>Em alta qualidade, um ficheiro por pessoa, para ver e descarregar.</small>`;
+$('#depBtn').href = DEPOIMENTOS.pasta;
+$$('#rlb video, #rld video').forEach(v => v.addEventListener('play', () => $$('#rlb video, #rld video').forEach(o => { if (o !== v) o.pause(); })));
 if (!NUGGETS.length) $('#lista').hidden = true;
 else listaDownloads($('#lista'), NUGGETS, { img: 'media/topo2-da8d88.jpg', est: 'Depois do evento', titulo: 'Os nuggets do evento', texto: 'Cada corte fica num ficheiro próprio, vertical, para descarregar diretamente desta lista.' });
 fotografias(FOTOS);

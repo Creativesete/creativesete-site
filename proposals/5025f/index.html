@@ -880,7 +880,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
 <main class="caixa">
 
 <section class="hero" id="topo">
-  <div class="bg" id="heroBg"><div class="mv" id="heroMv"><div class="slides" id="slides"><img src="media/topo1.jpg" alt="" loading="eager"><img src="media/topo2.jpg" alt="" loading="eager"><img src="media/topo3.jpg" alt="" loading="lazy"><img src="media/topo4.jpg" alt="" loading="lazy"><img src="media/topo5.jpg" alt="" loading="lazy"><img src="media/topo6.jpg" alt="" loading="lazy"></div></div></div>
+  <div class="bg" id="heroBg"><div class="mv" id="heroMv"><div class="slides" id="slides"><img src="media/topo1-4dadf5.jpg" alt="" loading="eager"><img src="media/topo2-058c5c.jpg" alt="" loading="eager"><img src="media/topo3-b7cce2.jpg" alt="" loading="lazy"><img src="media/topo4-8ddea2.jpg" alt="" loading="lazy"><img src="media/topo5-8b712e.jpg" alt="" loading="lazy"><img src="media/topo6-5a2d4a.jpg" alt="" loading="lazy"></div></div></div>
   <div class="barras" id="barras" aria-hidden="true"></div>
   <div class="brilho"></div>
   <div class="in">
@@ -1193,13 +1193,13 @@ const EVENTO = { inicio: '2026-11-21T08:00:00Z', fim: '2026-11-22T00:00:00Z' }; 
 const REEL = { id: 'vReel', etiqueta: 'Entrega até 26 de novembro', titulo: 'O reel do evento', quando: 'Em edição depois do evento',
   texto: 'Editado nos cinco dias a seguir ao evento. Quando estiver pronto, aparece aqui para ver, aprovar e descarregar.',
   pronto: 'O reel está pronto', textoPronto: 'Veja com calma e diga-nos mais abaixo se está aprovado ou se quer alterações.',
-  poster: 'media/topo1.jpg', video: null, dl: null, peso: '' };
+  poster: 'media/topo1-4dadf5.jpg', video: null, dl: null, peso: '' };
 const NUGGETS = [];
 const FOTOS = {
   galeria: 'https://clients.creativesete.com/proleaderday/',
   tituloPronto: 'As primeiras fotografias já chegaram',
   titulo: 'Uma seleção do dia',
-  fotos: ['foto001','foto002','foto003','foto004','foto005','foto006','foto007','foto008','foto009','foto010','foto011','foto012','foto013','foto014','foto015','foto016','foto017','foto018','foto019','foto020','foto021','foto022','foto023','foto024','foto025','foto026','foto027','foto028','foto029','foto030'],
+  fotos: ['foto001-4dadf5','foto002-058c5c','foto003-b7cce2','foto004-8ddea2','foto005-8b712e','foto006-5a2d4a','foto007-f6c2ac','foto008-554406','foto009-57888c','foto010-f457cd','foto011-49a8bb','foto012-346970','foto013-37154a','foto014-f3b0f6','foto015-a5722e','foto016-bd01de','foto017-b3ca24','foto018-e996f6','foto019-112f34','foto020-cadb76','foto021-0db7bf','foto022-94e20a','foto023-1422c5','foto024-a7f641','foto025-47de87','foto026-7bfe52','foto027-40c099','foto028-902cff','foto029-89788e','foto030-f05646'],
   tituloEspera: 'A galeria abre depois do evento',
   textoEspera: 'Assim que as fotografias estiverem editadas, o botão ao lado leva-a diretamente para a sua área de cliente.',
   textoPronto: 'A galeria já está aberta e vai recebendo mais fotografias ao longo do dia. Abra para ver e descarregar em alta resolução.',
@@ -1214,7 +1214,7 @@ contagem({
   depois: () => ({ a: 'Obrigado', b: 'pela confiança', lado: REEL.video ? 'O reel está pronto para a sua aprovação, e os nuggets e as fotografias juntam-se aqui à medida que ficam prontos.' : 'Já estamos a editar. O reel, os nuggets e as fotografias aparecem nesta página à medida que ficam prontos.' }),
 });
 reels($('#rl'), [REEL], true);
-listaDownloads($('#lista'), NUGGETS, { img: 'media/topo2.jpg', est: 'Depois do evento', titulo: 'Os nuggets do evento', texto: 'Cada corte fica num ficheiro próprio, vertical, para descarregar diretamente desta lista.' });
+listaDownloads($('#lista'), NUGGETS, { img: 'media/topo2-058c5c.jpg', est: 'Depois do evento', titulo: 'Os nuggets do evento', texto: 'Cada corte fica num ficheiro próprio, vertical, para descarregar diretamente desta lista.' });
 fotografias(FOTOS);
 if (REEL.video) aprovacao({ codigo: 'patrivll5f', cliente: 'Patrícia Teixeira', pecas: [{ n: '01', nome: 'Reel', sub: 'versão 1', peca: 'o reel do evento', id: 'vReel', marca: 'Reel' }] });
 else { $('#aprovacao').remove(); $$('a[href="#aprovacao"]').forEach(a => a.remove()); }

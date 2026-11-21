@@ -886,7 +886,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
 <main class="caixa">
 
 <section class="hero" id="topo">
-  <div class="bg" id="heroBg"><div class="mv" id="heroMv"><div class="slides" id="slides"><img src="media/topo1-4dadf5.jpg" alt="" loading="eager"><img src="media/topo2-058c5c.jpg" alt="" loading="eager"><img src="media/topo3-da8d88.jpg" alt="" loading="lazy"><img src="media/topo4-8ddea2.jpg" alt="" loading="lazy"><img src="media/topo5-8b712e.jpg" alt="" loading="lazy"><img src="media/topo6-5a2d4a.jpg" alt="" loading="lazy"></div></div></div>
+  <div class="bg" id="heroBg"><div class="mv" id="heroMv"><div class="slides" id="slides"><img src="media/topo1-4dadf5.jpg" alt="" loading="eager"><img src="media/topo2-da8d88.jpg" alt="" loading="eager"><img src="media/topo3-5640dc.jpg" alt="" loading="lazy"><img src="media/topo4-058c5c.jpg" alt="" loading="lazy"><img src="media/topo5-8ddea2.jpg" alt="" loading="lazy"><img src="media/topo6-8b712e.jpg" alt="" loading="lazy"></div></div></div>
   <div class="barras" id="barras" aria-hidden="true"></div>
   <div class="brilho"></div>
   <div class="in">
@@ -1197,7 +1197,7 @@ function fim(){
    Reel: pôr em video o mp4 leve (media/reel.mp4, até 25 MB), em poster a capa e em dl o download direto da Drive.
    Nuggets: juntar a NUGGETS { titulo, sub, dl }.
    Fotografias: pôr o link da galeria (área de cliente) em FOTOS.galeria. */
-const EVENTO = { inicio: '2026-11-21T08:00:00Z', fim: '2026-11-22T00:00:00Z' }; // 21 nov a partir das 8h em Lisboa (novembro = UTC); local por confirmar
+const EVENTO = { inicio: '2026-11-21T08:00:00Z', fim: '2026-11-21T19:00:00Z' }; // 21 nov das 8h às 19h em Lisboa (novembro = UTC); a partir daí o topo passa ao agradecimento
 const REEL = { id: 'vReel', etiqueta: 'Entrega até 26 de novembro', titulo: 'O reel do evento', quando: 'Em edição depois do evento',
   texto: 'Editado nos cinco dias a seguir ao evento. Quando estiver pronto, aparece aqui para ver, aprovar e descarregar.',
   pronto: 'O reel está pronto', textoPronto: 'Veja com calma e diga-nos mais abaixo se está aprovado ou se quer alterações.',
@@ -1217,7 +1217,7 @@ const FOTOS = {
   galeria: 'https://clients.creativesete.com/proleaderday/',
   tituloPronto: 'As primeiras fotografias já chegaram',
   titulo: 'Uma seleção do dia',
-  fotos: ['foto001-4dadf5','foto002-058c5c','foto003-da8d88','foto004-8ddea2','foto005-8b712e','foto006-5a2d4a','foto007-f6c2ac','foto008-554406','foto009-57888c','foto010-f457cd','foto011-49a8bb','foto012-346970','foto013-37154a','foto014-f3b0f6','foto015-a5722e','foto016-bd01de','foto017-b3ca24','foto018-e996f6','foto019-112f34','foto020-cadb76','foto021-0db7bf','foto022-94e20a','foto023-1422c5','foto024-a7f641','foto025-47de87','foto026-7bfe52','foto027-40c099','foto028-902cff','foto029-89788e','foto030-f05646','foto031-b7cce2','foto032-ebce5b','foto033-afc116','foto034-61d865','foto035-d0aeaf','foto036-f60f45','foto037-7ee724','foto038-d5b982','foto039-cbaa9b','foto040-39d4be','foto041-d849bf','foto042-4260c8','foto043-6a7b59','foto044-b09863','foto045-7ae81b','foto046-e87529','foto047-ba7d7c','foto048-237190','foto049-5eb6b3','foto050-9334b3'],
+  fotos: ['foto001-4dadf5','foto002-da8d88','foto003-5640dc','foto004-058c5c','foto005-8ddea2','foto006-8b712e','foto007-f6c2ac','foto008-554406','foto009-57888c','foto010-f457cd','foto011-49a8bb','foto012-346970','foto013-37154a','foto014-f3b0f6','foto015-5a2d4a','foto016-a5722e','foto017-bd01de','foto018-b3ca24','foto019-e996f6','foto020-112f34','foto021-cadb76','foto022-0db7bf','foto023-94e20a','foto024-1422c5','foto025-a7f641','foto026-47de87','foto027-7bfe52','foto028-40c099','foto029-902cff','foto030-89788e','foto031-f05646','foto032-b7cce2','foto033-ebce5b','foto034-afc116','foto035-61d865','foto036-d0aeaf','foto037-f60f45','foto038-7ee724','foto039-d5b982','foto040-cbaa9b','foto041-39d4be','foto042-d849bf','foto043-4260c8','foto044-6a7b59','foto045-b09863','foto046-7ae81b','foto047-e87529','foto048-ba7d7c','foto049-237190','foto050-5eb6b3','foto051-9334b3','foto052-4d5b44','foto053-e7b1ee','foto054-121c95','foto055-f8ff3f','foto056-34ae53','foto057-d91f20','foto058-d3c392'],
   tituloEspera: 'A galeria abre depois do evento',
   textoEspera: 'Assim que as fotografias estiverem editadas, o botão ao lado leva-a diretamente para a sua área de cliente.',
   textoPronto: 'A galeria já está aberta e vai recebendo mais fotografias ao longo do dia. Abra para ver e descarregar em alta resolução.',
@@ -1229,7 +1229,8 @@ slideshow();
 contagem({
   ...EVENTO,
   durante: () => ({ a: 'É hoje', b: 'o grande dia', estado: 'Hoje · 21 de novembro', lado: 'Estamos consigo a registar o dia. As primeiras fotografias e os primeiros vídeos já estão nesta página; o reel chega nos próximos dias.' }),
-  depois: () => ({ a: 'Obrigado', b: 'pela confiança', lado: REEL.video ? 'O reel está pronto para a sua aprovação, e os vídeos e as fotografias estão mais abaixo.' : 'Já estamos a editar. As fotografias e os vídeos para as redes já estão nesta página; o reel chega até 26 de novembro.' }),
+  depois: () => ({ a: 'Muito obrigado', b: 'pela confiança', estado: 'ProLeader Day · 21 de novembro de 2026',
+    lado: 'Patrícia, obrigado por voltar a confiar em nós para registar o ProLeader Day. Foi um privilégio viver este dia convosco. ' + (REEL.video ? 'O reel está pronto para a sua aprovação, e os vídeos e as fotografias estão mais abaixo.' : 'As fotografias e os vídeos para as redes já estão nesta página, e o reel chega até 26 de novembro.') }),
 });
 reels($('#rl'), [REEL], true);
 reels($('#rlb'), VIDEOS.itens, false);
@@ -1238,7 +1239,7 @@ $('#vidsTxt').innerHTML = `Os ${VIDEOS.total} vídeos estão na Drive<small>Em a
 $('#vidsBtn').href = VIDEOS.pasta;
 $$('#rlb video').forEach(v => v.addEventListener('play', () => $$('#rlb video').forEach(o => { if (o !== v) o.pause(); })));
 if (!NUGGETS.length) $('#lista').hidden = true;
-else listaDownloads($('#lista'), NUGGETS, { img: 'media/topo2-058c5c.jpg', est: 'Depois do evento', titulo: 'Os nuggets do evento', texto: 'Cada corte fica num ficheiro próprio, vertical, para descarregar diretamente desta lista.' });
+else listaDownloads($('#lista'), NUGGETS, { img: 'media/topo2-da8d88.jpg', est: 'Depois do evento', titulo: 'Os nuggets do evento', texto: 'Cada corte fica num ficheiro próprio, vertical, para descarregar diretamente desta lista.' });
 fotografias(FOTOS);
 if (REEL.video) aprovacao({ codigo: 'patrivll5f', cliente: 'Patrícia Teixeira', pecas: [{ n: '01', nome: 'Reel', sub: 'versão 1', peca: 'o reel do evento', id: 'vReel', marca: 'Reel' }] });
 else { $('#aprovacao').remove(); $$('a[href="#aprovacao"]').forEach(a => a.remove()); }

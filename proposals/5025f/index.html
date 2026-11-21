@@ -1084,7 +1084,7 @@ function fotografias(F){
   const tem = !!F.galeria;
   $('#fotosPronto').classList.toggle('espera', !tem);
   $('#fotosIco').innerHTML = tem ? ICO.certo : ICO.relogio;
-  $('#fotosTxt').innerHTML = tem ? `As fotografias estão prontas<small>${esc(F.textoPronto)}</small>` : `${esc(F.tituloEspera)}<small>${esc(F.textoEspera)}</small>`;
+  $('#fotosTxt').innerHTML = tem ? `${esc(F.tituloPronto || 'As fotografias estão prontas')}<small>${esc(F.textoPronto)}</small>` : `${esc(F.tituloEspera)}<small>${esc(F.textoEspera)}</small>`;
   const fb = $('#fotosBtn'); fb.textContent = tem ? 'Abrir a galeria' : 'Galeria em breve';
   if (tem) fb.href = F.galeria; else { fb.removeAttribute('href'); fb.setAttribute('aria-disabled', 'true'); }
   const gt = $('#galTit'), g = $('#galeria');
@@ -1196,12 +1196,13 @@ const REEL = { id: 'vReel', etiqueta: 'Entrega até 26 de novembro', titulo: 'O 
   poster: 'media/topo1.jpg', video: null, dl: null, peso: '' };
 const NUGGETS = [];
 const FOTOS = {
-  galeria: null,
-  titulo: 'Para recordar',
-  fotos: ['foto001','foto002','foto003','foto004','foto005','foto006','foto007','foto008','foto009','foto010','foto011','foto012','foto013','foto014','foto015','foto016','foto017','foto018','foto019','foto020','foto021'],
+  galeria: 'https://clients.creativesete.com/proleaderday/',
+  tituloPronto: 'As primeiras fotografias já chegaram',
+  titulo: 'Uma primeira seleção',
+  fotos: ['foto001','foto002','foto003','foto004','foto005','foto006','foto007','foto008','foto009','foto010','foto011','foto012','foto013','foto014','foto015','foto016','foto017','foto018','foto019','foto020','foto021','foto022','foto023','foto024'],
   tituloEspera: 'A galeria abre depois do evento',
   textoEspera: 'Assim que as fotografias estiverem editadas, o botão ao lado leva-a diretamente para a sua área de cliente.',
-  textoPronto: 'Abra a galeria para ver e descarregar em alta resolução.',
+  textoPronto: 'A galeria já está aberta e vai recebendo mais fotografias ao longo do dia. Abra para ver e descarregar em alta resolução.',
 };
 /* ================================================================ */
 
@@ -1209,7 +1210,7 @@ base('Olá Lucas, sobre as entregas do evento de 21 de novembro: ');
 slideshow();
 contagem({
   ...EVENTO,
-  durante: () => ({ a: 'É hoje', b: 'o grande dia', estado: 'Hoje · 21 de novembro', lado: 'Estamos consigo a registar o dia. O reel, os nuggets e as fotografias chegam a esta página nos próximos dias.' }),
+  durante: () => ({ a: 'É hoje', b: 'o grande dia', estado: 'Hoje · 21 de novembro', lado: 'Estamos consigo a registar o dia. As primeiras fotografias já estão na galeria; o reel e os nuggets chegam a esta página nos próximos dias.' }),
   depois: () => ({ a: 'Obrigado', b: 'pela confiança', lado: REEL.video ? 'O reel está pronto para a sua aprovação, e os nuggets e as fotografias juntam-se aqui à medida que ficam prontos.' : 'Já estamos a editar. O reel, os nuggets e as fotografias aparecem nesta página à medida que ficam prontos.' }),
 });
 reels($('#rl'), [REEL], true);

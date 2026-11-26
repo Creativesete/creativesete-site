@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>Página não encontrada · CreativeSete</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+  :root{
+    --bg:#E8E8EE;--ink:#14151A;--muted:#5B5D68;--faint:#9698A2;
+    --glass:rgba(255,255,255,.55);--glass-2:rgba(255,255,255,.72);--glass-brd:rgba(255,255,255,.75);
+    --shadow-sm:0 8px 24px rgba(20,21,26,.10);
+    --grad:linear-gradient(115deg,#E6A45C,#E8608F 38%,#8A5CF0 68%,#3FA9F0);
+    --blur:saturate(180%) blur(22px);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100vh;display:flex;flex-direction:column;color:var(--ink);font-family:'Manrope',system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+    background:
+      radial-gradient(58vw 48vw at 84% -6%, rgba(160,120,255,.28), transparent 58%),
+      radial-gradient(50vw 44vw at 4% 14%, rgba(90,190,255,.22), transparent 58%),
+      radial-gradient(60vw 55vw at 50% 112%, rgba(255,180,120,.22), transparent 58%),
+      var(--bg);}
+  header{padding:14px}
+  .nav-glass{max-width:1200px;margin:0 auto;display:flex;align-items:center;height:60px;padding:0 20px;border-radius:999px;
+    background:var(--glass);border:1px solid var(--glass-brd);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);box-shadow:var(--shadow-sm)}
+  .nav-glass img{height:26px;width:auto;display:block}
+  main{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 16px 80px;text-align:center}
+  .num{font-size:clamp(88px,16vw,150px);font-weight:800;letter-spacing:-.05em;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  h1{margin:14px 0 10px;font-size:clamp(24px,4vw,34px);font-weight:700;letter-spacing:-.02em}
+  p{margin:0 auto;max-width:460px;color:var(--muted);font-size:15.5px;line-height:1.6}
+  p.en{margin-top:6px;color:var(--faint);font-size:14px}
+  .acoes{margin-top:28px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;font-weight:600;font-size:14.5px;padding:12px 22px;border-radius:999px;text-decoration:none;
+    border:1px solid var(--glass-brd);background:var(--glass-2);color:var(--ink);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur)}
+  .btn:hover{background:#fff}
+  .btn.escuro{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .btn.escuro:hover{background:#2a2c33}
+</style>
+</head>
+<body>
+<header>
+  <div class="nav-glass">
+    <a href="/" aria-label="CreativeSete"><img src="/assets/logo_dark.png" alt="CreativeSete"></a>
+  </div>
+</header>
+<main>
+  <div>
+    <div class="num">404</div>
+    <h1>Esta página não existe.</h1>
+    <p>O endereço pode ter mudado ou a página já não está disponível.</p>
+    <p class="en">This page doesn't exist anymore.</p>
+    <div class="acoes">
+      <a class="btn escuro" href="/">Página principal</a>
+      <a class="btn" href="/servicos/">Os nossos serviços</a>
+      <a class="btn" href="/en/">English</a>
+    </div>
+  </div>
+</main>
+</body>
+</html>

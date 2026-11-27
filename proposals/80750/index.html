@@ -804,6 +804,42 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
 .vazio p{margin-top:8px;color:var(--texto);max-width:46ch}
 @media (max-width:760px){.vazio{grid-template-columns:1fr;gap:20px}.pal{grid-template-columns:32px 1fr auto;padding:16px}}
 
+/* Depoimentos: cartão por pessoa com as duas partes */
+.depg{display:grid;grid-template-columns:repeat(3,1fr);gap:44px 22px;margin-top:56px}
+.depc{display:flex;flex-direction:column}
+.depc .ecra{position:relative;display:block;width:100%;aspect-ratio:16/9;padding:0;border:0;border-radius:var(--r);overflow:hidden;background:#000;cursor:pointer;box-shadow:0 24px 60px rgba(0,0,0,.4)}
+.depc .ecra img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease),filter .6s}
+.depc .ecra:hover img{transform:scale(1.04);filter:brightness(.85)}
+.depc .play{position:absolute;left:16px;bottom:16px;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:background .4s,transform .5s var(--ease)}
+.depc .ecra:hover .play{background:var(--ar);transform:scale(1.08)}
+.depc .play svg,.parte .pl svg{width:16px;height:16px;fill:#fff;margin-left:2px}
+.depc h3{margin-top:20px;font-size:clamp(22px,2vw,28px);font-weight:500;letter-spacing:-.02em;color:#fff}
+.partes{display:grid;gap:8px;margin-top:14px}
+.parte{display:grid;grid-template-columns:1fr auto;gap:8px}
+.parte button{display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06);color:#fff;text-align:left;cursor:pointer;transition:background .4s,border-color .4s}
+.parte button:hover{background:rgba(255,255,255,.12);border-color:var(--ar2)}
+.parte .pl{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--ar);flex:none}
+.parte .pl svg{width:12px;height:12px}
+.parte b{display:block;font-weight:500;font-size:14.5px}
+.parte small{display:block;font-size:12.5px;color:rgba(255,255,255,.6)}
+.parte a{display:grid;place-items:center;width:52px;border-radius:14px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06);transition:background .4s,border-color .4s}
+.parte a:hover{background:rgba(255,255,255,.12);border-color:var(--ar2)}
+.parte a svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:1.8}
+.dep-pasta{margin-top:50px}
+.dep-pasta[hidden]{display:none}
+@media (max-width:1000px){.depg{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:640px){.depg{grid-template-columns:1fr}}
+
+/* visor dos depoimentos (Drive) */
+.vp{position:fixed;inset:0;z-index:300;display:grid;place-items:center;background:rgba(8,8,10,.94)}
+.vp[hidden]{display:none}
+.vp-in{width:100%;display:grid;place-items:center;padding:70px 20px}
+.vp-ecra{width:min(92vw,1300px,calc((100vh - 160px) * 16 / 9));aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#000}
+.vp-ecra iframe{width:100%;height:100%;border:0;display:block}
+.vp-c{margin-top:16px;font-size:13px;color:rgba(255,255,255,.65);text-align:center}
+.vp .vx-x{position:absolute;top:20px;right:20px;width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(0,0,0,.3);color:#fff;font-size:26px;line-height:1;cursor:pointer}
+.vp .vx-x:hover{background:var(--ar)}
+
 /* fotografias à espera */
 .pronto.espera .ok{background:transparent;box-shadow:inset 0 0 0 1.5px var(--ar)}
 .pronto.espera .ok svg{stroke:var(--ar)}
@@ -828,7 +864,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
 </head>
 <body><!--email_off-->
 <header class="nav" id="nav"><div class="in">
-  <nav><a href="#sameday">Sameday</a><a href="#integra">Na íntegra</a><a href="#fotos">Fotografias</a></nav>
+  <nav><a href="#sameday">Sameday</a><a href="#integra">Na íntegra</a><a href="#depoimentos">Depoimentos</a><a href="#fotos">Fotografias</a></nav>
   <a class="marca" href="https://creativesete.com/"><img src="/assets/logo_dark.png" alt="CreativeSete"></a>
   <nav class="dir"><a href="https://drive.google.com/drive/folders/1XmfFtrIGxNqYIeOOqASKNdPMgj7vYxxe" target="_blank" rel="noopener">Pasta na Drive</a><a href="#contacto">Falar connosco</a></nav>
   <a class="pill falar" href="#sameday">Entregas</a>
@@ -885,10 +921,24 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
   </div>
 </section>
 
+<section class="sec escuro" id="depoimentos">
+  <div class="wrap">
+    <div class="fotos-cab">
+      <div class="num rv"><b>03</b><span>[ Depoimentos ]</span></div>
+      <div>
+        <h2 class="tit lin" data-lin="Quem esteve lá,|na primeira pessoa"></h2>
+        <p class="sub rv" style="--d:.2s">Seis alunos do Accelerator falaram connosco no primeiro dia: o que o programa mudou no negócio de cada um e porque vale a pena vir ao Master and Scale. Cada depoimento tem as duas partes em ficheiros separados, prontos a usar.</p>
+      </div>
+    </div>
+    <div class="depg" id="dep"></div>
+    <div class="dep-pasta rv" id="depPastaBox"><a class="pill claro" id="depPasta" href="#" target="_blank" rel="noopener">Abrir a pasta dos depoimentos</a></div>
+  </div>
+</section>
+
 <section class="sec cinza" id="fotos">
   <div class="wrap">
     <div class="fotos-cab">
-      <div class="num rv"><b>03</b><span>[ As fotografias ]</span></div>
+      <div class="num rv"><b>04</b><span>[ As fotografias ]</span></div>
       <div>
         <h2 class="tit lin" data-lin="O evento|em fotografia"></h2>
         <p class="sub rv" style="--d:.2s">Todas as fotografias editadas ficam numa galeria própria, para ver e descarregar em alta resolução, uma a uma ou todas de uma vez.</p>
@@ -912,7 +962,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
         <p class="sub rv">Durante o evento estamos na sala. Fora dele, respondemos por WhatsApp ou email.</p>
         <div class="rv" style="--d:.2s;display:flex;gap:10px;flex-wrap:wrap"><a class="pill" id="wa" href="#" target="_blank" rel="noopener">WhatsApp</a><a class="pill linha" href="mailto:contact@creativesete.com?subject=Evento%20Lagoas%20Park%20%C2%B7%20entregas">Email</a></div>
       </div>
-      <div class="col rv"><h5>Nesta página</h5><a href="https://drive.google.com/drive/folders/1XmfFtrIGxNqYIeOOqASKNdPMgj7vYxxe" target="_blank" rel="noopener">A pasta das entregas</a><a href="#sameday">Sameday</a><a href="#integra">Na íntegra</a><a href="#fotos">Fotografias</a></div>
+      <div class="col rv"><h5>Nesta página</h5><a href="https://drive.google.com/drive/folders/1XmfFtrIGxNqYIeOOqASKNdPMgj7vYxxe" target="_blank" rel="noopener">A pasta das entregas</a><a href="#sameday">Sameday</a><a href="#integra">Na íntegra</a><a href="#depoimentos">Depoimentos</a><a href="#fotos">Fotografias</a></div>
       <div class="col rv" style="--d:.1s"><h5>Contacto</h5><a href="mailto:contact@creativesete.com">contact@creativesete.com</a><a id="wa2" href="#" target="_blank" rel="noopener">+351 963 899 070</a><p>Lisboa</p></div>
     </div>
     <p class="marcao" id="marcao"><span class="l"><span>Creative<em>Sete</em></span></span></p>
@@ -920,6 +970,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
   </div>
 </footer>
 </main>
+<div class="vp" id="vp" hidden><button type="button" class="vx-x" id="vpX" aria-label="Fechar">×</button><div class="vp-in"><div class="vp-ecra"><iframe id="vpF" title="Depoimento" allow="autoplay; fullscreen" allowfullscreen></iframe></div><p class="vp-c" id="vpC"></p></div></div>
 <div class="vx" id="vx" hidden><button type="button" class="vx-x" id="vxX" aria-label="Fechar">×</button><button type="button" class="vx-p" id="vxP" aria-label="Anterior">‹</button><img id="vxImg" alt=""><button type="button" class="vx-n" id="vxN" aria-label="Seguinte">›</button><p class="vx-c" id="vxC"></p></div>
 
 <script>
@@ -941,6 +992,18 @@ const FOTOS = {
   galeria: 'https://clients.creativesete.com/masterandscale26/',
   dias: [
     { titulo: 'Dia 1 · 27 de novembro', fotos: ['d1-43-940193','d1-31-ee8154','d1-28-41146e','d1-35-3e64ac','d1-24-02e6c4','d1-38-41bc63','d1-40-1db573','d1-01-f31ae6','d1-30-f2fafb','d1-26-6e456a','d1-33-1e18e8','d1-36-0c5eac','d1-39-f35318','d1-19-cdc603','d1-32-6301cb','d1-37-226bb7','d1-41-ebbb04','d1-42-32136f','d1-02-441bfe','d1-03-ed569b','d1-04-4a60ee','d1-05-2386be','d1-06-b68384','d1-07-b9d7b1','d1-08-e3bc7e','d1-09-e3982c','d1-10-7736b2','d1-11-6e8b85','d1-12-9cd293','d1-13-2451b5','d1-14-9babce','d1-15-1e5fab','d1-16-801047','d1-17-6bb4db','d1-18-6ef473','d1-20-ac2138','d1-21-518ca0','d1-22-1a5213','d1-23-4de397','d1-25-c6fe3c','d1-27-d96273','d1-29-cba992','d1-34-c80b8d'] },
+  ],
+};
+/* Depoimentos: um cartão por pessoa, duas partes; id = ficheiro da Drive (pasta pública por link), dur = duração, mb = peso. */
+const DEPO = {
+  pasta: 'https://drive.google.com/drive/folders/1tIFqIpbMVZQxvHT09BupVOFANE_WJRlY',
+  pessoas: [
+    { nome: 'Diogo', poster: 'media/dp-diogo.jpg', partes: [{ titulo: 'Accelerator', dur: '4:35', mb: 'MOV · 1080p · 494 MB', id: null }, { titulo: 'Evento', dur: '2:59', mb: 'MOV · 1080p · 320 MB', id: null }] },
+    { nome: 'Marina', poster: 'media/dp-marina.jpg', partes: [{ titulo: 'Accelerator', dur: '3:58', mb: 'MOV · 1080p · 428 MB', id: null }, { titulo: 'Evento', dur: '1:06', mb: 'MOV · 1080p · 119 MB', id: '1ytTE4L2PEZ2NaIF6G4ZXppxGuaN5dv5P' }] },
+    { nome: 'Maria', poster: 'media/dp-maria.jpg', partes: [{ titulo: 'Accelerator', dur: '5:19', mb: 'MOV · 1080p · 572 MB', id: null }, { titulo: 'Evento', dur: '0:38', mb: 'MOV · 1080p · 68 MB', id: '1etJu5dwvfI2D2Hso8B9wjcNTbVf2MbCM' }] },
+    { nome: 'Carla', poster: 'media/dp-carla.jpg', partes: [{ titulo: 'Accelerator', dur: '6:55', mb: 'MOV · 1080p · 744 MB', id: null }, { titulo: 'Evento', dur: '3:21', mb: 'MOV · 1080p · 360 MB', id: null }] },
+    { nome: 'Karen', poster: 'media/dp-karen.jpg', partes: [{ titulo: 'Accelerator', dur: '4:22', mb: 'MOV · 1080p · 470 MB', id: null }, { titulo: 'Evento', dur: '1:10', mb: 'MOV · 1080p · 126 MB', id: '1JETO1yyYVz4MtxFL53vIVhrTZhSMHaIB' }] },
+    { nome: 'Ana Rita', poster: 'media/dp-ana-rita.jpg', partes: [{ titulo: 'Accelerator', dur: '4:55', mb: 'MOV · 1080p · 529 MB', id: null }, { titulo: 'Evento', dur: '2:56', mb: 'MOV · 1080p · 316 MB', id: null }] },
   ],
 };
 /* ================================================================ */
@@ -1014,6 +1077,32 @@ function mostraDia(d){
 }
 $$('#dias button').forEach(b => b.onclick = () => mostraDia(+b.dataset.d));
 mostraDia(1);
+
+/* Depoimentos */
+const PLAY = '<svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg>';
+const dlDrive = id => `https://drive.usercontent.google.com/download?id=${id}&export=download&confirm=t`;
+$('#dep').innerHTML = DEPO.pessoas.map((p, i) => `
+  <article class="depc rv" style="--d:${(i % 3) * .1}s">
+    <button type="button" class="ecra" data-p="${i}" data-k="0" aria-label="Ver o depoimento de ${esc(p.nome)}"><img src="${esc(p.poster)}" alt="" loading="lazy"><span class="play">${PLAY}</span></button>
+    <h3>${esc(p.nome)}</h3>
+    <div class="partes">${p.partes.map((q, k) => `
+      <div class="parte"><button type="button" data-p="${i}" data-k="${k}"><span class="pl">${PLAY}</span><span><b>${esc(q.titulo)}</b><small>${esc(q.dur)}</small></span></button><a href="${q.id ? dlDrive(q.id) : (DEPO.pasta || '#')}" target="_blank" rel="noopener" aria-label="Descarregar ${esc(p.nome)}, ${esc(q.titulo)}" title="Descarregar · ${esc(q.mb)}">${SETA}</a></div>`).join('')}
+    </div>
+  </article>`).join('');
+if (DEPO.pasta) $('#depPasta').href = DEPO.pasta; else $('#depPastaBox').hidden = true;
+const vp = $('#vp');
+function vpAbre(i, k){
+  const p = DEPO.pessoas[i], q = p.partes[k]; if (!q) return;
+  if (!q.id) { if (DEPO.pasta) open(DEPO.pasta, '_blank', 'noopener'); return; }
+  $('#vpF').src = `https://drive.google.com/file/d/${q.id}/preview`;
+  $('#vpC').textContent = `${p.nome} · ${q.titulo} · ${q.dur}`;
+  vp.hidden = false; document.body.style.overflow = 'hidden';
+}
+const vpFecha = () => { vp.hidden = true; document.body.style.overflow = ''; $('#vpF').removeAttribute('src'); };
+$$('#dep button[data-p]').forEach(b => b.onclick = () => vpAbre(+b.dataset.p, +b.dataset.k));
+$('#vpX').onclick = vpFecha;
+vp.addEventListener('click', e => { if (e.target === vp || e.target.classList.contains('vp-in')) vpFecha(); });
+addEventListener('keydown', e => { if (!vp.hidden && e.key === 'Escape') vpFecha(); });
 
 /* Fotografias */
 const temGaleria = !!FOTOS.galeria;

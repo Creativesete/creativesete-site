@@ -828,7 +828,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
 </head>
 <body><!--email_off-->
 <header class="nav" id="nav"><div class="in">
-  <nav><a href="#sameday">Sameday</a><a href="#integra">Na íntegra</a></nav>
+  <nav><a href="#sameday">Sameday</a><a href="#integra">Na íntegra</a><a href="#fotos">Fotografias</a></nav>
   <a class="marca" href="https://creativesete.com/"><img src="/assets/logo_dark.png" alt="CreativeSete"></a>
   <nav class="dir"><a href="https://drive.google.com/drive/folders/1XmfFtrIGxNqYIeOOqASKNdPMgj7vYxxe" target="_blank" rel="noopener">Pasta na Drive</a><a href="#contacto">Falar connosco</a></nav>
   <a class="pill falar" href="#sameday">Entregas</a>
@@ -851,7 +851,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
       </div>
     </div>
     <div class="lado">
-      <p id="ladoTxt">Esta é a página das entregas do evento. Os vídeos Sameday aparecem aqui na noite de cada dia, e depois do evento juntamos a captação na íntegra de cada palestra.</p>
+      <p id="ladoTxt">Esta é a página das entregas do evento. Os vídeos Sameday aparecem aqui na noite de cada dia, as fotografias juntam-se à galeria ao longo do evento, e depois juntamos a captação na íntegra de cada palestra.</p>
       <div class="ondas" id="ondas" aria-hidden="true"></div>
       <a class="pill claro" href="#sameday">Ver as entregas</a>
     </div>
@@ -885,6 +885,25 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
   </div>
 </section>
 
+<section class="sec cinza" id="fotos">
+  <div class="wrap">
+    <div class="fotos-cab">
+      <div class="num rv"><b>03</b><span>[ As fotografias ]</span></div>
+      <div>
+        <h2 class="tit lin" data-lin="O evento|em fotografia"></h2>
+        <p class="sub rv" style="--d:.2s">Todas as fotografias editadas ficam numa galeria própria, para ver e descarregar em alta resolução, uma a uma ou todas de uma vez.</p>
+      </div>
+    </div>
+    <div class="pronto rv" id="fotosPronto">
+      <span class="ok" id="fotosIco"></span>
+      <p id="fotosTxt"></p>
+      <a class="pill" id="fotosBtn" href="#" target="_blank" rel="noopener"></a>
+    </div>
+    <h3 class="gal-tit rv" id="galTit"></h3>
+    <div class="galeria" id="galeria"></div>
+  </div>
+</section>
+
 <footer class="fecho" id="contacto">
   <div class="wrap">
     <div class="g">
@@ -893,7 +912,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
         <p class="sub rv">Durante o evento estamos na sala. Fora dele, respondemos por WhatsApp ou email.</p>
         <div class="rv" style="--d:.2s;display:flex;gap:10px;flex-wrap:wrap"><a class="pill" id="wa" href="#" target="_blank" rel="noopener">WhatsApp</a><a class="pill linha" href="mailto:contact@creativesete.com?subject=Evento%20Lagoas%20Park%20%C2%B7%20entregas">Email</a></div>
       </div>
-      <div class="col rv"><h5>Nesta página</h5><a href="https://drive.google.com/drive/folders/1XmfFtrIGxNqYIeOOqASKNdPMgj7vYxxe" target="_blank" rel="noopener">A pasta das entregas</a><a href="#sameday">Sameday</a><a href="#integra">Na íntegra</a></div>
+      <div class="col rv"><h5>Nesta página</h5><a href="https://drive.google.com/drive/folders/1XmfFtrIGxNqYIeOOqASKNdPMgj7vYxxe" target="_blank" rel="noopener">A pasta das entregas</a><a href="#sameday">Sameday</a><a href="#integra">Na íntegra</a><a href="#fotos">Fotografias</a></div>
       <div class="col rv" style="--d:.1s"><h5>Contacto</h5><a href="mailto:contact@creativesete.com">contact@creativesete.com</a><a id="wa2" href="#" target="_blank" rel="noopener">+351 963 899 070</a><p>Lisboa</p></div>
     </div>
     <p class="marcao" id="marcao"><span class="l"><span>Creative<em>Sete</em></span></span></p>
@@ -901,12 +920,14 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radiu
   </div>
 </footer>
 </main>
+<div class="vx" id="vx" hidden><button type="button" class="vx-x" id="vxX" aria-label="Fechar">×</button><button type="button" class="vx-p" id="vxP" aria-label="Anterior">‹</button><img id="vxImg" alt=""><button type="button" class="vx-n" id="vxN" aria-label="Seguinte">›</button><p class="vx-c" id="vxC"></p></div>
 
 <script>
 /* ================== O QUE MUDA A CADA ENTREGA ==================
    Sameday: quando um vídeo estiver pronto, pôr em video o mp4 leve (media/sdN.mp4, até 25 MB)
    e em dl o link de download direto da Drive (drive.usercontent.google.com/download?id=…&export=download&confirm=t).
    Na íntegra: juntar as palestras de cada dia a INTEGRA[n] como { titulo, orador, duracao, dl }.
+   Fotografias: juntar um bloco por dia a FOTOS.dias (só evento, público e oradores; nunca a equipa CreativeSete).
  */
 const EVENTO = { inicio: '2026-11-27T08:00:00Z', fim: '2026-11-29T18:00:00Z' }; // Lisboa em novembro = UTC
 const SAMEDAY = [
@@ -915,6 +936,13 @@ const SAMEDAY = [
   { dia: 'Dia 3', data: 'Domingo, 29 de novembro', quando: 'Chega na noite de domingo', poster: 'media/sd3.jpg', video: null, dl: null, peso: '' },
 ];
 const INTEGRA = { 1: [], 2: [], 3: [] };
+/* Fotografias: a galeria completa vive no Pixieset; na página fica uma seleção por dia (media/f/g e media/f/t). */
+const FOTOS = {
+  galeria: 'https://clients.creativesete.com/masterandscale26/',
+  dias: [
+    { titulo: 'Dia 1 · 27 de novembro', fotos: ['d1-43-940193','d1-31-ee8154','d1-28-41146e','d1-35-3e64ac','d1-24-02e6c4','d1-38-41bc63','d1-40-1db573','d1-01-f31ae6','d1-30-f2fafb','d1-26-6e456a','d1-33-1e18e8','d1-36-0c5eac','d1-39-f35318','d1-19-cdc603','d1-32-6301cb','d1-37-226bb7','d1-41-ebbb04','d1-42-32136f','d1-02-441bfe','d1-03-ed569b','d1-04-4a60ee','d1-05-2386be','d1-06-b68384','d1-07-b9d7b1','d1-08-e3bc7e','d1-09-e3982c','d1-10-7736b2','d1-11-6e8b85','d1-12-9cd293','d1-13-2451b5','d1-14-9babce','d1-15-1e5fab','d1-16-801047','d1-17-6bb4db','d1-18-6ef473','d1-20-ac2138','d1-21-518ca0','d1-22-1a5213','d1-23-4de397','d1-25-c6fe3c','d1-27-d96273','d1-29-cba992','d1-34-c80b8d'] },
+  ],
+};
 /* ================================================================ */
 
 const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
@@ -950,11 +978,11 @@ function relogio(){
     const dia = Math.min(3, Math.floor((agora - ini) / 86400000) + 1);
     $('#h1a').textContent = `Dia ${dia} de 3`; $('#h1b').textContent = 'a decorrer';
     $('#estado').textContent = 'Em direto · Lagoas Park';
-    $('#ladoTxt').textContent = `Estamos na sala a filmar. O Sameday de hoje chega a esta página ainda esta noite${prontos ? ', e os dos dias anteriores já estão mais abaixo' : ''}.`;
+    $('#ladoTxt').textContent = `Estamos na sala a filmar. O Sameday de hoje chega a esta página ainda esta noite${prontos ? ', e os dos dias anteriores já estão mais abaixo' : ''}. As fotografias do dia já estão na galeria.`;
   } else {
     $('#h1a').textContent = 'Obrigado'; $('#h1b').textContent = 'pela confiança';
     $('#estado').textContent = 'Luciano Larrossa · Lagoas Park · 27 a 29 nov';
-    $('#ladoTxt').textContent = 'Foram três dias cheios. Os vídeos Sameday estão aqui, e a captação na íntegra de cada palestra junta-se a esta página assim que estiver pronta.';
+    $('#ladoTxt').textContent = 'Foram três dias cheios. Os vídeos Sameday estão aqui, as fotografias estão na galeria, e a captação na íntegra de cada palestra junta-se a esta página assim que estiver pronta.';
   }
   if (tique) clearInterval(tique);
   return true;
@@ -986,6 +1014,29 @@ function mostraDia(d){
 }
 $$('#dias button').forEach(b => b.onclick = () => mostraDia(+b.dataset.d));
 mostraDia(1);
+
+/* Fotografias */
+const temGaleria = !!FOTOS.galeria;
+$('#fotosPronto').classList.toggle('espera', !temGaleria);
+$('#fotosIco').innerHTML = temGaleria ? CERTO : RELOGIO;
+$('#fotosTxt').innerHTML = temGaleria
+  ? 'A galeria está aberta<small>Vejam e descarreguem as fotografias em alta resolução. Junta-se material novo a cada dia do evento.</small>'
+  : 'A galeria abre durante o evento<small>Assim que as fotografias estiverem editadas, o botão ao lado leva-vos diretamente para elas.</small>';
+const fb = $('#fotosBtn');
+fb.textContent = temGaleria ? 'Abrir a galeria' : 'Galeria em breve';
+if (temGaleria) fb.href = FOTOS.galeria; else { fb.removeAttribute('href'); fb.setAttribute('aria-disabled', 'true'); }
+const totalF = FOTOS.dias.reduce((n, d) => n + d.fotos.length, 0);
+$('#galTit').innerHTML = FOTOS.dias.length === 1 ? `${esc(FOTOS.dias[0].titulo)} <small>${totalF}</small>` : `Uma seleção dos três dias <small>${totalF}</small>`;
+$('#galeria').innerHTML = FOTOS.dias.flatMap(d => d.fotos).map((n, i) => `<figure class="rv" style="--d:${(i % 4) * .08}s"><a href="media/f/g/${n}.jpg" data-n="${n}"><img src="media/f/t/${n}.jpg" alt="" loading="lazy"></a></figure>`).join('');
+
+/* visor das fotografias */
+const vx = $('#vx'); let vxL = [], vxI = 0;
+function vxMostra(i){ vxI = (i + vxL.length) % vxL.length; $('#vxImg').src = vxL[vxI].href; $('#vxC').textContent = `${vxI + 1} de ${vxL.length}`; }
+$$('.galeria a').forEach(a => a.addEventListener('click', e => { e.preventDefault(); vxL = $$('.galeria a'); vx.hidden = false; document.body.style.overflow = 'hidden'; vxMostra(vxL.indexOf(a)); }));
+const vxFecha = () => { vx.hidden = true; document.body.style.overflow = ''; $('#vxImg').removeAttribute('src'); };
+$('#vxX').onclick = vxFecha; $('#vxP').onclick = () => vxMostra(vxI - 1); $('#vxN').onclick = () => vxMostra(vxI + 1);
+vx.addEventListener('click', e => { if (e.target === vx) vxFecha(); });
+addEventListener('keydown', e => { if (vx.hidden) return; if (e.key === 'Escape') vxFecha(); if (e.key === 'ArrowLeft') vxMostra(vxI - 1); if (e.key === 'ArrowRight') vxMostra(vxI + 1); });
 
 /* revelações */
 const io = new IntersectionObserver(es => es.forEach(e => {
